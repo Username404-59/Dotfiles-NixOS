@@ -38,7 +38,7 @@
     kdePackages.kio-extras
     kdePackages.gwenview
     kdePackages.filelight
-    kdePackages.kcalc
+    qalculate-qt
     mission-center
     (pkgs.wrapOBS {
       plugins = with pkgs.obs-studio-plugins; [
