@@ -1,0 +1,290 @@
+{ config, pkgs, lib, isLaptop, ... }:
+
+let
+  menu_name = "rofi";
+  menu = "${menu_name} -show drun -run-command 'app2unit -- {cmd}'";
+  uwsm = "uwsm app --";
+  terminal = "kitty";
+  fileManager = "dolphin";
+  mpv_options =  "volume=0";
+  mainMod = "SUPER";
+
+  mocha = {
+    peach = "rgb(fab387)";
+  };
+in
+{
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd = {
+      enable = false; # Conflicts with UWSM
+    };
+
+    settings = {
+      monitor = if !isLaptop then [
+        { output = "DP-3"; mode = "2560x1440@144"; position = "0x0"; scale = 1; vrr = 2; }
+        { output = "HDMI-A-4"; mode = "1920x1080@77"; position = "-1920x128"; scale = 1; }
+      ] else [
+        {
+          output = "eDP-1"; mode = "2880x1800@120"; position = "0x0"; scale = 1.5;
+          cm = "hdredid"; bitdepth = 10;
+          min_luminance = 0.0; max_luminance = 2000;
+          sdr_min_luminance = 0.005; sdr_max_luminance = 350; # 106?
+          sdrsaturation = 1.0; # 1.175? 0.975?
+          #sdrbrightness = 1.1; # 1.2625? 0.975?
+        }
+      ];
+      
+      # AUTOSTART #
+      on = {
+        _args = [
+          "hyprland.start"
+          (lib.generators.mkLuaInline ''
+            function()
+              ${if isLaptop then "-- " else ""}hl.exec_cmd("${uwsm} murale '/disk2/MemoryRebootHatsune&Shrek.avi' -o HDMI-A-4 --mpv-options '${mpv_options}'")
+              hl.exec_cmd("${uwsm} swaybg ${
+                if isLaptop then "-c 000000 -o '*'" else "-i '${./backgrounds/ubuntu_budgie_wallpaper1.jpg}' -o DP-3"
+              }")
+              hl.exec_cmd("${uwsm} ironbar")
+              hl.exec_cmd("${uwsm} wl-paste --type text --watch cliphist store")
+              hl.exec_cmd("${uwsm} wl-paste --type image --watch cliphist store")
+              hl.exec_cmd("${uwsm} hyprsunset")
+              hl.exec_cmd("bash -c 'sleep 1.5s && { [ \"$(date +%H)\" -ge 22 ] || [ \"$(date +%H)\" -lt 6 ]; } && hyprctl hyprsunset temperature 3333'")
+              hl.exec_cmd("systemctl --user start hyprpolkitagent")
+            end
+          '')
+        ];
+      };
+/*
+      # ENVIRONMENT VARIABLES #
+      env = [
+        [ "XCURSOR_SIZE" "24" ]
+        [ "HYPRCURSOR_SIZE "24" ]
+        [ "AQ_DRM_DEVICES" "/dev/dri/card1" ]
+        [ "QT_QPA_PLATFORM "wayland" ]
+        [ "QT_AUTO_SCREEN_SCALE_FACTOR "1" ]
+      ];
+*/
+      # LOOK & FEEL #
+      config = {
+        general = {
+          gaps_in = 5;
+          gaps_out = 20;
+          border_size = 3;
+
+          col.active_border = {
+            colors = [
+              "rgba(33ccffee)"
+              mocha.peach
+              "rgba(00ff99ee)"
+            ];
+            angle = 45;
+          };
+          col.inactive_border = { colors = [ "rgba(171727b0)" ]; };
+          resize_on_border = false;
+          allow_tearing = true;
+          layout = "dwindle";
+        };
+
+        render = {
+          direct_scanout = 1;
+          new_render_scheduling = true;
+        };
+
+        cursor = {
+          no_hardware_cursors = 2;
+          no_break_fs_vrr = 2;
+          min_refresh_rate = 48;
+        };
+
+        decoration = {
+          rounding = 10;
+          rounding_power = 2;
+
+          active_opacity = 1.0;
+          inactive_opacity = 1.0;
+
+          shadow = {
+            enabled = true;
+            range = 4;
+            render_power = 3;
+            color = "rgba(1a1a1aee)";
+          };
+
+          blur = {
+            enabled = true;
+            size = 5;
+            passes = 4;
+            new_optimizations = true;
+            vibrancy = 0.75;
+            vibrancy_darkness = 1.0;
+          };
+        };
+
+        animations = {
+          enabled = true;
+          workspace_wraparound = true;
+        };
+
+        dwindle = {
+          preserve_split = true;
+        };
+
+        master = {
+          new_status = "master";
+        };
+
+        # INPUT #
+        input = {
+          kb_layout = "fr";
+          follow_mouse = 1;
+          focus_on_close = 1;
+          sensitivity = 0;
+
+          touchpad = {
+            natural_scroll = false;
+          };
+        };
+
+        misc = {
+          force_default_wallpaper = 1;
+          disable_hyprland_logo = false;
+        };
+      };
+
+      curve = [
+        { _args = ["easeOutQuint"     { type = "bezier"; points = [ [0.23 1]    [0.32 1]  ]; } ]; }
+        { _args = ["easeInOutCubic"   { type = "bezier"; points = [ [0.65 0.05] [0.36 1]  ]; } ]; }
+        { _args = ["linear"           { type = "bezier"; points = [ [0 0]       [1    1]  ]; } ]; }
+        { _args = ["almostLinear"     { type = "bezier"; points = [ [0.5 0.5]   [0.75 1]  ]; } ]; }
+        { _args = ["quick"            { type = "bezier"; points = [ [0.15 0]    [0.1  1]  ]; } ]; }
+        { _args = ["easy"             { type = "spring"; mass = 1; stiffness = 71.2633; dampening = 15.8273644; } ]; }
+      ];
+
+      animation = [
+        { leaf = "global";        enabled = true;  speed = 10;   bezier = "default";                            }
+        { leaf = "border";        enabled = true;  speed = 5.39; bezier = "easeOutQuint";                       }
+        { leaf = "windows";       enabled = true;  speed = 4.79; spring = "easy";                               }
+        { leaf = "windowsIn";     enabled = true;  speed = 4.1;  spring = "easy";          style = "popin 87%"; }
+        { leaf = "windowsOut";    enabled = true;  speed = 1.49; bezier = "linear";        style = "popin 87%"; }
+        { leaf = "fadeIn";        enabled = true;  speed = 1.73; bezier = "almostLinear";                       }
+        { leaf = "fadeOut";       enabled = true;  speed = 1.46; bezier = "almostLinear";                       }
+        { leaf = "fade";          enabled = true;  speed = 3.03; bezier = "quick";                              }
+        { leaf = "layers";        enabled = true;  speed = 3.81; bezier = "easeOutQuint";                       }
+        { leaf = "layersIn";      enabled = true;  speed = 4;    bezier = "easeOutQuint";  style = "fade";      }
+        { leaf = "layersOut";     enabled = true;  speed = 1.5;  bezier = "linear";        style = "fade";      }
+        { leaf = "fadeLayersIn";  enabled = true;  speed = 1.79; bezier = "almostLinear";                       }
+        { leaf = "fadeLayersOut"; enabled = true;  speed = 1.39; bezier = "almostLinear";                       }
+        { leaf = "workspaces";    enabled = true;  speed = 1.94; bezier = "almostLinear";  style = "fade";      }
+        { leaf = "workspacesIn";  enabled = true;  speed = 1.21; bezier = "almostLinear";  style = "fade";      }
+        { leaf = "workspacesOut"; enabled = true;  speed = 1.94; bezier = "almostLinear";  style = "fade";      }
+        # Animated border
+        { leaf = "borderangle";   enabled = true;  speed= 20.0;  bezier = "linear";        style = "loop";      }
+      ];
+
+      gesture = {
+        fingers = 2;
+        direction = "right";
+        action = "workspace";
+      };
+
+      device = {
+        name = "epic-mouse-v1";
+        sensitivity = -0.5;
+      };
+
+      # KEYBINDINGS #
+      bind = [
+        { _args = [ "${mainMod} + A"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${terminal}\")") ]; }
+        { _args = [ "${mainMod} + C"  (lib.generators.mkLuaInline "hl.dsp.window.close()") { locked = true; } ]; }
+        { _args = [ "${mainMod} + E"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${fileManager}\")") ]; }
+        { _args = [ "${mainMod} + V"  (lib.generators.mkLuaInline "hl.dsp.window.float({ action = \"toggle\"})") ]; }
+        { _args = [ "${mainMod} + P"  (lib.generators.mkLuaInline "hl.dsp.window.pseudo()") ]; }
+        { _args = [ "${mainMod} + J"  (lib.generators.mkLuaInline "hl.dsp.layout(\"togglesplit\")") ]; }
+        { _args = [ "${mainMod} + F"  (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({ mode = 0, action = \"toggle\" })") ]; }
+
+        { _args = [ "${mainMod} + left"  (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"left\" })") ]; }
+        { _args = [ "${mainMod} + right" (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"right\" })") ]; }
+        { _args = [ "${mainMod} + up"    (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"up\" })") ]; }
+        { _args = [ "${mainMod} + down"  (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"down\" })") ]; }
+
+        { _args = [ "${mainMod} + S"         (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special(\"magic\")") ]; }
+        { _args = [ "${mainMod} + SHIFT + S" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = \"special:magic\" })") ]; }
+
+        { _args = [ "${mainMod} + mouse_down" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = \"e+1\" })") ]; }
+        { _args = [ "${mainMod} + mouse_up"   (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = \"e-1\" })") ]; }
+
+        { _args = [ "${mainMod} + SUPER_L"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"pkill ${menu_name} || ${menu}\")") ]; }
+        { _args = [ "${mainMod} + W"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"cliphist list | rofi -dmenu | cliphist decode | wl-copy\")") ]; }
+        { _args = [ "CTRL + ALT + A"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"pkill ${menu_name} || ${uwsm} ani-cli --${menu_name}\")") { long_press = true; } ]; }
+
+        { _args = [ "${mainMod} + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()") { mouse = true; } ]; }
+        { _args = [ "${mainMod} + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()") { mouse = true; } ]; }
+
+        { _args = [ "XF86AudioRaiseVolume"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+\")") { locked = true; repeating = true; } ]; }
+        { _args = [ "XF86AudioLowerVolume"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-\")") { locked = true; repeating = true; } ]; }
+        { _args = [ "XF86AudioMute"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\")") { locked = true; repeating = true; } ]; }
+        { _args = [ "XF86AudioMicMute"      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle\")") { locked = true; repeating = true; } ]; }
+        { _args = [ "XF86MonBrightnessUp"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprctl hyprsunset gamma +5\")") { locked = true; repeating = true; } ]; }
+        { _args = [ "XF86MonBrightnessDown" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprctl hyprsunset gamma -5\")") { locked = true; repeating = true; } ]; }
+
+        { _args = [ "XF86AudioNext"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl next\")") { locked = true; } ]; }
+        { _args = [ "XF86AudioPause"        (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl play-pause\")") { locked = true; } ]; }
+        { _args = [ "XF86AudioPlay"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl play-pause\")") { locked = true; } ]; }
+        { _args = [ "XF86AudioPrev"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl previous\")") { locked = true; } ]; }
+
+        { _args = [ "${mainMod} + PRINT"    (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprshot -m window\")") ]; }
+        { _args = [ "PRINT"                 (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprshot -m output\")") { locked = true; } ]; }
+        { _args = [ "SHIFT + PRINT"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprshot -m region\")") ]; }
+
+        /*
+        { _args = ["${mainMod} + 1" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 2" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 3" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 4" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 5" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 6" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 7" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 8" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 9" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + 0" (lib.generators.mkLuaInline ) ]; }
+
+        { _args = ["${mainMod} + SHIFT + 1" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 2" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 3" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 4" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 5" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 6" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 7" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 8" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 9" (lib.generators.mkLuaInline ) ]; }
+        { _args = ["${mainMod} + SHIFT + 0" (lib.generators.mkLuaInline ) ]; }
+        */
+      ]; /* ++ (
+        builtins.concatLists (builtins.genList (i:
+          in [
+            { _args = ["${mainMod} + ${toString i}"         (lib.generators.mkLuaInline ) "hl.dsp.focus({ workspace = ${toString i} })"]; }
+            { _args = ["${mainMod} + SHIFT + ${toString i}" (lib.generators.mkLuaInline ) "hl.dsp.window.move({ workspace = ${toString i} })"]; }
+          ]
+        )
+        9)
+      ); */
+
+      # WINDOW RULES #
+      window_rule = [
+        { name = "suppress-maximize-events"; match = { class = ".*"; }; }
+        {
+          name = "fix-xwayland-drags";
+          match = {
+            class      = "^$";
+            title      = "^$";
+            xwayland   = true;
+            float      = true;
+            fullscreen = false;
+            pin        = false;
+          };
+        }
+      ];
+    };
+  };
+}

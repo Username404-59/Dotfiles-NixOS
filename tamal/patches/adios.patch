@@ -1,0 +1,15 @@
+diff --git a/module.nix b/module.nix
+index c78661e..0f03ec3 100644
+--- a/module.nix
++++ b/module.nix
+@@ -220,8 +220,8 @@ in
+           ACTION=="add|change", KERNEL=="sd[a-z]*", ATTR{queue/rotational}=="1", ATTR{queue/scheduler}="bfq"
+           # SSD: mq-deadline
+           ACTION=="add|change", KERNEL=="sd[a-z]*|mmcblk[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="mq-deadline"
+-          # NVMe: kyber (upstream CachyOS#220)
+-          ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="kyber"
++          # NVMe: adios (because I said so)
++          ACTION=="add|change", KERNEL=="nvme[0-9]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="adios"
+         '';
+       })
+ 

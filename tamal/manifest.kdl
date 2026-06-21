@@ -1,0 +1,110 @@
+version "1.2.0"
+default-hash-algorithm BLAKE3
+
+patches {
+  adios "./patches/adios.patch"
+  kservice_fix "./patches/kservice_fix.patch"
+  mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
+}
+
+inputs {
+  nixpkgs {
+    archive {
+      url "https://github.com/NixOS/nixpkgs/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixpkgs-unstable"
+      | cut -f1
+    }
+  }
+
+  home-manager {
+    archive {
+      url "https://github.com/nix-community/home-manager/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/nix-community/home-manager.git" --refs "refs/heads/master"
+      | cut -f1
+    }
+  }
+
+  catppuccin {
+    archive {
+      url "https://github.com/catppuccin/nix/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/catppuccin/nix.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
+
+  nix-cachyos-kernel {
+    archive {
+      url "https://github.com/xddxdd/nix-cachyos-kernel/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/xddxdd/nix-cachyos-kernel.git" --refs "refs/heads/release"
+      | cut -f1
+    }
+  }
+
+  nix-cachyos-settings {
+    archive {
+      url "https://github.com/Daaboulex/cachyos-settings-nix/archive/{{fresh_value}}.tar.gz"
+    }
+    patches adios
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/Daaboulex/cachyos-settings-nix.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
+
+  dolphin-overlay {
+    archive {
+      url "https://github.com/rumboon/dolphin-overlay/archive/{{fresh_value}}.tar.gz"
+    }
+    patches kservice_fix
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/rumboon/dolphin-overlay.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
+
+  nix-citizen {
+    archive {
+      url "https://github.com/LovingMelody/nix-citizen/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/LovingMelody/nix-citizen.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
+
+  // Packages
+  ani-cli {
+    archive {
+      url "https://github.com/pystardust/ani-cli/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/pystardust/ani-cli.git" --refs "refs/heads/master"
+      | cut -f1
+    }
+  }
+  mpv {
+    archive {
+      url "https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz"
+    }
+    patches mpv_buffers_fix
+  }
+
+  // Others
+  catppuccin-godot {
+    file {
+      url "https://raw.githubusercontent.com/catppuccin/godot/{{fresh_value}}/themes/Catppuccin Mocha.tet"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/catppuccin/godot.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
+}

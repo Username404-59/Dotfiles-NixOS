@@ -1,0 +1,70 @@
+:root {
+    --bg: #00000066;
+    --tabpanel-background-color: #00000000 !important;
+    --in-content-page-background: #00000000 !important;
+    --in-content-box-background: #00000088 !important;
+    --tabs-navbar-separator-color: rgba(0, 0, 0, 0) !important;
+    --toolbar-field-focus-background-color: transparent !important;
+}
+
+tab.tabbrowser-tab[selected="true"] stack.tab-stack vbox.tab-background {
+    background: #FFFFFF28 !important;
+}
+
+toolbar {
+    background: transparent !important;
+}
+
+/* window transparencies */
+#main-window > body { /* remove '> body' for firefox 140 */
+    background: var(--bg) !important;
+}
+
+/* navbar / tabbar / titlebar */
+#nav-bar {
+    background: transparent  !important;
+}
+#navigator-toolbox {
+    background: transparent !important;
+}
+
+hbox#urlbar[open="true"] hbox#urlbar-background {
+    background: #0000000e !important;
+}
+
+#browser:not(.browser-toolbox-background) {
+    background-color: transparent !important;
+}
+
+#navigator-toolbox > toolbar:not(#toolbar-menubar):not(#TabsToolbar):not(:-moz-lwtheme) {
+    margin-bottom: -1px !important;
+}
+
+/* Black line */
+#navigator-toolbox {
+    border-bottom: none !important;
+}
+
+
+#urlbar-background {
+    background: #FFFFFF28 !important;
+}
+
+#urlbar[open] {
+    background-color: transparent !important;
+}
+
+#searchbar:focus-within{
+    background: transparent  !important;
+}
+
+/* Removes the ugly shit in top right corner */
+.titlebar-buttonbox-container {
+    display:none
+}
+
+#alltabs-button {
+    display: none !important;
+}
+
+.browserContainer {background: transparent !important;}
