@@ -12,7 +12,6 @@
     file
     e2fsprogs
     cpu-x
-    lact
     steam-run
     exfatprogs
     nixtamal # Important
