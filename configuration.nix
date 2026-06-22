@@ -52,7 +52,7 @@ in
       "${nixtamal.home-manager}/nixos"
       "${nixtamal.catppuccin}/modules/nixos"
       "${nixtamal.nix-cachyos-settings}/module.nix"
-      ./bootloader.nix
+      ./modules/bootloader.nix
       ./modules/system-packages.nix
       ./modules/fonts.nix
       ./modules/hyprland.nix
