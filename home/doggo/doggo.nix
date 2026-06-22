@@ -52,6 +52,7 @@
     })
     (functions.mkUnstable ani-cli)
     anime4k
+    yt-dlp
     spotify
     jetbrains.idea
     jetbrains.clion
