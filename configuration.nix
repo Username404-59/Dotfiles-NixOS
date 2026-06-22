@@ -35,6 +35,7 @@ let
 in
 {
   nixpkgs.pkgs = pkgs; # Uses the nixtamal nixpkgs
+  _module.args.nixtamal = nixtamal;
 
   imports =
     [
@@ -48,7 +49,9 @@ in
       ./modules/fonts.nix
       ./modules/hyprland.nix
       ./modules/kernel.nix
+      ./modules/ccache.nix
       ./modules/networking.nix
+      ./modules/mesa.nix
     ];
   
   home-manager.useUserPackages = true; # Puts user packages in /etc/profiles

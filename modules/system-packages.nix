@@ -1,6 +1,20 @@
-{ pkgs, ... }:
+{ pkgs, lib, nixtamal, ... }:
 
+let
+  functions = rec {
+    mkSpecial = pkg: version: suffix:
+      pkg.overrideAttrs (old: {
+        inherit version;
+        src = nixtamal.${pkg.pname + suffix};
+      });
+    mkSpecialVersion = pkg: version: mkSpecial pkg version "";
+    mkUnstable = pkg: mkSpecial pkg "unstable" "-git";
+  };
+in
 {
+  _module.args.functions = functions;
+  home-manager.extraSpecialArgs = { inherit functions; };
+
   environment.systemPackages = with pkgs; [
     git
     curl
@@ -14,7 +28,7 @@
     cpu-x
     steam-run
     exfatprogs
-    nixtamal # Important
+    pkgs.nixtamal # Important
     android-tools
     kdePackages.kleopatra # Needed to add keys easily
     nload

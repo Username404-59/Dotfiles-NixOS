@@ -1,4 +1,4 @@
-{ config, pkgs, nixtamal, ... }:
+{ config, pkgs, nixtamal, functions, ... }:
 
 {
   home.username = "doggo";
@@ -50,7 +50,7 @@
         obs-vkcapture
       ];
     })
-    (ani-cli.overrideAttrs (old: { version = "unstable"; src = nixtamal.ani-cli; }))
+    (functions.mkUnstable ani-cli)
     anime4k
     spotify
     jetbrains.idea

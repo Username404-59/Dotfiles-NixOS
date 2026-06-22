@@ -81,7 +81,7 @@ inputs {
   }
 
   // Packages
-  ani-cli {
+  ani-cli-git {
     archive {
       url "https://github.com/pystardust/ani-cli/archive/{{fresh_value}}.tar.gz"
     }
@@ -95,6 +95,15 @@ inputs {
       url "https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz"
     }
     patches mpv_buffers_fix
+  }
+  mesa-git {
+    archive {
+      url "https://gitlab.freedesktop.org/mesa/mesa/-/archive/{{fresh_value}}/mesa-{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://gitlab.freedesktop.org/mesa/mesa.git" --refs "refs/heads/main"
+      | cut -f1
+    }
   }
 
   // Others
