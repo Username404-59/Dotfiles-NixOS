@@ -11,6 +11,9 @@
 
   To fix problems sometimes:
   sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix
+
+  To make an ISO:
+  sudo nixos-rebuild build-image
 */
 let
   nixtamal = import ./tamal {
@@ -45,6 +48,7 @@ in
     [
       ./local.nix
       ./hardware-configuration.nix # Results of the hardware scan ("nixos-generate-config" command)
+      ./modules/filesystems.nix
       "${nixtamal.home-manager}/nixos"
       "${nixtamal.catppuccin}/modules/nixos"
       "${nixtamal.nix-cachyos-settings}/module.nix"
