@@ -36,6 +36,7 @@ in
     clang gcc mold
     cmake
     sbctl # For secure boot with Limine
+    jq # I use it somewhere in my nixtamal manifest
   ];
 
   programs.steam = {
