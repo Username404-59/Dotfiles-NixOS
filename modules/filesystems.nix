@@ -20,6 +20,10 @@
 
   services.fstrim.enable = true;
 
+  boot.tmp = {
+    useTmpfs = true; # I'll need to disable this or make it bigger if nix builds fail because of it
+  };
+
   # Link to nix-hardware configs in case I get a new laptop some day:
   # https://github.com/NixOS/nixos-hardware
 }

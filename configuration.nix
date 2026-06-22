@@ -12,8 +12,8 @@
   To fix problems sometimes:
   sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix
 
-  To make an ISO:
-  sudo nixos-rebuild build-image
+  To make an ISO: (https://nixos.org/manual/nixos/stable/#sec-image-nixos-rebuild-build-image)
+  sudo nixos-rebuild build-image --image-variant iso-installer
 */
 let
   nixtamal = import ./tamal {
@@ -60,6 +60,9 @@ in
       ./modules/ccache.nix
       ./modules/networking.nix
       ./modules/mesa.nix
+
+      # ISO installer building stuff:
+      ./ISO/iso.nix
     ];
   
   home-manager.useUserPackages = true; # Puts user packages in /etc/profiles
