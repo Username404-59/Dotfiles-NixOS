@@ -55,7 +55,9 @@ in
     };
   };
 
-  fileSystems."/".options = [ "noatime" ];
+  fileSystems."/".options = [ "noatime" "discard" ];
+  # Note: for f2fs, create it with "sudo fsck.f2fs -O extra_attr,flexible_inline_xattr,inode_checksum,sb_checksum,compression,lost_found /dev/sdxY"
+  # & add "noatime,discard" (done here) and "compress_algorithm=lzo-rle,compress_chksum,atgc,gc_merge,checkpoint=enable,checkpoint_merge,fsync_mode=posix,nat_bits" to mount options
 
   networking.hostName = if !isLaptop then "lizard" else "lizard-portable";
 }
