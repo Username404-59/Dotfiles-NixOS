@@ -61,11 +61,11 @@ in
   options = [
     "compress_algorithm=lzo-rle"
     "compress_extension=*"
-    "nocompress_extension=avif,bmp,gif,heic,heif,ico,jpe,jpeg,jpg,png,svg,tif,tiff,webp,3gp,avi,flv,m4v,mkv,mov,mp4,mpeg,mpg,webm,wmv,aac,flac,m4a,mid,midi,mp3,ogg,opus,wav,wma,7z,bz2,gz,rar,tar,tgz,xz,zip,zst,docx,odt,odp,ods,pptx,xlsx,pdf,db,gpg,key,p12,pem,sqlite,sqlite3,enc,aab,apk,appimage,bin,deb,dll,elf,exe,jar,so,rpm,img,iso,qcow2,vdi,vhd,vmdk,otf,ttf,class,dump,log,swp,tmp,bak,cache,part,old,new,core"
+    #"nocompress_extension=avif,bmp,gif,heic,heif,ico,jpe,jpeg,jpg,png,svg,tif,tiff,webp,3gp,avi,flv,m4v,mkv,mov,mp4,mpeg,mpg,webm,wmv,aac,flac,m4a,mid,midi,mp3,ogg,opus,wav,wma,7z,bz2,gz,rar,tar,tgz,xz,zip,zst,docx,odt,odp,ods,pptx,xlsx,pdf,db,gpg,key,p12,pem,sqlite,sqlite3,enc,aab,apk,appimage,bin,deb,dll,elf,exe,jar,so,rpm,img,iso,qcow2,vdi,vhd,vmdk,otf,ttf,class,dump,log,swp,tmp,bak,cache,part,old,new,core"
     "compress_chksum"
     "atgc"
     "gc_merge"
-    "checkpoint=enable",
+    "checkpoint=enable"
     "checkpoint_merge"
     "fsync_mode=posix"
     "nat_bits"

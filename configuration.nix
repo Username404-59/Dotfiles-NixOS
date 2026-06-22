@@ -1,13 +1,17 @@
 { config, lib, ... }:
 
-# This should be in /etc/nixos/ together with the rest.
+/*
+  This should be in /etc/nixos/ together with the rest.
 
-# For the nixos channel
-# nix-channel --add https://channels.nixos.org/nixos-unstable nixos && nix-channel --update
+  For the nixos channel:
+  sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos && nix-channel --update
 
-# To fix problems sometimes:
-# sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix
+  To rebuild for the first time:
+  sudo nixos-rebuild switch --option extra-experimental-features "blake3-hashes"
 
+  To fix problems sometimes:
+  sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix
+*/
 let
   nixtamal = import ./tamal {
     bootstrap-nixpkgs = <nixpkgs>; # Apparently a little bit impure but faster. (can be removed)
