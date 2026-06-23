@@ -33,6 +33,8 @@ let
     overlays = [
       # CachyOS kernels repo
       (import nixtamal.nix-cachyos-kernel).overlays.default
+      # Nix-gaming overlay (for low_latency_layer)
+      (import nixtamal.nix-gaming).overlays.default
       # Nix-Citizen tools overlay (for dw-proton-bin notably)
       (import nixtamal.nix-citizen).overlays.steamcompattools
       # Local packages

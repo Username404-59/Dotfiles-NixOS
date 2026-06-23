@@ -80,6 +80,16 @@ inputs {
       | cut -f1
     }
   }
+
+  nix-gaming {
+    archive {
+      url "https://github.com/fufexan/nix-gaming/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/fufexan/nix-gaming.git" --refs "refs/heads/master"
+      | cut -f1
+    }
+  }
 /*
   odysseus {
     archive {
@@ -119,6 +129,15 @@ inputs {
       --data-urlencode "until=$(date -d \"$(date +%Y-%m-01)\" +%Y-%m-%dT%H:%M:%S%z)" \
       --data-urlencode "per_page=1"
       | jq -r ".[0].id"
+    }
+  }
+  low_latency_layer-git {
+    archive {
+      url "https://github.com/Korthos-Software/low_latency_layer/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/Korthos-Software/low_latency_layer.git" --refs "refs/heads/main"
+      | cut -f1
     }
   }
 

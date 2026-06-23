@@ -1,4 +1,4 @@
-{ lib, pkgs, functions, isLaptop, ... }:
+{ lib, pkgs, functions, isLaptop, nixtamal, ... }:
 
 let
   selected_vkDrivers = [ "amd" /* Needed by steam => */ "microsoft-experimental" ] ++ lib.optional (!isLaptop) "intel";
@@ -15,5 +15,8 @@ in
       vulkanDrivers = selected_vkDrivers;
       galliumDrivers = selected_glDrivers;
     };
+    extraPackages = with pkgs; [
+      (functions.mkUnstable low-latency-layer) # Better alternative (+ vendor-agnostic) to mesa's amd anti-lag 2
+    ];
   };
 }

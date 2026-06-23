@@ -103,7 +103,10 @@
     
     PROTON_USE_NTSYNC = "1";
     PROTON_ENABLE_WAYLAND = "1";
-    ENABLE_LAYER_MESA_ANTI_LAG = "1";
+    DISABLE_LAYER_MESA_ANTI_LAG = "1";
+    LOW_LATENCY_LAYER = "1";
+    # Note: set LOW_LATENCY_LAYER_REFLEX = "1" for games with nvidia reflex
+    # (or some like cyberpunk 2077 where anti-lag 2 is supported but is worse than reflex and/or none)
   };
 
   programs = {
