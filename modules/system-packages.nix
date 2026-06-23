@@ -16,7 +16,7 @@ in
   home-manager.extraSpecialArgs = { inherit functions; };
 
   environment.systemPackages = with pkgs; [
-    git
+    git git-lfs
     curl
     wget
     neovim
