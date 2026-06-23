@@ -58,6 +58,7 @@
     jetbrains.clion
     #androidStudioPackages.canary.full
     androidStudioForPlatformPackages.canary # Android studio but better for AOSP dev
+    git-repo # Android dev tool
     lmms-full
     gnome-feeds
     vulkan-tools mesa-demos # vkcube & glxgears
