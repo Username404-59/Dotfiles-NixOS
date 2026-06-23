@@ -42,6 +42,8 @@ in
   programs.steam = {
     enable = true;
     dedicatedServer.openFirewall = true;
+    remotePlay.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
     extraCompatPackages = with pkgs; [
       proton-ge-bin
       dw-proton-bin # From nix-citizen overlay
@@ -49,6 +51,10 @@ in
     # Note: to make another disk visible to games add
     # STEAM_COMPAT_MOUNTS=/disk2 %command%
     # to commandline options
+  };
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
   };
 
   services.flatpak.enable = true;
