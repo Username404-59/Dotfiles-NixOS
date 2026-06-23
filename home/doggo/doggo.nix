@@ -103,6 +103,7 @@
     
     PROTON_USE_NTSYNC = "1";
     PROTON_ENABLE_WAYLAND = "1";
+    ENABLE_LAYER_MESA_ANTI_LAG = "1";
   };
 
   programs = {
