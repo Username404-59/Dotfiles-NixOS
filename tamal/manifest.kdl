@@ -140,6 +140,11 @@ inputs {
       | cut -f1
     }
   }
+  lact-patch { // TODO: Remove this when upstream releases a new version
+    file {
+      url "https://patch-diff.githubusercontent.com/raw/ilya-zlobintsev/LACT/pull/1080.patch"
+    }
+  }
 
   // Others
   catppuccin-godot {

@@ -59,7 +59,10 @@ in
 
   services.flatpak.enable = true;
 
-  services.lact.enable = true;
+  services.lact = {
+    enable = true;
+    package = pkgs.lact.overrideAttrs (old: { patches = [ nixtamal.lact-patch ]; } );
+  };
 
   programs.gnupg.agent = {
     enable = true;
