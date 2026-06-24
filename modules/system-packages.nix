@@ -9,6 +9,12 @@ let
       });
     mkSpecialVersion = pkg: version: mkSpecial pkg version "";
     mkUnstable = pkg: mkSpecial pkg "unstable" "-git";
+
+    mkPatched = pkg: newPatches:
+      pkg.overrideAttrs (old: {
+        patches = newPatches;
+      });
+    mkPatchedAuto = pkg: mkPatched pkg [ nixtamal.${pkg.pname + "-patch"} ];
   };
 in
 {
@@ -61,7 +67,7 @@ in
 
   services.lact = {
     enable = true;
-    package = pkgs.lact.overrideAttrs (old: { patches = [ nixtamal.lact-patch ]; } );
+    package = functions.mkPatchedAuto pkgs.lact;
   };
 
   programs.gnupg.agent = {
