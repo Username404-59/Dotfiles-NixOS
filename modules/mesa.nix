@@ -1,4 +1,4 @@
-{ lib, pkgs, functions, isLaptop, nixtamal, ... }:
+{ lib, pkgs, functions, isLaptop, ... }:
 
 let
   selected_vkDrivers = [ "amd" /* Needed by steam => */ "microsoft-experimental" ] ++ lib.optional (!isLaptop) "intel";
