@@ -140,6 +140,16 @@ inputs {
       | cut -f1
     }
   }
+  lsfg-vk-git {
+    archive {
+      url "https://github.com/PancakeTAS/lsfg-vk/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/PancakeTAS/lsfg-vk.git" --refs "refs/heads/develop"
+      | cut -f1
+    }
+  }
+  // Patches
   lact-patch { // TODO: Remove this when upstream releases a new version
     file {
       url "https://patch-diff.githubusercontent.com/raw/ilya-zlobintsev/LACT/pull/1080.patch"

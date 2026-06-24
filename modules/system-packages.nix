@@ -43,6 +43,7 @@ in
     cmake
     sbctl # For secure boot with Limine
     jq # I use it somewhere in my nixtamal manifest
+    (functions.mkUnstable lsfg-vk) # TODO: Split package in 2 so I can put the ui here, and the layer in mesa.nix
   ];
 
   programs.steam = {
