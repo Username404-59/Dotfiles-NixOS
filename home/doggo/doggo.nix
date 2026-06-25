@@ -38,6 +38,7 @@
     kdePackages.kio-extras
     kdePackages.gwenview
     kdePackages.filelight
+    kdePackages.kdenlive
     qalculate-qt
     mission-center
     (pkgs.wrapOBS {
