@@ -4,18 +4,14 @@
   cmake,
   llvmPackages,
   qt6,
+  lsfg-vk,
 }:
 
 llvmPackages.stdenv.mkDerivation (finalAttrs: {
   pname = "lsfg-vk-ui";
-  version = "2.0.0-dev";
+  version = lsfg-vk.version;
 
-  src = fetchFromGitHub {
-    owner = "PancakeTAS";
-    repo = "lsfg-vk";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-Qb3vufCzNpM1r+vgo8M9nnA7CENgGTithWG0oXqLKbI=";
-  };
+  src = lsfg-vk.src;
 
   nativeBuildInputs = [
     llvmPackages.clang-tools
