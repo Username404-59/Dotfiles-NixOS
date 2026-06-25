@@ -17,6 +17,7 @@ in
     };
     extraPackages = with pkgs; [
       (functions.mkUnstable low-latency-layer) # Better alternative (+ vendor-agnostic) to mesa's amd anti-lag 2
+      (functions.mkUnstable lsfg-vk)
     ];
   };
 }

@@ -2,13 +2,14 @@
 
 let
   functions = rec {
-    mkSpecial = pkg: version: suffix:
+    mkSpecial = pkg: version: src_name: suffix:
       pkg.overrideAttrs (old: {
         inherit version;
-        src = nixtamal.${pkg.pname + suffix};
+        src = nixtamal.${src_name + suffix};
       });
-    mkSpecialVersion = pkg: version: mkSpecial pkg version "";
-    mkUnstable = pkg: mkSpecial pkg "unstable" "-git";
+    mkSpecialAuto = pkg: version: suffix: mkSpecial pkg version pkg.pname suffix;
+    mkSpecialVersion = pkg: version: mkSpecialAuto pkg version "";
+    mkUnstable = pkg: mkSpecialAuto pkg "unstable" "-git";
 
     mkPatched = pkg: newPatches:
       pkg.overrideAttrs (old: {
@@ -43,7 +44,7 @@ in
     cmake
     sbctl # For secure boot with Limine
     jq # I use it somewhere in my nixtamal manifest
-    (functions.mkUnstable lsfg-vk) # TODO: Split package in 2 so I can put the ui here, and the layer in mesa.nix
+    (functions.mkSpecial lsfg-vk-ui "unstable" "lsfg-vk" "-git")
   ];
 
   programs.steam = {

@@ -2,12 +2,12 @@
   lib,
   fetchFromGitHub,
   cmake,
-  vulkan-headers,
   llvmPackages,
+  qt6,
 }:
 
 llvmPackages.stdenv.mkDerivation (finalAttrs: {
-  pname = "lsfg-vk";
+  pname = "lsfg-vk-ui";
   version = "2.0.0-dev";
 
   src = fetchFromGitHub {
@@ -21,21 +21,23 @@ llvmPackages.stdenv.mkDerivation (finalAttrs: {
     llvmPackages.clang-tools
     llvmPackages.libllvm
     cmake
+    qt6.wrapQtAppsHook
   ];
 
   buildInputs = [
-    vulkan-headers
+    qt6.qtbase
+    qt6.qtdeclarative
   ];
 
   cmakeFlags = [
-    "-DLSFGVK_LAYER_LIBRARY_PATH=${placeholder "out"}/lib/liblsfg-vk-layer.so"
-    "-DLSFGVK_BUILD_VK_LAYER=ON"
-    "-DLSFGVK_BUILD_UI=OFF"
+    "-DLSFGVK_BUILD_VK_LAYER=OFF"
+    "-DLSFGVK_BUILD_UI=ON"
+    "-DLSFGVK_INSTALL_XDG_FILES=ON"
     "-DLSFGVK_BUILD_CLI=OFF"
   ];
 
   meta = {
-    description = "Lossless Scaling Frame Generation on Linux";
+    description = "Lossless Scaling Frame Generation on Linux (UI part)";
     homepage = "https://github.com/PancakeTAS/lsfg-vk/";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
