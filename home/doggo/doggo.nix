@@ -89,7 +89,6 @@
     ./firefox-config.nix
     ./mpv-config.nix
     ./ollama-config.nix
-    ./pipewire-config.nix
   ];
 
   qt = {

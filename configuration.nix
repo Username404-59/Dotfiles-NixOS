@@ -62,6 +62,7 @@ in
       ./modules/ccache.nix
       ./modules/networking.nix
       ./modules/mesa.nix
+      ./modules/audio.nix
 
       # ISO installer building stuff:
       ./ISO/iso.nix
@@ -119,7 +120,6 @@ in
   home-manager.users.doggo = import ./home/doggo/doggo.nix;
 
   security.polkit.enable = true;
-  security.rtkit.enable = true; # Improves pipewire audio latency
 
   cachyos.settings = {
     enable = true;
