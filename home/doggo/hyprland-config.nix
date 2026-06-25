@@ -202,6 +202,7 @@ in
         { _args = [ "${mainMod} + P"  (lib.generators.mkLuaInline "hl.dsp.window.pseudo()") ]; }
         { _args = [ "${mainMod} + J"  (lib.generators.mkLuaInline "hl.dsp.layout(\"togglesplit\")") ]; }
         { _args = [ "${mainMod} + F"  (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({ mode = 0, action = \"toggle\" })") ]; }
+        { _args = [ "${mainMod} + R"  (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({ mode = 1, action = \"toggle\" })") ]; }
 
         { _args = [ "${mainMod} + left"  (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"left\" })") ]; }
         { _args = [ "${mainMod} + right" (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"right\" })") ]; }
