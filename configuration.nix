@@ -119,6 +119,7 @@ in
   home-manager.users.doggo = import ./home/doggo/doggo.nix;
 
   security.polkit.enable = true;
+  security.rtkit.enable = true; # Improves pipewire audio latency
 
   cachyos.settings = {
     enable = true;
