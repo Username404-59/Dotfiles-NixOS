@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, isLaptop, ... }:
 
 {
   programs.hyprland = {
@@ -33,7 +33,7 @@
       accent = [ "all" ];
       size   = "standard"; #"compact"
       shade  = "dark";
-      tweaks = [ /*black*/ ];
+      tweaks = [ ] ++ lib.optional (isLaptop) "black";
     })
     xeyes
     networkmanagerapplet
