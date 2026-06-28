@@ -306,8 +306,8 @@ in
           move = [ "monitor_w" "monitor_h" ];
           size = [ "monitor_w - 5" "monitor_h - 5" ];
         }
-      ];
       */
+      ];
     };
   };
 }
