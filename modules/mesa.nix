@@ -1,7 +1,7 @@
 { lib, pkgs, functions, isLaptop, ... }:
 
 let
-  selected_vkDrivers = [ "amd" /* Needed by steam => */ "microsoft-experimental" ] ++ lib.optional (!isLaptop) "intel";
+  selected_vkDrivers = [ "amd" "nouveau" /* Needed by steam => */ "microsoft-experimental" ] ++ lib.optional (!isLaptop) "intel";
   selected_glDrivers = [ "radeonsi" "zink" ] ++ lib.optional (!isLaptop) "i915";
 in
 {
