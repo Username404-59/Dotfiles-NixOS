@@ -31,6 +31,7 @@
       withOpenASAR = true;
       withEquicord = true;
     })
+    #orbolay # Hud overlay for equicord (https://github.com/Equicord/Equicord/blob/main/src/equicordplugins/orbolayBridge/index.tsx)
     kdePackages.qtsvg # Needed for icons in KDE Dolphin
     kdePackages.dolphin
     kdePackages.ark zip unzip
