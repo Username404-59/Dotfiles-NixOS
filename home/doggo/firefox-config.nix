@@ -50,4 +50,6 @@ in
       };
     };
   };
+
+  services.psd.enable = true; # Firefox in RAM, because why not
 }
