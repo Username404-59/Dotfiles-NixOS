@@ -115,7 +115,7 @@ in
   };
 
   home-manager.extraSpecialArgs = {
-    inherit nixtamal;
+    inherit nixtamal localPackagesOverlay;
   };
   home-manager.users.doggo = import ./home/doggo/doggo.nix;
 

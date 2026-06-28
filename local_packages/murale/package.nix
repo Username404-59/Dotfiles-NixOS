@@ -37,10 +37,10 @@ rustPlatform.buildRustPackage {
   ];
 
   meta = {
-    description = "Lean, memory-safe video wallpaper player for Wayland compositors ";
-    homepage = "https://github.com/brenton-keller/murale";
-    license = lib.licenses.mit;
-    platforms = lib.platforms.linux;
+    description = "Lean, memory-safe video wallpaper player for Wayland compositors";
+    homepage    = "https://github.com/brenton-keller/murale";
+    license     = lib.licenses.mit;
+    platforms   = lib.platforms.linux;
     mainProgram = "murale";
     maintainers = with lib.maintainers; [ Username404-59 ];
   };

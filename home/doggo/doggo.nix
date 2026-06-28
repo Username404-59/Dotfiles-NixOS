@@ -1,4 +1,4 @@
-{ config, pkgs, nixtamal, functions, ... }:
+{ config, pkgs, nixtamal, functions, localPackagesOverlay, ... }:
 
 {
   home.username = "doggo";
@@ -21,6 +21,7 @@
   nixpkgs.overlays = [
     (import nixtamal.dolphin-overlay)
     (import nixtamal.nix-citizen).overlays.default
+    localPackagesOverlay
   ];
 
   home.packages = with pkgs; [
