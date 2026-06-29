@@ -120,6 +120,8 @@ in
     # flatpak --user install org.freedesktop.Platform.GL.mesa-git
     # flatpak --user install org.freedesktop.Platform.GL32.mesa-git
     FLATPAK_GL_DRIVERS = "mesa-git";
+
+    NIXOS_OZONE_WL = "1"; # Makes electron apps (e.g discord & spotify) use wayland
   };
 
   programs = {
