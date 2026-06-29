@@ -73,6 +73,12 @@ in
     capSysNice = true;
   };
 
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-rules-cachyos;
+  };
+
   services.flatpak.enable = true;
   systemd.user.services.flatpak-repos = {
     after = [ "network.target" ];
