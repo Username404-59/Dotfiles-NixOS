@@ -16,6 +16,14 @@ let
         patches = newPatches;
       });
     mkPatchedAuto = pkg: mkPatched pkg [ nixtamal.${pkg.pname + "-patch"} ];
+
+    importFlake = flakeRef:
+      let
+        src = nixtamal.${flakeRef};
+      in
+        ((import nixtamal.flake-compat { inherit pkgs; }) {
+          inherit src;
+        }).defaultNix.packages.${pkgs.system}.default;
   };
 in
 {

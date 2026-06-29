@@ -71,6 +71,16 @@ inputs {
     }
   }
 
+  flake-compat {
+    archive {
+      url "https://github.com/NixOS/flake-compat/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/NixOS/flake-compat.git" --refs "refs/heads/master"
+      | cut -f1
+    }
+  }
+
   nix-citizen {
     archive {
       url "https://github.com/LovingMelody/nix-citizen/archive/{{fresh_value}}.tar.gz"
