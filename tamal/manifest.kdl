@@ -90,6 +90,16 @@ inputs {
       | cut -f1
     }
   }
+
+  nix-spicetify {
+    archive {
+      url "https://github.com/Gerg-L/spicetify-nix/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/Gerg-L/spicetify-nix.git" --refs "refs/heads/master"
+      | cut -f1
+    }
+  }
 /*
   odysseus {
     archive {

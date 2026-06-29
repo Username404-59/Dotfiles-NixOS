@@ -1,5 +1,8 @@
 { config, pkgs, nixtamal, functions, localPackagesOverlay, ... }:
 
+let
+  spicetify-nix = import nixtamal.nix-spicetify { pkgs = import nixtamal.nixpkgs { }; };
+in
 {
   home.username = "doggo";
   home.homeDirectory = "/home/doggo";
@@ -56,7 +59,6 @@
     (functions.mkUnstable ani-cli)
     anime4k
     yt-dlp
-    spotify
     jetbrains.idea
     jetbrains.clion
     #androidStudioPackages.canary.full
@@ -91,7 +93,10 @@
     ./firefox-config.nix
     ./mpv-config.nix
     ./ollama-config.nix
+    spicetify-nix.homeManagerModules.spicetify
+    ./spicetify-config.nix
   ];
+  _module.args = { inherit spicetify-nix; };
 
   qt = {
     enable = true;
