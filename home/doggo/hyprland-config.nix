@@ -305,7 +305,7 @@ in
           size = [ "monitor_w - 5" "monitor_h - 5" ];
         }
         */
-          # Spotify – chromakey with Catppuccin Mocha Base (0.1176, 0.1176, 0.1804)
+          # Chromakey with Catppuccin Mocha Base (0.1176, 0.1176, 0.1804)
         {
           name = "transparency";
           match = { class = "^(spotify|jetbrains-.*|io.github.ilya_zlobintsev.LACT|org.prismlauncher.PrismLauncher|org.kde.*|qt.*|.*qt.*|.*Qt.*)$"; };
