@@ -67,6 +67,7 @@ in
     lmms-full
     gnome-feeds
     vulkan-tools mesa-demos # vkcube & glxgears
+    #spotifywm # Lets me make a hyprland window rule for spotify. Currently commented out because spicetify pulls it.
 
     # Gaming packages:
     (prismlauncher.override {

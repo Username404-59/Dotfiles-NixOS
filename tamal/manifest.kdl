@@ -178,6 +178,12 @@ inputs {
       | cut -f1
     }
   }
+  hypr-darkwindow { // TODO: Remove this when the package hash is fixed
+    archive {
+      url "https://github.com/micha4w/Hypr-DarkWindow/archive/refs/tags/v0.55.4.tar.gz"
+    }
+  }
+
   // Patches
   lact-patch { // TODO: Remove this when upstream releases a new version
     file {

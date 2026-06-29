@@ -1,4 +1,4 @@
-{ config, pkgs, lib, isLaptop, ... }:
+{ config, pkgs, lib, isLaptop, functions, ... }:
 
 let
   menu_name = "rofi";
@@ -19,6 +19,9 @@ in
     systemd = {
       enable = false; # Conflicts with UWSM
     };
+    plugins = with pkgs.hyprlandPlugins; [
+      (functions.mkSpecialVersion hypr-darkwindow "0.55.4")
+    ];
 
     settings = {
       monitor = if !isLaptop then [
@@ -56,16 +59,7 @@ in
           '')
         ];
       };
-/*
-      # ENVIRONMENT VARIABLES #
-      env = [
-        [ "XCURSOR_SIZE" "24" ]
-        [ "HYPRCURSOR_SIZE "24" ]
-        [ "AQ_DRM_DEVICES" "/dev/dri/card1" ]
-        [ "QT_QPA_PLATFORM "wayland" ]
-        [ "QT_AUTO_SCREEN_SCALE_FACTOR "1" ]
-      ];
-*/
+
       # LOOK & FEEL #
       config = {
         general = {
@@ -150,6 +144,10 @@ in
         misc = {
           force_default_wallpaper = 1;
           disable_hyprland_logo = false;
+        };
+
+        plugin = {
+          darkwindow.load_shaders = "chromakey";
         };
       };
 
@@ -306,7 +304,23 @@ in
           move = [ "monitor_w" "monitor_h" ];
           size = [ "monitor_w - 5" "monitor_h - 5" ];
         }
-      */
+        */
+          # Spotify – chromakey with Catppuccin Mocha Base (0.1176, 0.1176, 0.1804)
+        {
+          name = "transparency";
+          match = { class = "^(spotify|jetbrains-.*|io.github.ilya_zlobintsev.LACT|org.prismlauncher.PrismLauncher|org.kde.*|qt.*|.*qt.*|.*Qt.*)$"; };
+          "darkwindow:shade" = lib.generators.mkLuaInline ''
+            hl.plugin.darkwindow.build_window_rule({
+              shader = "chromakey",
+              args = {
+                bkg = { 0.1176, 0.1176, 0.1804 },
+                targetOpacity = 0.78,
+                similarity = 0.20,
+                amount = 0.7
+              }
+            })
+          '';
+        }
       ];
     };
   };
