@@ -100,6 +100,15 @@ inputs {
       | cut -f1
     }
   }
+  spotneotify {
+    archive {
+      url "https://github.com/0lswitcher/spotneotify/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/0lswitcher/spotneotify.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
 /*
   odysseus {
     archive {

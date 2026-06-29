@@ -16,6 +16,7 @@
 ,"nix-citizen":{"sn":"nix-citizen-src","kd":[1,{"ft":0,"ur":"https://github.com/LovingMelody/nix-citizen/archive/9d93df2ace0c1c2f83b7d03bfee81441d63ec5e0.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-DzYwUEREkRuu14DGa5YO57HXDg7wHjP7rglmG4sAYkU="},"fv":"9d93df2ace0c1c2f83b7d03bfee81441d63ec5e0","ps":[]}
 ,"nix-gaming":{"sn":"nix-gaming-src","kd":[1,{"ft":0,"ur":"https://github.com/fufexan/nix-gaming/archive/f95c6acda72f71f1bc0dbf4391f731e0f03ab4af.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-AhaJ7UIsLU+raCGCP9L4Rns5TSgewpHJ9c7zAwj1QLs="},"fv":"f95c6acda72f71f1bc0dbf4391f731e0f03ab4af","ps":[]}
 ,"nix-spicetify":{"sn":"nix-spicetify-src","kd":[1,{"ft":0,"ur":"https://github.com/Gerg-L/spicetify-nix/archive/5ff9a6ca9dcbad7cccea2c97d30237468b16feda.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-lQKQP7nTCJ4Y+QHuMPDlLE9snuIOSKZ8kTpFt6vKJkM="},"fv":"5ff9a6ca9dcbad7cccea2c97d30237468b16feda","ps":[]}
+,"spotneotify":{"sn":"spotneotify-src","kd":[1,{"ft":0,"ur":"https://github.com/0lswitcher/spotneotify/archive/42a296482e28e6549baa5c31850ffafb7890a1a8.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-OgtK8Vh6JI2Y/iINgWU6URPPtpbGaNGSPXEoNWWH0lo="},"fv":"42a296482e28e6549baa5c31850ffafb7890a1a8","ps":[]}
 }
 ,"p":{
 "mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
