@@ -39,7 +39,7 @@
 
   boot.kernelPackages = (
     pkgs.linuxKernel.packagesFor(
-      pkgs.cachyosKernels.linux-cachyos-rc.override {
+      pkgs.cachyosKernels.linux-cachyos-latest.override {
         bbr3 = true;
         cpusched = "bore";
         lto = if isLaptop then "thin" else "full";
