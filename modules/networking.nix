@@ -28,9 +28,11 @@
     firewall = {
       allowedTCPPorts = [
         57621 # Spotify discovery port
+        7777 7778 27015 27016
       ];
       allowedUDPPorts = [
         5353 # Spotify discovery port
+        7777 7778 27015 27016 # Satisfactory dedicated server (etc) ports
       ];
     };
 
