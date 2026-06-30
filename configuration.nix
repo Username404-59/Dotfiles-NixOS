@@ -14,6 +14,10 @@
 
   To make an ISO: (https://nixos.org/manual/nixos/stable/#sec-image-nixos-rebuild-build-image)
   sudo nixos-rebuild build-image --image-variant iso-installer
+
+  To make a clean update:
+  tput reset && sudo su - root
+  nix-collect-garbage && nix-collect-garbage -d && nixos-rebuild switch
 */
 let
   nixtamal = import ./tamal {
