@@ -44,7 +44,7 @@ inputs {
       url "https://github.com/xddxdd/nix-cachyos-kernel/archive/{{fresh_value}}.tar.gz"
     }
     fresh-cmd {
-      $ git ls-remote --branches "https://github.com/xddxdd/nix-cachyos-kernel.git" --refs "refs/heads/master"
+      $ git ls-remote --branches "https://github.com/xddxdd/nix-cachyos-kernel.git" --refs "refs/heads/release"
       | cut -f1
     }
   }
