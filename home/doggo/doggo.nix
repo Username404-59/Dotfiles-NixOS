@@ -28,7 +28,6 @@ in
   ];
 
   home.packages = with pkgs; [
-    kitty
     kdePackages.kate
     (discord-canary.override {
       withOpenASAR = true;
