@@ -58,7 +58,7 @@ in
 
   programs.steam = {
     enable = true;
-    dedicatedServer.openFirewall = true;
+    dedicatedServer.openFirewall = true; # 27015 port
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     extraCompatPackages = with pkgs; [
