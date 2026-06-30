@@ -28,6 +28,7 @@
     firewall = {
       allowedTCPPorts = [
         57621 # Spotify discovery port
+        25565 # Minecraft
         7777 7778 27015 27016
       ];
       allowedUDPPorts = [
