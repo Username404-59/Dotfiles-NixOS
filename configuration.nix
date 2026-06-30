@@ -67,6 +67,7 @@ in
       ./modules/networking.nix
       ./modules/mesa.nix
       ./modules/audio.nix
+      ./modules/ananicy.nix
 
       # ISO installer building stuff:
       ./ISO/iso.nix
