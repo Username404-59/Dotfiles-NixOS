@@ -41,7 +41,7 @@
     pkgs.linuxKernel.packagesFor(
       pkgs.cachyosKernels.linux-cachyos-latest.override {
         bbr3 = true;
-        cpusched = "eevdf"; # / "bore"
+        cpusched = "bore";
         lto = if isLaptop then "thin" else "full";
         processorOpt = if isLaptop then "zen4" else "x86_64-v3";
         tickrate = if isLaptop then "idle" else "full";
@@ -49,19 +49,12 @@
     )
   );
 
-  boot.kernelPatches = [
-    {
-      name = "infinity-scheduler";
-      patch = "${nixtamal.infinity-scheduler}/patches/stable/linux-${
-        lib.versions.majorMinor config.boot.kernelPackages.kernel.version
-      }-infinity/0001-infinity-scheduler.patch";
-    }
-  ];
+  boot.kernelPatches = [ ];
 
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
-    enable = true; # Disable this to use the infinity scheduler
-    scheduler = "scx_flow";
-    extraArgs = [ "--no-webui" ];
+    enable = true;
+    scheduler = "scx_lavd";
+    extraArgs = [ "--${if isLaptop then "autopower" else "performance"}" ];
 
     package = (functions.mkUnstable pkgs.scx.rustscheds).overrideAttrs (old: {
       buildInputs = old.buildInputs ++ [ pkgs.openssl /* <-- TODO: Remove when the package gets updated */ ];

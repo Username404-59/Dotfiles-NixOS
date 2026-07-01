@@ -199,15 +199,6 @@ inputs {
       url "https://patch-diff.githubusercontent.com/raw/ilya-zlobintsev/LACT/pull/1080.patch"
     }
   }
-  infinity-scheduler {
-    archive {
-      url "https://github.com/galpt/infinity-scheduler/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/galpt/infinity-scheduler.git" --refs "refs/heads/v4"
-      | cut -f1
-    }
-  }
 
   // Others
   catppuccin-godot {
