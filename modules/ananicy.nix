@@ -7,7 +7,7 @@
     rulesProvider = pkgs.ananicy-rules-cachyos;
 
     extraTypes = [
-      { type = "Compiler"; nice = 13; latency_nice = 13; }
+      { type = "Compiler"; nice = 19; latency_nice = 19; }
     ];
 
     extraRules = [
