@@ -204,7 +204,7 @@ inputs {
       url "https://github.com/galpt/infinity-scheduler/archive/{{fresh_value}}.tar.gz"
     }
     fresh-cmd {
-      $ git ls-remote --branches "https://github.com/galpt/infinity-scheduler.git" --refs "refs/heads/v3"
+      $ git ls-remote --branches "https://github.com/galpt/infinity-scheduler.git" --refs "refs/heads/v4"
       | cut -f1
     }
   }
