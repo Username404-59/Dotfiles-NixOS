@@ -51,7 +51,7 @@
 
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
     enable = true;
-    scheduler = "scx_cake";
+    scheduler = "scx_flow";
   };
 
   boot.kernel.sysctl = {
