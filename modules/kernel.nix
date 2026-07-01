@@ -49,6 +49,11 @@
     )
   );
 
+  services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
+    enable = true;
+    scheduler = "scx_cake";
+  };
+
   boot.kernel.sysctl = {
     "vm.max_map_count" = 16777216;
     "net.ipv4.tcp_congestion_control" = "bbr";
