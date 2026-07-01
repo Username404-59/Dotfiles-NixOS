@@ -59,7 +59,7 @@
   ];
 
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
-    enable = false; # Reenable if not using the infinity scheduler patch
+    enable = true; # Disable this to use the infinity scheduler
     scheduler = "scx_flow";
     extraArgs = [ /* TODO for next scx version after 1.1.1: "--no-webui" */ ];
   };
