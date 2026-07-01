@@ -1,4 +1,4 @@
-{ config, pkgs, isLaptop, ... }:
+{ config, pkgs, lib, isLaptop, nixtamal, ... }:
 
 {
   boot.kernelParams = [
@@ -41,7 +41,7 @@
     pkgs.linuxKernel.packagesFor(
       pkgs.cachyosKernels.linux-cachyos-latest.override {
         bbr3 = true;
-        cpusched = "bore";
+        cpusched = "eevdf"; # / "bore"
         lto = if isLaptop then "thin" else "full";
         processorOpt = if isLaptop then "zen4" else "x86_64-v3";
         tickrate = if isLaptop then "idle" else "full";
@@ -49,8 +49,17 @@
     )
   );
 
+  boot.kernelPatches = [
+    {
+      name = "infinity-scheduler";
+      patch = "${nixtamal.infinity-scheduler}/patches/stable/linux-${
+        lib.versions.majorMinor config.boot.kernelPackages.kernel.version
+      }-infinity/0001-infinity-scheduler.patch";
+    }
+  ];
+
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
-    enable = true;
+    enable = false; # Reenable if not using the infinity scheduler patch
     scheduler = "scx_flow";
     extraArgs = [ /* TODO for next scx version after 1.1.1: "--no-webui" */ ];
   };
