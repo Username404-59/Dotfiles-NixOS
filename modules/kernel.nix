@@ -1,4 +1,4 @@
-{ config, pkgs, lib, isLaptop, nixtamal, ... }:
+{ config, pkgs, lib, isLaptop, nixtamal, functions, ... }:
 
 {
   boot.kernelParams = [
@@ -61,7 +61,16 @@
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
     enable = true; # Disable this to use the infinity scheduler
     scheduler = "scx_flow";
-    extraArgs = [ /* TODO for next scx version after 1.1.1: "--no-webui" */ ];
+    extraArgs = [ "--no-webui" ];
+
+    package = (functions.mkUnstable pkgs.scx.rustscheds).overrideAttrs (old: {
+      buildInputs = old.buildInputs ++ [ pkgs.openssl /* <-- TODO: Remove when the package gets updated */ ];
+      passthru = old.passthru // {
+        schedulers = [ # List of the schedulers in case there's some that didn't exist in last release
+          "scx_beerland" "scx_bpfland" "scx_cake" "scx_chaos" "scx_characterize" "scx_cosmos" "scx_flash" "scx_flow" "scx_forge" "scx_lavd" "scx_layered" "scx_mitosis" "scx_p2dq" "scx_pandemonium" "scx_rlfifo" "scx_rustland" "scx_rusty" "scx_tickless"
+        ];
+      };
+    });
   };
 
   boot.kernel.sysctl = {

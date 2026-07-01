@@ -3,9 +3,14 @@
 let
   functions = rec {
     mkSpecial = pkg: version: src_name: suffix:
-      pkg.overrideAttrs (old: {
-        inherit version;
+      let
         src = nixtamal.${src_name + suffix};
+      in pkg.overrideAttrs (old: {
+        inherit version src;
+      } // lib.optionalAttrs (old ? cargoDeps) { # Removes the need to set the cargo vendor hash (that nixtamal doesn't handle, obviously)
+        cargoDeps = pkgs.rustPlatform.importCargoLock {
+          lockFile = "${src}/Cargo.lock";
+        };
       });
     mkSpecialAuto = pkg: version: suffix: mkSpecial pkg version pkg.pname suffix;
     mkSpecialVersion = pkg: version: mkSpecialAuto pkg version "";

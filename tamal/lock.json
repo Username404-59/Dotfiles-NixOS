@@ -19,6 +19,7 @@
 ,"nix-citizen":{"sn":"nix-citizen-src","kd":[1,{"ft":0,"ur":"https://github.com/LovingMelody/nix-citizen/archive/7db41f8024ff84cc5ecc532560a5b6598ca65208.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-jcIN9/pmwil9YpwT/aG4/s4K7xUEcypAu7Kufbwi+lM="},"fv":"7db41f8024ff84cc5ecc532560a5b6598ca65208","ps":[]}
 ,"nix-gaming":{"sn":"nix-gaming-src","kd":[1,{"ft":0,"ur":"https://github.com/fufexan/nix-gaming/archive/0c07b30bc7bd15014db7154597b34ca12f60398c.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-+BQSCJm+H1Zf9ibHoqoUAz5cWF9XWzhZ/HjkbSnjjpI="},"fv":"0c07b30bc7bd15014db7154597b34ca12f60398c","ps":[]}
 ,"nix-spicetify":{"sn":"nix-spicetify-src","kd":[1,{"ft":0,"ur":"https://github.com/Gerg-L/spicetify-nix/archive/9cabea6f5973ec01f60080ea50f54f8f6d74dc95.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-EaKmJmkasj95Gwikyn07GPJqaERX7cBmxDD7N2Jl340="},"fv":"9cabea6f5973ec01f60080ea50f54f8f6d74dc95","ps":[]}
+,"scx_rustscheds-git":{"sn":"scx_rustscheds-git-src","kd":[1,{"ft":0,"ur":"https://github.com/sched-ext/scx/archive/b911893af7f8ff8a971b47e99151c19115aa2be1.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-AjlWKsWbOzswLbA1NmnymZSTHMA0gT3V9Zn5WAQtgM8="},"fv":"b911893af7f8ff8a971b47e99151c19115aa2be1","ps":[]}
 ,"spotneotify":{"sn":"spotneotify-src","kd":[1,{"ft":0,"ur":"https://github.com/0lswitcher/spotneotify/archive/42a296482e28e6549baa5c31850ffafb7890a1a8.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-OgtK8Vh6JI2Y/iINgWU6URPPtpbGaNGSPXEoNWWH0lo="},"fv":"42a296482e28e6549baa5c31850ffafb7890a1a8","ps":[]}
 }
 ,"p":{
