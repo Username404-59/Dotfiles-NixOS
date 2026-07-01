@@ -52,6 +52,7 @@
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
     enable = true;
     scheduler = "scx_flow";
+    extraArgs = [ /* TODO for next scx version after 1.1.1: "--no-webui" */ ];
   };
 
   boot.kernel.sysctl = {
