@@ -17,6 +17,12 @@ let
       });
     mkPatchedAuto = pkg: mkPatched pkg [ nixtamal.${pkg.pname + "-patch"} ];
 
+    mkWithCFlags = pkg: flags: (pkg.override {
+      stdenv = pkgs.fastStdenv; # Faster GCC
+    }).overrideAttrs (old: {
+      NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " ${flags}"; # https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
+    });
+
     importFlake = flakeRef:
       let
         src = nixtamal.${flakeRef};

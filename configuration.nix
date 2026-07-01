@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, functions, ... }:
 
 /*
   This should be in /etc/nixos/ together with the rest.
@@ -157,7 +157,9 @@ in
   # networking.firewall.enable = false;
 
   # Replaces /bin/sh with dash (which is faster than bash)
-  environment.binsh = "${pkgs.dash}/bin/dash";
+  environment.binsh = "${
+    (functions.mkWithCFlags pkgs.dash "-Ofast -flto -fwhole-program -fno-unroll-loops")
+  }/bin/dash";
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
