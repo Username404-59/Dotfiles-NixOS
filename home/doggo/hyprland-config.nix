@@ -15,9 +15,31 @@ let
 
   find_monitor = id: "$(hyprctl monitors -j | jq -r '.[] | select(.id==${builtins.toString id}) | .name')";
 
+  mkVideoWallpaper = id: hash:
+    "${(pkgs.stdenv.mkDerivation {
+      name = "doggo-video-wallpaper-${id}";
+
+      buildInputs = [ pkgs.yt-dlp ];
+
+      outputHashMode = "recursive";
+      outputHashAlgo = "blake3";
+      outputHash = hash; # lib.fakeHash doesn't work for blake3 so I'll have to pass empty strings to find the hashes easily
+
+      buildCommand = ''
+        cd $out
+
+        yt-dlp \
+          -f "bestvideo[ext=mp4]+251/best[ext=mp4]" \
+          --no-playlist \
+          --audio-quality 0 \
+          -o "wallpaper.mp4" \
+          "https://www.youtube.com/watch?v=${id}"
+      '';
+    })}/wallpaper.mp4";
+
   backgrounds_commands = [
     "swaybg -i '${./backgrounds/ubuntu_budgie_wallpaper1.jpg}' -o ${find_monitor 0}"
-    "murale '/disk2/MemoryRebootHatsune&Shrek.avi' -o ${find_monitor 1} --mpv-options '${mpv_options}'" # TODO: Make nixtamal download it with yt-dlp
+    "murale ${mkVideoWallpaper "ketQTGwA4Lo" "blake3-yvuyjhbBTCqhsxmrjXE3cccC/F+8MisTCpnH+2v8h9w="} -o ${find_monitor 1} --mpv-options '${mpv_options}'"
   ];
 
   # Start(/stop) my backgrounds on (un)plug

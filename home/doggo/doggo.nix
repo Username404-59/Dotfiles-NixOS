@@ -57,7 +57,6 @@ in
     })
     (functions.mkUnstable ani-cli)
     anime4k
-    yt-dlp
     jetbrains.idea
     jetbrains.clion
     #androidStudioPackages.canary.full
@@ -147,6 +146,15 @@ in
         winesync = true;
         frame_timing = true;
         text_outline = true;
+      };
+    };
+
+    yt-dlp = {
+      enable = true;
+      settings = {
+        embed-thumbnail = true;
+        add-metadata = true;
+        format = "bestvideo+251/best";
       };
     };
   };
