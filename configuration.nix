@@ -69,6 +69,8 @@ in
       ./modules/audio.nix
       ./modules/ananicy.nix
 
+      ./common/ollama-config.nix
+
       # ISO installer building stuff:
       ./ISO/iso.nix
     ];

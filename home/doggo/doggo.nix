@@ -92,7 +92,6 @@ in
     ./discord-config.nix
     ./firefox-config.nix
     ./mpv-config.nix
-    ./ollama-config.nix
     spicetify-nix.homeManagerModules.spicetify
     ./spicetify-config.nix
   ];
