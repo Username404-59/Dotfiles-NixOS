@@ -12,8 +12,43 @@ let
   mocha = {
     peach = "rgb(fab387)";
   };
+
+  find_monitor = id: "$(hyprctl monitors -j | jq -r '.[] | select(.id==${builtins.toString id}) | .name')";
+
+  backgrounds_commands = [
+    "swaybg -i '${./backgrounds/ubuntu_budgie_wallpaper1.jpg}' -o ${find_monitor 0}"
+    "murale '/disk2/MemoryRebootHatsune&Shrek.avi' -o ${find_monitor 1} --mpv-options '${mpv_options}'" # TODO: Make nixtamal download it with yt-dlp
+  ];
+
+  # Start(/stop) my backgrounds on (un)plug
+  watch-ac-plug = pkgs.writeShellApplication {
+    name = "watch-ac-plug";
+    runtimeInputs = [ pkgs.dbus pkgs.gawk ];
+    text = ''
+      dbus-monitor --system "type='signal',interface='org.freedesktop.DBus.Properties',path='/org/freedesktop/UPower'" |
+      while read -r line; do
+        if echo "$line" | grep -q "OnBattery"; then
+          read -r _ state
+          if echo "$state" | grep -q "true"; then
+            ${builtins.concatStringsSep " && " (builtins.map (cmd: "pkill -f '.*${cmd}'") backgrounds_commands)}
+          else
+            ${builtins.concatStringsSep " && " (builtins.map (cmd: "${uwsm} ${cmd}") backgrounds_commands)}
+          fi
+        fi
+      done
+    '';
+  };
 in
 {
+  systemd.user.services.watch-ac-plug = lib.mkIf isLaptop {
+      Unit.Description = "Start/stop my backgrounds on AC plug/unplug";
+      Install.WantedBy = [ "graphical-session.target" ];
+      Service = {
+        ExecStart = "${watch-ac-plug}/bin/watch-ac-plug";
+        Restart = "always";
+      };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd = {
@@ -24,30 +59,36 @@ in
     ];
 
     settings = {
-      monitor = if !isLaptop then [
-        { output = "DP-3"; mode = "2560x1440@144"; position = "0x0"; scale = 1; vrr = 2; }
-        { output = "HDMI-A-4"; mode = "1920x1080@77"; position = "-1920x128"; scale = 1; }
-      ] else [
-        {
-          output = "eDP-1"; mode = "2880x1800@120"; position = "0x0"; scale = 1.5;
+      monitor = [
+        ({
+          # Desktop settings
+          output = "DP-3";
+          mode = "highres@highrr";
+          position = "0x0"; scale = 1; vrr = 2;
+        } // lib.optionalAttrs isLaptop {
+          # Laptop settings
+          output = "eDP-1";
+          scale = 1.5;
           cm = "hdredid"; bitdepth = 10;
           min_luminance = 0.0; max_luminance = 2000;
           sdr_min_luminance = 0.005; sdr_max_luminance = 350; # 106?
           sdrsaturation = 1.0; # 1.175? 0.975?
           #sdrbrightness = 1.1; # 1.2625? 0.975?
-        }
+        })
+        { output = ""; mode = "highres@highrr"; position = if isLaptop then "auto-right" else "auto-left"; scale = 1; }
       ];
-      
+
       # AUTOSTART #
       on = {
         _args = [
           "hyprland.start"
           (lib.generators.mkLuaInline ''
             function()
-              ${if isLaptop then "-- " else ""}hl.exec_cmd("${uwsm} murale '/disk2/MemoryRebootHatsune&Shrek.avi' -o HDMI-A-4 --mpv-options '${mpv_options}'")
-              hl.exec_cmd("${uwsm} swaybg ${
-                if isLaptop then "-c 000000 -o '*'" else "-i '${./backgrounds/ubuntu_budgie_wallpaper1.jpg}' -o DP-3"
-              }")
+              hl.exec_cmd("${uwsm} swaybg -c 000000 -o '*'")
+              ${builtins.concatStringsSep "\n  " (builtins.map (cmd:
+                "hl.exec_cmd(\"${if isLaptop then "[ \"$(busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | awk '{print $2}')\" = \"true\" ] && " else ""}"
+                + "${uwsm} ${cmd}\")") backgrounds_commands)
+              }
               hl.exec_cmd("${uwsm} ironbar")
               hl.exec_cmd("${uwsm} wl-paste --type text --watch cliphist store")
               hl.exec_cmd("${uwsm} wl-paste --type image --watch cliphist store")

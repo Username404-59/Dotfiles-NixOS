@@ -48,15 +48,21 @@ let
       localPackagesOverlay
     ];
   };
+
+  isLaptop =
+    let
+      powerSupplyDir = /sys/class/power_supply;
+    in
+      builtins.pathExists powerSupplyDir && lib.any (name: lib.hasPrefix "BAT" name) (builtins.attrNames (builtins.readDir powerSupplyDir));
 in
 {
   nixpkgs.pkgs = pkgs; # Uses the nixtamal nixpkgs
   _module.args.nixtamal = nixtamal;
+  _module.args.isLaptop = isLaptop;
 
   imports =
     [
       ./workarounds.nix
-      ./local.nix
       ./hardware-configuration.nix # Results of the hardware scan ("nixos-generate-config" command)
       ./modules/filesystems.nix
       "${nixtamal.home-manager}/nixos"
@@ -74,6 +80,10 @@ in
       ./modules/ananicy.nix
 
       ./common/ollama-config.nix
+
+      ./machines/${
+        if isLaptop then "laptop" else "desktop"
+      }/local.nix
 
       # ISO installer building stuff:
       ./ISO/iso.nix
@@ -126,7 +136,7 @@ in
   };
 
   home-manager.extraSpecialArgs = {
-    inherit nixtamal localPackagesOverlay;
+    inherit nixtamal localPackagesOverlay isLaptop;
   };
   home-manager.users.doggo = import ./home/doggo/doggo.nix;
 

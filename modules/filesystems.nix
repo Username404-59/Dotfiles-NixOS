@@ -2,8 +2,9 @@
 
 {
   # Note: for f2fs, create it with "sudo mkfs.f2fs -l root -i -O extra_attr,flexible_inline_xattr,inode_checksum,sb_checksum,compression,lost_found /dev/sdxY"
-  fileSystems."/".options = lib.mkIf (config.fileSystems."/".fsType == "f2fs")
-    (lib.mkAfter [
+  fileSystems."/".options = lib.mkMerge [
+    [ "noatime" ]
+    (lib.mkIf (config.fileSystems."/".fsType == "f2fs") (lib.mkAfter [
       "discard" # Better (on f2fs) than fstrim
       "X-fstrim.notrim" # To avoid fstrim
       "compress_algorithm=lzo-rle"
@@ -16,7 +17,8 @@
       "checkpoint_merge"
       "fsync_mode=posix"
       "nat_bits"
-    ]);
+    ]))
+  ];
 
   services.fstrim.enable = true;
 

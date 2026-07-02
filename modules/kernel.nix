@@ -51,6 +51,12 @@
 
   boot.kernelPatches = [ ];
 
+  boot.extraModulePackages = [];
+
+  boot.kernelModules = [];
+
+  boot.blacklistedKernelModules = [];
+
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
     enable = true;
     scheduler = "scx_lavd";
