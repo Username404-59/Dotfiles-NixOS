@@ -78,6 +78,7 @@ in
       ./modules/mesa.nix
       ./modules/audio.nix
       ./modules/ananicy.nix
+      ./modules/printing.nix
 
       ./common/ollama-config.nix
 
