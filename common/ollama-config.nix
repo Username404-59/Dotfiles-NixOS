@@ -20,6 +20,7 @@
       SAFE_MODE = "True";
       BYPASS_MODEL_ACCESS_CONTROL = "True";
       ENABLE_COMPRESSION_MIDDLEWARE = "False"; # Not needed since I access it via localhost
+      OLLAMA_API_BASE_URL = "http://127.0.0.1:${toString config.services.ollama.port}/v1"; # Fixes qwen 3.6 as of writing; TODO Remove if not needed anymore
 
       DEFAULT_RAG_TEMPLATE = ''
 		### Task:

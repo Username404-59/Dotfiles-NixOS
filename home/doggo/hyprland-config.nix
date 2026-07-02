@@ -13,7 +13,7 @@ let
     peach = "rgb(fab387)";
   };
 
-  find_monitor = id: "$(hyprctl monitors -j | jq -r '.[] | select(.id==${builtins.toString id}) | .name')";
+  find_monitor = id: "$(hyprctl monitors -j | jq -r '.[] | select(.id==${toString id}) | .name')";
 
   mkVideoWallpaper = id: hash:
     "${(pkgs.stdenv.mkDerivation {
