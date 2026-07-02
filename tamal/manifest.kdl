@@ -193,10 +193,15 @@ inputs {
     }
   }
 
-  // Patches
+  // Other patches
   lact-patch { // TODO: Remove this when upstream releases a new version
     file {
       url "https://patch-diff.githubusercontent.com/raw/ilya-zlobintsev/LACT/pull/1080.patch"
+    }
+  }
+  nct6687d-patch { // TODO: Remove this when the package gets updated
+    file {
+      url "https://patch-diff.githubusercontent.com/raw/Fred78290/nct6687d/pull/186.patch";
     }
   }
 

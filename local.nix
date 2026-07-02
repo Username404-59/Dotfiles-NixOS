@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, functions, ...}:
 
 let
   isLaptop = false;
@@ -11,7 +11,7 @@ in
     # Common modules
   ] ++ (if !isLaptop then [
     # Desktop modules
-    nct6687d
+    (functions.mkPatchedAuto nct6687d)
     r8125
   ] else [
     # Laptop modules
