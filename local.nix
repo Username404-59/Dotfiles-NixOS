@@ -12,6 +12,7 @@ in
   ] ++ (if !isLaptop then [
     # Desktop modules
     nct6687d
+    r8125
   ] else [
     # Laptop modules
   ]);
@@ -21,6 +22,7 @@ in
   ] ++ (if !isLaptop then [
     # Desktop modules
     "nct6687" # d disappears in actual module name
+    "r8125" # replaces r8169
   ] else [
     # Laptop modules
   ]);
