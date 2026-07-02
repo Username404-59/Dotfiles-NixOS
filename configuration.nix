@@ -6,6 +6,9 @@
   For the nixos channel:
   sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos && nix-channel --update
 
+  To install git before first install:
+  sudo nix-env --install git
+
   To rebuild for the first time:
   sudo nixos-rebuild switch --option extra-experimental-features "blake3-hashes"
 
@@ -52,6 +55,7 @@ in
 
   imports =
     [
+      ./workarounds.nix
       ./local.nix
       ./hardware-configuration.nix # Results of the hardware scan ("nixos-generate-config" command)
       ./modules/filesystems.nix
