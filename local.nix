@@ -27,6 +27,10 @@ in
     # Laptop modules
   ]);
 
+  boot.blacklistedKernelModules = [] ++ (if !isLaptop then [
+    "r8169"
+  ] else []);
+
   # CRU screen overclocking
   hardware.firmware = lib.mkIf (!isLaptop) [
     (pkgs.runCommandLocal "PHL-edid-77hz" {} ''
