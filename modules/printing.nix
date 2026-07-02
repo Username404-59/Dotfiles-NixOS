@@ -4,12 +4,12 @@
   services.printing = {
     enable = true;
     drivers = with pkgs; [
-      # general
+      # General
       cups
       cups-browsed
       cups-filters
       gutenprint # Very good drivers package
-      # Canon
+      # Canon (built from source)
       cnijfilter2
       canon-cups-ufr2
       # Brother
