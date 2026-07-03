@@ -4,6 +4,8 @@ let
   shared_theme = "Catppuccin-GTK-Red-Dark";
 in
 {
+  imports = [ "${nixtamal.catppuccin}/modules/home-manager" ];
+
   catppuccin = {
     autoEnable = true;
     enable = true;

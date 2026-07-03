@@ -1,8 +1,5 @@
 { config, pkgs, nixtamal, functions, localPackagesOverlay, ... }:
 
-let
-  spicetify-nix = import nixtamal.nix-spicetify { pkgs = import nixtamal.nixpkgs { }; };
-in
 {
   home.username = "doggo";
   home.homeDirectory = "/home/doggo";
@@ -83,7 +80,6 @@ in
   ];
 
   imports = [
-    "${nixtamal.catppuccin}/modules/home-manager"
     ./catppuccin-config.nix
     ./hyprland-config.nix
     ./ironbar-config.nix
@@ -92,10 +88,8 @@ in
     ./discord-config.nix
     ./firefox-config.nix
     ./mpv-config.nix
-    spicetify-nix.homeManagerModules.spicetify
     ./spicetify-config.nix
   ];
-  _module.args = { inherit spicetify-nix; };
 
   qt = {
     enable = true;

@@ -1,6 +1,11 @@
-{ spicetify-nix, nixtamal, ... }:
+{ nixtamal, ... }:
 
+let
+  spicetify-nix = import nixtamal.nix-spicetify { pkgs = import nixtamal.nixpkgs { }; };
+in
 {
+  imports = [ spicetify-nix.homeManagerModules.spicetify ];
+
   programs.spicetify = {
     enable = true;
 
