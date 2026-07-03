@@ -132,6 +132,15 @@ inputs {
       | cut -f1
     }
   }
+  nixcord {
+    archive {
+      url "https://github.com/FlameFlag/nixcord/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/FlameFlag/nixcord.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
 
   // Packages
   ani-cli-git {
