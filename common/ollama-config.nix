@@ -8,6 +8,10 @@
     loadModels = [
       "qwen3.5:9b"
     ];
+
+    environmentVariables = {
+      OLLAMA_CONTEXT_LENGTH = "32768";
+    };
   };
 
   services.open-webui = {
