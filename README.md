@@ -1,4 +1,4 @@
-# My dotfiles for NixOs
+# My dotfiles for NixOS
 
 If like me, you don't want to use flakes, I guess you can take inspiration from this ¯\\\_(ツ)_/¯
 
