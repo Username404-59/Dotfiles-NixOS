@@ -27,14 +27,6 @@ let
     }).overrideAttrs (old: {
       NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " ${flags}"; # https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
     });
-
-    importFlake = flakeRef:
-      let
-        src = nixtamal.${flakeRef};
-      in
-        ((import nixtamal.flake-compat { inherit pkgs; }) {
-          inherit src;
-        }).defaultNix.packages.${pkgs.system}.default;
   };
 in
 {

@@ -2,7 +2,7 @@
 
 {
   services.ollama = {
-    enable = !isLaptop;
+    enable = false;
     package = pkgs.ollama-vulkan;
 
     loadModels = [

@@ -37,13 +37,15 @@ let
 
   pkgs = import nixtamal.nixpkgs {
     config.allowUnfree = true;
-    overlays = [
+    overlays = with nixtamal; [
       # CachyOS kernels repo
-      (import nixtamal.nix-cachyos-kernel).overlays.default
+      (import nix-cachyos-kernel).overlays.default
       # Nix-gaming overlay (for low_latency_layer)
-      (import nixtamal.nix-gaming).overlays.default
+      (import nix-gaming).overlays.default
       # Nix-Citizen tools overlay (for dw-proton-bin notably)
-      (import nixtamal.nix-citizen).overlays.steamcompattools
+      (import nix-citizen).overlays.steamcompattools
+      # AMD AI overlay
+      (import nix-amd-ai).overlays.default
       # Local packages
       localPackagesOverlay
     ];
@@ -68,6 +70,7 @@ in
       "${nixtamal.home-manager}/nixos"
       "${nixtamal.catppuccin}/modules/nixos"
       "${nixtamal.nix-cachyos-settings}/module.nix"
+      "${nixtamal.nix-amd-ai}/modules/amd-npu.nix"
       ./modules/bootloader.nix
       ./modules/system-packages.nix
       ./modules/fonts.nix
@@ -81,6 +84,7 @@ in
       ./modules/printing.nix
 
       ./common/ollama-config.nix
+      ./common/amd-ai-config.nix
 
       ./machines/${
         if isLaptop then "laptop" else "desktop"

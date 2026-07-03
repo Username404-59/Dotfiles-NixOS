@@ -6,6 +6,7 @@ patches {
   kservice_fix "./patches/kservice_fix.patch"
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   //nix_odysseus "https://patch-diff.githubusercontent.com/raw/pewdiepie-archdaemon/odysseus/pull/2568.patch" // See 2567 also
+  amd-ai-flake-compat "https://patch-diff.githubusercontent.com/raw/noamsto/nix-amd-ai/pull/46.patch" // TODO Remove once it is merged
 }
 
 inputs {
@@ -71,16 +72,6 @@ inputs {
     }
   }
 
-  flake-compat {
-    archive {
-      url "https://github.com/NixOS/flake-compat/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/NixOS/flake-compat.git" --refs "refs/heads/master"
-      | cut -f1
-    }
-  }
-
   nix-citizen {
     archive {
       url "https://github.com/LovingMelody/nix-citizen/archive/{{fresh_value}}.tar.gz"
@@ -131,6 +122,17 @@ inputs {
     }
   }
 */
+  nix-amd-ai {
+    archive {
+      url "https://github.com/noamsto/nix-amd-ai/archive/{{fresh_value}}.tar.gz"
+    }
+    patches amd-ai-flake-compat
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/noamsto/nix-amd-ai.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
+
   // Packages
   ani-cli-git {
     archive {
