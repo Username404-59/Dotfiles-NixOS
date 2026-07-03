@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  documentation.nixos.enable = false; # Fixes nixpkgs-unstable as of writing; TODO Remove this when fixed
+  #documentation.nixos.enable = false; # In case something's documentation is making nixos-rebuild fail
 }
