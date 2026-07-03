@@ -6,7 +6,7 @@
     package = pkgs.ollama-vulkan;
 
     loadModels = [
-      (if isLaptop then "qwen3.5:9b" else "qwen3.6:27b")
+      "qwen3.5:9b"
     ];
   };
 
