@@ -106,7 +106,7 @@ in
           "hyprland.start"
           (lib.generators.mkLuaInline ''
             function()
-              hl.exec_cmd("${uwsm} swaybg -c 000000 -o '*'")
+              ${if isLaptop then "hl.exec_cmd(\"${uwsm} swaybg -c 000000 -o '*'\")" else ""}
               ${builtins.concatStringsSep "\n  " (builtins.map (cmd:
                 "hl.exec_cmd(\"${if isLaptop then "[ \"$(busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | awk '{print $2}')\" = \"true\" ] && " else ""}"
                 + "${uwsm} ${cmd}\")") backgrounds_commands)
