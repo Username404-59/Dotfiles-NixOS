@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  # Note: for f2fs, create it with "sudo mkfs.f2fs -l root -i -O extra_attr,flexible_inline_xattr,inode_checksum,sb_checksum,compression,lost_found /dev/sdxY"
+  # Note: for f2fs, create it with "sudo mkfs.f2fs -l root -i -O extra_attr,flexible_inline_xattr,inode_checksum,sb_checksum,compression,encrypt,lost_found /dev/sdxY"
   fileSystems."/".options = lib.mkMerge [
     [ "noatime" ]
     (lib.mkIf (config.fileSystems."/".fsType == "f2fs") (lib.mkAfter [
