@@ -15,31 +15,36 @@ let
 
   find_monitor = id: "$(hyprctl monitors -j | jq -r '.[] | select(.id==${toString id}) | .name')";
 
-  mkVideoWallpaper = id: hash:
-    "${(pkgs.stdenv.mkDerivation {
+  mkVideoWallpaper = id:
+    let
       name = "doggo-video-wallpaper-${id}";
+      format = "mkv";
+    in
+    "$(${pkgs.writeShellApplication {
+      inherit name;
 
-      buildInputs = [ pkgs.yt-dlp ];
+      runtimeInputs = [ pkgs.yt-dlp ];
 
-      outputHashMode = "recursive";
-      outputHashAlgo = "blake3";
-      outputHash = hash; # lib.fakeHash doesn't work for blake3 so I'll have to pass empty strings to find the hashes easily
+      text = ''
+        file="${config.xdg.dataHome}/wallpapers/${id}.${format}"
+        if [[ ! -f "$file" ]]; then
+          mkdir -p "$(dirname "$file")"
+          yt-dlp \
+            -f "bestvideo+bestaudio/best" \
+            --no-playlist \
+            --audio-quality 0 \
+            --merge-output-format ${format} \
+            -o "$file" \
+            "https://www.youtube.com/watch?v=${id}" >&2
+        fi
 
-      buildCommand = ''
-        cd $out
-
-        yt-dlp \
-          -f "bestvideo[ext=mp4]+251/best[ext=mp4]" \
-          --no-playlist \
-          --audio-quality 0 \
-          -o "wallpaper.mp4" \
-          "https://www.youtube.com/watch?v=${id}"
+        echo $file
       '';
-    })}/wallpaper.mp4";
+    }}/bin/${name})";
 
   backgrounds_commands = [
     "swaybg -i '${./backgrounds/ubuntu_budgie_wallpaper1.jpg}' -o ${find_monitor 0}"
-    "murale ${mkVideoWallpaper "ketQTGwA4Lo" "blake3-yvuyjhbBTCqhsxmrjXE3cccC/F+8MisTCpnH+2v8h9w="} -o ${find_monitor 1} --mpv-options '${mpv_options}'"
+    "murale ${mkVideoWallpaper "ketQTGwA4Lo"} -o ${find_monitor 1} --mpv-options '${mpv_options}'"
   ];
 
   # Start(/stop) my backgrounds on (un)plug
