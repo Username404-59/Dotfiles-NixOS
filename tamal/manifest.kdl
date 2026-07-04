@@ -141,6 +141,25 @@ inputs {
       | cut -f1
     }
   }
+  nix-flatpak {
+    archive {
+      url "https://github.com/gmodena/nix-flatpak/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/gmodena/nix-flatpak.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
+  hytale-launcher {
+    file {
+      url "https://web.archive.org/web/{{fresh_value}}/https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak"
+    }
+    hash algorithm=SHA-256
+    fresh-cmd {
+      $ curl -s "https://archive.org/wayback/available?url=https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak"
+      | jq -r ".archived_snapshots.closest.timestamp"
+    }
+  }
 
   // Packages
   ani-cli-git {

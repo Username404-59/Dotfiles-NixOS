@@ -85,6 +85,7 @@
     ./firefox-config.nix
     ./mpv-config.nix
     ./spicetify-config.nix
+    ./flatpak-packages.nix
   ];
 
   qt = {
@@ -104,11 +105,6 @@
     LOW_LATENCY_LAYER = "1";
     # Note: set LOW_LATENCY_LAYER_REFLEX = "1" for games with nvidia reflex
     # (or some like cyberpunk 2077 where anti-lag 2 is supported but is worse than reflex and/or none)
-
-    # flatpak --user remote-add --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo
-    # flatpak --user install org.freedesktop.Platform.GL.mesa-git
-    # flatpak --user install org.freedesktop.Platform.GL32.mesa-git
-    FLATPAK_GL_DRIVERS = "mesa-git";
 
     NIXOS_OZONE_WL = "1"; # Makes electron apps (e.g discord & spotify) use wayland
   };

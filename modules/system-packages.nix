@@ -78,18 +78,6 @@ in
   };
 
   services.flatpak.enable = true;
-  systemd.user.services.flatpak-repos = {
-    after = [ "network.target" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = "yes";
-      ExecStart = "${pkgs.bash}/bin/sh -c '" +
-        "${pkgs.flatpak}/bin/flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && " +
-        "${pkgs.flatpak}/bin/flatpak remote-add --user --if-not-exists flathub-beta https://flathub.org/beta-repo/flathub-beta.flatpakrepo" +
-      "'";
-    };
-    wantedBy = [ "default.target" ];
-  };
 
   services.lact = {
     enable = true;

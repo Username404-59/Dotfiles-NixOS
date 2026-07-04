@@ -15,6 +15,9 @@
   To fix problems sometimes:
   sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix
 
+  To force nixtamal lock on specific input:
+  sudo nixtamal lock --force specific_input
+
   To make an ISO: (https://nixos.org/manual/nixos/stable/#sec-image-nixos-rebuild-build-image)
   sudo nixos-rebuild build-image --image-variant iso-installer
 
