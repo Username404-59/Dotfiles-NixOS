@@ -376,7 +376,14 @@ in
         # Chromakey with Catppuccin Mocha Base (the hex values each divided by 255 -> 0.1176, 0.1176, 0.1804)
         {
           name = "transparency";
-          match = { class = "^(spotify|jetbrains-.*|io.github.ilya_zlobintsev.LACT|org.prismlauncher.PrismLauncher|com.obsproject.Studio|org.kde.*|qt.*|.*qt.*|.*Qt.*)$"; };
+          match.class = "^(${builtins.concatStringsSep "|" [
+            "spotify" "|jetbrains-.*"
+            "io.github.ilya_zlobintsev.LACT"
+            "org.prismlauncher.PrismLauncher"
+            "com.obsproject.Studio"
+            "org.kde.*|qt.*|.*qt.*|.*Qt.*"
+          ]})$";
+
           "darkwindow:shade" = lib.generators.mkLuaInline ''
             hl.plugin.darkwindow.build_window_rule({
               shader = "chromakey",
@@ -393,18 +400,18 @@ in
         {
           name = "steam-transparency";
           match = { class = "steam"; };
-            "darkwindow:shade" = lib.generators.mkLuaInline ''
-              hl.plugin.darkwindow.build_window_rule({
-                shader = "chromakey",
-                args = {
-                  bkg = { 0.1607, 0.1803, 0.2156 },
-                  targetOpacity = 0.78,
-                  similarity = 0.1185,
-                  amount = 0.7
-                }
-              })
-            '';
-          }
+          "darkwindow:shade" = lib.generators.mkLuaInline ''
+            hl.plugin.darkwindow.build_window_rule({
+              shader = "chromakey",
+              args = {
+                bkg = { 0.1607, 0.1803, 0.2156 },
+                targetOpacity = 0.78,
+                similarity = 0.1185,
+                amount = 0.7
+              }
+            })
+          '';
+        }
       ];
     };
   };
