@@ -37,16 +37,6 @@
     kdePackages.kdenlive
     qalculate-qt
     mission-center
-    (pkgs.wrapOBS {
-      plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-        obs-vaapi
-        obs-gstreamer
-        obs-vkcapture
-      ];
-    })
     (functions.mkUnstable ani-cli)
     anime4k
     jetbrains.idea
@@ -143,6 +133,19 @@
         add-metadata = true;
         format = "bestvideo+251/best";
       };
+    };
+
+    obs-studio = {
+      enable = true;
+
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi
+        obs-gstreamer
+        obs-vkcapture
+      ];
     };
   };
 
