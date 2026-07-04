@@ -376,7 +376,7 @@ in
         # Chromakey with Catppuccin Mocha Base (the hex values each divided by 255 -> 0.1176, 0.1176, 0.1804)
         {
           name = "transparency";
-          match = { class = "^(spotify|jetbrains-.*|io.github.ilya_zlobintsev.LACT|org.prismlauncher.PrismLauncher|org.kde.*|qt.*|.*qt.*|.*Qt.*)$"; };
+          match = { class = "^(spotify|jetbrains-.*|io.github.ilya_zlobintsev.LACT|org.prismlauncher.PrismLauncher|com.obsproject.Studio|org.kde.*|qt.*|.*qt.*|.*Qt.*)$"; };
           "darkwindow:shade" = lib.generators.mkLuaInline ''
             hl.plugin.darkwindow.build_window_rule({
               shader = "chromakey",
