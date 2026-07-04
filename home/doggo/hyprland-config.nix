@@ -377,7 +377,7 @@ in
         {
           name = "transparency";
           match.class = "^(${builtins.concatStringsSep "|" [
-            "spotify" "|jetbrains-.*"
+            "spotify" "jetbrains-.*"
             "io.github.ilya_zlobintsev.LACT"
             "org.prismlauncher.PrismLauncher"
             "com.obsproject.Studio"
