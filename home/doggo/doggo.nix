@@ -131,7 +131,8 @@
       settings = {
         embed-thumbnail = true;
         add-metadata = true;
-        format = "bestvideo+251/best";
+        format = "bestvideo+bestaudio/best";
+        merge-output-format = "mkv";
       };
     };
 
