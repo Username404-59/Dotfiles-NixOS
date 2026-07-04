@@ -33,6 +33,15 @@ in
       #"com.github.tchx84.Flatseal" # I should put overrides in this .nix instead
       "com.gluonhq.SceneBuilder"
     ];
+
+    overrides.settings = {
+      "org.vinegarhq.Sober".Context = {
+        filesystems = [
+          "xdg-run/app/com.discordapp.Discord:create"
+          "xdg-run/discord-ipc-0"
+        ];
+      };
+    };
   };
 
   home.sessionVariables.FLATPAK_GL_DRIVERS = "mesa-git";
