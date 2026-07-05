@@ -424,4 +424,14 @@ in
       ];
     };
   };
+
+  services.mako = {
+    enable = true;
+    settings = {
+      anchor = "bottom-right";
+      default-timeout= 1250;
+      ignore-timeout = 1;
+      history = 0;
+    };
+  };
 }
