@@ -29,7 +29,7 @@ let
     });
   };
 in
-{
+rec {
   _module.args.functions = functions;
   home-manager.extraSpecialArgs = { inherit functions; };
 
@@ -99,4 +99,10 @@ in
   environment.shellAliases = {
     nixtamal = "bash -c 'cd /etc/nixos && nixtamal \"$@\"' --";
   };
+
+  home-manager.sharedModules = [(
+    { ... }: {
+      home.shellAliases = { nixtamal = environment.shellAliases.nixtamal; };
+    }
+  )];
 }
