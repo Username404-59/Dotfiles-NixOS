@@ -13,7 +13,7 @@ let
     peach = "rgb(fab387)";
   };
 
-  find_monitor = id: "$(hyprctl monitors -j | jq -r '.[] | select(.id==${toString id}) | .name')";
+  find_monitor = id: "$(hyprctl monitors -j | jq -r \".[] | select(.id==${toString id}) | .name\")";
 
   mkVideoWallpaper = id:
     let
@@ -43,9 +43,21 @@ let
     }}/bin/${name})";
 
   backgrounds_commands = [
-    "swaybg -i '${./backgrounds/ubuntu_budgie_wallpaper1.jpg}' -o ${find_monitor 0}"
-    "murale ${mkVideoWallpaper "ketQTGwA4Lo"} -o ${find_monitor 1} --mpv-options '${mpv_options}'"
+    "swaybg -i ${./backgrounds/ubuntu_budgie_wallpaper1.jpg} -o ${find_monitor 0}"
+    "murale ${mkVideoWallpaper "ketQTGwA4Lo"} -o ${find_monitor 1} --mpv-options \"${mpv_options}\""
   ];
+
+  battery_check = "[ \"$(busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | awk \"{print $2}\")\" = \"true\" ]";
+
+  border_animation = { leaf = "borderangle"; enabled = true; speed = 20.0; bezier = "linear"; style = "loop"; };
+  border_animation_lua = "hl.animation(${lib.generators.toLua { multiline = false; } border_animation})";
+  border_no_loop_lua = "hl.animation(${lib.generators.toLua { multiline = false; } (border_animation // {
+    # Avoids consuming a lot of my laptop's battery:
+    # https://wiki.hypr.land/0.55.0/Configuring/Advanced-and-Cool/Animations/#:~:text=Warning
+    enabled = false; style = "";
+  })})";
+
+  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
 
   # Start(/stop) my backgrounds on (un)plug
   watch-ac-plug = pkgs.writeShellApplication {
@@ -57,8 +69,10 @@ let
         if echo "$line" | grep -q "OnBattery"; then
           read -r _ state
           if echo "$state" | grep -q "true"; then
+            ${hyprctl} eval '${border_no_loop_lua}'
             ${builtins.concatStringsSep " && " (builtins.map (cmd: "pkill -f '.*${cmd}'") backgrounds_commands)}
           else
+            ${hyprctl} eval '${border_animation_lua}'
             ${builtins.concatStringsSep " && " (builtins.map (cmd: "${uwsm} ${cmd}") backgrounds_commands)}
           fi
         fi
@@ -120,10 +134,13 @@ in
           "hyprland.start"
           (lib.generators.mkLuaInline ''
             function()
-              ${if isLaptop then "hl.exec_cmd(\"${uwsm} swaybg -c 000000 -o '*'\")" else ""}
+              ${if isLaptop then ''
+                hl.exec_cmd("${uwsm} swaybg -c 000000 -o '*'")
+                  hl.exec_cmd('${battery_check} && ${hyprctl} eval ' .. [['${border_no_loop_lua}']])
+              '' else ""}
               ${builtins.concatStringsSep "\n  " (builtins.map (cmd:
-                "hl.exec_cmd(\"${if isLaptop then "[ \"$(busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | awk '{print $2}')\" = \"true\" ] && " else ""}"
-                + "${uwsm} ${cmd}\")") backgrounds_commands)
+                "hl.exec_cmd('${if isLaptop then "${battery_check} && " else ""}"
+                + "${uwsm} ${cmd}')") backgrounds_commands)
               }
               hl.exec_cmd("${uwsm} ironbar")
               hl.exec_cmd("${uwsm} wl-paste --type text --watch cliphist store")
@@ -255,7 +272,7 @@ in
         { leaf = "workspacesIn";  enabled = true;  speed = 1.21; bezier = "almostLinear";  style = "fade";      }
         { leaf = "workspacesOut"; enabled = true;  speed = 1.94; bezier = "almostLinear";  style = "fade";      }
         # Animated border
-        { leaf = "borderangle";   enabled = true;  speed= 20.0;  bezier = "linear";        style = "loop";      }
+        border_animation
       ];
 
       gesture = {
