@@ -14,7 +14,7 @@
 ,"mesa-git":{"sn":"mesa-git-src","kd":[1,{"ft":0,"ur":"https://gitlab.freedesktop.org/mesa/mesa/-/archive/d02b25157c68804c4e6da613faf0f38a3bcca6d3/mesa-d02b25157c68804c4e6da613faf0f38a3bcca6d3.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-sjmSfK4dTGuLyKaBJjPaftYaz26VRYCFqAqZocEioLE="},"fv":"d02b25157c68804c4e6da613faf0f38a3bcca6d3","ps":[]}
 ,"mpv":{"sn":"mpv-src","kd":[1,{"ft":0,"ur":"https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-4u9KCKKEvSoOSO/7oZGIpnuSGcFc2rVmcJfdpFzwc5w="},"fv":"e04638a4b4eac258e679673d2a4171bde3f6c41eacb7e3d860c9a435f07eb9da","ps":["mpv_buffers_fix"]}
 ,"nct6687d-patch":{"sn":"nct6687d-patch-src","kd":[0,{"ft":0,"ur":"https://patch-diff.githubusercontent.com/raw/Fred78290/nct6687d/pull/186.patch","ms":[]}],"ha":{"al":2,"vl":"blake3-4wZgSze165RR4kmpLF8oMCQ8mapoyA3bn7aUeY8AiVM="},"fv":"W/346228cf70181267a790ec6c23bb540b","ps":[]}
-,"nix-amd-ai":{"sn":"nix-amd-ai-src","kd":[1,{"ft":0,"ur":"https://github.com/noamsto/nix-amd-ai/archive/5027e475e1467efe900ee77c30ebf769990c422d.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-pHtA4qAfjGMJMJGZPA8ZM26mg+a60GHJY5A4HCGwag4="},"fv":"5027e475e1467efe900ee77c30ebf769990c422d","ps":["amd-ai-flake-compat"]}
+,"nix-amd-ai":{"sn":"nix-amd-ai-src","kd":[1,{"ft":0,"ur":"https://github.com/noamsto/nix-amd-ai/archive/9e18f8fc9d94c26b08af140bf3d3d48f9b210f2f.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-+h3Honz+Y7l+ATCPqSgUSGH5tEiOvALQkX6119ZK8hQ="},"fv":"9e18f8fc9d94c26b08af140bf3d3d48f9b210f2f","ps":[]}
 ,"nix-cachyos-kernel":{"sn":"nix-cachyos-kernel-src","kd":[1,{"ft":0,"ur":"https://github.com/xddxdd/nix-cachyos-kernel/archive/3a4f4055db5f96ce696b5704c996d5bffbcda58d.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-l5Ydtt+tyMEAe0+Q74NtsrXnc0JQqHvNxpZyhhvXDMg="},"fv":"3a4f4055db5f96ce696b5704c996d5bffbcda58d","ps":[]}
 ,"nix-cachyos-settings":{"sn":"nix-cachyos-settings-src","kd":[1,{"ft":0,"ur":"https://github.com/Daaboulex/cachyos-settings-nix/archive/47b9da37ad59e3dd92ed2155b65ad9797e03d12f.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-6BiVCakwzVi/D+cu6xn7uGCJl7JhvhX62C/mPnZcaqc="},"fv":"47b9da37ad59e3dd92ed2155b65ad9797e03d12f","ps":["adios"]}
 ,"nix-citizen":{"sn":"nix-citizen-src","kd":[1,{"ft":0,"ur":"https://github.com/LovingMelody/nix-citizen/archive/7db41f8024ff84cc5ecc532560a5b6598ca65208.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-jcIN9/pmwil9YpwT/aG4/s4K7xUEcypAu7Kufbwi+lM="},"fv":"7db41f8024ff84cc5ecc532560a5b6598ca65208","ps":[]}
@@ -26,7 +26,6 @@
 ,"spotneotify":{"sn":"spotneotify-src","kd":[1,{"ft":0,"ur":"https://github.com/0lswitcher/spotneotify/archive/7724f15679ae709487bb222e4c62235cfa9d5182.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-yKr7DmcdWVt+VC1CuxU81APwpZL3d9LMT1mYWQPTNX0="},"fv":"7724f15679ae709487bb222e4c62235cfa9d5182","ps":[]}
 }
 ,"p":{
-"amd-ai-flake-compat":{"ur":"https://patch-diff.githubusercontent.com/raw/noamsto/nix-amd-ai/pull/46.patch","ha":{"al":2,"vl":"blake3-+r0l/wtMerZlHTwukzdZ1lNhwmQ8UwXAV2ixpfJLosU="}}
-,"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
+"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
 }
 }
