@@ -38,6 +38,7 @@ in
         in [
           modernz
           mpris
+          mpv-discord
         ];
       }
     );
