@@ -21,7 +21,6 @@ in
 
     enabledExtensions = with spicetify-nix.packages.extensions; [
       catJamSynced
-      { src = nixtamal.furigana-lyrics; name = "dist/spicetify-furigana-lyrics.js"; }
     ];
     enabledCustomApps = with spicetify-nix.packages.apps; [
       #marketplace
