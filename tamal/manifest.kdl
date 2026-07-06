@@ -233,6 +233,17 @@ inputs {
     }
   }
 
+  // Spicetify stuff
+  furigana-lyrics {
+    archive {
+      url "https://github.com/duffey/spicetify-furigana-lyrics/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/duffey/spicetify-furigana-lyrics.git" --refs "refs/heads/master"
+      | cut -f1
+    }
+  }
+
   // Others
   catppuccin-godot {
     file {

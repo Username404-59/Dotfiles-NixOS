@@ -19,7 +19,12 @@ in
     };
     colorScheme = "CatppuccinMocha";
 
-    enabledExtensions = with spicetify-nix.packages.extensions; [];
-    enabledCustomApps = with spicetify-nix.packages.apps; [];
+    enabledExtensions = with spicetify-nix.packages.extensions; [
+      catJamSynced
+      { src = nixtamal.furigana-lyrics; name = "dist/spicetify-furigana-lyrics.js"; }
+    ];
+    enabledCustomApps = with spicetify-nix.packages.apps; [
+      #marketplace
+    ];
   };
 }
