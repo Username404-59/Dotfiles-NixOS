@@ -54,6 +54,8 @@
           myUnits = "metric";
         };
         whosWatching.enable = true;
+        relationshipNotifier.enable = true;
+        notificationTitle.enable = true;
       };
     };
   };
