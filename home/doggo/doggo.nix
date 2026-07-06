@@ -38,7 +38,6 @@
     qalculate-qt
     mission-center
     (functions.mkUnstable ani-cli)
-    anime4k
     jetbrains.idea
     jetbrains.clion
     #androidStudioPackages.canary.full
