@@ -44,6 +44,12 @@ in
         ]);
       }
     );
+
+    scriptOpts = {
+      discord = {
+        autohide_threshold = 2;
+      };
+    };
   };
 
   xdg.configFile."mpv/input.conf".text = ''
