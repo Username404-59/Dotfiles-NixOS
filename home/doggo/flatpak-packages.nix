@@ -28,6 +28,8 @@ in
       # Games
       "org.vinegarhq.Sober"
       (mkBundleFromNixtamal "hytale-launcher")
+      "moe.launcher.an-anime-game-launcher"
+      "moe.launcher.the-honkers-railway-launcher"
 
       # Apps
       #"com.github.tchx84.Flatseal" # I should put overrides in this .nix instead
