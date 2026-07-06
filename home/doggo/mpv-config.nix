@@ -29,6 +29,7 @@ in
 
         scripts = with pkgs.mpvScripts; [
           modernz
+          mpris
         ];
       }
     );
