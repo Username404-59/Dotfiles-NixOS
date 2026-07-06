@@ -77,7 +77,12 @@ rec {
     capSysNice = true;
   };
 
-  services.flatpak.enable = true;
+  services.flatpak = {
+    enable = true;
+    package = pkgs.flatpak.overrideAttrs {
+      patches = [ ../tamal/patches/5224_all_syscalls.patch ];
+    };
+  };
 
   services.lact = {
     enable = true;
