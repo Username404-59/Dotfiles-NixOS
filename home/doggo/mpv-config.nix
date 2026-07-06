@@ -27,7 +27,15 @@ in
           src = nixtamal.mpv;
         });
 
-        scripts = with pkgs.mpvScripts; [
+        scripts = with pkgs.mpvScripts; let
+          mkScriptNamed = name: scriptName: buildLua {
+            pname = name;
+            version = "unstable";
+            src = nixtamal.${name};
+            passthru.scriptName = scriptName;
+          };
+          mkScript = name: mkScriptNamed name "${name}.lua";
+        in [
           modernz
           mpris
         ];
