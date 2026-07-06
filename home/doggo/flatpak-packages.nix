@@ -36,6 +36,8 @@ in
       "com.gluonhq.SceneBuilder"
     ];
 
+    overrides.writeMode = "replace";
+
     overrides.settings = {
       "org.vinegarhq.Sober".Context = {
         filesystems = [
