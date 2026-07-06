@@ -172,6 +172,12 @@ inputs {
     }
     patches mpv_buffers_fix
   }
+  mpv-discord-git { // mpv-discord-resurrected
+    git {
+      repository "https://github.com/CosmicPredator/mpv-discord.git"
+      branch "main"
+    }
+  }
   mesa-git {
     archive {
       url "https://gitlab.freedesktop.org/mesa/mesa/-/archive/{{fresh_value}}/mesa-{{fresh_value}}.tar.gz"

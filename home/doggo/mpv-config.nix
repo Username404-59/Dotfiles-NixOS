@@ -1,4 +1,4 @@
-{ config, pkgs, nixtamal, ... }:
+{ config, pkgs, nixtamal, functions, ... }:
 
 let
   shaders = "${pkgs.anime4k}";
@@ -38,7 +38,7 @@ in
         in [
           modernz
           mpris
-          mpv-discord
+          (functions.mkUnstable mpv-discord)
         ] ++ (with pkgs.mpvScripts.builtins; [
           autoload
         ]);
