@@ -161,12 +161,9 @@ inputs {
 
   // Packages
   ani-cli-git {
-    archive {
-      url "https://github.com/pystardust/ani-cli/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/pystardust/ani-cli.git" --refs "refs/heads/master"
-      | cut -f1
+    git {
+      repository "https://github.com/pystardust/ani-cli.git"
+      branch "master"
     }
   }
   mpv {
@@ -198,12 +195,9 @@ inputs {
     }
   }
   lsfg-vk-git {
-    archive {
-      url "https://github.com/PancakeTAS/lsfg-vk/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/PancakeTAS/lsfg-vk.git" --refs "refs/heads/develop"
-      | cut -f1
+    git {
+      repository "https://github.com/PancakeTAS/lsfg-vk.git"
+      branch "develop"
     }
   }
   hypr-darkwindow { // TODO: Remove this when the package hash is fixed
