@@ -449,6 +449,7 @@ in
       default-timeout = 3000;
       ignore-timeout = 1;
       history = 0;
+      output = (builtins.elemAt config.wayland.windowManager.hyprland.settings.monitor 0).output;
     };
   };
 }
