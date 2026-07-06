@@ -446,7 +446,7 @@ in
     enable = true;
     settings = {
       anchor = "bottom-right";
-      default-timeout = 3000;
+      default-timeout = 5000;
       ignore-timeout = 1;
       history = 0;
       output = (builtins.elemAt config.wayland.windowManager.hyprland.settings.monitor 0).output;
