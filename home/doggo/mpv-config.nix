@@ -39,7 +39,9 @@ in
           modernz
           mpris
           mpv-discord
-        ];
+        ] ++ (with pkgs.mpvScripts.builtins; [
+          autoload
+        ]);
       }
     );
   };
