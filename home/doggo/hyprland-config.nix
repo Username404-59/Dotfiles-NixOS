@@ -446,7 +446,7 @@ in
     enable = true;
     settings = {
       anchor = "bottom-right";
-      default-timeout= 1250;
+      default-timeout = 3000;
       ignore-timeout = 1;
       history = 0;
     };
