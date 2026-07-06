@@ -174,7 +174,7 @@ inputs {
   }
   mpv-discord-git { // mpv-discord-resurrected
     git {
-      repository "https://github.com/CosmicPredator/mpv-discord.git"
+      repository "https://github.com/clari7744/mpv-discord.git"
       branch "main"
     }
   }
