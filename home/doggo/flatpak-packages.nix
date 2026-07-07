@@ -7,6 +7,8 @@ let
     sha256 = nixtamal.${name}.hash;
   };
   runtime_version = "25.08";
+
+  roblox_config_path = "%h/.var/app/org.vinegarhq.Sober/data/sober/appData/GlobalBasicSettings_13.xml";
 in
 {
   imports = [ "${nixtamal.nix-flatpak}/modules/home-manager.nix" ];
@@ -51,6 +53,20 @@ in
       "moe.launcher.an-anime-game-launcher".Context.features = [ "all-syscalls" ];
       "moe.launcher.the-honkers-railway-launcher".Context.features = [ "all-syscalls" ];
     };
+  };
+
+  systemd.user.services.unlock-roblox-framerate-cap = {
+    Unit.Description = "Force Roblox FramerateCap to 9999";
+    Service = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.gnused}/bin/sed -i -E 's@<int name=\"FramerateCap\">[0-9]+</int>@<int name=\"FramerateCap\">9999</int>@' ${roblox_config_path}";
+    };
+  };
+
+  systemd.user.paths.unlock-roblox-framerate-cap = {
+    Unit.Description = "Watches the roblox config file to forcefully unlock fps";
+    Path.PathModified = "${roblox_config_path}";
+    Install.WantedBy = [ "default.target" ];
   };
 
   home.sessionVariables.FLATPAK_GL_DRIVERS = "mesa-git";
