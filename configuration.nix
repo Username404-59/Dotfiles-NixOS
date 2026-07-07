@@ -149,6 +149,7 @@ in
   home-manager.users.doggo = import ./home/doggo/doggo.nix;
 
   security.polkit.enable = true;
+  security.pam.enableFscrypt = true; # Enables encryption of user homes (f2fs and ext4 support it)
 
   cachyos.settings = {
     enable = true;
