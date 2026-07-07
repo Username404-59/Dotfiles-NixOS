@@ -14,7 +14,7 @@ inputs {
       url "https://github.com/NixOS/nixpkgs/archive/{{fresh_value}}.tar.gz"
     }
     fresh-cmd {
-      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixpkgs-unstable"
+      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
       | cut -f1
     }
   }
