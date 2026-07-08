@@ -96,29 +96,29 @@ in
         };
       in builtins.listToAttrs [ # Addon IDs: about:debugging#/runtime/this-firefox
         # Essentials
-        (extension "ublock-origin" "uBlock0@raymondhill.net" "navbar")
-        (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}" "menupanel")
-        (extension "darkreader" "addon@darkreader.org" "menupanel")
-        (extension "imagus" "{00000f2a-7cde-4f20-83ed-434fcb420d71}" "navbar")
-        (extension "uaswitcher" "user-agent-switcher@ninetailed.ninja" "menupanel")
-        (extension "cookie-editor" "{c3c10168-4186-445c-9c5b-63f12b8e2c87}" "menupanel")
-        (extension "re-enable-right-click" "{278b0ae0-da9d-4cc6-be81-5aa7f3202672}" "menupanel")
+        (extension "ublock-origin" "uBlock0@raymondhill.net" "menupanel")
+        (extension "bitwarden-password-manager" "{446900e4-71c2-419f-a6a7-df9c091e268b}" "navbar")
+        (extension "darkreader" "addon@darkreader.org" "navbar")
+        (extension "imagus" "{00000f2a-7cde-4f20-83ed-434fcb420d71}" "menupanel")
+        (extension "uaswitcher" "user-agent-switcher@ninetailed.ninja" "navbar")
+        (extension "cookie-editor" "{c3c10168-4186-445c-9c5b-63f12b8e2c87}" "navbar")
+        (extension "re-enable-right-click" "{278b0ae0-da9d-4cc6-be81-5aa7f3202672}" "navbar")
 
         # Website specific stuff
-        (extension "lovely-forks" "github-forks-addon@musicallyut.in" "navbar")
-        (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "menubar")
-        (extension "ttv-lol-pro" "{76ef94a4-e3d0-4c6f-961a-d38a429a332b}" "menupanel")
-        (extension "btroblox" "btroblox@antiboomz.com" "menupanel")
+        (extension "lovely-forks" "github-forks-addon@musicallyut.in" "menupanel")
+        (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "navbar")
+        (extension "ttv-lol-pro" "{76ef94a4-e3d0-4c6f-961a-d38a429a332b}" "navbar")
+        (extension "btroblox" "btroblox@antiboomz.com" "navbar")
 
         # Scripting / styling
-        (extension "styl-us" "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" "menupanel")
-        (extension "violentmonkey" "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}" "menupanel")
+        (extension "styl-us" "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" "navbar")
+        (extension "violentmonkey" "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}" "navbar")
 
         # Others
-        (extension "jetbrains-toolbox" "{bf9e77ee-c405-4dd7-9bed-2f55e448d19a}" "menupanel")
-        (extension "10ten-ja-reader" "{59812185-ea92-4cca-8ab7-cfcacee81281}" "navbar")
-        (extension "wayback-machine_new" "wayback_machine@mozilla.org" "menupanel")
-        (extension "star-citizen-ccu-game" "{878c5814-8eb9-4262-9b4b-f46e74dd7cfa}" "navbar")
+        (extension "jetbrains-toolbox" "{bf9e77ee-c405-4dd7-9bed-2f55e448d19a}" "navbar")
+        (extension "10ten-ja-reader" "{59812185-ea92-4cca-8ab7-cfcacee81281}" "menupanel")
+        (extension "wayback-machine_new" "wayback_machine@mozilla.org" "navbar")
+        (extension "star-citizen-ccu-game" "{878c5814-8eb9-4262-9b4b-f46e74dd7cfa}" "menupanel")
       ];
     };
   };
