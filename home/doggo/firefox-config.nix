@@ -118,7 +118,7 @@ in
         (extension "jetbrains-toolbox" "{bf9e77ee-c405-4dd7-9bed-2f55e448d19a}" "navbar")
         (extension "10ten-ja-reader" "{59812185-ea92-4cca-8ab7-cfcacee81281}" "menupanel")
         (extension "wayback-machine_new" "wayback_machine@mozilla.org" "navbar")
-        (extension "star-citizen-ccu-game" "{878c5814-8eb9-4262-9b4b-f46e74dd7cfa}" "menupanel")
+        (extension "star-citizen-ccu-game" "{878c5814-8eb9-4262-9b4b-f46e74dd7cfa}" "navbar")
       ];
     };
   };
