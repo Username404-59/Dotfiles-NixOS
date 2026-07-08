@@ -57,6 +57,7 @@
         relationshipNotifier.enable = true;
         notificationTitle.enable = true;
         voiceMessages.enable = true;
+        messageLoggerEnhanced.enable = true;
       };
     };
   };
