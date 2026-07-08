@@ -115,4 +115,6 @@ in {
     reloadIfChanged = false;
     unitConfig.ConditionKernelCommandLine = "fscrypt_migration"; # To avoid running it from first boot
   };
+
+  boot.kernelParams = [ "fscrypt_migration" ];
 }
