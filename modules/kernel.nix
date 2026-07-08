@@ -24,6 +24,7 @@
     "amdgpu.dc=1"
     "amdgpu.gpu_recovery=1"
     "vfio-pci.disable_vga=1"
+    "fscrypt_migration" # See my encryption.nix
   ];
 
   catppuccin.tty.enable = !isLaptop;

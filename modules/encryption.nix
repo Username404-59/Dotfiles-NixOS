@@ -107,9 +107,12 @@ in {
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${migrateScript}/bin/${migrateScript.name}";
-      RemainAfterExit = false;
+      RemainAfterExit = true;
       User = "root";
       TimeoutSec = "infinity";
     };
+    restartIfChanged = false;
+    reloadIfChanged = false;
+    unitConfig.ConditionKernelCommandLine = "fscrypt_migration"; # To avoid running it from first boot
   };
 }
