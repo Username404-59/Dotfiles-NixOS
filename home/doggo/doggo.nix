@@ -103,6 +103,7 @@
     mangohud = {
       enable = true;
       settings = {
+        no_display = true; # Hide by default
         gpu_stats = true;
         gpu_temp = true;
         gpu_junction_temp = true;

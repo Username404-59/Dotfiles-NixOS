@@ -6,7 +6,7 @@ let
     bundle = "${nixtamal.${name}}";
     sha256 = nixtamal.${name}.hash;
   };
-  runtime_version = "25.08";
+  runtime_version = "${pkgs.stdenv.hostPlatform.parsed.cpu.name}/25.08";
 
   roblox_config_path = "%h/.var/app/org.vinegarhq.Sober/data/sober/appData/GlobalBasicSettings_13.xml";
 in
@@ -24,14 +24,15 @@ in
     ];
     packages = [
       # Drivers
-      { appId = "runtime/org.freedesktop.Platform.GL.mesa-git/${pkgs.stdenv.hostPlatform.parsed.cpu.name}/${runtime_version}";   origin = "flathub-beta"; }
-      { appId = "runtime/org.freedesktop.Platform.GL32.mesa-git/${pkgs.stdenv.hostPlatform.parsed.cpu.name}/${runtime_version}"; origin = "flathub-beta"; }
+      { appId = "runtime/org.freedesktop.Platform.GL.mesa-git/${runtime_version}";   origin = "flathub-beta"; }
+      { appId = "runtime/org.freedesktop.Platform.GL32.mesa-git/${runtime_version}"; origin = "flathub-beta"; }
 
-      # Games
+      # Gaming stuff
       "org.vinegarhq.Sober"
       (mkBundleFromNixtamal "hytale-launcher")
       "moe.launcher.an-anime-game-launcher"
       "moe.launcher.the-honkers-railway-launcher"
+      "runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/${runtime_version}"
 
       # Apps
       #"com.github.tchx84.Flatseal" # I should put overrides in this .nix instead
@@ -41,6 +42,16 @@ in
     overrides.writeMode = "replace";
 
     overrides.settings = {
+      global = {
+        Context.filesystems = [
+          "/nix/store:ro"
+          "xdg-config/MangoHud:ro"
+        ];
+        Environment = {
+          MANGOHUD = "1";
+        };
+      };
+
       "org.vinegarhq.Sober".Context = {
         filesystems = [
           "xdg-run/app/com.discordapp.Discord:create"
