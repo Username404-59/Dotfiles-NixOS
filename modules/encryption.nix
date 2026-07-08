@@ -18,6 +18,7 @@ let
 
     text = ''
       if [[ ! -d /.fscrypt ]] || [[ ! -f /etc/fscrypt.conf ]]; then
+        rm -f /etc/fscrypt.conf # Just in case only my /.fscrypt isn't present
         fscrypt setup --force --quiet --time=${hashingForce}
         echo "fscrypt setup completed."
       else
