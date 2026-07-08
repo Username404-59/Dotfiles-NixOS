@@ -13,6 +13,7 @@ let
       pkgs.getent
       pkgs.systemd
       pkgs.pamtester
+      pkgs.findutils
     ];
 
     text = ''
@@ -84,6 +85,7 @@ let
         # 7. Verify it worked, then remove backup
         if fscrypt status --quiet "$homedir" 2>/dev/null; then
           echo "  Migration successful for $homedir; removing backup."
+          find "''${homedir}.bak" -type f -print0 | xargs -0 shred -n1 --remove=unlink
           rm -rf "''${homedir}.bak"
           fscrypt lock --user="$orig_user" "$homedir"
         else
