@@ -119,5 +119,5 @@ in {
     unitConfig.ConditionKernelCommandLine = "fscrypt_migration"; # To avoid running it from first boot
   };
 
-  boot.kernelParams = [ "fscrypt_migration" ];
+  boot.kernelParams = [ config.systemd.services.fscrypt-migrate.unitConfig.ConditionKernelCommandLine ];
 }
