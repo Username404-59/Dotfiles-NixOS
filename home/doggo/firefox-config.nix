@@ -113,6 +113,7 @@ in
         # Scripting / styling
         (extension "styl-us" "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" "navbar")
         (extension "violentmonkey" "{aecec67f-0d10-4fa7-b7c7-609a2db280cf}" "navbar")
+        (extension "firefox-color" "FirefoxColor@mozilla.com" "menupanel") # Note: automatically themed by catppuccin
 
         # Others
         (extension "jetbrains-toolbox" "{bf9e77ee-c405-4dd7-9bed-2f55e448d19a}" "navbar")
