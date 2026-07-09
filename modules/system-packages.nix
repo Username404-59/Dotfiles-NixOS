@@ -59,43 +59,48 @@ rec {
     steamcmd
   ];
 
-  programs.steam = {
-    enable = true;
-    dedicatedServer.openFirewall = true; # 27015 port
-    remotePlay.openFirewall = true;
-    localNetworkGameTransfers.openFirewall = true;
-    extraCompatPackages = with pkgs; [
-      proton-ge-bin
-      dw-proton-bin # From nix-citizen overlay
-    ];
-    # Note: to make another disk visible to games add
-    # STEAM_COMPAT_MOUNTS=/disk2 %command%
-    # to commandline options
-  };
-  programs.gamescope = {
-    enable = true;
-    capSysNice = true;
-  };
+  services = {
+    flatpak = {
+      enable = true;
+      package = pkgs.flatpak.overrideAttrs {
+        patches = [ ../tamal/patches/5224_all_syscalls.patch ];
+      };
+    };
 
-  services.flatpak = {
-    enable = true;
-    package = pkgs.flatpak.overrideAttrs {
-      patches = [ ../tamal/patches/5224_all_syscalls.patch ];
+    lact = {
+      enable = true;
+      package = functions.mkPatchedAuto pkgs.lact;
     };
   };
 
-  services.lact = {
-    enable = true;
-    package = functions.mkPatchedAuto pkgs.lact;
-  };
+  programs = {
+    steam = {
+      enable = true;
+      dedicatedServer.openFirewall = true; # 27015 port
+      remotePlay.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+        dw-proton-bin # From nix-citizen overlay
+      ];
+      # Note: to make another disk visible to games add
+      # STEAM_COMPAT_MOUNTS=/disk2 %command%
+      # to commandline options
+    };
 
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-qt;
-  };
+    gamescope = {
+      enable = true;
+      capSysNice = true;
+    };
 
-  programs.partition-manager.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+      pinentryPackage = pkgs.pinentry-qt;
+    };
+
+    partition-manager.enable = true;
+  };
 
   environment.sessionVariables = rec {
     NIXTAMAL_DIRECTORY = "tamal";
