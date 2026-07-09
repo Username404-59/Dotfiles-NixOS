@@ -1,4 +1,4 @@
-{ nixtamal, ... }:
+{ nixtamal, isLaptop, ... }:
 
 {
   imports = [ (import nixtamal.nixcord).homeModules.nixcord ];
@@ -29,6 +29,7 @@
         youtubeAdblock.enable = true;
         gifPaste.enable = true;
         clipUpload.enable = true;
+        clipsEnhancements.enable = true;
         newPluginsManager.enable = true;
         questify.enable = false;
         dragFavoriteEmotes.enable = true;
@@ -58,6 +59,10 @@
         notificationTitle.enable = true;
         voiceMessages.enable = true;
         messageLoggerEnhanced.enable = true;
+        blurNsfw.enable = true;
+        petpet.enable = true;
+        alwaysAnimate.enable = !isLaptop;
+        betterActivities.enable = true;
       };
     };
   };
