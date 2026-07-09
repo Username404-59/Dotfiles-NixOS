@@ -68,7 +68,7 @@ in
   imports =
     [
       ./workarounds.nix
-      ./hardware-configuration.nix # Results of the hardware scan ("nixos-generate-config" command)
+      ./hardware-configuration.nix # Results of the hardware scan ("nixos-generate-config" command; Note: I have to remove swapDevices from there and put "swap" partlabel on the partition)
       ./modules/filesystems.nix
       "${nixtamal.home-manager}/nixos"
       "${nixtamal.catppuccin}/modules/nixos"
