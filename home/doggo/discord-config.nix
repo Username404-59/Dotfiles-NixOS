@@ -63,6 +63,7 @@
         petpet.enable = true;
         alwaysAnimate.enable = !isLaptop;
         betterActivities.enable = true;
+        normalizeMessageLinks.enable = true;
       };
     };
   };
