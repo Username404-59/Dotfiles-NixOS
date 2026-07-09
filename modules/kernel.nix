@@ -5,9 +5,6 @@
     "sysrq_always_enabled=1"
     "mitigations=off"
     "plymouth.use-simpledrm"
-    "zswap.enabled=1"
-    "zswap.compressor=zstd"
-    "zswap.zpool=zsmalloc"
     "vm.swappiness=30"
     "preempt=full"
     "split_lock_detect=off"
@@ -25,6 +22,12 @@
     "amdgpu.gpu_recovery=1"
     "vfio-pci.disable_vga=1"
   ];
+
+  boot.zswap = {
+    enable = true;
+    compressor = "zstd";
+    shrinkerEnabled = true;
+  };
 
   catppuccin.tty.enable = !isLaptop;
 
