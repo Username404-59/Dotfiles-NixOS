@@ -121,7 +121,7 @@ in {
 
   boot.kernelParams = [ config.systemd.services.fscrypt-migrate.unitConfig.ConditionKernelCommandLine ];
 
-  # This lets me add swap settings outside of hardware-configuration.nix
+  # Adds swap settings outside of hardware-configuration.nix, by partlabel
   swapDevices = [{
     device = "/dev/disk/by-partlabel/swap";
     discardPolicy = "once"; # Better than having "pages" because I'm not gonna keep my computer running for 200 days straight
