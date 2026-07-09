@@ -16,7 +16,10 @@ in
     mangohud.enable = false;
   };
 
-  home.pointerCursor.size = 24;
+  home.pointerCursor = {
+    enable = true;
+    size = 24;
+  };
 
   gtk = {
     enable = true;
