@@ -64,7 +64,6 @@
         alwaysAnimate.enable = !isLaptop;
         betterActivities.enable = true;
         normalizeMessageLinks.enable = true;
-        idleAutoRestart.enable = true;
       };
     };
   };
