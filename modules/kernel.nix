@@ -13,7 +13,6 @@
     "transparent_hugepage=always"
     "iommu=pt"
     "amd_iommu=pt"
-    "amdgpu.ppfeaturemask=0xffffffff"
     "amdgpu.exp_hw_support=1"
     "i915.enable_guc=3"
     "pci=assign-busses,hpbussize=0x33,realloc=on"
