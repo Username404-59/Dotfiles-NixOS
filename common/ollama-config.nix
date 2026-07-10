@@ -32,15 +32,4 @@
       DEFAULT_PINNED_MODELS = DEFAULT_MODELS;
     };
   };
-
-  /* TODO: Uncomment when odysseus package supports non-flake installation (& disable open-webui)
-  services.odysseus = {
-    enable = config.services.ollama.enable;
-    xdg.dataHome."odysseus/odysseus-env".source = ./odysseus/.env;
-    # https://github.com/pewdiepie-archdaemon/odysseus/blob/dev/.env.example
-    environmentFile = "${config.xdg.dataHome}}/odysseus/odysseus-env";
-    host = "127.0.0.1";
-    port = 6767;
-  };
-  */
 }
