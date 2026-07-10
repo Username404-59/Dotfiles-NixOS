@@ -110,9 +110,14 @@ rec {
     nixtamal = "bash -c 'cd /etc/nixos && nixtamal \"$@\"' --";
   };
 
+  security.sudo.enable = false; # I use run0 (via an alias) instead
+
   home-manager.sharedModules = [(
     { ... }: {
-      home.shellAliases = { nixtamal = environment.shellAliases.nixtamal; };
+      home.shellAliases = {
+        nixtamal = environment.shellAliases.nixtamal;
+        sudo = "run0 --background=";
+      };
       programs.nix-index.package = (import nixtamal.nix-index-database { inherit pkgs; }).nix-index-with-small-db;
     }
   )];
