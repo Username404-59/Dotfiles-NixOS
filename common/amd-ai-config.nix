@@ -1,6 +1,8 @@
-{ ... }:
+{ nixtamal, ... }:
 
 {
+  imports = [ (import nixtamal.nix-amd-ai).outputs.nixosModules.default ];
+
   hardware.amd-npu = {
     enable = true;
     enableNPU = false;

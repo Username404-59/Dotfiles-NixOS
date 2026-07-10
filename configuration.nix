@@ -62,7 +62,6 @@ in
       "${nixtamal.home-manager}/nixos"
       "${nixtamal.catppuccin}/modules/nixos"
       "${nixtamal.nix-cachyos-settings}/module.nix"
-      "${nixtamal.nix-amd-ai}/modules/amd-npu.nix"
       ./modules/bootloader.nix
       ./modules/encryption.nix
       ./modules/system-packages.nix
