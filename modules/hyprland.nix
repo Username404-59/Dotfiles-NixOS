@@ -1,6 +1,8 @@
-{ pkgs, lib, isLaptop, ... }:
+{ pkgs, lib, isLaptop, nixtamal, ... }:
 
 {
+  imports = [ (import nixtamal.qylock).outputs.nixosModules.default ];
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -10,6 +12,16 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+  };
+
+  # SDDM theme setup
+  catppuccin.sddm.enable = false;
+  programs.qylock = {
+    enable = true;
+    theme = "Genshin";
+    themeOptions = {
+      Genshin.backgroundMode = "time";
+    };
   };
 
   qt.enable = true;

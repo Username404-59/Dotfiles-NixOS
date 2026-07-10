@@ -6,6 +6,7 @@ patches {
   kservice_fix "./patches/kservice_fix.patch"
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   //nix_odysseus "https://patch-diff.githubusercontent.com/raw/pewdiepie-archdaemon/odysseus/pull/2568.patch" // See 2567 also
+  qylock_flake_compat "https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch"
 }
 
 inputs {
@@ -166,6 +167,16 @@ inputs {
     fresh-cmd {
       $ curl -s "https://archive.org/wayback/available?url=https://launcher.hytale.com/builds/release/linux/amd64/hytale-launcher-latest.flatpak"
       | jq -r ".archived_snapshots.closest.timestamp"
+    }
+  }
+  qylock {
+    archive {
+      url "https://github.com/Darkkal44/qylock/archive/{{fresh_value}}.tar.gz"
+    }
+    patches qylock_flake_compat
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/Darkkal44/qylock.git" --refs "refs/heads/main"
+      | cut -f1
     }
   }
 

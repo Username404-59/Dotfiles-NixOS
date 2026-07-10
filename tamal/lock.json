@@ -24,10 +24,12 @@
 ,"nix-index-database":{"sn":"nix-index-database-src","kd":[1,{"ft":0,"ur":"https://github.com/nix-community/nix-index-database/archive/96d6de10eb281b98f5cfcd1841394c03da5df77c.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-Furi/YDza0G1PDqoFNZqUatVSNU2w+8KiapFAZ4p/is="},"fv":"96d6de10eb281b98f5cfcd1841394c03da5df77c","ps":[]}
 ,"nix-spicetify":{"sn":"nix-spicetify-src","kd":[1,{"ft":0,"ur":"https://github.com/Gerg-L/spicetify-nix/archive/d9d714243e2f8d10af28db5111f018ec2d77acc9.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-NnCYgOUXL5bxazwxxEk1XU4nOwH2UP3qQ24f7Y4OEo0="},"fv":"d9d714243e2f8d10af28db5111f018ec2d77acc9","ps":[]}
 ,"nixcord":{"sn":"nixcord-src","kd":[1,{"ft":0,"ur":"https://github.com/FlameFlag/nixcord/archive/71e056ca5dc1c57898d3e4c694b0c656449babdb.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-/3QvQWkmp3wwvYmkMpeh/kGqop5HDhcAQ5acfQGjm7g="},"fv":"71e056ca5dc1c57898d3e4c694b0c656449babdb","ps":[]}
+,"qylock":{"sn":"qylock-src","kd":[1,{"ft":0,"ur":"https://github.com/Darkkal44/qylock/archive/db61a972b4b23728d9944a906e70029ca8a5899d.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-wR05ryOV19XXzhQL3+8IMNCpQC0WgvBfgpIPPNonUHs="},"fv":"db61a972b4b23728d9944a906e70029ca8a5899d","ps":["qylock_flake_compat"]}
 ,"scx_rustscheds-git":{"sn":"scx_rustscheds-git-src","kd":[2,{"ft":0,"rp":"https://github.com/sched-ext/scx.git","ms":[],"rf":[1,"main"],"dt":"2026-07-09T00:28:03Z","sm":false,"lf":false,"lr":"882edbd7c0af2d9e621c534fba10e7019910b7c6"}],"ha":{"al":2,"vl":"blake3-GNqzTpcDmyeLspti4mHgufbcjQQBmxpVb19Y6GIqtCY="},"fv":"882edbd7c0af2d9e621c534fba10e7019910b7c6","ps":[]}
 ,"spotneotify":{"sn":"spotneotify-src","kd":[1,{"ft":0,"ur":"https://github.com/0lswitcher/spotneotify/archive/7724f15679ae709487bb222e4c62235cfa9d5182.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-yKr7DmcdWVt+VC1CuxU81APwpZL3d9LMT1mYWQPTNX0="},"fv":"7724f15679ae709487bb222e4c62235cfa9d5182","ps":[]}
 }
 ,"p":{
 "mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
+,"qylock_flake_compat":{"ur":"https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch","ha":{"al":2,"vl":"blake3-n7MUAS1KnOPclznhz1PA74EK12Byzo+TYvLHtwUZb7Y="}}
 }
 }
