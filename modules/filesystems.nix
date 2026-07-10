@@ -27,6 +27,12 @@
     useTmpfs = true; # I'll need to disable this or make it bigger if nix builds fail because of it
   };
 
+  # To manage USB drives
+  services.udisks2.enable = true;
+  home-manager.sharedModules = [({
+    services.udiskie.enable = true;
+  })];
+
   # Link to nix-hardware configs in case I get a new laptop some day:
   # https://github.com/NixOS/nixos-hardware
 }
