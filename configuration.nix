@@ -77,6 +77,7 @@ in
       ./modules/bootloader.nix
       ./modules/encryption.nix
       ./modules/system-packages.nix
+      ./modules/security.nix
       ./modules/fonts.nix
       ./modules/hyprland.nix
       ./modules/kernel.nix
@@ -149,8 +150,6 @@ in
   };
   home-manager.users.doggo = import ./home/doggo/doggo.nix;
 
-  security.polkit.enable = true;
-
   cachyos.settings = {
     enable = true;
     zram.enable = false;
@@ -174,9 +173,6 @@ in
       PermitRootLogin = "prohibit-password";
     };
   };
-
-  # Extra security (especially for SSH)
-  services.fail2ban.enable = true;
 
   # To disable the firewall altogether.
   # networking.firewall.enable = false;
