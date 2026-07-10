@@ -1,19 +1,13 @@
-{ config, lib, functions, ... }:
+{ config, lib, functions, nixtamal, ... }:
 
 /*
-  This should be in /etc/nixos/ together with the rest.
-
-  For the nixos channel:
-  sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos && nix-channel --update
+  This should be in /etc/nixos/.
 
   To install git before first install:
   sudo nix-env --install git
 
   To rebuild for the first time:
   sudo nixos-rebuild switch --option extra-experimental-features "blake3-hashes"
-
-  To fix problems sometimes:
-  sudo nixos-rebuild switch -I nixos-config=/etc/nixos/configuration.nix
 
   To force nixtamal lock on specific input:
   sudo nixtamal lock --force specific_input
@@ -26,10 +20,6 @@
   nix-collect-garbage && nix-collect-garbage -d && nixos-rebuild switch
 */
 let
-  nixtamal = import ./tamal {
-    bootstrap-nixpkgs = <nixpkgs>; # Apparently a little bit impure but faster. (can be removed)
-  };
-
   # self = final package set, super = pre-overlay nixpkgs
   # super.lib: avoids circular dependencies
   # self.callPackage: local packages can see each other and other overlays
@@ -62,7 +52,6 @@ let
 in
 {
   nixpkgs.pkgs = pkgs; # Uses the nixtamal nixpkgs
-  _module.args.nixtamal = nixtamal;
   _module.args.isLaptop = isLaptop;
 
   imports =
@@ -98,7 +87,7 @@ in
       # ISO installer building stuff:
       ./ISO/iso.nix
     ];
-  
+
   home-manager.useUserPackages = true; # Puts user packages in /etc/profiles
   home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
   nix.settings.auto-optimise-store = true;
