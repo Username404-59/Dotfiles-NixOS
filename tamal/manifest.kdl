@@ -130,6 +130,15 @@ inputs {
       | cut -f1
     }
   }
+  nix-index-database {
+    archive {
+      url "https://github.com/nix-community/nix-index-database/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/nix-community/nix-index-database.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
   nixcord {
     archive {
       url "https://github.com/FlameFlag/nixcord/archive/{{fresh_value}}.tar.gz"

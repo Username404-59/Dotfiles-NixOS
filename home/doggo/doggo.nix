@@ -149,6 +149,9 @@
         obs-vkcapture
       ];
     };
+
+    # To show indications when a command is not found but exists in pkgs
+    nix-index.enable = true;
   };
 
   home.stateVersion = "26.11";

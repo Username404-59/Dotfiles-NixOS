@@ -113,6 +113,7 @@ rec {
   home-manager.sharedModules = [(
     { ... }: {
       home.shellAliases = { nixtamal = environment.shellAliases.nixtamal; };
+      programs.nix-index.package = (import nixtamal.nix-index-database { inherit pkgs; }).nix-index-with-small-db;
     }
   )];
 }
