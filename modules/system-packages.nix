@@ -67,10 +67,7 @@ rec {
       };
     };
 
-    lact = {
-      enable = true;
-      package = functions.mkPatchedAuto pkgs.lact;
-    };
+    lact.enable = true;
   };
 
   programs = {
