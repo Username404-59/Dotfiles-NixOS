@@ -5,7 +5,6 @@
     "sysrq_always_enabled=1"
     "mitigations=off"
     "plymouth.use-simpledrm"
-    "vm.swappiness=30"
     "preempt=full"
     "split_lock_detect=off"
     "cpufreq.default_governor=schedutil"
@@ -18,7 +17,6 @@
     "pci=assign-busses,hpbussize=0x33,realloc=on"
     "kvm.enable_virt_at_load=0"
     "amdgpu.dc=1"
-    "amdgpu.gpu_recovery=1"
     "vfio-pci.disable_vga=1"
   ];
 
@@ -75,6 +73,7 @@
   };
 
   boot.kernel.sysctl = {
+    "vm.swappiness" = 30;
     "vm.max_map_count" = 16777216;
     "net.ipv4.tcp_congestion_control" = "bbr";
     "net.core.default_qdisc" = "cake_mq";
