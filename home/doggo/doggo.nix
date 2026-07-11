@@ -37,7 +37,7 @@
     kdePackages.kdenlive
     qalculate-qt
     mission-center
-    (functions.mkUnstable ani-cli)
+    (functions.mkUnstable ani-cli) /* TODO Remove once the PR is merged -> */ botan3
     jetbrains.idea
     jetbrains.clion
     #androidStudioPackages.canary.full

@@ -1,7 +1,7 @@
 {"v":"1.2.0"
 ,"i":{
 "nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/0bb7ec54c8483066ec9d7720e780a5caa71f8612.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-iffAls3iaNTyJC2faYcUXSI+Gp02cDjYl+MygxKl2GI="},"fv":"0bb7ec54c8483066ec9d7720e780a5caa71f8612","ps":["spicetify_fix"]}
-,"ani-cli-git":{"sn":"ani-cli-git-src","kd":[2,{"ft":0,"rp":"https://github.com/pystardust/ani-cli.git","ms":[],"rf":[1,"master"],"dt":"2026-07-07T09:47:38+02:00","sm":false,"lf":false,"lr":"89ec9314eba7b66c894bf8bbf3b2b25a3b80743a"}],"ha":{"al":2,"vl":"blake3-r3XTWKg9iZ/Isxuj6ykYDSBLyZNHJJmaGBGy62MN1Ak="},"fv":"89ec9314eba7b66c894bf8bbf3b2b25a3b80743a","ps":[]}
+,"ani-cli-git":{"sn":"ani-cli-git-src","kd":[2,{"ft":0,"rp":"https://github.com/pystardust/ani-cli.git","ms":[],"rf":[1,"master"],"dt":"2026-07-07T09:47:38+02:00","sm":false,"lf":false,"lr":"89ec9314eba7b66c894bf8bbf3b2b25a3b80743a"}],"ha":{"al":2,"vl":"blake3-r3XTWKg9iZ/Isxuj6ykYDSBLyZNHJJmaGBGy62MN1Ak="},"fv":"89ec9314eba7b66c894bf8bbf3b2b25a3b80743a","ps":["ani_cli_fix"]}
 ,"catppuccin":{"sn":"catppuccin-src","kd":[1,{"ft":0,"ur":"https://github.com/catppuccin/nix/archive/96799f24cf1366fe88e1293c3d27521a8f2129cf.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-p9BmEsFc7wNsJOwaStyzOqEH6AOC8R53LIQuGprN9Qg="},"fv":"96799f24cf1366fe88e1293c3d27521a8f2129cf","ps":[]}
 ,"catppuccin-godot":{"sn":"catppuccin-godot-src","kd":[0,{"ft":0,"ur":"https://raw.githubusercontent.com/catppuccin/godot/d8b72b679078f0103a5e5c1ef793c1d698a563b1/themes/Catppuccin%20Mocha.tet","ms":[]}],"ha":{"al":2,"vl":"blake3-WVY58qsBKJlGvir08RYlS+RcjdhFvXz+7YHVfEr6tes="},"fv":"d8b72b679078f0103a5e5c1ef793c1d698a563b1","ps":[]}
 ,"dolphin-overlay":{"sn":"dolphin-overlay-src","kd":[1,{"ft":0,"ur":"https://github.com/rumboon/dolphin-overlay/archive/65dd612c8d72d4cf5cb0eb4d9188ed7a16a042dd.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-PCS3mMGsTYXadc/DDU/EQv2T/0YORMigwUP6NEeOJW4="},"fv":"65dd612c8d72d4cf5cb0eb4d9188ed7a16a042dd","ps":["kservice_fix"]}
@@ -28,7 +28,8 @@
 ,"spotneotify":{"sn":"spotneotify-src","kd":[1,{"ft":0,"ur":"https://github.com/0lswitcher/spotneotify/archive/7724f15679ae709487bb222e4c62235cfa9d5182.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-yKr7DmcdWVt+VC1CuxU81APwpZL3d9LMT1mYWQPTNX0="},"fv":"7724f15679ae709487bb222e4c62235cfa9d5182","ps":[]}
 }
 ,"p":{
-"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
+"ani_cli_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/pystardust/ani-cli/pull/1779.patch","ha":{"al":2,"vl":"blake3-uYRzXSB1KGEH3RGPjqjLMBhuW88uxFgIqZFUNGX1ddU="}}
+,"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
 ,"qylock_flake_compat":{"ur":"https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch","ha":{"al":2,"vl":"blake3-n7MUAS1KnOPclznhz1PA74EK12Byzo+TYvLHtwUZb7Y="}}
 ,"spicetify_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/540416.patch","ha":{"al":2,"vl":"blake3-guXKaESF4U+uPhBeA5zJydlzaUBpkAYdBr9/K4wqIzI="}}
 }

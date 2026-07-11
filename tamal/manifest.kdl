@@ -7,6 +7,7 @@ patches {
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   qylock_flake_compat "https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch" // TODO Remove when merged
   spicetify_fix "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/540416.patch" // TODO Remove when merged
+  ani_cli_fix "https://patch-diff.githubusercontent.com/raw/pystardust/ani-cli/pull/1779.patch"// TODO Remove when merged
 }
 
 inputs {
@@ -175,6 +176,7 @@ inputs {
       repository "https://github.com/pystardust/ani-cli.git"
       branch "master"
     }
+    patches ani_cli_fix
   }
   mpv {
     archive {
