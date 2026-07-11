@@ -18,10 +18,8 @@
   catppuccin.sddm.enable = false;
   programs.qylock = {
     enable = true;
-    theme = "Genshin";
-    themeOptions = {
-      Genshin.backgroundMode = "time";
-    };
+    quickshell.enable = false;
+    theme = "star-rail";
   };
 
   qt.enable = true;

@@ -14,6 +14,7 @@ in
     cursors.enable = true;
     obs.enable = true;
     mangohud.enable = false;
+    hyprlock.enable = false; # Default theme is fine, because it's transparent
   };
 
   home.pointerCursor = {

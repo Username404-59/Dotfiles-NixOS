@@ -13,7 +13,9 @@ let
     peach = "rgb(fab387)";
   };
 
-  find_monitor = id: "$(hyprctl monitors -j | jq -r \".[] | select(.id==${toString id}) | .name\")";
+  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
+
+  find_monitor = id: "$(${hyprctl} monitors -j | jq -r \".[] | select(.id==${toString id}) | .name\")";
 
   mkVideoWallpaper = id:
     let
@@ -56,8 +58,6 @@ let
     # https://wiki.hypr.land/0.55.0/Configuring/Advanced-and-Cool/Animations/#:~:text=Warning
     enabled = false; style = "";
   })})";
-
-  hyprctl = "${pkgs.hyprland}/bin/hyprctl";
 
   # Start(/stop) my backgrounds on (un)plug
   watch-ac-plug = pkgs.writeShellApplication {
@@ -452,4 +452,38 @@ in
       output = (builtins.elemAt config.wayland.windowManager.hyprland.settings.monitor 0).output;
     };
   };
+
+  programs.hyprlock.enable = true;
+  services.hypridle = {
+    enable = true;
+    settings = {
+      general = {
+        after_sleep_cmd = "hyprctl dispatch dpms on";
+        ignore_dbus_inhibit = false;
+        lock_cmd = "hyprlock";
+      };
+      listener = [
+        {
+          on-timeout = "hyprctl hyprsunset gamma_max 10";
+          on-resume = "hyprctl hyprsunset gamma_max 100";
+          timeout = 150;
+        }
+        {
+          on-timeout = "hyprlock";
+          timeout = 600;
+        }
+        {
+          # Turns screen off/on
+          on-resume = "hyprctl dispatch dpms on";
+          on-timeout = "hyprctl dispatch dpms off";
+          timeout = 660;
+        }
+      ] ++ lib.optional isLaptop {
+        on-timeout = "suspend";
+        timeout = 900;
+      };
+    };
+  };
+
+  # TODO Use hyprproxlock to make the screen unlock when I approach my laptop with earbuds / my bangle.js BECAUSE WHY THE FUCK NOT
 }

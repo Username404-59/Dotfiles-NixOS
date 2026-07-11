@@ -48,10 +48,34 @@ in {
         { type = "volume"; }
       ];
       end = lib.optional isLaptop { type = "upower"; format = "{percentage}%"; } ++ [
-        #{ type = "network_manager"; icon_size = 32; }
-        { type = "tray"; icon_size = 32; }
-      ];
-    };
+        {
+          type = "custom";
+          name = "power-menu";
+          class = "power-menu";
+
+          bar = [ { type = "button"; name="power-btn"; label = "󰐥"; on_click = "popup:toggle"; } ];
+            popup = [{
+              type = "box";
+              orientation = "vertical";
+              widgets = [
+                {
+                  type = "box";
+                  orientation = "vertical";
+                  name = "buttons";
+                  widgets = [
+                    { type = "button"; class="power-btn"; label = "󰐥"; on_click = "!shutdown now"; }
+                    { type = "button"; class="power-btn"; label = "󰜉"; on_click = "!reboot"; }
+                    { type = "button"; class="power-btn"; label = "⏸"; on_click = "!suspend"; }
+                    { type = "button"; class="power-btn"; label = "🔒"; on_click = "!hyprlock &"; }
+                  ];
+                }
+              ];
+            }];
+          }
+          #{ type = "network_manager"; icon_size = 32; }
+          { type = "tray"; icon_size = 32; }
+        ];
+      };
     icon_theme = "Papirus-Dark";
   });
 
