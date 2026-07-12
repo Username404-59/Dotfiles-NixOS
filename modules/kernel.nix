@@ -73,7 +73,7 @@
   };
 
   boot.kernel.sysctl = {
-    "vm.swappiness" = 30;
+    #"vm.swappiness" = 30; # Already set by cachyos settings
     "vm.max_map_count" = 16777216;
     "net.ipv4.tcp_congestion_control" = "bbr";
     "net.core.default_qdisc" = "cake_mq";
