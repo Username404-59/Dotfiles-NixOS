@@ -287,82 +287,62 @@ in
       };
 
       # KEYBINDINGS #
-      bind = [
-        { _args = [ "${mainMod} + A"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${terminal}\")") ]; }
-        { _args = [ "${mainMod} + C"  (lib.generators.mkLuaInline "hl.dsp.window.close()") { locked = true; } ]; }
-        { _args = [ "${mainMod} + E"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${fileManager}\")") ]; }
-        { _args = [ "${mainMod} + V"  (lib.generators.mkLuaInline "hl.dsp.window.float({ action = \"toggle\"})") ]; }
-        { _args = [ "${mainMod} + P"  (lib.generators.mkLuaInline "hl.dsp.window.pseudo()") ]; }
-        { _args = [ "${mainMod} + J"  (lib.generators.mkLuaInline "hl.dsp.layout(\"togglesplit\")") ]; }
-        { _args = [ "${mainMod} + F"  (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({ mode = 0, action = \"toggle\" })") ]; }
-        { _args = [ "${mainMod} + R"  (lib.generators.mkLuaInline "hl.dsp.window.fullscreen({ mode = 1, action = \"toggle\" })") ]; }
+      bind = let
+        mkBind = key: lua: opts:
+          { _args = [ key (lib.generators.mkLuaInline lua) ] ++ lib.optional (opts != {}) opts; };
+        exec = cmd: "hl.dsp.exec_cmd(\"${cmd}\")";
+      in [
+        (mkBind "${mainMod} + A" (exec terminal) {})
+        (mkBind "${mainMod} + C" "hl.dsp.window.close()" { locked = true; })
+        (mkBind "${mainMod} + E" (exec fileManager) {})
+        (mkBind "${mainMod} + V" "hl.dsp.window.float({ action = \"toggle\" })" {})
+        (mkBind "${mainMod} + P" "hl.dsp.window.pseudo()" {})
+        (mkBind "${mainMod} + J" "hl.dsp.layout(\"togglesplit\")" {})
+        (mkBind "${mainMod} + F" "hl.dsp.window.fullscreen({ mode = 0, action = \"toggle\" })" {})
+        (mkBind "${mainMod} + R" "hl.dsp.window.fullscreen({ mode = 1, action = \"toggle\" })" {})
 
-        { _args = [ "${mainMod} + left"  (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"left\" })") ]; }
-        { _args = [ "${mainMod} + right" (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"right\" })") ]; }
-        { _args = [ "${mainMod} + up"    (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"up\" })") ]; }
-        { _args = [ "${mainMod} + down"  (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"down\" })") ]; }
+        (mkBind "${mainMod} + left"  "hl.dsp.focus({ direction = \"left\" })"  {})
+        (mkBind "${mainMod} + right" "hl.dsp.focus({ direction = \"right\" })" {})
+        (mkBind "${mainMod} + up"    "hl.dsp.focus({ direction = \"up\" })"    {})
+        (mkBind "${mainMod} + down"  "hl.dsp.focus({ direction = \"down\" })"  {})
 
-        { _args = [ "${mainMod} + S"         (lib.generators.mkLuaInline "hl.dsp.workspace.toggle_special(\"magic\")") ]; }
-        { _args = [ "${mainMod} + SHIFT + S" (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = \"special:magic\" })") ]; }
+        (mkBind "${mainMod} + S"         "hl.dsp.workspace.toggle_special(\"magic\")" {})
+        (mkBind "${mainMod} + SHIFT + S" "hl.dsp.window.move({ workspace = \"special:magic\" })" {})
 
-        { _args = [ "${mainMod} + mouse_down" (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = \"e+1\" })") ]; }
-        { _args = [ "${mainMod} + mouse_up"   (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = \"e-1\" })") ]; }
+        (mkBind "${mainMod} + mouse_down" "hl.dsp.focus({ workspace = \"m+1\" })" {})
+        (mkBind "${mainMod} + mouse_up"   "hl.dsp.focus({ workspace = \"m-1\" })" {})
 
-        { _args = [ "${mainMod} + SUPER_L"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"pkill ${menu_name} || ${menu}\")") ]; }
-        { _args = [ "${mainMod} + W"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"cliphist list | rofi -dmenu | cliphist decode | wl-copy\")") ]; }
-        { _args = [ "CTRL + ALT + A"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"pkill ${menu_name} || ${uwsm} ani-cli --${menu_name}\")") { long_press = true; } ]; }
+        (mkBind "${mainMod} + SUPER_L" (exec "pkill ${menu_name} || ${menu}") {})
+        (mkBind "${mainMod} + W"       (exec "cliphist list | rofi -dmenu | cliphist decode | wl-copy") {})
+        (mkBind "CTRL + ALT + A"       (exec "pkill ${menu_name} || ${uwsm} ani-cli --${menu_name}") { long_press = true; })
 
-        { _args = [ "${mainMod} + mouse:272" (lib.generators.mkLuaInline "hl.dsp.window.drag()") { mouse = true; } ]; }
-        { _args = [ "${mainMod} + mouse:273" (lib.generators.mkLuaInline "hl.dsp.window.resize()") { mouse = true; } ]; }
+        (mkBind "${mainMod} + mouse:272" "hl.dsp.window.drag()"   { mouse = true; })
+        (mkBind "${mainMod} + mouse:273" "hl.dsp.window.resize()" { mouse = true; })
 
-        { _args = [ "XF86AudioRaiseVolume"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+\")") { locked = true; repeating = true; } ]; }
-        { _args = [ "XF86AudioLowerVolume"  (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-\")") { locked = true; repeating = true; } ]; }
-        { _args = [ "XF86AudioMute"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle\")") { locked = true; repeating = true; } ]; }
-        { _args = [ "XF86AudioMicMute"      (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle\")") { locked = true; repeating = true; } ]; }
-        { _args = [ "XF86MonBrightnessUp"   (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprctl hyprsunset gamma +5\")") { locked = true; repeating = true; } ]; }
-        { _args = [ "XF86MonBrightnessDown" (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprctl hyprsunset gamma -5\")") { locked = true; repeating = true; } ]; }
+        (mkBind "XF86AudioRaiseVolume"  (exec "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+")  { locked = true; repeating = true; })
+        (mkBind "XF86AudioLowerVolume"  (exec "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")       { locked = true; repeating = true; })
+        (mkBind "XF86AudioMute"         (exec "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")      { locked = true; repeating = true; })
+        (mkBind "XF86AudioMicMute"      (exec "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle")    { locked = true; repeating = true; })
+        (mkBind "XF86MonBrightnessUp"   (exec "hyprctl hyprsunset gamma +5")                     { locked = true; repeating = true; })
+        (mkBind "XF86MonBrightnessDown" (exec "hyprctl hyprsunset gamma -5")                     { locked = true; repeating = true; })
 
-        { _args = [ "XF86AudioNext"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl next\")") { locked = true; } ]; }
-        { _args = [ "XF86AudioPause"        (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl play-pause\")") { locked = true; } ]; }
-        { _args = [ "XF86AudioPlay"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl play-pause\")") { locked = true; } ]; }
-        { _args = [ "XF86AudioPrev"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"playerctl previous\")") { locked = true; } ]; }
+        (mkBind "XF86AudioNext"  (exec "playerctl next")       { locked = true; })
+        (mkBind "XF86AudioPause" (exec "playerctl play-pause") { locked = true; })
+        (mkBind "XF86AudioPlay"  (exec "playerctl play-pause") { locked = true; })
+        (mkBind "XF86AudioPrev"  (exec "playerctl previous")   { locked = true; })
 
-        { _args = [ "${mainMod} + PRINT"    (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprshot -m window\")") ]; }
-        { _args = [ "PRINT"                 (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprshot -m output\")") { locked = true; } ]; }
-        { _args = [ "SHIFT + PRINT"         (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"hyprshot -m region\")") ]; }
-
-        /*
-        { _args = ["${mainMod} + 1" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 2" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 3" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 4" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 5" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 6" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 7" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 8" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 9" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + 0" (lib.generators.mkLuaInline ) ]; }
-
-        { _args = ["${mainMod} + SHIFT + 1" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 2" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 3" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 4" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 5" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 6" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 7" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 8" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 9" (lib.generators.mkLuaInline ) ]; }
-        { _args = ["${mainMod} + SHIFT + 0" (lib.generators.mkLuaInline ) ]; }
-        */
-      ]; /* ++ (
-        builtins.concatLists (builtins.genList (i:
-          in [
-            { _args = ["${mainMod} + ${toString i}"         (lib.generators.mkLuaInline ) "hl.dsp.focus({ workspace = ${toString i} })"]; }
-            { _args = ["${mainMod} + SHIFT + ${toString i}" (lib.generators.mkLuaInline ) "hl.dsp.window.move({ workspace = ${toString i} })"]; }
-          ]
-        )
-        9)
-      ); */
+        (mkBind "${mainMod} + PRINT" (exec "hyprshot -m window") {})
+        (mkBind "PRINT"              (exec "hyprshot -m output") { locked = true; })
+        (mkBind "SHIFT + PRINT"      (exec "hyprshot -m region") {})
+      ] ++ lib.concatMap (i:
+        let
+          ws   = toString i;
+          code = toString (i + 9);
+        in [
+          (mkBind "${mainMod} + code:${code}"         "hl.dsp.focus({ workspace = ${ws} })"       {})
+          (mkBind "${mainMod} + SHIFT + code:${code}" "hl.dsp.window.move({ workspace = ${ws} })" {})
+        ]
+      ) (lib.range 1 9);
 
       # WINDOW RULES #
       window_rule = [
