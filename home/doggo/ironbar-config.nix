@@ -7,6 +7,7 @@ in {
     monitors.${if isLaptop then "eDP-1" else "DP-3"} = {
       position = "bottom";
       height = 32;
+      popup_autohide = true;
       start = [
         {
           type = "menu";
@@ -53,7 +54,7 @@ in {
           name = "power-menu";
           class = "power-menu";
 
-          bar = [ { type = "button"; name="power-btn"; label = "󰐥"; on_click = "popup:toggle"; } ];
+          bar = [ { type = "button"; name = "power-btn"; label = "󰐥"; on_click = "popup:toggle"; } ];
             popup = [{
               type = "box";
               orientation = "vertical";
