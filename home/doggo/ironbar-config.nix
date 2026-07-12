@@ -66,7 +66,7 @@ in {
                   widgets = [
                     { type = "button"; class="power-btn"; label = "󰐥"; on_click = "!shutdown now"; }
                     { type = "button"; class="power-btn"; label = "󰜉"; on_click = "!reboot"; }
-                    { type = "button"; class="power-btn"; label = "⏸"; on_click = "!suspend"; }
+                    { type = "button"; class="power-btn"; label = "⏸"; on_click = "!systemctl suspend"; }
                     { type = "button"; class="power-btn"; label = "🔒"; on_click = "!hyprlock &"; }
                   ];
                 }
