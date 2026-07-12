@@ -103,6 +103,7 @@ in
         (extension "uaswitcher" "user-agent-switcher@ninetailed.ninja" "navbar")
         (extension "cookie-editor" "{c3c10168-4186-445c-9c5b-63f12b8e2c87}" "navbar")
         (extension "re-enable-right-click" "{278b0ae0-da9d-4cc6-be81-5aa7f3202672}" "navbar")
+        (extension "buster-captcha-solver" "{e58d3966-3d76-4cd9-8552-1582fbc800c1}" "menupanel")
 
         # Website specific stuff
         (extension "lovely-forks" "github-forks-addon@musicallyut.in" "menupanel")
