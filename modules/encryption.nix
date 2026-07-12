@@ -131,4 +131,12 @@ in {
       keySize = 512;
     };
   }];
+
+  # Hibernation doesn't work with swap random encryption
+  systemd.sleep.settings.Sleep = {
+    AllowSuspend = "yes";
+    AllowHibernation = "no";
+    AllowHybridSleep = "no";
+    AllowSuspendThenHibernate = "no";
+  };
 }
