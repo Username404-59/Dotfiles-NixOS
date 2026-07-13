@@ -45,9 +45,9 @@
   };
 
   hardware.bluetooth = {
-    enable = isLaptop;
+    enable = true;
     powerOnBoot = false;
   };
 
-  services.blueman.enable = isLaptop;
+  services.blueman.enable = true;
 }
