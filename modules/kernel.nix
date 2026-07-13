@@ -35,6 +35,7 @@
     };
     
     new-lg4ff.enable = true;
+    xpadneo.enable = true;
   };
 
   boot.kernelPackages = (
