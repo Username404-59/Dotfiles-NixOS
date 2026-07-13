@@ -31,6 +31,6 @@
 "ani_cli_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/pystardust/ani-cli/pull/1779.patch","ha":{"al":2,"vl":"blake3-uYRzXSB1KGEH3RGPjqjLMBhuW88uxFgIqZFUNGX1ddU="}}
 ,"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
 ,"qylock_flake_compat":{"ur":"https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch","ha":{"al":2,"vl":"blake3-n7MUAS1KnOPclznhz1PA74EK12Byzo+TYvLHtwUZb7Y="}}
-,"spicetify_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/540416.patch","ha":{"al":2,"vl":"blake3-guXKaESF4U+uPhBeA5zJydlzaUBpkAYdBr9/K4wqIzI="}}
+,"spicetify_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/540416.patch","ha":{"al":2,"vl":"blake3-dZAs6Jymb55+KIGbUPDHOAsK+KizD9KdJGEBTFe/sS8="}}
 }
 }
