@@ -37,7 +37,6 @@ rec {
     git git-lfs
     curl
     wget
-    neovim
     fastfetch
     htop
     killall
@@ -97,6 +96,11 @@ rec {
     };
 
     partition-manager.enable = true;
+
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+    };
   };
 
   environment.sessionVariables = rec {
