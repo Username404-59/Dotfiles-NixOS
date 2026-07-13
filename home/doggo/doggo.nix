@@ -150,15 +150,6 @@
       ];
     };
 
-    # Shell prompt stuff
-    starship = {
-      enable = true;
-      presets = [
-        "nerd-font-symbols"
-        "jetpack"
-      ];
-    };
-
     # To show indications when a command is not found but exists in pkgs
     nix-index.enable = true;
   };

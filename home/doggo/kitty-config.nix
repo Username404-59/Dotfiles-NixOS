@@ -9,7 +9,7 @@
     };
     settings = {
       shell = "fish";
-      font_family = "Fira Code Regular";
+      font_family = "FiraCode Nerd Font Mono";
       bold_font = "auto";
       italic_font = "auto";
       bold_italic_font = "auto";
@@ -41,5 +41,14 @@
     interactiveShellInit = ''
       set fish_greeting # Disables greeting
     '';
+  };
+
+  # Shell prompt stuff
+  programs.starship = {
+    enable = true;
+    presets = [
+      "nerd-font-symbols"
+      "jetpack"
+    ];
   };
 }
