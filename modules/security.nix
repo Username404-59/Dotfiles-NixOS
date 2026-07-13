@@ -23,7 +23,6 @@
       sudo.source = lib.getExe config.security.run0.sudo-shim.package;
       sudo.owner = "root";
       sudo.group = "wheel";
-      sudo.permissions = "g+x"; # This way only the wheel group can use the sudo shim
     }
     # Disable setuid for most wrappers, for extra security MUEHEHE 😈
     (lib.mkMerge (map (name: {
