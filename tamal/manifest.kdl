@@ -6,7 +6,6 @@ patches {
   kservice_fix "./patches/kservice_fix.patch"
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   qylock_flake_compat "https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch" // TODO Remove when merged
-  spicetify_fix "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/540416.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -14,11 +13,10 @@ inputs {
     archive {
       url "https://github.com/NixOS/nixpkgs/archive/{{fresh_value}}.tar.gz"
     }
-    patches spicetify_fix
     hash algorithm=SHA-256
     eval-time fetch
     fresh-cmd {
-      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
+      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable-small"
       | cut -f1
     }
   }
