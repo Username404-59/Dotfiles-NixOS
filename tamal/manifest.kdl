@@ -170,6 +170,15 @@ inputs {
       | cut -f1
     }
   }
+  nixvim {
+    archive {
+      url "https://github.com/nix-community/nixvim/archive/{{fresh_value}}.tar.gz"
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/nix-community/nixvim.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
 
   // Packages
   ani-cli-git {

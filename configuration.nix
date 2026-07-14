@@ -78,6 +78,7 @@ in
 
       ./common/ollama-config.nix
       ./common/amd-ai-config.nix
+      ./common/neovim-config.nix
 
       ./machines/${
         if isLaptop then "laptop" else "desktop"

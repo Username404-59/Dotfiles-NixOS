@@ -96,13 +96,6 @@ rec {
     };
 
     partition-manager.enable = true;
-
-    neovim = {
-      enable = true;
-      defaultEditor = true;
-      viAlias = true;
-      vimAlias = true;
-    };
   };
 
   environment.sessionVariables = rec {
