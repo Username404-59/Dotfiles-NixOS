@@ -9,6 +9,7 @@
     colorschemes.catppuccin.enable = true;
     plugins = {
       transparent.enable = true;
+      lualine.enable = true;
     };
 
     globals = {
