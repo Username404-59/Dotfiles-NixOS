@@ -7,7 +7,7 @@
     enable = true;
     enableNPU = false;
     enableFastFlowLM = false; # My laptop's hawk point NPU isn't supported
-    enableLemonade = true;
+    enableLemonade = true; # Note: the default web port is 13305
     enableROCm = true;
     enableVulkan = true;
     enableImageGen = true;
