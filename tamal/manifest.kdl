@@ -16,7 +16,7 @@ inputs {
     hash algorithm=SHA-256
     eval-time fetch
     fresh-cmd {
-      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable-small"
+      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
       | cut -f1
     }
   }

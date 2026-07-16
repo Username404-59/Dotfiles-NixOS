@@ -1,6 +1,6 @@
 {"v":"1.2.0"
 ,"i":{
-"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/5b6151d7156c90731f5723e0751d2b8684c62433.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-SdAl2p+bZEwh5akQ0vkaKBnS6yQduvj7kf24q6FHvxY="},"fv":"5b6151d7156c90731f5723e0751d2b8684c62433","ps":[]}
+"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/753cc8a3a87467296ddd1fa93f0cc3e81120ee46.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-KesHgItiZPgGX740axSiQLcIQ8D24MDqNpkKYWIek8k="},"fv":"753cc8a3a87467296ddd1fa93f0cc3e81120ee46","ps":[]}
 ,"ani-cli-git":{"sn":"ani-cli-git-src","kd":[2,{"ft":0,"rp":"https://github.com/pystardust/ani-cli.git","ms":[],"rf":[1,"fix"],"dt":"2026-07-14T19:01:40+02:00","sm":false,"lf":false,"lr":"7ecfcc799d932eb8fa0a8ad53c52e85d0e3942e3"}],"ha":{"al":2,"vl":"blake3-pPqe+V0iAt3Eo7VdTNLoWB7RdtWMuzU3MtcoAfNNIRU="},"fv":"7ecfcc799d932eb8fa0a8ad53c52e85d0e3942e3","ps":[]}
 ,"catppuccin":{"sn":"catppuccin-src","kd":[1,{"ft":0,"ur":"https://github.com/catppuccin/nix/archive/96799f24cf1366fe88e1293c3d27521a8f2129cf.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-p9BmEsFc7wNsJOwaStyzOqEH6AOC8R53LIQuGprN9Qg="},"fv":"96799f24cf1366fe88e1293c3d27521a8f2129cf","ps":[]}
 ,"catppuccin-godot":{"sn":"catppuccin-godot-src","kd":[0,{"ft":0,"ur":"https://raw.githubusercontent.com/catppuccin/godot/d8b72b679078f0103a5e5c1ef793c1d698a563b1/themes/Catppuccin Mocha.tet","ms":[]}],"ha":{"al":2,"vl":"blake3-WVY58qsBKJlGvir08RYlS+RcjdhFvXz+7YHVfEr6tes="},"fv":"d8b72b679078f0103a5e5c1ef793c1d698a563b1","ps":[]}
