@@ -42,109 +42,76 @@ inputs {
   }
 
   nix-cachyos-kernel {
-    archive {
-      url "https://github.com/xddxdd/nix-cachyos-kernel/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/xddxdd/nix-cachyos-kernel.git" --refs "refs/heads/release"
-      | cut -f1
+    git {
+      repository "https://github.com/xddxdd/nix-cachyos-kernel.git"
+      branch "release"
     }
   }
 
   nix-cachyos-settings {
-    archive {
-      url "https://github.com/Daaboulex/cachyos-settings-nix/archive/{{fresh_value}}.tar.gz"
+    git {
+      repository "https://github.com/Daaboulex/cachyos-settings-nix.git"
+      branch "main"
     }
     patches adios
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/Daaboulex/cachyos-settings-nix.git" --refs "refs/heads/main"
-      | cut -f1
-    }
   }
 
   dolphin-overlay {
-    archive {
-      url "https://github.com/rumboon/dolphin-overlay/archive/{{fresh_value}}.tar.gz"
+    git {
+      repository "https://github.com/rumboon/dolphin-overlay.git"
+      branch "main"
     }
     patches kservice_fix
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/rumboon/dolphin-overlay.git" --refs "refs/heads/main"
-      | cut -f1
-    }
   }
 
   nix-citizen {
-    archive {
-      url "https://github.com/LovingMelody/nix-citizen/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/LovingMelody/nix-citizen.git" --refs "refs/heads/main"
-      | cut -f1
+    git {
+      repository "https://github.com/LovingMelody/nix-citizen.git"
+      branch "main"
     }
   }
 
   nix-gaming {
-    archive {
-      url "https://github.com/fufexan/nix-gaming/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/fufexan/nix-gaming.git" --refs "refs/heads/master"
-      | cut -f1
+    git {
+      repository "https://github.com/fufexan/nix-gaming.git"
+      branch "master"
     }
   }
 
   nix-spicetify {
-    archive {
-      url "https://github.com/Gerg-L/spicetify-nix/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/Gerg-L/spicetify-nix.git" --refs "refs/heads/master"
-      | cut -f1
+    git {
+      repository "https://github.com/Gerg-L/spicetify-nix.git"
+      branch "master"
     }
   }
   spotneotify {
-    archive {
-      url "https://github.com/0lswitcher/spotneotify/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/0lswitcher/spotneotify.git" --refs "refs/heads/main"
-      | cut -f1
+    git {
+      repository "https://github.com/0lswitcher/spotneotify.git"
+      branch "main"
     }
   }
   nix-amd-ai {
-    archive {
-      url "https://github.com/noamsto/nix-amd-ai/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/noamsto/nix-amd-ai.git" --refs "refs/heads/main"
-      | cut -f1
+    git {
+      repository "https://github.com/noamsto/nix-amd-ai.git"
+      branch "main"
     }
   }
   nix-index-database {
-    archive {
-      url "https://github.com/nix-community/nix-index-database/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/nix-community/nix-index-database.git" --refs "refs/heads/main"
-      | cut -f1
+    git {
+      repository "https://github.com/nix-community/nix-index-database.git"
+      branch "main"
     }
   }
   nixcord {
-    archive {
-      url "https://github.com/FlameFlag/nixcord/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/FlameFlag/nixcord.git" --refs "refs/heads/main"
-      | cut -f1
+    git {
+      repository "https://github.com/FlameFlag/nixcord.git"
+      branch "main"
     }
   }
   nix-flatpak {
-    archive {
-      url "https://github.com/gmodena/nix-flatpak/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/gmodena/nix-flatpak.git" --refs "refs/heads/main"
-      | cut -f1
+    git {
+      repository "https://github.com/gmodena/nix-flatpak.git"
+      branch "main"
     }
   }
   hytale-launcher {
@@ -168,12 +135,9 @@ inputs {
     }
   }
   nixvim {
-    archive {
-      url "https://github.com/nix-community/nixvim/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/nix-community/nixvim.git" --refs "refs/heads/main"
-      | cut -f1
+    git {
+      repository "https://github.com/nix-community/nixvim.git"
+      branch "main"
     }
   }
 
@@ -241,7 +205,7 @@ inputs {
   // Others
   catppuccin-godot {
     file {
-      url "https://raw.githubusercontent.com/catppuccin/godot/{{fresh_value}}/themes/Catppuccin Mocha.tet"
+      url "https://raw.githubusercontent.com/catppuccin/godot/{{fresh_value}}/themes/Catppuccin%20Mocha.tet"
     }
     fresh-cmd {
       $ git ls-remote --branches "https://github.com/catppuccin/godot.git" --refs "refs/heads/main"
