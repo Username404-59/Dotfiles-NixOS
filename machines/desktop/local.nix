@@ -33,7 +33,7 @@
   boot.loader.limine.extraEntries = ''
     /Windows
       protocol: efi
-      path: label(windows_efi):/EFI/Microsoft/Boot/bootmgfw.efi
+      path: fslabel(windows_efi):/EFI/Microsoft/Boot/bootmgfw.efi
   '';
 
   powerManagement.cpuFreqGovernor = "performance";
