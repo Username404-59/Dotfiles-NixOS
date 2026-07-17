@@ -16,6 +16,10 @@
     "r8169"
   ];
 
+  boot.extraModprobeConfig = ''
+    options r8125 aspm=off
+  '';
+
   # CRU screen overclocking
   hardware.firmware = [
     (pkgs.runCommandLocal "PHL-edid-77hz" {} ''
