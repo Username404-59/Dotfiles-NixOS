@@ -4,21 +4,13 @@
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     (functions.mkPatchedAuto nct6687d)
-    r8125
   ];
 
   boot.kernelModules = [
     "nct6687" # d disappears in actual module name
-    "r8125" # replaces r8169
   ];
 
-  boot.blacklistedKernelModules = [
-    "r8169"
-  ];
-
-  boot.extraModprobeConfig = ''
-    options r8125 aspm=off
-  '';
+  boot.blacklistedKernelModules = [];
 
   # CRU screen overclocking
   hardware.firmware = [
