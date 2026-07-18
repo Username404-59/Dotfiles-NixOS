@@ -68,7 +68,7 @@ rec {
 
     lact.enable = true;
 
-    sunshine = {
+    sunshine = { # Default port: 47990
       enable = !isLaptop;
       autoStart = true;
       capSysAdmin = true;
