@@ -110,6 +110,7 @@ in
         (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "menupanel")
         (extension "ttv-lol-pro" "{76ef94a4-e3d0-4c6f-961a-d38a429a332b}" "navbar")
         (extension "btroblox" "btroblox@antiboomz.com" "menupanel")
+        (extension "sponsorblock" "sponsorBlocker@ajay.app" "navbar")
 
         # Scripting / styling
         (extension "styl-us" "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" "navbar")
