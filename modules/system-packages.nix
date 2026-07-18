@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nixtamal, ... }:
+{ config, pkgs, lib, nixtamal, isLaptop, ... }:
 
 let
   functions = rec {
@@ -67,6 +67,13 @@ rec {
     };
 
     lact.enable = true;
+
+    sunshine = {
+      enable = !isLaptop;
+      autoStart = true;
+      capSysAdmin = true;
+      openFirewall = true;
+    };
   };
 
   programs = {

@@ -131,7 +131,7 @@ in
   users.users."doggo" = {
     isNormalUser = true;
     description = "Charlie Quinet";
-    extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" ];
+    extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" "uinput" ];
   };
 
   home-manager.extraSpecialArgs = {
