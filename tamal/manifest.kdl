@@ -145,7 +145,7 @@ inputs {
   ani-cli-git {
     git {
       repository "https://github.com/pystardust/ani-cli.git"
-      branch "master"
+      branch "fix" // TODO Switch back to master branch when merged
     }
   }
   mpv {
