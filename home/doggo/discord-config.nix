@@ -6,7 +6,7 @@
   programs.nixcord = {
     enable = true;
     discord = {
-      branch = "ptb";
+      branch = "stable";
       openASAR.enable = true;
       equicord.enable = true;
       krisp.enable = true;
