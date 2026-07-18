@@ -59,7 +59,7 @@
   boot.blacklistedKernelModules = [];
 
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
-    enable = true;
+    enable = false;
     scheduler = "scx_lavd";
     extraArgs = [ "--${if isLaptop then "autopower" else "performance"}" ];
 
