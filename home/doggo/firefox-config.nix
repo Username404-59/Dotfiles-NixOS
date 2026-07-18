@@ -107,9 +107,9 @@ in
 
         # Website specific stuff
         (extension "lovely-forks" "github-forks-addon@musicallyut.in" "menupanel")
-        (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "navbar")
+        (extension "return-youtube-dislikes" "{762f9885-5a13-4abd-9c77-433dcd38b8fd}" "menupanel")
         (extension "ttv-lol-pro" "{76ef94a4-e3d0-4c6f-961a-d38a429a332b}" "navbar")
-        (extension "btroblox" "btroblox@antiboomz.com" "navbar")
+        (extension "btroblox" "btroblox@antiboomz.com" "menupanel")
 
         # Scripting / styling
         (extension "styl-us" "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" "navbar")
@@ -117,7 +117,7 @@ in
         (extension "firefox-color" "FirefoxColor@mozilla.com" "menupanel") # Note: automatically themed by catppuccin
 
         # Others
-        (extension "jetbrains-toolbox" "{bf9e77ee-c405-4dd7-9bed-2f55e448d19a}" "navbar")
+        (extension "jetbrains-toolbox" "{bf9e77ee-c405-4dd7-9bed-2f55e448d19a}" "menupanel")
         (extension "10ten-ja-reader" "{59812185-ea92-4cca-8ab7-cfcacee81281}" "menupanel")
         (extension "wayback-machine_new" "wayback_machine@mozilla.org" "navbar")
         (extension "star-citizen-ccu-game" "{878c5814-8eb9-4262-9b4b-f46e74dd7cfa}" "navbar")
