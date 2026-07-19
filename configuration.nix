@@ -92,6 +92,7 @@ in
   home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
   nix.settings.auto-optimise-store = true;
   nix.settings.experimental-features = [ "nix-command" "blake3-hashes" ]; # blake3 is for nixtamal
+  nix.package = pkgs.nixVersions.git;
 
   catppuccin = {
     autoEnable = true;
