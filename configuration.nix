@@ -7,7 +7,7 @@
   sudo nix-env --install git
 
   To rebuild for the first time:
-  sudo nixos-rebuild switch --option extra-experimental-features "blake3-hashes"
+  sudo nixos-rebuild switch --option extra-experimental-features "blake3-hashes auto-allocate-uids"
 
   To force nixtamal lock on specific input:
   sudo nixtamal lock --force specific_input
@@ -90,10 +90,13 @@ in
 
   home-manager.useUserPackages = true; # Puts user packages in /etc/profiles
   home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
-  nix.settings.auto-optimise-store = true;
-  nix.settings.experimental-features = [ "nix-command" "blake3-hashes" ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
-  nix.channel.enable = false; # Not needed / useless with nixtamal
   nix.package = pkgs.nixVersions.git;
+  nix.channel.enable = false; # Not needed / useless with nixtamal
+  nix.settings = {
+    auto-optimise-store = true;
+    experimental-features = [ "nix-command" "blake3-hashes" "auto-allocate-uids" ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
+    auto-allocate-uids = true;
+  };
 
   catppuccin = {
     autoEnable = true;
