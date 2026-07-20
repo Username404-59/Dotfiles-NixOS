@@ -36,6 +36,7 @@ let
             --no-playlist \
             --audio-quality 0 \
             --merge-output-format ${format} \
+            --no-embed-thumbnail \
             -o "$file" \
             "https://www.youtube.com/watch?v=${id}" >&2
         fi
