@@ -28,6 +28,7 @@
         fixYoutubeEmbeds.enable = true;
         youtubeAdblock.enable = true;
         gifPaste.enable = true;
+        tenorGifSearch.enable = true;
         clipUpload.enable = true;
         clipsEnhancements.enable = true;
         newPluginsManager.enable = true;
