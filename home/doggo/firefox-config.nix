@@ -81,6 +81,8 @@ in
         # Performance etc
         "gfx.webrender.all" = lock-true;
         "layers.gpu-process.force-enabled" = lock-true;
+        "media.hardware-video-decoding-vulkan.enabled" = lock-true;
+        "media.hardware-video-decoding-vulkan.direct-export.enabled" = lock-true;
         "network.trr.mode" = 2; # Uses DNS over HTTPS which can maybe make my page loads faster
       };
 
