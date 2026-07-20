@@ -13,7 +13,7 @@ in
 {
   programs.firefox = {
     configPath = "${config.home.homeDirectory}/.mozilla/firefox";
-    package = pkgs.firefox-bin;
+    package = pkgs.firefox-beta;
     enable = true;
     languagePacks = [ "fr-fr" ];
     profiles = {
