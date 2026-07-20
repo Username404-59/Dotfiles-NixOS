@@ -90,7 +90,7 @@ in
 
   home-manager.useUserPackages = true; # Puts user packages in /etc/profiles
   home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
-  nix.package = pkgs.nixVersions.git;
+  nix.package = pkgs.nixVersions.latest;
   nix.channel.enable = false; # Not needed / useless with nixtamal
   nix.settings = {
     auto-optimise-store = true;
