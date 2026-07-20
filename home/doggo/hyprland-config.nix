@@ -383,11 +383,12 @@ in
         # Chromakey with Catppuccin Mocha Base (the hex values each divided by 255 -> 0.1176, 0.1176, 0.1804)
         {
           name = "transparency";
-          match.class = "^(${builtins.concatStringsSep "|" [
+          match.class = "^(${builtins.concatStringsSep "|" [ # To check app classes: "hyprctl clients"
             "spotify" "jetbrains-.*"
             "io.github.ilya_zlobintsev.LACT"
             "org.prismlauncher.PrismLauncher"
             "com.obsproject.Studio"
+            "${config.programs.chromium.package.pname}-browser"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 
