@@ -15,7 +15,7 @@ in
     configPath = "${config.home.homeDirectory}/.mozilla/firefox";
     package = pkgs.firefox-beta;
     enable = true;
-    languagePacks = [ "fr-fr" ];
+    languagePacks = [ "fr" ];
     profiles = {
       default = {
         id = 0;
