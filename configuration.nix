@@ -91,7 +91,8 @@ in
   home-manager.useUserPackages = true; # Puts user packages in /etc/profiles
   home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
   nix.package = pkgs.nixVersions.latest;
-  nix.channel.enable = false; # Not needed / useless with nixtamal
+  nix.channel.enable = false; # Channels are not needed / useless with nixtamal
+  nix.nixPath = [ "nixpkgs=${nixtamal.nixpkgs}" ]; # Fixes <nixpkgs> (which nixtamal uses for some reason when fetching patches as of writing)
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [ "nix-command" "blake3-hashes" "auto-allocate-uids" ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
