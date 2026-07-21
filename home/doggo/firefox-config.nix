@@ -96,6 +96,9 @@ in
         "media.hardware-video-decoding-vulkan.enabled" = lock-true;
         "media.hardware-video-decoding-vulkan.direct-export.enabled" = lock-true;
         "network.trr.mode" = 2; # Uses DNS over HTTPS which can maybe make my page loads faster
+
+        # For web apps
+        "browser.taskbarTabs.enabled" = lock-true;
       };
 
       ExtensionSettings = let
@@ -141,4 +144,30 @@ in
   };
 
   services.psd.enable = true; # Firefox in RAM, because why not
-}
+} // (let
+  taskbarTabs = [
+    {
+      id = "14e802b4-7fc3-4b8a-b091-f2b52e025f64";
+      scopes = [ { hostname = "www.espruino.com"; prefix = "/ide/"; } ];
+      startUrl = "https://www.espruino.com/ide/";
+      userContextId = 0;
+      name = "Espruino Web IDE";
+    }
+  ];
+in {
+  home.file.".mozilla/firefox/default/taskbartabs/taskbartabs.json".text = builtins.toJSON {
+    version = 1;
+    inherit taskbarTabs;
+  };
+
+  xdg.desktopEntries = builtins.listToAttrs (
+    builtins.map (entry: {
+      name = "firefox-taskbartabs-${entry.id}";
+      value = {
+        type = "Application";
+        inherit (entry) name;
+        exec = "${lib.getExe config.programs.firefox.package} -taskbar-tab ${entry.id} -new-window ${entry.startUrl}";
+      };
+    }) taskbarTabs
+  );
+})

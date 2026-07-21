@@ -389,6 +389,7 @@ in
             "org.prismlauncher.PrismLauncher"
             "com.obsproject.Studio"
             "${config.programs.chromium.package.pname}-browser"
+            "${config.programs.firefox.package.pname}.webapp-.*"
             "libreoffice-.*"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
