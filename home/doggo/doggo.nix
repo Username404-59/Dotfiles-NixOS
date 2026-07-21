@@ -74,6 +74,7 @@
     ./discord-config.nix
     ./firefox-config.nix
     ./chromium-config.nix
+    ./mime-config.nix
     ./mpv-config.nix
     ./spicetify-config.nix
     ./flatpak-packages.nix
