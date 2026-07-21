@@ -55,6 +55,18 @@ in
               "easylist-notifications"
             ];
           };
+
+          "addon@darkreader.org".settings = {
+            enabled = true;
+            syncSettings = false;
+            theme = {
+              mode = 1;
+              engine = "dynamicTheme";
+              darkSchemeBackgroundColor = "#1e1e2e";  # Catppuccin Mocha background
+              darkSchemeTextColor = "#cdd6f4";        # Catppuccin Mocha text
+              selectionColor = "#585b70";             # Catppuccin Mocha selection
+            };
+          };
         };
       };
     };
