@@ -1,4 +1,4 @@
-{ nixtamal, pkgs, ... }:
+{ nixtamal, pkgs, config, ... }:
 
 let
   mkBundleFromNixtamal = name: {
@@ -46,9 +46,22 @@ in
         Context.filesystems = [
           "/nix/store:ro"
           "xdg-config/MangoHud:ro"
+          # Theming
+          "${config.home.homeDirectory}/.icons:ro"
+          "${config.home.homeDirectory}/.themes:ro"
+          "xdg-config/fontconfig:ro"
+          "xdg-config/gtkrc:ro"
+          "xdg-config/gtkrc-2.0:ro"
+          "xdg-config/gtk-2.0:ro"
+          "xdg-config/gtk-3.0:ro"
+          "xdg-config/gtk-4.0:ro"
+          "xdg-data/fonts:ro"
+          "xdg-data/themes:ro"
+          "xdg-data/icons:ro"
         ];
         Environment = {
           MANGOHUD = "1";
+          GTK_THEME = config.home.sessionVariables.GTK_THEME;
         };
       };
 
