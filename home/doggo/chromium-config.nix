@@ -1,8 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, functions, ... }:
 
 {
   programs.chromium = {
-    enable = false;
-    package = pkgs.chromium;
+    enable = true;
+    package = functions.wrapWithNoPreload pkgs.chromium false;
   };
 }

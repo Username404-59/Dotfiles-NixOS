@@ -28,9 +28,10 @@ let
       NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " ${flags}"; # https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
     });
 
-    # Fixes stuff that doesn't work with preloaded mimalloc
-    wrapWithNoPreload = let
-      bwrap_launcher = prog: pkgs.writeShellScript "bwrap-launcher-${prog}" ''
+    # Fixes stuff that doesn't work with preloaded mimalloc.
+    # With 2 modes because the first thing I wrote doesn't work for chromium...
+    wrapWithNoPreload = pkg: classic: let
+      bwrap_launcher = prog: pkgs.writeShellScript "bwrap-launcher-${pkg.pname}" ''
         # To avoid re-wrapping in case I'm already inside the sandbox
         if [[ -n "''${_NIX_NOPRELOAD_ACTIVE:-}" ]]; then
           exec "${prog}.orig" "$@"
@@ -45,17 +46,43 @@ let
         done
         exec ${lib.getExe pkgs.bubblewrap} --dev-bind / / --tmpfs /etc $etc_ro_binds -- ${prog}.orig "$@"
       '';
-    in pkg: pkg.overrideAttrs (old: {
-      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.makeWrapper pkgs.util-linux ];
-      buildInputs = (old.buildInputs or []) ++ [ pkgs.bubblewrap ];
-
-      postFixup = let
-        exe = baseNameOf (lib.getExe pkg);
-      in (old.postFixup or "") + ''
-        mv $out/bin/${exe} $out/bin/${exe}.orig
-        makeWrapper ${bwrap_launcher exe} $out/bin/${exe}
+      exe = baseNameOf (lib.getExe pkg);
+      wrapper_stuff = ''
+        mv "$out/bin/${exe}" "$out/bin/${exe}.orig"
+        makeWrapper ${bwrap_launcher exe} "$out/bin/${exe}"
       '';
-    });
+      nativeBuildInputs = [
+        pkgs.makeWrapper
+        pkgs.util-linux
+      ];
+      buildInputs = [
+        pkgs.bubblewrap
+      ];
+    in if classic then
+      pkg.overrideAttrs (old: {
+        nativeBuildInputs = (old.nativeBuildInputs or []) ++ nativeBuildInputs;
+        buildInputs = (old.buildInputs or []) ++ buildInputs;
+
+        postFixup = let
+          exe = baseNameOf (lib.getExe pkg);
+        in (old.postFixup or "") + wrapper_stuff;
+      })
+    else pkgs.symlinkJoin {
+      name = "${pkg.name}-no-preload";
+      paths = [ pkg ];
+
+      inherit nativeBuildInputs;
+      inherit buildInputs;
+
+      postBuild = wrapper_stuff;
+
+      pname = pkg.pname or pkg.name;
+      version = pkg.version or "";
+      meta = pkg.meta or {};
+      passthru = (pkg.passthru or {}) // {
+        inherit (pkg) override;
+      };
+    };
   };
 in
 rec {

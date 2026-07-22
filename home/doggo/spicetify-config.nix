@@ -8,7 +8,7 @@ in
 
   programs.spicetify = {
     enable = true;
-    spotifyPackage = functions.wrapWithNoPreload pkgs.spotify;
+    spotifyPackage = functions.wrapWithNoPreload pkgs.spotify true;
 
     theme = {
       name = "spotneotify";

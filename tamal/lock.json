@@ -1,6 +1,6 @@
 {"v":"1.2.0"
 ,"i":{
-"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/241313f4e8e508cb9b13278c2b0fa25b9ca27163.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-vlHUuqAcbcH2RKmHbPiuQzbv1pnzzavXnI62RD0bqCU="},"fv":"241313f4e8e508cb9b13278c2b0fa25b9ca27163","ps":["mimalloc_update"]}
+"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/241313f4e8e508cb9b13278c2b0fa25b9ca27163.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-vlHUuqAcbcH2RKmHbPiuQzbv1pnzzavXnI62RD0bqCU="},"fv":"241313f4e8e508cb9b13278c2b0fa25b9ca27163","ps":["mimalloc_update","firefox_update"]}
 ,"ani-cli-git":{"sn":"ani-cli-git-src","kd":[2,{"ft":0,"rp":"https://github.com/pystardust/ani-cli.git","ms":[],"rf":[1,"fix"],"dt":"2026-07-21T20:15:44+02:00","sm":false,"lf":false,"lr":"7952645776237a071374094cabd20855673c5b29"}],"ha":{"al":2,"vl":"blake3-SNxCzNjuJegPSEeQWzKlBjFgIzeTY/Llzbumq8ceilo="},"fv":"7952645776237a071374094cabd20855673c5b29","ps":[]}
 ,"catppuccin":{"sn":"catppuccin-src","kd":[1,{"ft":0,"ur":"https://github.com/catppuccin/nix/archive/673f730d0fc8db3468c51575f1d3d777cc55e51f.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-vVdrzmw1dXTGEA0LwtMPb9CbbZXm0vERGFj01gwUA64="},"fv":"673f730d0fc8db3468c51575f1d3d777cc55e51f","ps":[]}
 ,"catppuccin-godot":{"sn":"catppuccin-godot-src","kd":[0,{"ft":0,"ur":"https://raw.githubusercontent.com/catppuccin/godot/d8b72b679078f0103a5e5c1ef793c1d698a563b1/themes/Catppuccin%20Mocha.tet","ms":[]}],"ha":{"al":2,"vl":"blake3-WVY58qsBKJlGvir08RYlS+RcjdhFvXz+7YHVfEr6tes="},"fv":"d8b72b679078f0103a5e5c1ef793c1d698a563b1","ps":[]}
@@ -28,7 +28,8 @@
 ,"spotneotify":{"sn":"spotneotify-src","kd":[2,{"ft":0,"rp":"https://github.com/0lswitcher/spotneotify.git","ms":[],"rf":[1,"main"],"dt":"2026-07-03T16:33:46-05:00","sm":false,"lf":false,"lr":"7724f15679ae709487bb222e4c62235cfa9d5182"}],"ha":{"al":2,"vl":"blake3-yKr7DmcdWVt+VC1CuxU81APwpZL3d9LMT1mYWQPTNX0="},"fv":"7724f15679ae709487bb222e4c62235cfa9d5182","ps":[]}
 }
 ,"p":{
-"mimalloc_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch","ha":{"al":2,"vl":"blake3-B/8pSP7PXG0xaKXej8B+4mGKySlCLtjJtuc5/xCaGXc="}}
+"firefox_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/543798.patch","ha":{"al":2,"vl":"blake3-QPvWcb4c1sNO5lxFbBhEdzmCf2hcc1i+15A+XuinDbs="}}
+,"mimalloc_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch","ha":{"al":2,"vl":"blake3-B/8pSP7PXG0xaKXej8B+4mGKySlCLtjJtuc5/xCaGXc="}}
 ,"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="}}
 ,"qylock_flake_compat":{"ur":"https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch","ha":{"al":2,"vl":"blake3-n7MUAS1KnOPclznhz1PA74EK12Byzo+TYvLHtwUZb7Y="}}
 }

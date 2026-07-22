@@ -9,7 +9,7 @@ in
   programs.nixcord = {
     enable = true;
     discord = {
-      package = functions.wrapWithNoPreload nixcord.outputs.packages.${builtins.currentSystem}.discord;
+      package = functions.wrapWithNoPreload nixcord.outputs.packages.${builtins.currentSystem}.discord true;
       branch = "stable";
       openASAR.enable = true;
       equicord.enable = true;
