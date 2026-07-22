@@ -391,6 +391,7 @@ in
             "${config.programs.chromium.package.pname}-browser"
             "libreoffice-.*"
             "io.missioncenter.MissionCenter"
+            "An Anime Game Launcher" "The Honkers Railway Launcher"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 
