@@ -37,6 +37,9 @@ in
 
   home.sessionVariables.GTK_THEME = shared_theme;
 
+  # Flatpak needs ~/.local/share/themes
+  home.file.".local/share/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.profileDirectory}/share/themes";
+
   /*
   Editor → Editor Settings → Text Editor → Theme
   Editor → Editor Settings → Interface → Theme
