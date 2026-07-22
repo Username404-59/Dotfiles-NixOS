@@ -31,12 +31,19 @@ let
     # Fixes stuff that doesn't work with preloaded mimalloc
     wrapWithNoPreload = let
       bwrap_launcher = prog: pkgs.writeShellScript "bwrap-launcher-${prog}" ''
+        # To avoid re-wrapping in case I'm already inside the sandbox
+        if [[ -n "''${_NIX_NOPRELOAD_ACTIVE:-}" ]]; then
+          exec "${prog}.orig" "$@"
+        fi
+        export _NIX_NOPRELOAD_ACTIVE=1
+
         etc_ro_binds=""
         for path in /etc/* /etc/.*; do
+          [[ -e "$path" ]] || continue
           [[ "$path" == "/etc/ld-nix.so.preload" ]] && continue
           etc_ro_binds="$etc_ro_binds --ro-bind $path $path"
         done
-        ${lib.getExe pkgs.bubblewrap} --dev-bind / / --tmpfs /etc $etc_ro_binds -- ${prog}.orig
+        exec ${lib.getExe pkgs.bubblewrap} --dev-bind / / --tmpfs /etc $etc_ro_binds -- ${prog}.orig "$@"
       '';
     in pkg: pkg.overrideAttrs (old: {
       nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.makeWrapper pkgs.util-linux ];
