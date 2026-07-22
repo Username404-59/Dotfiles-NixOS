@@ -1,4 +1,4 @@
-{ options, config, pkgs, lib, functions, ... }:
+{ options, config, pkgs, lib, ... }:
 
 let
   lock-false = {
@@ -13,7 +13,7 @@ in
 {
   programs.firefox = {
     configPath = "${config.home.homeDirectory}/.mozilla/firefox";
-    package = functions.wrapWithNoPreload pkgs.firefox-beta;
+    package = pkgs.firefox-bin;
     enable = true;
     languagePacks = [ "fr" ];
     profiles = {
