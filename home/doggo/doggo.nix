@@ -51,13 +51,6 @@
     libnotify # For the "notify-send" utility
 
     # Gaming packages:
-    (prismlauncher.override {
-      jdks = [
-        graalvmPackages.graalvm-ce
-        pkgs.jdk25
-        pkgs.jdk21
-      ];
-    })
     rsi-launcher-git
     osu-lazer-bin
     godot
@@ -77,6 +70,7 @@
     ./mime-config.nix
     ./mpv-config.nix
     ./spicetify-config.nix
+    ./minecraft-config.nix
     ./flatpak-packages.nix
   ];
 
