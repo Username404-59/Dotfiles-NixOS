@@ -1,4 +1,4 @@
-{ config, pkgs, nixtamal, ... }:
+{ config, pkgs, nixtamal, lib, isLaptop, ... }:
 
 let
   shared_theme = "Catppuccin-GTK-Red-Dark";
@@ -27,7 +27,12 @@ in
     colorScheme = "dark";
     theme = {
       name = shared_theme;
-      package = pkgs.magnetic-catppuccin-gtk;
+      package = pkgs.magnetic-catppuccin-gtk.override {
+        accent = [ "all" ];
+        size   = "standard"; #"compact"
+        shade  = "dark";
+        tweaks = [ ] ++ lib.optional (isLaptop) "black";
+      };
     };
   };
 

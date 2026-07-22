@@ -1,4 +1,4 @@
-{ pkgs, lib, isLaptop, nixtamal, ... }:
+{ pkgs, nixtamal, ... }:
 
 {
   imports = [ (import nixtamal.qylock).outputs.nixosModules.default ];
@@ -43,12 +43,6 @@
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct
     papirus-icon-theme
-    (magnetic-catppuccin-gtk.override {
-      accent = [ "all" ];
-      size   = "standard"; #"compact"
-      shade  = "dark";
-      tweaks = [ ] ++ lib.optional (isLaptop) "black";
-    })
     xeyes
     networkmanagerapplet
   ];
