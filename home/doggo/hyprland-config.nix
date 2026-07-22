@@ -390,6 +390,7 @@ in
             "com.obsproject.Studio"
             "${config.programs.chromium.package.pname}-browser"
             "libreoffice-.*"
+            "io.missioncenter.MissionCenter"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 
