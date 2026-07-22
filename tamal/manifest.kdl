@@ -192,12 +192,6 @@ inputs {
       url "https://github.com/micha4w/Hypr-DarkWindow/archive/refs/tags/v0.55.4.tar.gz"
     }
   }
-  scx_rustscheds-git {
-    git {
-      repository "https://github.com/sched-ext/scx.git"
-      branch "main"
-    }
-  }
 
   // Other patches
   nct6687d-patch { // TODO: Remove this when the package gets updated
