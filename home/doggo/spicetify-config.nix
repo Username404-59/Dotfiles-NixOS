@@ -1,4 +1,4 @@
-{ nixtamal, ... }:
+{ nixtamal, functions, pkgs, ... }:
 
 let
   spicetify-nix = import nixtamal.nix-spicetify { pkgs = import nixtamal.nixpkgs { }; };
@@ -8,6 +8,7 @@ in
 
   programs.spicetify = {
     enable = true;
+    spotifyPackage = functions.wrapWithNoPreload pkgs.spotify;
 
     theme = {
       name = "spotneotify";

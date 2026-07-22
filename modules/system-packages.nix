@@ -27,6 +27,28 @@ let
     }).overrideAttrs (old: {
       NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " ${flags}"; # https://gcc.gnu.org/onlinedocs/gcc-16.1.0/gcc/Optimize-Options.html
     });
+
+    # Fixes stuff that doesn't work with preloaded mimalloc
+    wrapWithNoPreload = let
+      bwrap_launcher = prog: pkgs.writeShellScript "bwrap-launcher-${prog}" ''
+        etc_ro_binds=""
+        for path in /etc/* /etc/.*; do
+          [[ "$path" == "/etc/ld-nix.so.preload" ]] && continue
+          etc_ro_binds="$etc_ro_binds --ro-bind $path $path"
+        done
+        ${lib.getExe pkgs.bubblewrap} --dev-bind / / --tmpfs /etc $etc_ro_binds -- ${prog}.orig
+      '';
+    in pkg: pkg.overrideAttrs (old: {
+      nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.makeWrapper pkgs.util-linux ];
+      buildInputs = (old.buildInputs or []) ++ [ pkgs.bubblewrap ];
+
+      postFixup = let
+        exe = baseNameOf (lib.getExe pkg);
+      in (old.postFixup or "") + ''
+        mv $out/bin/${exe} $out/bin/${exe}.orig
+        makeWrapper ${bwrap_launcher exe} $out/bin/${exe}
+      '';
+    });
   };
 in
 rec {
@@ -121,4 +143,7 @@ rec {
       programs.nix-index.package = (import nixtamal.nix-index-database { inherit pkgs; }).nix-index-with-small-db;
     }
   )];
+
+  # Optimisations
+  environment.memoryAllocator.provider = "mimalloc";
 }
