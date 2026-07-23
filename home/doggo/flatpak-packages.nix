@@ -63,6 +63,7 @@ in
           MANGOHUD = "1";
           GTK_THEME = config.home.sessionVariables.GTK_THEME;
         };
+        Context.sockets = [ "wayland" ];
       };
 
       "org.vinegarhq.Sober".Context = {
