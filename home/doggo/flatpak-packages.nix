@@ -33,6 +33,7 @@ in
       "moe.launcher.an-anime-game-launcher"
       "moe.launcher.the-honkers-railway-launcher"
       "runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/${runtime_version}"
+      "runtime/org.freedesktop.Platform.VulkanLayer.gamescope/${runtime_version}"
 
       # Apps
       #"com.github.tchx84.Flatseal" # I should put overrides in this .nix instead
