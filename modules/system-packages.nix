@@ -39,13 +39,10 @@ let
         fi
         export _NIX_NOPRELOAD_ACTIVE=1
 
-        etc_ro_binds=""
-        for path in /etc/* /etc/.*; do
-          [[ -e "$path" ]] || continue
-          [[ "$path" == "/etc/ld-nix.so.preload" ]] && continue
-          etc_ro_binds="$etc_ro_binds --ro-bind $path $path"
-        done
-        exec ${lib.getExe pkgs.bubblewrap} --dev-bind / / --tmpfs /etc $etc_ro_binds -- ${prog}.orig "$@"
+        exec ${lib.getExe pkgs.bubblewrap} \
+          --dev-bind / / --tmpfs /etc \
+          $(find /etc -mindepth 1 -maxdepth 1 ! -name 'ld-nix.so.preload' -printf ' --ro-bind %p %p') \
+          -- ${prog}.orig "$@"
       '';
       exe = baseNameOf (lib.getExe pkg);
       wrapper_stuff = ''
