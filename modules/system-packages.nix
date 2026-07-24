@@ -31,6 +31,7 @@ let
     # Fixes stuff that doesn't work with preloaded mimalloc.
     # With 2 modes because the first thing I wrote doesn't work for chromium...
     wrapWithNoPreload = pkg: classic: let
+      # TODO Use landlock (via landrun maybe) instead of bubblewrap
       bwrap_launcher = prog: pkgs.writeShellScript "bwrap-launcher-${pkg.pname}" ''
         # To avoid re-wrapping in case I'm already inside the sandbox
         if [[ -n "''${_NIX_NOPRELOAD_ACTIVE:-}" ]]; then
