@@ -72,6 +72,7 @@ in
           "xdg-run/discord-ipc-0"
         ];
         features = [ "all-syscalls" ]; # requires the 5224_all_syscalls flatpak patch I modified -> little performance boost (in theory)
+        devices = [ "input" ]; # For controller support
       };
 
       "com.hypixel.HytaleLauncher".Context.features = [ "all-syscalls" ];
