@@ -6,6 +6,9 @@
   To install git before first install:
   sudo nix-env --install git
 
+  To install stuff using nix-env with my setup:
+  nix-env -f '<nixpkgs>' --install package
+
   To rebuild for the first time:
   sudo nixos-rebuild switch --option extra-experimental-features "blake3-hashes auto-allocate-uids"
 
