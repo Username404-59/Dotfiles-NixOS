@@ -92,6 +92,7 @@ in
 
         # Performance etc
         "gfx.webrender.all" = lock-true;
+        "gfx.webrender.wait-gpu-finished.disabled" = lock-true;
         "layers.gpu-process.force-enabled" = lock-true;
         "media.hardware-video-decoding-vulkan.enabled" = lock-true;
         "media.hardware-video-decoding-vulkan.direct-export.enabled" = lock-true;
