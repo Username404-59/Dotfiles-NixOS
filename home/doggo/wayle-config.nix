@@ -18,6 +18,7 @@
           label-show = false;
         };
         power = lib.mkIf isLaptop {
+          icon-name = "ld-moon-symbolic";
           left-click = "${lib.getExe pkgs.kdePackages.kdialog} --warningyesno \"Vraiment mettre en veille?\" && systemctl sleep";
         };
         weather = {
