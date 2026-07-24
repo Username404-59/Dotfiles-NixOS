@@ -114,7 +114,7 @@ in
         ({
           # Desktop settings
           output = "DP-3";
-          mode = "highres@highrr";
+          mode = "highres";
           position = "0x0"; scale = 1; vrr = 2;
         } // lib.optionalAttrs isLaptop {
           # Laptop settings
@@ -126,7 +126,7 @@ in
           sdrsaturation = 1.0; # 1.175? 0.975?
           #sdrbrightness = 1.1; # 1.2625? 0.975?
         })
-        { output = ""; mode = "highres@highrr"; position = if isLaptop then "auto-right" else "auto-left"; scale = 1; }
+        { output = ""; mode = "highres"; position = if isLaptop then "auto-right" else "auto-left"; scale = 1; }
       ];
 
       # AUTOSTART #
