@@ -84,7 +84,7 @@
   home.sessionVariables = {
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    
+
     PROTON_USE_NTSYNC = "1";
     PROTON_ENABLE_WAYLAND = "1";
     DISABLE_LAYER_MESA_ANTI_LAG = "1";
@@ -98,6 +98,7 @@
   programs = {
     mangohud = {
       enable = true;
+      enableSessionWide = true;
       settings = {
         no_display = true; # Hide by default
         gpu_stats = true;
