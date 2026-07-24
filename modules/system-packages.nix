@@ -61,9 +61,7 @@ let
         nativeBuildInputs = (old.nativeBuildInputs or []) ++ nativeBuildInputs;
         buildInputs = (old.buildInputs or []) ++ buildInputs;
 
-        postFixup = let
-          exe = baseNameOf (lib.getExe pkg);
-        in (old.postFixup or "") + wrapper_stuff;
+        postFixup = (old.postFixup or "") + wrapper_stuff;
       })
     else pkgs.symlinkJoin {
       name = "${pkg.name}-no-preload";
@@ -161,6 +159,8 @@ rec {
     };
 
     partition-manager.enable = true;
+
+    nix-ld.enable = true;
   };
 
   environment.sessionVariables = rec {
