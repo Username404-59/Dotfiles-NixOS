@@ -24,6 +24,9 @@
         weather = {
           location = "Lille";
         };
+        hyprland-workspaces = {
+          app-icons-show = true;
+        };
       };
       general = {
         font-mono = "FiraCode Nerd Font Mono";
