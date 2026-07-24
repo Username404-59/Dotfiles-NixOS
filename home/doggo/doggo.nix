@@ -61,7 +61,7 @@
   imports = [
     ./catppuccin-config.nix
     ./hyprland-config.nix
-    ./ironbar-config.nix
+    ./wayle-config.nix
     ./rofi-config.nix
     ./kitty-config.nix
     ./discord-config.nix

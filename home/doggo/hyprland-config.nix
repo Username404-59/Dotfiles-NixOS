@@ -143,7 +143,6 @@ in
                 "hl.exec_cmd('${if isLaptop then "${battery_check} && " else ""}"
                 + "${uwsm} ${cmd}')") backgrounds_commands)
               }
-              hl.exec_cmd("${uwsm} ironbar")
               hl.exec_cmd("${uwsm} wl-paste --type text --watch cliphist store")
               hl.exec_cmd("${uwsm} wl-paste --type image --watch cliphist store")
               hl.exec_cmd("${uwsm} hyprsunset")
