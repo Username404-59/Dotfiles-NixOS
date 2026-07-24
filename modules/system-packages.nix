@@ -141,6 +141,9 @@ rec {
         proton-ge-bin
         dw-proton-bin # From nix-citizen overlay
       ];
+      extraPackages = with pkgs; [
+        (functions.mkUnstable lsfg-vk)
+      ];
       # Note: to make another disk visible to games add
       # STEAM_COMPAT_MOUNTS=/disk2 %command%
       # to commandline options
