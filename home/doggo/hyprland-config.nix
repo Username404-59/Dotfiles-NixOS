@@ -106,7 +106,7 @@ in
       enable = false; # Conflicts with UWSM
     };
     plugins = with pkgs.hyprlandPlugins; [
-      (functions.mkSpecialVersion hypr-darkwindow "0.55.4")
+      hypr-darkwindow
     ];
 
     settings = {
@@ -251,7 +251,7 @@ in
         { _args = ["linear"           { type = "bezier"; points = [ [0 0]       [1    1]  ]; } ]; }
         { _args = ["almostLinear"     { type = "bezier"; points = [ [0.5 0.5]   [0.75 1]  ]; } ]; }
         { _args = ["quick"            { type = "bezier"; points = [ [0.15 0]    [0.1  1]  ]; } ]; }
-        { _args = ["easy"             { type = "spring"; mass = 1; stiffness = 71.2633; dampening = 15.8273644; } ]; }
+        { _args = ["easy"             { type = "spring"; mass = 1; stiffness = 878.5; dampening = 59.29; } ]; }
       ];
 
       animation = [

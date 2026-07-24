@@ -7,6 +7,7 @@ patches {
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   qylock_flake_compat "https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch" // TODO Remove when merged
   mimalloc_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch" // TODO Remove when merged. To get https://github.com/microsoft/mimalloc/commit/ccac92ef19abf56cc7dbc57dfd28960108ea18ab.
+  hypr-darkwindow_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/545374.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -16,7 +17,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches mimalloc_update
+    patches mimalloc_update hypr-darkwindow_update
     fresh-cmd {
       $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
       | cut -f1
@@ -181,11 +182,6 @@ inputs {
     git {
       repository "https://github.com/PancakeTAS/lsfg-vk.git"
       branch "develop"
-    }
-  }
-  hypr-darkwindow { // TODO: Remove this when the package hash is fixed
-    archive {
-      url "https://github.com/micha4w/Hypr-DarkWindow/archive/refs/tags/v0.55.4.tar.gz"
     }
   }
 
