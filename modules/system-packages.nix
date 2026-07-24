@@ -133,6 +133,7 @@ rec {
   programs = {
     steam = {
       enable = true;
+      extest.enable = true; # Makes Steam Input work on wayland
       dedicatedServer.openFirewall = true; # 27015 port
       remotePlay.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
