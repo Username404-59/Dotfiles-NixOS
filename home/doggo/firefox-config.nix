@@ -13,7 +13,7 @@ in
 {
   programs.firefox = {
     configPath = "${config.home.homeDirectory}/.mozilla/firefox";
-    package = pkgs.wrapFirefox (pkgs.firefox-unwrapped.override { jemallocSupport = false; }) {};
+    package = pkgs.firefox-bin;
     enable = true;
     languagePacks = [ "fr" ];
     profiles = {
