@@ -30,7 +30,8 @@ let
 
     # Fixes stuff that doesn't work with preloaded mimalloc.
     # With 2 modes because the first thing I wrote doesn't work for chromium...
-    wrapWithNoPreload = pkg: classic: let
+    # Takes a package, the mode, and and env like { SOMEENVVAR = "some value" }
+    wrapWithNoPreload_env = pkg: classic: env: let
       # TODO Use landlock (via landrun maybe) instead of bubblewrap
       bwrap_launcher = prog: pkgs.writeShellScript "bwrap-launcher-${pkg.pname}" ''
         # To avoid re-wrapping in case I'm already inside the sandbox
@@ -42,6 +43,11 @@ let
         exec ${lib.getExe pkgs.bubblewrap} \
           --dev-bind / / --tmpfs /etc \
           $(find /etc -mindepth 1 -maxdepth 1 ! -name 'ld-nix.so.preload' -printf ' --ro-bind %p %p') \
+          ${lib.concatStringsSep " " (
+            map
+            (name: "--setenv ${name} ${lib.getAttr name env}")
+            (lib.attrNames env)
+          )} \
           -- ${prog}.orig "$@"
       '';
       exe = baseNameOf (lib.getExe pkg);
@@ -76,9 +82,12 @@ let
       version = pkg.version or "";
       meta = pkg.meta or {};
       passthru = (pkg.passthru or {}) // {
-        override = args: wrapWithNoPreload (pkg.override args) false;
+        override = args: wrapWithNoPreload_env (pkg.override args) false env;
+        overrideAttrs = f: wrapWithNoPreload_env (pkg.overrideAttrs f) false env;
+        overrideDerivation = f: wrapWithNoPreload_env (pkgs.lib.overrideDerivation pkg f) false env;
       };
     };
+    wrapWithNoPreload = pkg: classic: wrapWithNoPreload_env pkg classic {};
   };
 in
 rec {
