@@ -114,12 +114,11 @@ in
         ({
           # Desktop settings
           output = "DP-3";
-          mode = "2560x1440@144";
+          mode = "highres";
           position = "0x0"; scale = 1; vrr = 2;
         } // lib.optionalAttrs isLaptop {
           # Laptop settings
           output = "eDP-1";
-          mode = "2880x1800@120";
           scale = 1.5;
           cm = "hdredid"; bitdepth = 10;
           min_luminance = 0.0; max_luminance = 2000;
