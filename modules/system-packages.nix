@@ -76,7 +76,7 @@ let
       version = pkg.version or "";
       meta = pkg.meta or {};
       passthru = (pkg.passthru or {}) // {
-        inherit (pkg) override;
+        override = args: wrapWithNoPreload (pkg.override args) false;
       };
     };
   };
