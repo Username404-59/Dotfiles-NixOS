@@ -98,7 +98,6 @@
   programs = {
     mangohud = {
       enable = true;
-      enableSessionWide = true;
       settings = {
         no_display = true; # Hide by default
         gpu_stats = true;

@@ -151,6 +151,12 @@ rec {
       extraPackages = with pkgs; [
         (functions.mkUnstable lsfg-vk)
       ];
+      package = pkgs.steam.override {
+        extraEnv = {
+          MANGOHUD = "1";
+          OBS_VKCAPTURE = "1";
+        };
+      };
       # Note: to make another disk visible to games add
       # STEAM_COMPAT_MOUNTS=/disk2 %command%
       # to commandline options
