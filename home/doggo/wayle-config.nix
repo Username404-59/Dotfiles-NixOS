@@ -1,5 +1,8 @@
-{ isLaptop, lib, pkgs, ... }:
+{ isLaptop, lib, pkgs, config, ... }:
 
+let
+  primary_monitor = (builtins.elemAt config.wayland.windowManager.hyprland.settings.monitor 0).output;
+in
 {
   services.wayle = {
     enable = true;
@@ -26,6 +29,10 @@
         };
         hyprland-workspaces = {
           app-icons-show = true;
+        };
+        notifications = {
+          popup-position = "bottom-right";
+          popup-monitor = primary_monitor;
         };
       };
       general = {
@@ -56,7 +63,7 @@
               "separator"
               "cpu"
             ];
-            monitor = if isLaptop then "eDP-1" else "DP-3";
+            monitor = primary_monitor;
             right = [
               "power"
               "brightness"
