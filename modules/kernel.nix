@@ -70,4 +70,6 @@
     "net.ipv4.tcp_congestion_control" = "bbr";
     "net.core.default_qdisc" = "cake"; # / "cake_mq"
   };
+
+  programs.obs-studio.enableVirtualCamera = true;
 }
