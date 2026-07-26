@@ -6,7 +6,9 @@
   # Fixes for services broken by system.etc.overlay.mutable (from modules/filesystems.nix)
   systemd.tmpfiles.rules = [
     "d /var/lib/ssh 0755 root root -"
+    "d /var/lib/lact 0755 root root -"
   ];
+  environment.etc."lact".source = "/var/lib/lact";
   services.openssh.hostKeys = [
     {
       path = "/var/lib/ssh/ssh_host_ed25519_key";
