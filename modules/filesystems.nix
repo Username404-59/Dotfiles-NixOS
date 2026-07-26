@@ -29,7 +29,7 @@
 
   system.etc.overlay = {
     enable = true;
-    mutable = true;
+    mutable = false;
   };
   boot.kernelParams = [ "overlay.index=off" ]; # TODO Remove when not needed anymore for system.etc.overlay
 

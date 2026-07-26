@@ -3,6 +3,8 @@
 let
   hashingForce = "1s"; # Makes my password more secure (however it will probably take more time to login 😐)
 
+  fscrypt_conf_path = "/var/lib/fscrypt.conf";
+
   migrateScript = pkgs.writeShellApplication {
     name = "fscrypt-migrate-homes";
 
@@ -14,12 +16,13 @@ let
       pkgs.systemd
       pkgs.pamtester
       pkgs.findutils
+      pkgs.bubblewrap
     ];
 
     text = ''
-      if [[ ! -d /.fscrypt ]] || [[ ! -f /etc/fscrypt.conf ]]; then
-        rm -f /etc/fscrypt.conf # Just in case only my /.fscrypt isn't present
-        fscrypt setup --force --quiet --time=${hashingForce}
+      if [[ ! -d /.fscrypt ]] || [[ ! -f ${fscrypt_conf_path} ]]; then
+        rm -f ${fscrypt_conf_path} # Just in case only my /.fscrypt isn't present
+        bwrap --dev-bind / / --tmpfs /etc -- fscrypt setup --force --quiet --time=${hashingForce} && mv /etc/fscrypt.conf ${fscrypt_conf_path}
         echo "fscrypt setup completed."
       else
         echo "fscrypt setup already done, skipping."
@@ -118,6 +121,7 @@ in {
     reloadIfChanged = false;
     unitConfig.ConditionKernelCommandLine = "fscrypt_migration"; # To avoid running it from first boot
   };
+  environment.etc."fscrypt.conf".source = fscrypt_conf_path;
 
   boot.kernelParams = [ config.systemd.services.fscrypt-migrate.unitConfig.ConditionKernelCommandLine ];
 
