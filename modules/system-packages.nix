@@ -183,7 +183,7 @@ rec {
   };
 
   environment.shellAliases = {
-    nixtamal = "bash -c 'cd /etc/nixos && nixtamal \"$@\"' --";
+    nixtamal = "bash -c 'cd ${toString (builtins.dirOf ../nixos/.)} && nixtamal \"$@\"' --";
   };
 
   home-manager.sharedModules = [(

@@ -27,6 +27,12 @@
     useTmpfs = true; # I'll need to disable this or make it bigger if nix builds fail because of it
   };
 
+  system.etc.overlay = {
+    enable = true;
+    mutable = true;
+  };
+  boot.kernelParams = [ "overlay.index=off" ]; # TODO Remove when not needed anymore for system.etc.overlay
+
   # To manage USB drives
   services.udisks2.enable = true;
   home-manager.sharedModules = [({

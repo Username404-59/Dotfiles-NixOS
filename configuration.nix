@@ -1,7 +1,7 @@
 { config, lib, functions, nixtamal, ... }:
 
 /*
-  This should be in /etc/nixos/.
+  This should be in /srv/nixos/.
 
   To install git before first install:
   sudo nix-env --install git
@@ -10,7 +10,7 @@
   nix-env -f '<nixpkgs>' --install package
 
   To rebuild for the first time:
-  sudo NIX_CONFIG="$(cat /etc/nixos/binary-cache.conf)" nixos-rebuild switch --option extra-experimental-features "blake3-hashes auto-allocate-uids"
+  sudo NIX_CONFIG="$(cat /srv/nixos/binary-cache.conf)" nixos-rebuild boot --file /srv/nixos/system.nix --option extra-experimental-features "blake3-hashes auto-allocate-uids"
 
   To force nixtamal lock on specific input:
   sudo nixtamal lock --force specific_input
@@ -95,7 +95,11 @@ in
   home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
   nix.package = pkgs.nixVersions.latest;
   nix.channel.enable = false; # Channels are not needed / useless with nixtamal
-  nix.nixPath = [ "nixpkgs=${nixtamal.nixpkgs}" ]; # Fixes <nixpkgs> (which nixtamal uses for some reason when fetching patches as of writing)
+  nix.nixPath = [
+    "nixpkgs=${nixtamal.nixpkgs}" # Fixes <nixpkgs> (which nixtamal uses for some reason when fetching patches as of writing)
+    "nixos-system=${toString ./system.nix}"
+    "nixos-config=${toString ./configuration.nix}"
+  ];
   nix.settings = {
     auto-optimise-store = true;
     experimental-features = [ "nix-command" "blake3-hashes" "auto-allocate-uids" ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
@@ -137,11 +141,15 @@ in
   # Configure console keymap
   console.keyMap = "fr";
 
+  # To manage my users from here:
+  services.userborn.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."doggo" = {
     isNormalUser = true;
     description = "Charlie Quinet";
     extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" "uinput" ];
+    hashedPassword = "$y$j9T$0o51kf45u8NoMwKah8Hgk.$a64Om7Q4fPqhH2VLAY0yJd5ZT7lNqntWqIBrTQ9u1X0"; # *acceptable* to put in here
   };
 
   home-manager.extraSpecialArgs = {
