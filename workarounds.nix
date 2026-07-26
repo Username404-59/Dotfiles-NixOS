@@ -13,4 +13,5 @@
       type = "ed25519";
     }
   ];
+  environment.etc."avahi/services/.keep".text = ""; # https://github.com/nixos/nixpkgs/issues/539763
 }
