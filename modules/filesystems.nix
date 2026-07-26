@@ -32,6 +32,16 @@
     mutable = false;
   };
   boot.kernelParams = [ "overlay.index=off" ]; # TODO Remove when not needed anymore for system.etc.overlay
+  # Fixes services broken by the previous stuff
+  systemd.tmpfiles.rules = [
+    "d /var/lib/ssh 0755 root root -"
+  ];
+  services.openssh.hostKeys = [
+    {
+      path = "/var/lib/ssh/ssh_host_ed25519_key";
+      type = "ed25519";
+    }
+  ];
 
   # To manage USB drives
   services.udisks2.enable = true;
