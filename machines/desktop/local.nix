@@ -25,6 +25,9 @@
   ];
 
   programs.coolercontrol.enable = true;
+  # To fix it with my immutable /etc setup
+  environment.etc."coolercontrol".source = "/var/lib/coolercontrol";
+  systemd.services.coolercontrold.serviceConfig.StateDirectory = "coolercontrol";
 
   boot.loader.limine.extraEntries = ''
     /Windows
