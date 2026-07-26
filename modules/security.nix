@@ -24,6 +24,10 @@
       sudo.owner = "root";
       sudo.group = "wheel";
     }
+    {
+      passwd.enable = false; # Also better since I use fscrypt and therefore don't want to accidentally change my password
+      chsh.enable = false; # This gets handled by home-manager anyway so it's fine
+    }
     # Disable setuid for most wrappers, for extra security MUEHEHE 😈
     (lib.mkMerge (map (name: {
       ${name}.setuid = lib.mkForce false;
@@ -39,8 +43,6 @@
       "newgrp"
       "newgidmap"
       "newuidmap"
-      "passwd" # Also better since I use fscrypt and therefore don't want to accidentally change my password
-      "chsh" # This gets handled by home-manager anyway so it's fine
     ]))
   ];
 }

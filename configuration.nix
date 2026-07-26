@@ -144,12 +144,15 @@ in
   # To manage my users from here:
   services.userborn.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."doggo" = {
-    isNormalUser = true;
-    description = "Charlie Quinet";
-    extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" "uinput" ];
-    hashedPassword = "$y$j9T$0o51kf45u8NoMwKah8Hgk.$a64Om7Q4fPqhH2VLAY0yJd5ZT7lNqntWqIBrTQ9u1X0"; # *acceptable* to put in here
+  # User account(s)
+  users.mutableUsers = false;
+  users.users = {
+    "doggo" = {
+      isNormalUser = true;
+      description = "Charlie Quinet";
+      extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" "uinput" ];
+      hashedPassword = "$y$j9T$0o51kf45u8NoMwKah8Hgk.$a64Om7Q4fPqhH2VLAY0yJd5ZT7lNqntWqIBrTQ9u1X0"; # *acceptable* to put in here
+    };
   };
 
   home-manager.extraSpecialArgs = {
