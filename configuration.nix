@@ -107,6 +107,10 @@ in
   };
   environment.variables.NIX_CONFIG = "$(cat ${toString ./binary-cache.conf})"; # This way binary caches are taken into account immediately
 
+  # Makes nix chill
+  nix.daemonCPUSchedPolicy = "idle";
+  nix.daemonIOSchedClass = "idle";
+
   catppuccin = {
     autoEnable = true;
     enable = true;
