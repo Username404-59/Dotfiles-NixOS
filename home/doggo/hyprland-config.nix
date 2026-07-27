@@ -180,6 +180,8 @@ in
           new_render_scheduling = true;
         };
 
+        quirks.skip_non_kms_dmabuf_formats = true; # Fixes some issues with direct_scanout
+
         cursor = {
           no_hardware_cursors = 2;
           no_break_fs_vrr = 2;
