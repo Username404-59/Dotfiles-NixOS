@@ -164,7 +164,7 @@ rec {
 
     gamescope = {
       enable = true;
-      capSysNice = true;
+      capSysNice = false; # Has issues in steam/steam-run
     };
 
     gnupg.agent = {
