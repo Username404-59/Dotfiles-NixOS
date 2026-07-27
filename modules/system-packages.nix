@@ -176,6 +176,11 @@ rec {
     partition-manager.enable = true;
 
     nix-ld.enable = true;
+
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
 
   environment.sessionVariables = rec {
