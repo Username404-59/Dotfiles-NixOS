@@ -103,6 +103,7 @@ let
 
 in {
   security.pam.enableFscrypt = true;
+  home-manager.startAsUserService = true; # Safer for fscrypt-encrypted homes
 
   systemd.services.fscrypt-migrate = {
     description = "Migrate unencrypted home directories to fscrypt";
