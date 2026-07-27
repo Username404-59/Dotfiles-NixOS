@@ -242,6 +242,8 @@ in
           disable_hyprland_logo = false;
         };
 
+        ecosystem.no_donation_nag = true;
+
         plugin = {
           darkwindow.load_shaders = "chromakey";
         };
