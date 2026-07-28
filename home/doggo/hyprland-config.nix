@@ -178,6 +178,9 @@ in
         render = {
           direct_scanout = 1;
           new_render_scheduling = true;
+
+          non_shader_cm = 2;
+          non_shader_cm_interop = 2;
         };
 
         quirks.skip_non_kms_dmabuf_formats = true; # Fixes some issues with direct_scanout
