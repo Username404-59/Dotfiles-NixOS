@@ -17,6 +17,14 @@ in
         clock = {
           format = "%a %d %b %H:%M";
         };
+        volume = {
+          scroll-up = "wayle audio output-volume +2";
+          scroll-down = "wayle audio output-volume -2";
+        };
+        microphone = {
+          scroll-up = "wayle audio input-volume +2";
+          scroll-down = "wayle audio input-volume -2";
+        };
         network = {
           label-show = false;
         };
