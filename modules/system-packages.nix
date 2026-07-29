@@ -138,41 +138,6 @@ rec {
   };
 
   programs = {
-    steam = {
-      enable = true;
-      extest.enable = true; # Makes Steam Input work on wayland
-      dedicatedServer.openFirewall = true; # 27015 port
-      remotePlay.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-        dw-proton-bin # From nix-citizen overlay
-      ];
-      extraPackages = with pkgs; [
-        (functions.mkUnstable lsfg-vk)
-      ];
-      package = pkgs.steam.override {
-        extraEnv = {
-          MANGOHUD = "1";
-          OBS_VKCAPTURE = "1";
-          MESA_VK_WSI_PRESENT_MODE = lib.mkIf (!isLaptop) "immediate"; # Enables tearing (which is fixed by VRR, which my laptop's screen doesn't have)
-
-          # Environment variables for dw-proton-bin (https://dawn.wine/dawn-winery/dwproton)
-          PROTON_DXVK_LLASYNC = "1";
-          PROTON_VKD3D_LOWLATENCY = "1";
-          PROTON_USE_WINEALSA = "1";
-        };
-      };
-      # Note: to make another disk visible to games add
-      # STEAM_COMPAT_MOUNTS=/disk2 %command%
-      # to commandline options
-    };
-
-    gamescope = {
-      enable = true;
-      capSysNice = false; # Has issues in steam/steam-run
-    };
-
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;

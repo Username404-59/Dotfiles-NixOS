@@ -68,6 +68,7 @@ in
       ./modules/bootloader.nix
       ./modules/encryption.nix
       ./modules/system-packages.nix
+      ./modules/steam.nix
       ./modules/security.nix
       ./modules/fonts.nix
       ./modules/hyprland.nix

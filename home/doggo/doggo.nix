@@ -1,4 +1,4 @@
-{ config, pkgs, nixtamal, functions, localPackagesOverlay, ... }:
+{ config, pkgs, nixtamal, functions, localPackagesOverlay, steam_env, lib, ... }:
 
 {
   home.username = "doggo";
@@ -51,7 +51,10 @@
     libnotify # For the "notify-send" utility
 
     # Gaming packages:
-    rsi-launcher-git
+    (rsi-launcher-umu.override {
+      protonPath = "${dw-proton-bin.steamcompattool}/";
+      launchCommand = "${lib.concatStringsSep " " (lib.mapAttrsToList (name: value: "${name}=${lib.escapeShellArg value}") steam_env)} %command% --disable-gpu --in-process-gpu";
+    })
     osu-lazer-bin
     godot
     wowup-cf
