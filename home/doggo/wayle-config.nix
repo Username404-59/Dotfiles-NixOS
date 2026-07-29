@@ -11,12 +11,9 @@ in
     # nix-instantiate --eval --expr 'builtins.fromTOML (builtins.readFile ./config.toml)' | nixfmt
     settings = {
       modules = {
-        bluetooth = {
-          label-show = false;
-        };
-        clock = {
-          format = "%a %d %b %H:%M";
-        };
+        hyprland-workspaces.app-icons-show = true;
+        clock.format = "%a %d %b %H:%M";
+        weather.location = "Lille";
         volume = {
           scroll-up = "wayle audio output-volume +2";
           scroll-down = "wayle audio output-volume -2";
@@ -25,24 +22,18 @@ in
           scroll-up = "wayle audio input-volume +2";
           scroll-down = "wayle audio input-volume -2";
         };
-        network = {
-          label-show = false;
-        };
+        bluetooth.label-show = false;
+        network.label-show = false;
         power = {
           icon-name = "ld-moon-symbolic";
           left-click = "${lib.getExe pkgs.kdePackages.kdialog} --warningyesno \"Vraiment mettre en veille?\" && systemctl sleep";
-        };
-        weather = {
-          location = "Lille";
-        };
-        hyprland-workspaces = {
-          app-icons-show = true;
         };
         notifications = {
           popup-position = "bottom-right";
           popup-monitor = primary_monitor;
         };
       };
+
       general = {
         font-mono = "FiraCode Nerd Font Mono";
         tearing-mode = true;
