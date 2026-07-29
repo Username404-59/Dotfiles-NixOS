@@ -155,6 +155,7 @@ rec {
         extraEnv = {
           MANGOHUD = "1";
           OBS_VKCAPTURE = "1";
+          MESA_VK_WSI_PRESENT_MODE = lib.mkIf (!isLaptop) "immediate"; # Enables tearing (which is fixed by VRR, which my laptop's screen doesn't have)
         };
       };
       # Note: to make another disk visible to games add
