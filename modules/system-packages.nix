@@ -156,6 +156,11 @@ rec {
           MANGOHUD = "1";
           OBS_VKCAPTURE = "1";
           MESA_VK_WSI_PRESENT_MODE = lib.mkIf (!isLaptop) "immediate"; # Enables tearing (which is fixed by VRR, which my laptop's screen doesn't have)
+
+          # Environment variables for dw-proton-bin (https://dawn.wine/dawn-winery/dwproton)
+          PROTON_DXVK_LLASYNC = "1";
+          PROTON_VKD3D_LOWLATENCY = "1";
+          PROTON_USE_WINEALSA = "1";
         };
       };
       # Note: to make another disk visible to games add
