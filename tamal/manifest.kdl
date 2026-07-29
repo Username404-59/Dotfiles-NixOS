@@ -69,7 +69,7 @@ inputs {
   nix-citizen {
     git {
       repository "https://github.com/LovingMelody/nix-citizen.git"
-      branch "main"
+      branch "update"
     }
   }
 
