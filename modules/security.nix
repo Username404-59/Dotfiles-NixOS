@@ -8,7 +8,7 @@
 
   security.pam.services = let
     pam_options = {
-      nodelay = true;
+      nodelay = true; # There's no need for extra delay because of YESCRYPT_COST_FACTOR
     };
   in {
     sudo = pam_options;
