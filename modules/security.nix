@@ -18,7 +18,7 @@
 
   security.loginDefs.settings = {
     ENCRYPT_METHOD = "YESCRYPT";
-    YESCRYPT_COST_FACTOR = "11"; # mkpasswd -m yescrypt --rounds 11
+    YESCRYPT_COST_FACTOR = "11";
   };
 
   # I use run0 as a replacement of sudo

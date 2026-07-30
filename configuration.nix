@@ -156,7 +156,7 @@ in
       isNormalUser = true;
       description = "Charlie Quinet";
       extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" "uinput" ];
-      hashedPassword = "$y$j9T$0o51kf45u8NoMwKah8Hgk.$a64Om7Q4fPqhH2VLAY0yJd5ZT7lNqntWqIBrTQ9u1X0"; # *acceptable* to put in here
+      hashedPassword = "$y$jFT$K3p0rTNfwdG/AoPZ3ztMT.$nrjgumjA5CNQKp/ZZNGk0Swj.D/ThEKswBIuwiKs9C2"; # mkpasswd -m yescrypt --rounds 11
     };
   };
 
