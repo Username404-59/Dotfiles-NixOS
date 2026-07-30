@@ -365,7 +365,7 @@ in
       window_rule = [
         {
           name = "suppress-maximize-events";
-          match = { class = ".*"; };
+          match.class = ".*";
           suppress_event = "maximize";
         }
         {
@@ -409,7 +409,7 @@ in
         # Chromakey for Steam; https://www.color-hex.com/color-palette/1050902
         {
           name = "steam-transparency";
-          match = { class = "steam"; };
+          match.class = "steam";
           "darkwindow:shade" = lib.generators.mkLuaInline ''
             hl.plugin.darkwindow.build_window_rule({
               shader = "chromakey",
