@@ -148,7 +148,6 @@ in
               hl.exec_cmd("${uwsm} hyprsunset")
               hl.exec_cmd("bash -c 'sleep 1.5s && { [ \"$(date +%H)\" -ge 22 ] || [ \"$(date +%H)\" -lt 6 ]; } && hyprctl hyprsunset temperature 3333'")
               hl.exec_cmd("systemctl --user start hyprpolkitagent")
-              -- hl.exec_cmd("${uwsm} orbolay")
             end
           '')
         ];
@@ -369,27 +368,6 @@ in
             pin        = false;
           };
         }
-        /*
-        {
-          name = "fix-orbolay";
-          match = {
-            title = "^(orbolay)$";
-          };
-          no_initial_focus = true;
-          suppress_event = "activatefocus";
-          float = true;
-          pin = true;
-          center = true;
-          no_blur = true;
-          no_dim = true;
-          no_follow_mouse = true;
-          no_shadow = true;
-          border_size = 0;
-          no_focus = true;
-          move = [ "monitor_w" "monitor_h" ];
-          size = [ "monitor_w - 5" "monitor_h - 5" ];
-        }
-        */
         # Chromakey with Catppuccin Mocha Base (the hex values each divided by 255 -> 0.1176, 0.1176, 0.1804)
         {
           name = "transparency";

@@ -58,7 +58,6 @@
     osu-lazer-bin
     godot
     wowup-cf
-    #orbolay # Hud overlay for equicord (https://github.com/Equicord/Equicord/blob/main/src/equicordplugins/orbolayBridge/index.tsx)
   ];
 
   imports = [
