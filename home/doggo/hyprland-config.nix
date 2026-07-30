@@ -116,6 +116,7 @@ in
         blur_iterations = passes;
 
         manage_window_blur = true;
+        layers.enabled = true;
 
         default_preset = "glass";
         tint_color = 0; # No tint
