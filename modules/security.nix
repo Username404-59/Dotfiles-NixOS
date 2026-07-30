@@ -6,6 +6,21 @@
   # Extra security (especially for SSH)
   services.fail2ban.enable = true;
 
+  security.pam.services = let
+    pam_options = {
+      nodelay = true;
+    };
+  in {
+    sudo = pam_options;
+    su = pam_options;
+    login = pam_options;
+  };
+
+  security.loginDefs.settings = {
+    ENCRYPT_METHOD = "YESCRYPT";
+    YESCRYPT_COST_FACTOR = "11"; # mkpasswd -m yescrypt --rounds 11
+  };
+
   # I use run0 as a replacement of sudo
   security.sudo.enable = false;
   security.run0 = {
