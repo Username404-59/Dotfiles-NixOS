@@ -58,6 +58,7 @@
     osu-lazer-bin
     godot
     wowup-cf
+    dolphin-emu cemu azahar eden # Emulators
   ];
 
   imports = [
