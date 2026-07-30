@@ -115,7 +115,7 @@ in
         inherit vibrancy vibrancy_darkness;
         blur_iterations = passes;
 
-        manage_window_blur = true;
+        manage_window_blur = false;
         layers.enabled = true;
 
         default_preset = "glass";
@@ -422,6 +422,11 @@ in
               }
             })
           '';
+        }
+        { # TODO Remove this + reenable hyprglass.manage_window_blur when hyprglass finally works in fullscreen
+          name = "hyprglass_except_fullscreen";
+          match.fullscreen = false;
+          no_blur = true;
         }
       ];
     };
