@@ -107,7 +107,22 @@ in
     };
     plugins = with pkgs.hyprlandPlugins; [
       hypr-darkwindow
+      hyprglass
     ];
+    settings.config.plugin = {
+      darkwindow.load_shaders = "chromakey";
+      hyprglass = with config.wayland.windowManager.hyprland.settings.config.decoration.blur; {
+        inherit vibrancy vibrancy_darkness;
+        blur_iterations = passes;
+
+        manage_window_blur = true;
+
+        default_preset = "glass";
+        tint_color = 0; # No tint
+        contrast = 1.4;
+        saturation = 1.0;
+      };
+    };
 
     settings = {
       monitor = [
@@ -245,10 +260,6 @@ in
         };
 
         ecosystem.no_donation_nag = true;
-
-        plugin = {
-          darkwindow.load_shaders = "chromakey";
-        };
       };
 
       curve = [

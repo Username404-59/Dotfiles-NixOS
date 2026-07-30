@@ -25,7 +25,7 @@
       strip_trailing_spaces = "smart";
 
       sync_to_monitor = "no";
-      background_opacity = 0.75;
+      background_opacity = 0.00;
       initial_window_width = 576;
       initial_window_height = 512;
 
