@@ -1,7 +1,7 @@
-{ nixtamal, isLaptop, functions, ... }:
+{ nixtamal, isLaptop, functions, pkgs, ... }:
 
 let
-  nixcord = (import nixtamal.nixcord);
+  nixcord = import nixtamal.nixcord { nixpkgs = nixtamal.nixpkgs; };
 in
 {
   imports = [ nixcord.homeModules.nixcord ];
@@ -9,7 +9,7 @@ in
   programs.nixcord = {
     enable = true;
     discord = {
-      package = functions.wrapWithNoPreload nixcord.outputs.packages.${builtins.currentSystem}.discord true;
+      package = functions.wrapWithNoPreload nixcord.packages.discord true;
       branch = "stable";
       openASAR.enable = true;
       equicord.enable = true;
