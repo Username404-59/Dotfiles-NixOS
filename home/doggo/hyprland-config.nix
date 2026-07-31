@@ -112,15 +112,17 @@ in
     settings.config.plugin = {
       darkwindow.load_shaders = "chromakey";
       hyprglass = with config.wayland.windowManager.hyprland.settings.config.decoration.blur; {
-        inherit vibrancy vibrancy_darkness;
+        inherit vibrancy vibrancy_darkness brightness;
         blur_iterations = passes;
 
         manage_window_blur = false;
         layers.enabled = true;
 
+        default_theme = "dark";
         tint_color = 0; # No tint
-        contrast = 1.4;
+        contrast = 1 + contrast;
         saturation = 1.0;
+        adaptive_dim = 0.0;
 
         blur_strength        = 45.0;
         lens_distortion      = 0.3;
@@ -235,6 +237,8 @@ in
             new_optimizations = true;
             vibrancy = 0.75;
             vibrancy_darkness = 1.0;
+            contrast = 0.8916;
+            brightness = 1.0;
           };
         };
 
