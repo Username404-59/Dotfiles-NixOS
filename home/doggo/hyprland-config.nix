@@ -116,7 +116,7 @@ in
         blur_iterations = passes;
 
         manage_window_blur = false;
-        layers.enabled = true;
+        layers.enabled = false;
 
         default_theme = "dark";
         tint_color = 0; # No tint
