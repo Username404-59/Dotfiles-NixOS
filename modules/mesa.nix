@@ -2,7 +2,7 @@
 
 let
   selected_vkDrivers = [ "amd" "nouveau" /* Needed by steam => */ "microsoft-experimental" ] ++ lib.optional (!isLaptop) "intel";
-  selected_glDrivers = [ "radeonsi" "zink" ] ++ lib.optional (!isLaptop) "i915";
+  selected_glDrivers = [ "radeonsi" "zink" ] ++ lib.optional (!isLaptop) "i915"; # TODO Use xe -> iris instead of i915 once https://gitlab.freedesktop.org/drm/xe/kernel/-/merge_requests/361 is merged
 in
 {
   hardware.graphics = {
