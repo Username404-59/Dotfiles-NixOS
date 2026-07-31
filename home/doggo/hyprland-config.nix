@@ -118,10 +118,18 @@ in
         manage_window_blur = false;
         layers.enabled = true;
 
-        default_preset = "glass";
         tint_color = 0; # No tint
         contrast = 1.4;
         saturation = 1.0;
+
+        blur_strength        = 45.0;
+        lens_distortion      = 0.3;
+        refraction_strength  = 4.0;
+        chromatic_aberration = 0.5;
+        fresnel_strength     = 0.4;
+        specular_strength    = 0.8;
+        glass_opacity        = 1.0;
+        edge_thickness       = 0.06;
       };
     };
 
