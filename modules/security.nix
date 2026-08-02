@@ -6,6 +6,9 @@
   # Extra security (especially for SSH)
   services.fail2ban.enable = true;
 
+  # Secrets service
+  services.oo7.enable = true;
+
   security.pam.services = let
     pam_options = {
       nodelay = true; # There's no need for extra delay because of YESCRYPT_COST_FACTOR
@@ -13,7 +16,9 @@
   in {
     sudo = pam_options;
     su = pam_options;
-    login = pam_options;
+    login = pam_options // {
+      oo7.enable = true;
+    };
   };
 
   security.loginDefs.settings = {
