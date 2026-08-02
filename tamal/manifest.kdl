@@ -10,6 +10,7 @@ patches {
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
   magnetic-gtk-catppuccin "https://github.com/NixOS/nixpkgs/commit/f443c19ffe48287c4577abec4eae2ad0fa381bea.diff" // TODO Remove when merged (https://github.com/NixOS/nixpkgs/pull/547916)
   ani-cli_fix "https://patch-diff.githubusercontent.com/raw/pystardust/ani-cli/pull/1829.patch" // TODO Remove when merged
+  app2unit_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/548360.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -19,7 +20,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches mimalloc_update hyprglass magnetic-gtk-catppuccin
+    patches mimalloc_update hyprglass magnetic-gtk-catppuccin app2unit_update
     fresh-cmd {
       $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
       | cut -f1
