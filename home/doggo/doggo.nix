@@ -153,5 +153,9 @@
     nix-index.enable = true;
   };
 
+  services = {
+    pass-secret-service.enable = true;
+  };
+
   home.stateVersion = "26.11";
 }
