@@ -18,7 +18,13 @@
     su = pam_options;
     login = pam_options // {
       oo7.enable = true;
+      gnupg.enable = true;
     };
+  };
+
+  programs.gnupg.agent = {
+    enable = true;
+    settings.allow-preset-passphrase = "";
   };
 
   security.loginDefs.settings = {
