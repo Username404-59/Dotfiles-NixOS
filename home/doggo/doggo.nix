@@ -157,5 +157,7 @@
     pass-secret-service.enable = true;
   };
 
+  xdg.autostart.enable = true;
+
   home.stateVersion = "26.11";
 }
