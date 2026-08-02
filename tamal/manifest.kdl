@@ -9,7 +9,6 @@ patches {
   mimalloc_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch" // TODO Remove when merged. To get https://github.com/microsoft/mimalloc/commit/ccac92ef19abf56cc7dbc57dfd28960108ea18ab.
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
   magnetic-gtk-catppuccin "https://github.com/NixOS/nixpkgs/commit/f443c19ffe48287c4577abec4eae2ad0fa381bea.diff" // TODO Remove when merged (https://github.com/NixOS/nixpkgs/pull/547916)
-  ani-cli_fix "https://patch-diff.githubusercontent.com/raw/pystardust/ani-cli/pull/1829.patch" // TODO Remove when merged
   app2unit_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/548360.patch" // TODO Remove when merged
 }
 
@@ -151,9 +150,8 @@ inputs {
   ani-cli-git {
     git {
       repository "https://github.com/pystardust/ani-cli.git"
-      branch "fix" // TODO Switch back to master branch when merged
+      branch "v5" // TODO Switch back to master branch when v5 replaces it
     }
-    patches ani-cli_fix
   }
   mpv {
     archive {

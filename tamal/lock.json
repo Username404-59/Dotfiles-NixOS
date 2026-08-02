@@ -1,7 +1,7 @@
 {"v":"1.2.0"
 ,"i":{
 "nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/148bab9c1c3c53136ecb44a6ea356a0ed5b39b06.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-KoTsyMQqnXQZq8deCEnu4QkyldkwH/bpMMhUcfMdGIw="},"fv":"148bab9c1c3c53136ecb44a6ea356a0ed5b39b06","ps":["mimalloc_update","hyprglass","magnetic-gtk-catppuccin","app2unit_update"]}
-,"ani-cli-git":{"sn":"ani-cli-git-src","kd":[2,{"ft":0,"rp":"https://github.com/pystardust/ani-cli.git","ms":[],"rf":[1,"fix"],"dt":"2026-07-30T12:06:19+02:00","sm":false,"lf":false,"lr":"4bec3bbae28416dfee20b21ad0ad0bb84e21d2a2"}],"ha":{"al":2,"vl":"blake3-IL4KOVmykWHWAI290N87zHeKv9AYGhSzAxnVAsr3GDw="},"fv":"4bec3bbae28416dfee20b21ad0ad0bb84e21d2a2","ps":["ani-cli_fix"]}
+,"ani-cli-git":{"sn":"ani-cli-git-src","kd":[2,{"ft":0,"rp":"https://github.com/pystardust/ani-cli.git","ms":[],"rf":[1,"v5"],"dt":"2026-08-01T15:52:12+02:00","sm":false,"lf":false,"lr":"77bd235dd16bb39805573963b2124eec5f082ae3"}],"ha":{"al":2,"vl":"blake3-jQr79l9ortlVYfh6NdnAHizQbztVdW8dH0czqg0rLKs="},"fv":"77bd235dd16bb39805573963b2124eec5f082ae3","ps":[]}
 ,"catppuccin":{"sn":"catppuccin-src","kd":[1,{"ft":0,"ur":"https://github.com/catppuccin/nix/archive/41c4ebf8cb3e4052001947a457b4ac093e5dc119.tar.gz","ms":[]}],"ha":{"al":2,"vl":"blake3-o5NPs5iYWGM03ico9nOVF/buwVut/O3p5A6GD9tIhU8="},"fv":"41c4ebf8cb3e4052001947a457b4ac093e5dc119","ps":[]}
 ,"catppuccin-godot":{"sn":"catppuccin-godot-src","kd":[0,{"ft":0,"ur":"https://raw.githubusercontent.com/catppuccin/godot/d8b72b679078f0103a5e5c1ef793c1d698a563b1/themes/Catppuccin%20Mocha.tet","ms":[]}],"ha":{"al":2,"vl":"blake3-WVY58qsBKJlGvir08RYlS+RcjdhFvXz+7YHVfEr6tes="},"fv":"d8b72b679078f0103a5e5c1ef793c1d698a563b1","ps":[]}
 ,"dolphin-overlay":{"sn":"dolphin-overlay-src","kd":[2,{"ft":0,"rp":"https://github.com/rumboon/dolphin-overlay.git","ms":[],"rf":[1,"main"],"dt":"2026-06-14T17:22:24+02:00","sm":false,"lf":false,"lr":"65dd612c8d72d4cf5cb0eb4d9188ed7a16a042dd"}],"ha":{"al":2,"vl":"blake3-PCS3mMGsTYXadc/DDU/EQv2T/0YORMigwUP6NEeOJW4="},"fv":"65dd612c8d72d4cf5cb0eb4d9188ed7a16a042dd","ps":["kservice_fix"]}
@@ -26,8 +26,7 @@
 ,"spotneotify":{"sn":"spotneotify-src","kd":[2,{"ft":0,"rp":"https://github.com/0lswitcher/spotneotify.git","ms":[],"rf":[1,"main"],"dt":"2026-07-03T16:33:46-05:00","sm":false,"lf":false,"lr":"7724f15679ae709487bb222e4c62235cfa9d5182"}],"ha":{"al":2,"vl":"blake3-yKr7DmcdWVt+VC1CuxU81APwpZL3d9LMT1mYWQPTNX0="},"fv":"7724f15679ae709487bb222e4c62235cfa9d5182","ps":[]}
 }
 ,"p":{
-"ani-cli_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/pystardust/ani-cli/pull/1829.patch","ha":{"al":2,"vl":"blake3-tj40bRJE7jurNIW4iRlaGIf/FbynGFtwxvwl9utzcFc="}}
-,"app2unit_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/548360.patch","ha":{"al":2,"vl":"blake3-cP6ZIUNjV10uWcWbTsTyn+bgaoxOz1NXmmMBIjmcNJc="}}
+"app2unit_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/548360.patch","ha":{"al":2,"vl":"blake3-efBdmesGhkZ3xbO0i9TYfX9EWRedpRS8n/cQ3xpt3cA="}}
 ,"hyprglass":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch","ha":{"al":2,"vl":"blake3-Xq2sGwW2uQ+iuP0oF3akabtDx0Mio8ZQlpCv03TqRUg="}}
 ,"magnetic-gtk-catppuccin":{"ur":"https://github.com/NixOS/nixpkgs/commit/f443c19ffe48287c4577abec4eae2ad0fa381bea.diff","ha":{"al":2,"vl":"blake3-rU56nHyV9HCLIRFbWADz41CYAKBJvPhG5s6zQwr99sE="}}
 ,"mimalloc_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch","ha":{"al":2,"vl":"blake3-1Tuy7qMBrquPMDybzesZ6CcAyFoOFeajYD9wkDhEmqI="}}
