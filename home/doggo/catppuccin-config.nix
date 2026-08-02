@@ -35,7 +35,7 @@ in
     };
   };
 
-  home.sessionVariables.GTK_THEME = shared_theme;
+  home.sessionVariables.GTK_THEME = "${shared_theme}${lib.optionalString isLaptop "-BK"}";
 
   # Flatpak needs ~/.local/share/themes
   home.file.".local/share/themes".source = config.lib.file.mkOutOfStoreSymlink "${config.home.profileDirectory}/share/themes";
