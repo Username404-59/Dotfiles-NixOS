@@ -6,7 +6,7 @@ let
   uwsm = "uwsm app --";
   terminal = "kitty";
   fileManager = "dolphin";
-  mpv_options =  "volume=0";
+  mpv_options = "volume=0";
   mainMod = "SUPER";
 
   mocha = {
@@ -61,34 +61,30 @@ let
   })})";
 
   # Start(/stop) my backgrounds on (un)plug
-  watch-ac-plug = pkgs.writeShellApplication {
-    name = "watch-ac-plug";
-    runtimeInputs = [ pkgs.dbus pkgs.gawk ];
-    text = ''
-      dbus-monitor --system "type='signal',interface='org.freedesktop.DBus.Properties',path='/org/freedesktop/UPower'" |
-      while read -r line; do
-        if echo "$line" | grep -q "OnBattery"; then
-          read -r _ state
-          if echo "$state" | grep -q "true"; then
-            ${hyprctl} eval '${border_no_loop_lua}'
-            ${builtins.concatStringsSep " && " (builtins.map (cmd: "pkill -f '.*${cmd}'") backgrounds_commands)}
-          else
-            ${hyprctl} eval '${border_animation_lua}'
-            ${builtins.concatStringsSep " && " (builtins.map (cmd: "${uwsm} ${cmd}") backgrounds_commands)}
-          fi
+  watch-ac-plug = pkgs.writeShellScriptBin "watch-ac-plug" ''
+    dbus-monitor --system "type='signal',interface='org.freedesktop.DBus.Properties',path='/org/freedesktop/UPower'" |
+    while read -r line; do
+      if echo "$line" | grep -q "OnBattery"; then
+        read -r _ state
+        if echo "$state" | grep -q "true"; then
+          ${hyprctl} eval '${border_no_loop_lua}'
+          ${builtins.concatStringsSep " && " (builtins.map (cmd: "pkill -f \".*${cmd}\"") backgrounds_commands)}
+        else
+          ${hyprctl} eval '${border_animation_lua}'
+          ${builtins.concatStringsSep " && " (builtins.map (cmd: "${uwsm} ${cmd}") backgrounds_commands)}
         fi
-      done
-    '';
-  };
+      fi
+    done
+  '';
 in
 {
   systemd.user.services.watch-ac-plug = lib.mkIf isLaptop {
-      Unit.Description = "Start/stop my backgrounds on AC plug/unplug";
-      Install.WantedBy = [ "graphical-session.target" ];
-      Service = {
-        ExecStart = "${watch-ac-plug}/bin/watch-ac-plug";
-        Restart = "always";
-      };
+    Unit.Description = "Start/stop my backgrounds on AC plug/unplug";
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      ExecStart = lib.getExe watch-ac-plug;
+      Restart = "always";
+    };
   };
 
   xdg.portal = {
