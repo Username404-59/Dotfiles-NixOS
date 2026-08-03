@@ -23,9 +23,10 @@
   '';
 
   # NVIDIA drivers
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;
-  hardware.nvidia.branch = "bleeding-edge";
+  # TODO Apply the cachyos nvidia patches for compatibility with -rc kernels
+  #services.xserver.videoDrivers = [ "nvidia" ];
+  #hardware.nvidia.open = true;
+  #hardware.nvidia.branch = "bleeding_edge";
 
   networking.hostName = "lizard-portable";
 }
