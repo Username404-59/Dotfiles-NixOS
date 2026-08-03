@@ -17,12 +17,13 @@ let
       pkgs.pamtester
       pkgs.findutils
       pkgs.bubblewrap
+      pkgs.bash
     ];
 
     text = ''
       if [[ ! -d /.fscrypt ]] || [[ ! -f ${fscrypt_conf_path} ]]; then
         rm -f ${fscrypt_conf_path} # Just in case only my /.fscrypt isn't present
-        bwrap --dev-bind / / --tmpfs /etc -- fscrypt setup --force --quiet --time=${hashingForce} && mv /etc/fscrypt.conf ${fscrypt_conf_path}
+        bwrap --dev-bind / / --tmpfs /etc -- bash -c "fscrypt setup --force --quiet --time=${hashingForce} && mv /etc/fscrypt.conf ${fscrypt_conf_path}"
         echo "fscrypt setup completed."
       else
         echo "fscrypt setup already done, skipping."
