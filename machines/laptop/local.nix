@@ -26,6 +26,7 @@
 
   # NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia.open = true;
 
   networking.hostName = "lizard-portable";
 }
