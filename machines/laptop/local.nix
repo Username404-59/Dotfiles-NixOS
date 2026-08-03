@@ -7,8 +7,6 @@
 
   boot.blacklistedKernelModules = [];
 
-  powerManagement.cpuFreqGovernor = "schedutil";
-
   services.auto-cpufreq = {
     enable = true;
     settings = {
