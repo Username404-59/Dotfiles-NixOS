@@ -25,6 +25,7 @@
   # NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
+  hardware.nvidia.branch = "bleeding-edge";
 
   networking.hostName = "lizard-portable";
 }
