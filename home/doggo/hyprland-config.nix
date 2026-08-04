@@ -164,7 +164,6 @@ in
               hl.exec_cmd("${uwsm} wl-paste --type image --watch cliphist store")
               hl.exec_cmd("${uwsm} hyprsunset")
               hl.exec_cmd("bash -c 'sleep 1.5s && { [ \"$(date +%H)\" -ge 22 ] || [ \"$(date +%H)\" -lt 6 ]; } && hyprctl hyprsunset temperature 3333'")
-              hl.exec_cmd("systemctl --user start hyprpolkitagent")
             end
           '')
         ];
@@ -436,6 +435,8 @@ in
       };
     };
   };
+
+  services.hyprpolkitagent.enable = true;
 
   programs.hyprlock.enable = true;
   services.hypridle = {

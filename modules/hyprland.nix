@@ -35,7 +35,6 @@
     hyprshot
     nwg-look
     hyprsunset
-    hyprpolkitagent
     pwvucontrol
     playerctl
     ironbar
