@@ -112,6 +112,7 @@ in
         blur_iterations = passes;
 
         manage_window_blur = false;
+        enabled = false;
         layers.enabled = false;
 
         default_theme = "dark";
@@ -431,12 +432,14 @@ in
             })
           '';
         }
-        { # TODO Remove this + reenable hyprglass.manage_window_blur when hyprglass finally works in fullscreen
-          name = "hyprglass_except_fullscreen";
+      ] ++ lib.optional (!isLaptop) {
+        name = "hyprglass";
+        tag = "+hyprglass_enabled";
+
+        # TODO When hyprglass finally works in fullscreen, match everything instead and remove the no_blur line
           match.fullscreen = false;
           no_blur = true;
-        }
-      ];
+      };
     };
   };
 
