@@ -7,13 +7,7 @@
 
   boot.blacklistedKernelModules = [];
 
-  services.auto-cpufreq = {
-    enable = true;
-    settings = {
-      charger.turbo = "auto";
-      battery.turbo = "never";
-    };
-  };
+  services.power-profiles-daemon.enable = true;
 
   services.upower.enable = true;
 
