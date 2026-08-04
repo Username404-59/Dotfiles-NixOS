@@ -47,6 +47,7 @@ let
 
   backgrounds_commands = [
     "swaybg -i ${./backgrounds/ubuntu_budgie_wallpaper1.jpg} -o ${find_monitor 0}"
+  ] ++ lib.optionals (!isLaptop) [
     "murale ${mkVideoWallpaper "ketQTGwA4Lo"} -o ${find_monitor 1} --mpv-options \"${mpv_options}\""
   ];
 
