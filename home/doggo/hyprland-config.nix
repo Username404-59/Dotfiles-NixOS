@@ -90,6 +90,8 @@ in
     ];
   };
 
+  services.hyprpolkitagent.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd = {
@@ -162,8 +164,6 @@ in
               hl.exec_cmd("${uwsm} ${lib.getExe watch-ac-plug}")
               hl.exec_cmd("${uwsm} wl-paste --type text --watch cliphist store")
               hl.exec_cmd("${uwsm} wl-paste --type image --watch cliphist store")
-              hl.exec_cmd("${uwsm} hyprsunset")
-              hl.exec_cmd("bash -c 'sleep 1.5s && { [ \"$(date +%H)\" -ge 22 ] || [ \"$(date +%H)\" -lt 6 ]; } && hyprctl hyprsunset temperature 3333'")
             end
           '')
         ];
@@ -436,7 +436,29 @@ in
     };
   };
 
-  services.hyprpolkitagent.enable = true;
+  services.hyprsunset = {
+    enable = true;
+    transitions = {
+      sunrise = {
+        calendar = "*-*-* 06:30:00";
+        requests = [
+          [
+            "temperature"
+            "6500"
+          ]
+        ];
+      };
+      sunset = {
+        calendar = "*-*-* 21:45:00";
+        requests = [
+          [
+            "temperature"
+            "3333"
+          ]
+        ];
+      };
+    };
+  };
 
   programs.hyprlock.enable = true;
   services.hypridle = {
