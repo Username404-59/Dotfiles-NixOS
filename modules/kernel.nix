@@ -45,7 +45,6 @@
     pkgs.linuxKernel.packagesFor(
       pkgs.cachyosKernels.linux-cachyos-rc.override {
         bbr3 = true;
-        acpiCall = true;
         cpusched = "bore";
         lto = if isLaptop then "thin" else "full";
         processorOpt = "native";
