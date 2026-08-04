@@ -9,7 +9,6 @@ patches {
   mimalloc_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch" // TODO Remove when merged. To get https://github.com/microsoft/mimalloc/commit/ccac92ef19abf56cc7dbc57dfd28960108ea18ab.
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
   magnetic-gtk-catppuccin "https://github.com/NixOS/nixpkgs/commit/f443c19ffe48287c4577abec4eae2ad0fa381bea.diff" // TODO Remove when merged (https://github.com/NixOS/nixpkgs/pull/547916)
-  app2unit_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/548360.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -19,7 +18,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches mimalloc_update hyprglass magnetic-gtk-catppuccin app2unit_update
+    patches mimalloc_update hyprglass magnetic-gtk-catppuccin
     fresh-cmd {
       $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
       | cut -f1
