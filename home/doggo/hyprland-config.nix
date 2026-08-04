@@ -438,26 +438,16 @@ in
 
   services.hyprsunset = {
     enable = true;
-    transitions = {
-      sunrise = {
-        calendar = "*-*-* 06:30:00";
-        requests = [
-          [
-            "temperature"
-            "6500"
-          ]
-        ];
-      };
-      sunset = {
-        calendar = "*-*-* 21:45:00";
-        requests = [
-          [
-            "temperature"
-            "3333"
-          ]
-        ];
-      };
-    };
+    settings.profile = [
+      {
+        time = "06:30";
+        temperature = 6500;
+      }
+      {
+        time = "21:45";
+        temperature = 3333;
+      }
+    ];
   };
 
   programs.hyprlock.enable = true;
