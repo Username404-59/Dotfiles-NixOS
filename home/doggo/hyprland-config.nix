@@ -51,7 +51,7 @@ let
     "murale ${mkVideoWallpaper "ketQTGwA4Lo"} -o ${find_monitor 1} --mpv-options \"${mpv_options}\""
   ];
 
-  battery_check = "[ \"$(busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | awk \"{print $2}\")\" = \"true\" ]";
+  battery_check = "bash -c -- [ \"$(busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | awk \"{print $2}\")\" = \"true\" ]";
 
   border_animation = { leaf = "borderangle"; enabled = true; speed = 20.0; bezier = "linear"; style = "loop"; };
   border_animation_lua = "hl.animation(${lib.generators.toLua { multiline = false; } border_animation})";
@@ -72,22 +72,15 @@ let
           ${builtins.concatStringsSep " && " (builtins.map (cmd: "pkill -f \".*${cmd}\"") backgrounds_commands)}
         else
           ${hyprctl} eval '${border_animation_lua}'
-          ${builtins.concatStringsSep " && " (builtins.map (cmd: "${uwsm} ${cmd}") backgrounds_commands)}
+          ${builtins.concatStringsSep "\n" (builtins.map (cmd: ''
+            nohup ${uwsm} ${cmd} >/dev/null 2>&1 &
+          '') backgrounds_commands)}
         fi
       fi
     done
   '';
 in
 {
-  systemd.user.services.watch-ac-plug = lib.mkIf isLaptop {
-    Unit.Description = "Start/stop my backgrounds on AC plug/unplug";
-    Install.WantedBy = [ "graphical-session.target" ];
-    Service = {
-      ExecStart = lib.getExe watch-ac-plug;
-      Restart = "always";
-    };
-  };
-
   xdg.portal = {
     enable = true;
     config.common.default = "*";
@@ -159,14 +152,14 @@ in
           "hyprland.start"
           (lib.generators.mkLuaInline ''
             function()
-              ${if isLaptop then ''
+              ${lib.optionalString isLaptop ''
                 hl.exec_cmd("${uwsm} swaybg -c 000000 -o '*'")
-                  hl.exec_cmd('${battery_check} && ${hyprctl} eval ' .. [['${border_no_loop_lua}']])
-              '' else ""}
+                hl.exec_cmd('${battery_check} && ${hyprctl} eval ' .. [['${border_no_loop_lua}']])
+              ''}
               ${builtins.concatStringsSep "\n  " (builtins.map (cmd:
-                "hl.exec_cmd('${if isLaptop then "${battery_check} && " else ""}"
-                + "${uwsm} ${cmd}')") backgrounds_commands)
+                "hl.exec_cmd('${lib.optionalString isLaptop "${battery_check} || "}${uwsm} ${cmd}')") backgrounds_commands)
               }
+              hl.exec_cmd("${uwsm} ${lib.getExe watch-ac-plug}")
               hl.exec_cmd("${uwsm} wl-paste --type text --watch cliphist store")
               hl.exec_cmd("${uwsm} wl-paste --type image --watch cliphist store")
               hl.exec_cmd("${uwsm} hyprsunset")
