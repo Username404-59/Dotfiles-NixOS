@@ -25,4 +25,5 @@ in
   ];
   environment.etc."avahi/services/.keep".text = ""; # https://github.com/nixos/nixpkgs/issues/539763
   networking.networkmanager.settings.keyfile.path = dirs.nw_manager;
+  services.printing.stateless = true;
 }
