@@ -162,6 +162,7 @@ in
                 "hl.exec_cmd('${lib.optionalString isLaptop "${battery_check} || "}${uwsm} ${cmd}')") backgrounds_commands)
               }
               hl.exec_cmd("${uwsm} ${lib.getExe watch-ac-plug}")
+              hl.exec_cmd("${uwsm} hyprproxlock")
               hl.exec_cmd("${uwsm} wl-paste --type text --watch cliphist store")
               hl.exec_cmd("${uwsm} wl-paste --type image --watch cliphist store")
             end
@@ -482,5 +483,26 @@ in
     };
   };
 
-  # TODO Use hyprproxlock to make the screen unlock when I approach my laptop with earbuds / my bangle.js BECAUSE WHY THE FUCK NOT
+  home.packages = [ pkgs.hyprproxlock ];
+  home.file.".config/hypr/hyprproxlock.conf".text = ''
+    # Earbuds
+    device {
+      mac_address = "B8:20:8E:F0:A6:39"
+      name = "Technics EAH-AZ100"
+      enabled = true
+      auto_connect = true
+    }
+
+    thresholds {
+       lock_threshold = -3
+       unlock_threshold = -1
+    }
+
+    timings {
+       lock_hold_seconds = 3
+       unlock_hold_seconds = 3
+       poll_interval = 1
+       reconnect_interval = 20
+    }
+  '';
 }
