@@ -483,6 +483,8 @@ in
     };
   };
 
+  # Hyprproxlock configuration
+  # TODO Fix lock/unlock cycle only working once
   home.packages = [ pkgs.hyprproxlock ];
   xdg.configFile."hypr/hyprproxlock.conf".text = ''
     # Earbuds
