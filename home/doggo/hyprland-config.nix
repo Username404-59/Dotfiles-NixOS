@@ -445,7 +445,7 @@ in
       }
       {
         time = "21:45";
-        temperature = 3333;
+        temperature = if isLaptop then 4150 else 3333;
       }
     ];
   };
