@@ -18,7 +18,7 @@
       JvmArgs = lib.strings.join " " [
         "-XX:+AlwaysPreTouch" "-XX:+UseShenandoahGC" "-XX:ShenandoahGCMode=generational"
         "-XX:+UnlockExperimentalVMOptions" "-XX:+DisableExplicitGC" "-XX:AllocatePrefetchStyle=1" "-XX:ShenandoahGuaranteedGCInterval=1000000"
-        "XX:+UseTransparentHugePages" "-Xss4M"
+        "-XX:+UseTransparentHugePages" "-Xss4M"
       ];
 
       IgnoreJavaCompatibility = true;
