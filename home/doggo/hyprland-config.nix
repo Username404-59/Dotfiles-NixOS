@@ -484,7 +484,7 @@ in
   };
 
   home.packages = [ pkgs.hyprproxlock ];
-  home.file.".config/hypr/hyprproxlock.conf".text = ''
+  xdg.configFile."hypr/hyprproxlock.conf".text = ''
     # Earbuds
     device {
       mac_address = "B8:20:8E:F0:A6:39"
@@ -494,7 +494,7 @@ in
     }
 
     thresholds {
-       lock_threshold = -3
+       lock_threshold = -1
        unlock_threshold = -1
     }
 
