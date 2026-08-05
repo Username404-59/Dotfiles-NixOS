@@ -505,4 +505,10 @@ in
        reconnect_interval = 20
     }
   '';
+  # Puts hyprproxlock logs in /tmp
+  systemd.user.tmpfiles.rules = [
+    "d ${config.xdg.stateHome}/hyprproxlock - - - -"
+    "d /tmp/hyprproxlock-logs 0700 - - - -"
+    "L ${config.xdg.stateHome}/hyprproxlock/logs - - - - /tmp/hyprproxlock-logs"
+  ];
 }
