@@ -494,7 +494,7 @@ in
     }
 
     thresholds {
-       lock_threshold = -1
+       lock_threshold = 0
        unlock_threshold = -1
     }
 
