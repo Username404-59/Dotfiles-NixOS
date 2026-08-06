@@ -24,9 +24,6 @@
 
   qt.enable = true;
 
-  # Needed by the home-manager's programs.hyprlock.enable
-  security.pam.services.hyprlock = {};
-
   environment.systemPackages = with pkgs; [
     uwsm
     app2unit

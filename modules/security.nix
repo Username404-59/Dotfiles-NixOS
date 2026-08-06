@@ -20,6 +20,7 @@
       oo7.enable = true;
       gnupg.enable = true;
     };
+    hyprlock = pam_options; # Needed by the home-manager's programs.hyprlock.enable
   };
 
   programs.gnupg.agent = {
