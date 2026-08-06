@@ -497,15 +497,15 @@ in
     }
 
     thresholds {
-       lock_threshold = 0
-       unlock_threshold = -1
+      lock_threshold = 0
+      unlock_threshold = -1
     }
 
     timings {
-       lock_hold_seconds = 3
-       unlock_hold_seconds = 3
-       poll_interval = 1
-       reconnect_interval = 20
+      lock_hold_seconds = 3
+      unlock_hold_seconds = 3
+      poll_interval = 1
+      reconnect_interval = 20
     }
   '';
   # Puts hyprproxlock logs in /tmp
