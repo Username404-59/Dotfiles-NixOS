@@ -49,5 +49,8 @@
     powerOnBoot = false;
   };
 
+  # This makes booting faster:
+  systemd.services.NetworkManager-wait-online.enable = false;
+
   services.blueman.enable = true;
 }
