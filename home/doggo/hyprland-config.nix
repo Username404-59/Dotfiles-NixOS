@@ -51,7 +51,9 @@ let
     "murale ${mkVideoWallpaper "ketQTGwA4Lo"} -o ${find_monitor 1} --mpv-options \"${mpv_options}\""
   ];
 
-  battery_check = "bash -c -- [ \"$(busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | awk \"{print $2}\")\" = \"true\" ]";
+  battery_check = lib.getExe (pkgs.writeShellScriptBin "battery_check" ''
+    busctl get-property org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower OnBattery | grep -q true
+  '');
 
   border_animation = { leaf = "borderangle"; enabled = true; speed = 20.0; bezier = "linear"; style = "loop"; };
   border_animation_lua = "hl.animation(${lib.generators.toLua { multiline = false; } border_animation})";
