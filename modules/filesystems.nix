@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   # Note: for f2fs, create it with "sudo mkfs.f2fs -l root -i -O extra_attr,flexible_inline_xattr,inode_checksum,sb_checksum,compression,encrypt,lost_found /dev/sdxY"
@@ -38,6 +38,11 @@
   home-manager.sharedModules = [({
     services.udiskie.enable = true;
   })];
+
+  # Filesystem checking tools in initrd emergency shell
+  boot.initrd.systemd.initrdBin = with pkgs; [
+    f2fs-tools
+  ];
 
   # Link to nix-hardware configs in case I get a new laptop some day:
   # https://github.com/NixOS/nixos-hardware

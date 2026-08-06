@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   catppuccin.plymouth.enable = false;
@@ -22,6 +22,8 @@
       # It just would not appear on screen unless a key is pressed
       timeout = lib.mkForce 5; # Forced, else it doesn't work when making an ISO
     };
+
+    initrd.systemd.emergencyAccess = config.users.users."doggo".hashedPassword;
 
     plymouth = {
       enable = true;
