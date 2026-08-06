@@ -146,12 +146,6 @@ inputs {
   }
 
   // Packages
-  ani-cli-git {
-    git {
-      repository "https://github.com/pystardust/ani-cli.git"
-      branch "v5" // TODO Switch back to master branch when v5 replaces it
-    }
-  }
   mpv {
     archive {
       url "https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz"
