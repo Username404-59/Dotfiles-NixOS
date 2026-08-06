@@ -452,11 +452,13 @@ in
   };
 
   programs.hyprlock.enable = true;
-  services.hypridle = {
+  services.hypridle = let
+    dpms_command = action: "hyprctl dispatch 'hl.dsp.dpms({ action = \"${action}\" })'";
+  in {
     enable = true;
     settings = {
       general = {
-        after_sleep_cmd = "hyprctl dispatch dpms on";
+        after_sleep_cmd = dpms_command "on";
         ignore_dbus_inhibit = false;
         lock_cmd = "hyprlock";
       };
@@ -472,8 +474,8 @@ in
         }
         {
           # Turns screen off/on
-          on-resume = "hyprctl dispatch dpms on";
-          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = dpms_command "on";
+          on-timeout = dpms_command "off";
           timeout = 660;
         }
       ] ++ lib.optional isLaptop {
