@@ -152,6 +152,12 @@
       ];
     };
 
+    # Useful for projects with a .envrc
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+
     # To show indications when a command is not found but exists in pkgs
     nix-index.enable = true;
   };
