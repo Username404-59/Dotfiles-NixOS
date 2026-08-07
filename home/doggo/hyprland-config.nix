@@ -397,6 +397,7 @@ in
             "libreoffice-.*"
             "io.missioncenter.MissionCenter"
             "moe.launcher.*"
+            "VirtualBox Manager"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 

@@ -59,6 +59,9 @@
     godot
     wowup-cf
     dolphin-emu cemu azahar eden # Emulators
+
+    # Virtualisation stuff
+    #winboat # TODO Uncomment when winboat v1.0.0 is released
   ];
 
   imports = [
