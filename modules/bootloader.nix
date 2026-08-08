@@ -12,6 +12,7 @@
 
       limine.secureBoot = {
         enable = true;
+        autoGenerateKeys = true;
         autoEnrollKeys.enable = true;
       };
 
