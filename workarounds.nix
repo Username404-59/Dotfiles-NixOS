@@ -10,7 +10,7 @@ in
 {
   documentation.nixos.enable = false; # In case something's documentation is making nixos-rebuild fail
 
-  # Fixes for services broken by system.etc.overlay.mutable (from modules/filesystems.nix)
+  # Fixes for things broken by system.etc.overlay.mutable (from modules/filesystems.nix)
   systemd.tmpfiles.rules = [
     "d ${dirs.ssh} 0755 root root -"
     "d ${dirs.lact} 0755 root root -"
@@ -29,4 +29,5 @@ in
   services.udev.extraRules = /* Stops udisks2 from mounting loop0 */ ''
     SUBSYSTEM=="block", KERNEL=="loop*", ENV{UDISKS_IGNORE}="1"
   '';
+  boot.kernelParams = [ "systemd.machine_id=firmware" ]; # Needed for persistent journalctl
 }
