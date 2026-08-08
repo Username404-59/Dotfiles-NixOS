@@ -1,8 +1,8 @@
 { nixtamal, pkgs, config, ... }:
 
 let
-  mkBundleFromNixtamal = name: {
-    appId = "com.hypixel.HytaleLauncher";
+  mkBundleFromNixtamal = name: appId: {
+    inherit appId;
     bundle = "${nixtamal.${name}}";
     sha256 = nixtamal.${name}.hash;
   };
@@ -29,7 +29,7 @@ in
 
       # Gaming stuff
       "org.vinegarhq.Sober"
-      (mkBundleFromNixtamal "hytale-launcher")
+      (mkBundleFromNixtamal "hytale-launcher" "com.hypixel.HytaleLauncher")
       "moe.launcher.an-anime-game-launcher"
       "moe.launcher.the-honkers-railway-launcher"
       "runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/${runtime_version}"
