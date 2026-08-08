@@ -398,6 +398,7 @@ in
             "io.missioncenter.MissionCenter"
             "moe.launcher.*"
             "VirtualBox Manager"
+            "org.gabmus.gfeeds"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 
