@@ -26,4 +26,7 @@ in
   environment.etc."avahi/services/.keep".text = ""; # https://github.com/nixos/nixpkgs/issues/539763
   networking.networkmanager.settings.keyfile.path = dirs.nw_manager;
   services.printing.stateless = true;
+  services.udev.extraRules = /* Stops udisks2 from mounting loop0 */ ''
+    SUBSYSTEM=="block", KERNEL=="loop*", ENV{UDISKS_IGNORE}="1"
+  '';
 }
