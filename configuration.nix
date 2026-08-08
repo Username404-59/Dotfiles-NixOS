@@ -190,6 +190,9 @@ in
     };
   };
 
+  # Stores journalctl logs in ram
+  services.journald.storage = "volatile";
+
   # To disable the firewall altogether.
   # networking.firewall.enable = false;
 
