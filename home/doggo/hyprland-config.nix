@@ -507,7 +507,7 @@ in
     }
 
     timings {
-      lock_hold_seconds = 3
+      lock_hold_seconds = 5
       unlock_hold_seconds = 3
       poll_interval = 1
       reconnect_interval = 20
