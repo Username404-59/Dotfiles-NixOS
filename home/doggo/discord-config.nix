@@ -11,7 +11,7 @@ in
     discord = {
       package = functions.wrapWithNoPreload nixcord.packages.discord true;
       branch = "stable";
-      openASAR.enable = true;
+      openASAR.enable = false;
       equicord.enable = true;
       krisp.enable = true;
       commandLineArgs = [ ];
