@@ -59,7 +59,9 @@
     godot
     wowup-cf
     dolphin-emu cemu azahar eden # Emulators
-    (functions.wrapWithNoPreload mcpelauncher-ui-qt false)
+    (functions.wrapWithNoPreload_env mcpelauncher-ui-qt false {
+      force_gl_renderer = "Adreno (TM) 740"; # Fixes vibrant visuals (https://github.com/minecraft-linux/mcpelauncher-manifest/issues/1827#issuecomment-4476906437)
+    })
 
     # Virtualisation stuff
     #winboat # TODO Uncomment when winboat v1.0.0 is released
