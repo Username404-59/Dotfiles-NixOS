@@ -15,12 +15,12 @@ in
         clock.format = "%a %d %b %H:%M";
         weather.location = "Lille";
         volume = {
-          scroll-up = "wayle audio output-volume +2";
-          scroll-down = "wayle audio output-volume -2";
+          scroll-up = "wayle audio output-volume +5";
+          scroll-down = "wayle audio output-volume -5";
         };
         microphone = {
-          scroll-up = "wayle audio input-volume +2";
-          scroll-down = "wayle audio input-volume -2";
+          scroll-up = "wayle audio input-volume +5";
+          scroll-down = "wayle audio input-volume -5";
         };
         bluetooth.label-show = false;
         network.label-show = false;
