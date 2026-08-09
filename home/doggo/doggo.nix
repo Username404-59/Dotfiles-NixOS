@@ -59,6 +59,7 @@
     godot
     wowup-cf
     dolphin-emu cemu azahar eden # Emulators
+    (functions.wrapWithNoPreload mcpelauncher-ui-qt false)
 
     # Virtualisation stuff
     #winboat # TODO Uncomment when winboat v1.0.0 is released
