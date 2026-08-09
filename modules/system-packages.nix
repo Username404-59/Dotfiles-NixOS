@@ -45,7 +45,7 @@ let
           $(find /etc -mindepth 1 -maxdepth 1 ! -name 'ld-nix.so.preload' -printf ' --ro-bind %p %p') \
           ${lib.concatStringsSep " " (
             map
-            (name: "--setenv ${name} ${lib.getAttr name env}")
+            (name: "--setenv ${name} \"${lib.getAttr name env}\"")
             (lib.attrNames env)
           )} \
           -- ${prog}.orig "$@"
