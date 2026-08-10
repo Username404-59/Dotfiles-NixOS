@@ -34,7 +34,7 @@
   hardware = {
     amdgpu.overdrive = {
       enable = true;
-      ppfeaturemask="0xffffffff";
+      ppfeaturemask = lib.mkIf isLaptop "0xffffffff"; # Enables GFXOFF & stutter mode power saving features
     };
     
     new-lg4ff.enable = true;
