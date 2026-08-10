@@ -117,6 +117,7 @@ rec {
     jq # I use it somewhere in my nixtamal manifest
     (functions.mkSpecial lsfg-vk-ui "unstable" "lsfg-vk" "-git")
     steamcmd
+    geteduroam
   ];
 
   services = {

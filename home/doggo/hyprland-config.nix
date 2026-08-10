@@ -400,6 +400,7 @@ in
             "moe.launcher.*"
             "VirtualBox Manager"
             "org.gabmus.gfeeds"
+            "app.eduroam.geteduroam"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 
