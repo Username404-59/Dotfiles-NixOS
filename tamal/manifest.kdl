@@ -8,7 +8,7 @@ patches {
   qylock_flake_compat "https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch" // TODO Remove when merged
   mimalloc_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch" // TODO Remove when merged. To get https://github.com/microsoft/mimalloc/commit/ccac92ef19abf56cc7dbc57dfd28960108ea18ab.
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
-  magnetic-gtk-catppuccin "https://github.com/NixOS/nixpkgs/commit/f443c19ffe48287c4577abec4eae2ad0fa381bea.diff" // TODO Remove when merged (https://github.com/NixOS/nixpkgs/pull/547916)
+  magnetic-gtk-catppuccin "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547916.patch" // TODO Remove when merged
   hyprproxlock_tests_fix "./patches/hyprproxlock_fix_tests.patch" // TODO Make a PR to nixpkgs instead once hyprproxlock 0.1.2 is released
 }
 
