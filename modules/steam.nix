@@ -40,5 +40,12 @@ in
     enable = true;
     capSysNice = false; # Has issues in steam/steam-run
     enableWsi = true;
+
+    args = [
+      "-b"
+      "-F fsr"
+    ] ++ lib.optional isLaptop "--hdr-enabled";
+
+    env = steam_env;
   };
 }
