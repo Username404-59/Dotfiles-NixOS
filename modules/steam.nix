@@ -39,5 +39,6 @@ in
   programs.gamescope = {
     enable = true;
     capSysNice = false; # Has issues in steam/steam-run
+    enableWsi = true;
   };
 }
