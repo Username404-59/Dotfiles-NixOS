@@ -144,6 +144,8 @@ in
     variant = "";
   };
 
+  environment.sessionVariables.XKB_DEFAULT_LAYOUT = config.services.xserver.xkb.layout;
+
   # Configure console keymap
   console.keyMap = "fr";
 
