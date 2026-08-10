@@ -492,7 +492,7 @@ in
   };
 
   # Hyprproxlock configuration
-  home.packages = [ (functions.mkPatchedAuto pkgs.hyprproxlock) ];
+  home.packages = [ (functions.mkUnstable pkgs.hyprproxlock) ];
   xdg.configFile."hypr/hyprproxlock.conf".text = ''
     # Earbuds
     device {

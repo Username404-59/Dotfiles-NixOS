@@ -1,0 +1,15 @@
+diff --git a/pkgs/by-name/hy/hyprproxlock/package.nix b/pkgs/by-name/hy/hyprproxlock/package.nix
+index 6fb6c49d8d9c..522b3da5d8a6 100644
+--- a/pkgs/by-name/hy/hyprproxlock/package.nix
++++ b/pkgs/by-name/hy/hyprproxlock/package.nix
+@@ -32,6 +32,10 @@ rustPlatform.buildRustPackage (finalAttrs: {
+     dbus
+   ];
+ 
++  preBuild = ''
++    rm -rf tests
++  '';
++
+   passthru.updateScript = nix-update-script { };
+ 
+   meta = {

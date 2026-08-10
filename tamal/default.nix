@@ -32,6 +32,7 @@ assert (lock.v == "1.2.0");
 let
 	local-patches = {
 		"adios" = ./patches/adios.patch;
+		"hyprproxlock_tests_fix" = ./patches/hyprproxlock_fix_tests.patch;
 		"kservice_fix" = ./patches/kservice_fix.patch;
 	};
 
