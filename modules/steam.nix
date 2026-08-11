@@ -44,7 +44,7 @@ in
     args = [
       "-b"
       "-F fsr"
-    ] ++ lib.optional isLaptop "--hdr-enabled";
+    ];
 
     env = steam_env;
   };
