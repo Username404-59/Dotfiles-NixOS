@@ -10,7 +10,7 @@ in
     enable = true;
     discord = {
       package = functions.wrapWithNoPreload nixcord.packages.discord true;
-      branch = "stable";
+      branches = [ "stable" ];
       openASAR.enable = true;
       equicord.enable = true;
       krisp.enable = true;
