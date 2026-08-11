@@ -36,7 +36,29 @@ in
         clipUpload.enable = true;
         clipsEnhancements.enable = true;
         newPluginsManager.enable = true;
-        questify.enable = false;
+        questify = {
+          enable = true;
+          allowChangingDangerousSettings = true;
+          autoCompleteQuestsSimultaneously = false;
+          resumeInterruptedQuests = true;
+          makeMobileVideoQuestsDesktopCompatible = true;
+          completeVideoQuestsQuicker = false;
+
+          autoCompleteQuestTypes = {
+            PLAY_ON_DESKTOP = true;
+            PLAY_ON_XBOX = false;
+            PLAY_ON_PLAYSTATION = false;
+            PLAY_ACTIVITY = true;
+            WATCH_VIDEO = true;
+            WATCH_VIDEO_ON_MOBILE = true;
+            ACHIEVEMENT_IN_ACTIVITY = true;
+          };
+
+          disableMembersListPromo = true;
+          disableFriendsListPromo = true;
+          disableRelocationNotices = true;
+          disableAccountPanelPromo = true;
+        };
         dragFavoriteEmotes.enable = true;
         downloadAllAttachments.enable = true;
         fullVcpfp.enable = true;
