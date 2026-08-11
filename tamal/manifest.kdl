@@ -5,7 +5,6 @@ patches {
   adios "./patches/adios.patch"
   kservice_fix "./patches/kservice_fix.patch"
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
-  qylock_flake_compat "https://patch-diff.githubusercontent.com/raw/Darkkal44/qylock/pull/81.patch" // TODO Remove when merged
   mimalloc_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch" // TODO Remove when merged. To get https://github.com/microsoft/mimalloc/commit/ccac92ef19abf56cc7dbc57dfd28960108ea18ab.
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
   magnetic-gtk-catppuccin "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547916.patch" // TODO Remove when merged
@@ -133,7 +132,6 @@ inputs {
     archive {
       url "https://github.com/Darkkal44/qylock/archive/{{fresh_value}}.tar.gz"
     }
-    patches qylock_flake_compat
     fresh-cmd {
       $ git ls-remote --branches "https://github.com/Darkkal44/qylock.git" --refs "refs/heads/main"
       | cut -f1
