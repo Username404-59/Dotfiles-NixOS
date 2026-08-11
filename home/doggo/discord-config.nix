@@ -57,6 +57,11 @@ in
           disableFriendsListPromo = true;
           disableRelocationNotices = true;
           disableAccountPanelPromo = true;
+
+          # https://github.com/Equicord/Equicord/blob/94c0ac8e16b293e1fb715eac3aedabe2bb96fead/src/equicordplugins/questify/settings/notices.tsx#L31
+          acknowledgedNotices = {
+            "quest-ban-warning-2026-08-07" = true;
+          };
         };
         dragFavoriteEmotes.enable = true;
         downloadAllAttachments.enable = true;
@@ -64,6 +69,8 @@ in
         gitHubRepos.enable = true;
         homeTyping.enable = true;
         noPushToTalk.enable = true;
+        volumeBooster.enable = true;
+        voiceRejoin.enable = true;
         screenRecorder.enable = true;
         showHiddenChannels.enable = true;
         streamingCodecDisabler = {
@@ -75,6 +82,7 @@ in
           disableVp8Codec = true;
           disableVp9Codec = true;
         };
+        biggerStreamPreview.enable = true;
         typingIndicator.enable = true; typingTweaks.enable = true;
         unitConverter = {
           enable = true;
@@ -84,12 +92,20 @@ in
         relationshipNotifier.enable = true;
         notificationTitle.enable = true;
         voiceMessages.enable = true;
+        messageLogger = { # Needed by enhanced plugin
+          enable = true;
+          collapseDeleted = true;
+          ignoreBots = true;
+          ignoreSelf = true;
+        };
         messageLoggerEnhanced.enable = true;
         blurNsfw.enable = true;
         petpet.enable = true;
         alwaysAnimate.enable = !isLaptop;
         betterActivities.enable = true;
         normalizeMessageLinks.enable = true;
+        validUser.enable = true;
+        validReply.enable = true;
       };
     };
   };
