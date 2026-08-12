@@ -110,7 +110,6 @@ rec {
     android-tools
     kdePackages.kleopatra # Needed to add keys easily
     nload
-    graalvmPackages.graalvm-ce # Java
     clang gcc mold
     cmake
     sbctl # For secure boot with Limine
@@ -152,6 +151,12 @@ rec {
     appimage = {
       enable = true;
       binfmt = true;
+    };
+
+    java = {
+      enable = true;
+      binfmt = true;
+      package = pkgs.jdk.override { enableJavaFX = true; };
     };
   };
 
