@@ -3,13 +3,6 @@
 {
   programs.prismlauncher = {
     enable = true;
-    package = with pkgs; (prismlauncher.override {
-      jdks = [
-        graalvmPackages.graalvm-ce
-        jdk25
-        jdk21
-      ];
-    });
     settings = {
       MaxMemAlloc = 4096;
       MinMemAlloc = 4096;
