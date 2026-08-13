@@ -1,4 +1,4 @@
-{ isLaptop, ... }:
+{ isLaptop, config, ... }:
 
 {
   # Enable networking
@@ -48,6 +48,8 @@
     enable = true;
     powerOnBoot = false;
   };
+
+  services.joycond.enable = config.hardware.bluetooth.enable;
 
   # This makes booting faster:
   systemd.services.NetworkManager-wait-online.enable = false;
