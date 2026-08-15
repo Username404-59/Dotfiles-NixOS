@@ -158,7 +158,7 @@ in
     "doggo" = {
       isNormalUser = true;
       description = "Charlie Quinet";
-      extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" "uinput" "vboxusers" "docker" ];
+      extraGroups = [ "networkmanager" "wheel" "networkmanager" "video" "input" "audio" "kvm" "uinput" "vboxusers" ];
       hashedPassword = "$y$jFT$K3p0rTNfwdG/AoPZ3ztMT.$nrjgumjA5CNQKp/ZZNGk0Swj.D/ThEKswBIuwiKs9C2"; # mkpasswd -m yescrypt --rounds 11
     };
   };

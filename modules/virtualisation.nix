@@ -11,7 +11,13 @@
     };
 
     docker = {
-      enable = true;
+      enable = false;
+
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+
       daemon.settings.experimental = true;
       autoPrune.enable = true;
     };
