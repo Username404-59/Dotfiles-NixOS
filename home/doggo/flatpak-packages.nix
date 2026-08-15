@@ -29,7 +29,6 @@ in
 
       # Gaming stuff
       "org.vinegarhq.Sober"
-      (mkBundleFromNixtamal "hytale-launcher" "com.hypixel.HytaleLauncher")
       "moe.launcher.an-anime-game-launcher"
       "moe.launcher.the-honkers-railway-launcher"
       "runtime/org.freedesktop.Platform.VulkanLayer.MangoHud/${runtime_version}"
@@ -76,7 +75,6 @@ in
         devices = [ "input" ]; # For controller support
       };
 
-      "com.hypixel.HytaleLauncher".Context.features = [ "all-syscalls" ];
       "moe.launcher.an-anime-game-launcher".Context.features = [ "all-syscalls" ];
       "moe.launcher.the-honkers-railway-launcher".Context.features = [ "all-syscalls" ];
     };
