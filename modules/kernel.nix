@@ -51,7 +51,17 @@
         tickrate = if isLaptop then "idle" else "full";
       }
     )
-  );
+  ).extend (final: prev: {
+    evdi = prev.evdi.overrideAttrs (old: rec {
+      env.CFLAGS = old.env.CFLAGS + " " + (builtins.concatStringsSep " " [
+        # Fixes evdi (needed by DisplayLink) not compiling because of clang
+        "-Wno-error=unknown-warning-option"
+        "-Wno-error=incompatible-pointer-types"
+        "-Wno-error=vla-cxx-extension"
+      ]);
+      env.CXXFLAGS = env.CFLAGS;
+    });
+  });
 
   boot.kernelPatches = [ ];
 
