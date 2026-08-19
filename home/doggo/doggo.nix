@@ -49,6 +49,7 @@
     #spotifywm # Lets me make a hyprland window rule for spotify. Currently commented out because spicetify pulls it.
     libreoffice-qt-fresh
     libnotify # For the "notify-send" utility
+    gimp-with-plugins
 
     # Gaming packages:
     (rsi-launcher-umu.override {
