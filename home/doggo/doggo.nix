@@ -83,6 +83,7 @@
     ./mpv-config.nix
     ./spicetify-config.nix
     ./minecraft-config.nix
+    ./ableton-config.nix
     ./flatpak-packages.nix
   ];
 

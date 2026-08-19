@@ -145,6 +145,12 @@ inputs {
       branch "main"
     }
   }
+  ableton-linux {
+    git {
+      repository "https://github.com/Username404-59/ableton-linux.git" // TODO Switch back to https://github.com/shibco/ableton-linux.git when https://github.com/shibco/ableton-linux/pull/27 is merged
+      branch "main"
+    }
+  }
 
   // Packages
   mpv {
@@ -169,6 +175,11 @@ inputs {
     git {
       repository "https://github.com/Da4ndo/hyprproxlock.git"
       branch "main"
+    }
+  }
+  ableton frozen=#true { // I have to update the version number manually
+    file {
+      url "https://cdn-downloads.ableton.com/channels/12.4.3/ableton_live_lite_12.4.3_64.zip"
     }
   }
 
