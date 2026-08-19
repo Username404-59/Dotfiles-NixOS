@@ -81,6 +81,13 @@ inputs {
     }
   }
 
+  flake-compat {
+    git {
+      repository "https://github.com/NixOS/flake-compat"
+      branch "master"
+    }
+  }
+
   nix-spicetify {
     git {
       repository "https://github.com/Gerg-L/spicetify-nix.git"

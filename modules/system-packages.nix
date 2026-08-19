@@ -2,6 +2,8 @@
 
 let
   functions = rec {
+    addFlakeCompat = src: (import nixtamal.flake-compat { inherit src; }).outputs;
+
     mkSpecial = pkg: version: src_name: suffix:
       let
         src = nixtamal.${src_name + suffix};
