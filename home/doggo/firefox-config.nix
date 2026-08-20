@@ -100,15 +100,16 @@ in
       };
 
       ExtensionSettings = let
-        extension = shortId: uuid: default_area: {
+        extension_url = url: uuid: default_area: {
           name = uuid;
           value = {
-            install_url = "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi";
+            install_url = url;
             installation_mode = "force_installed";
             default_area = default_area;
             blocked_install_message = "NON.";
           };
         };
+        extension = shortId: uuid: default_area: extension_url "https://addons.mozilla.org/firefox/downloads/latest/${shortId}/latest.xpi" uuid default_area;
       in builtins.listToAttrs [ # Addon IDs: about:debugging#/runtime/this-firefox
         # Essentials
         (extension "ublock-origin" "uBlock0@raymondhill.net" "menupanel")
@@ -126,6 +127,7 @@ in
         (extension "ttv-lol-pro" "{76ef94a4-e3d0-4c6f-961a-d38a429a332b}" "navbar")
         (extension "btroblox" "btroblox@antiboomz.com" "menupanel")
         (extension "sponsorblock" "sponsorBlocker@ajay.app" "navbar")
+        (extension_url "https://dl.premid.app/PreMiD.xpi" "support@premid.app" "navbar")
 
         # Scripting / styling
         (extension "styl-us" "{7a7a4a92-a2a0-41d1-9fd7-1e92480d612d}" "navbar")
