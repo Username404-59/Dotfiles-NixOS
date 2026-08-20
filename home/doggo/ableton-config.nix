@@ -10,18 +10,38 @@ in
     ableton.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
-  # Hacky activation script to install ableton
-  home.activation.ableton = let
+  # Hacky script to install ableton
+  systemd.user.services.ableton-install = let
     tmp_dir = "$XDG_RUNTIME_DIR/abletonstuff";
-  in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    if [ ! -e "${wineprefix_ableton}" ]; then
-      rm -rf ${tmp_dir}
-      mkdir ${tmp_dir}
-      ln -sf ${nixtamal.ableton} ${tmp_dir}/ableton_live_lite_${major_version}.9999.9999_64.zip
-      PATH="/run/current-system/sw/bin:${pkgs.unzip}/bin:${pkgs.cabextract}/bin:$PATH" ABLETON_INSTALLER_DIR="${tmp_dir}" ABLETON_LIVE_AUTOINSTALL=1 ABLETON_INSTALLER_UI=0 ${ableton.apps.${pkgs.stdenv.hostPlatform.system}.setup-prefix.program}
-      rm -rf ${tmp_dir}
-    fi
-  '';
+  in {
+    Install.WantedBy = [ "default.target" ];
+
+    Service = {
+      Type = "exec";
+
+      ExecStart = pkgs.writeShellScript "install-ableton" ''
+        set -euo pipefail
+        if [ -e "${wineprefix_ableton}" ]; then
+          exit 0
+        fi
+        rm -rf "${tmp_dir}"
+        mkdir "${tmp_dir}"
+        ln -s \
+          "${nixtamal.ableton}" \
+          "${tmp_dir}/ableton_live_lite_${major_version}.9999.9999_64.zip"
+
+        PATH="${pkgs.unzip}/bin:${pkgs.cabextract}/bin:$PATH" \
+          ABLETON_INSTALLER_DIR="${tmp_dir}" \
+          ABLETON_LIVE_AUTOINSTALL=1 \
+          ABLETON_INSTALLER_UI=0 \
+          ${ableton.apps.${pkgs.stdenv.hostPlatform.system}.setup-prefix.program}
+
+        rm -rf "${tmp_dir}"
+      '';
+
+      TimeoutStartSec = "30min";
+    };
+  };
 
   # Catppuccin theme install
   systemd.user.services.wine-ableton-catppuccin-link = {
