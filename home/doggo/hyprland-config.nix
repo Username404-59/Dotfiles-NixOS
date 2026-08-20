@@ -402,6 +402,7 @@ in
             "org.gabmus.gfeeds"
             "app.eduroam.geteduroam"
             "io.github.thetumultuousunicornofdarkness.cpu-x"
+            "ableton.*.exe"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 
