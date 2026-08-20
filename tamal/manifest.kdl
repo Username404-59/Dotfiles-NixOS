@@ -147,8 +147,8 @@ inputs {
   }
   ableton-linux {
     git {
-      repository "https://github.com/Version33/ableton-linux.git" // TODO Switch back to https://github.com/shibco/ableton-linux.git when https://github.com/shibco/ableton-linux/pull/27 is merged
-      branch "main"
+      repository "https://github.com/ClickSentinel/ableton-linux.git" // TODO Switch back to https://github.com/shibco/ableton-linux.git when https://github.com/shibco/ableton-linux/pull/237 is merged
+      branch "flake/rederive"
     }
   }
 
