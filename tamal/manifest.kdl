@@ -198,4 +198,13 @@ inputs {
       | cut -f1
     }
   }
+  catppuccin-ableton {
+    file {
+      url "https://raw.githubusercontent.com/sliipkat/ableton-live/{{fresh_value}}/themes/Catppuccin%20Mocha.ask";
+    }
+    fresh-cmd {
+      $ git ls-remote --branches "https://github.com/sliipkat/ableton-live.git" --refs "refs/heads/main"
+      | cut -f1
+    }
+  }
 }
