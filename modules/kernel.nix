@@ -46,7 +46,7 @@
       pkgs.cachyosKernels.linux-cachyos-latest.override {
         bbr3 = true;
         cpusched = "bore";
-        lto = if isLaptop then "thin" else "full";
+        lto = "full";
         processorOpt = "native";
         tickrate = if isLaptop then "idle" else "full";
       }
