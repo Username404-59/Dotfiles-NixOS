@@ -10,6 +10,8 @@ in
     ableton.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
+  # Note: for online auth, if firefox doesn't work, check for a "ableton://authorize?license_id=" in console logs and run "ableton-live ableton://authorize?license_id=stuffhere"
+
   # Hacky script to install ableton
   systemd.user.services.ableton-install = let
     tmp_dir = "$XDG_RUNTIME_DIR/abletonstuff";
