@@ -16,9 +16,9 @@
     ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
   '';
 
-  # NVIDIA drivers and DisplayLink support
+  # NVIDIA drivers
   # TODO Apply the cachyos nvidia patches for compatibility with -rc kernels
-  services.xserver.videoDrivers = [ /*"nvidia"*/ "displaylink" ];
+  #services.xserver.videoDrivers = [ "nvidia" ];
   #hardware.nvidia.open = true;
   #hardware.nvidia.branch = "bleeding_edge";
 
