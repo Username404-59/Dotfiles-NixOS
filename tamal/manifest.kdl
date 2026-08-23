@@ -184,9 +184,6 @@ inputs {
   }
 
   // Other patches
-  nct6687d-patch { // TODO: Remove this when the package gets updated
-    file { url "https://patch-diff.githubusercontent.com/raw/Fred78290/nct6687d/pull/186.patch"; }
-  }
 
   // Others
   catppuccin-godot {

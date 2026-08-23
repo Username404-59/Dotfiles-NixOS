@@ -3,7 +3,7 @@
 {
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
-    (functions.mkPatchedAuto nct6687d)
+    nct6687d
   ];
 
   boot.kernelModules = [
