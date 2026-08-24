@@ -14,7 +14,7 @@ in
 
   # Hacky script to install ableton
   systemd.user.services.ableton-install = let
-    tmp_dir = "$XDG_RUNTIME_DIR/abletonstuff";
+    tmp_dir = "/tmp/abletonstuff-$(id -u)";
   in {
     Install.WantedBy = [ "default.target" ];
 
@@ -28,12 +28,13 @@ in
         fi
         rm -rf "${tmp_dir}"
         mkdir "${tmp_dir}"
-        ln -s \
+        cp \
           "${nixtamal.ableton}" \
           "${tmp_dir}/ableton_live_lite_${major_version}.9999.9999_64.zip"
 
         PATH="${pkgs.unzip}/bin:${pkgs.cabextract}/bin:$PATH" \
           ABLETON_INSTALLER_DIR="${tmp_dir}" \
+          ABLETON_LIVE_VERSION="${major_version}" \
           ABLETON_LIVE_AUTOINSTALL=1 \
           ABLETON_INSTALLER_UI=0 \
           ${ableton.apps.${pkgs.stdenv.hostPlatform.system}.setup-prefix.program}
