@@ -8,7 +8,6 @@ patches {
   mimalloc_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch" // TODO Remove when merged. To get https://github.com/microsoft/mimalloc/commit/ccac92ef19abf56cc7dbc57dfd28960108ea18ab.
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
   hyprproxlock_tests_fix "./patches/hyprproxlock_fix_tests.patch" // TODO Make a PR to nixpkgs instead once hyprproxlock 0.1.2 is released
-  ableton-linux_fix "https://patch-diff.githubusercontent.com/raw/shibco/ableton-linux/pull/261.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -151,7 +150,6 @@ inputs {
       repository "https://github.com/shibco/ableton-linux.git"
       branch "main"
     }
-    patches ableton-linux_fix
   }
 
   // Packages
