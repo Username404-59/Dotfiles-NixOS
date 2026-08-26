@@ -3,6 +3,8 @@
 {
   catppuccin.plymouth.enable = false;
 
+  system.nixos-init.enable = true; # Note: doesn't run system.activationScripts as of writing
+
   # Bootloader.
   boot = {
     loader = {
