@@ -164,6 +164,7 @@
   };
 
   xdg.autostart.enable = true;
+  home.preferXdgDirectories = true;
 
   home.stateVersion = "26.11";
 }
