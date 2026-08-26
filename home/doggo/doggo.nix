@@ -47,7 +47,7 @@
     gnome-feeds
     vulkan-tools mesa-demos # vkcube & glxgears
     #spotifywm # Lets me make a hyprland window rule for spotify. Currently commented out because spicetify pulls it.
-    libreoffice-qt-fresh
+    libreoffice-qt
     libnotify # For the "notify-send" utility
     gimp-with-plugins
 
