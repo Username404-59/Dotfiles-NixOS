@@ -8,6 +8,7 @@ patches {
   mimalloc_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/542145.patch" // TODO Remove when merged. To get https://github.com/microsoft/mimalloc/commit/ccac92ef19abf56cc7dbc57dfd28960108ea18ab.
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
   hyprproxlock_tests_fix "./patches/hyprproxlock_fix_tests.patch" // TODO Make a PR to nixpkgs instead once hyprproxlock 0.1.2 is released
+  profile-sync-daemon_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/556852.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -17,7 +18,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches mimalloc_update hyprglass hyprproxlock_tests_fix
+    patches mimalloc_update hyprglass hyprproxlock_tests_fix profile-sync-daemon_update
     fresh-cmd {
       $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
       | cut -f1

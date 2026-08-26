@@ -12,7 +12,6 @@ let
 in
 {
   programs.firefox = {
-    configPath = "${config.home.homeDirectory}/.mozilla/firefox";
     package = pkgs.firefox-bin;
     enable = true;
     languagePacks = [ "fr" ];
