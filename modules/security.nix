@@ -59,8 +59,6 @@
     (lib.mkMerge (map (name: {
       ${name}.setuid = lib.mkForce false;
     }) [
-      "fusermount"
-      "fusermount3"
       "mount"
       "umount"
       "pkexec"
