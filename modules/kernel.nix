@@ -74,5 +74,8 @@
     "net.core.default_qdisc" = "cake"; # / "cake_mq"
   };
 
-  programs.obs-studio.enableVirtualCamera = true;
+  programs.obs-studio = {
+    package = null; enable = true; # Installed & configured via home manager instead
+    enableVirtualCamera = true;
+  };
 }
