@@ -25,14 +25,14 @@ OF THIS SOFTWARE.
 	system ? builtins.currentSystem,
 	bootstrap-nixpkgs ? null,
 	bootstrap-nixpkgs-lock-name ? null,
+	bootstrap-pkgs ? null,
 }:
 
 let lock = builtins.fromJSON (builtins.readFile ./lock.json); in
-assert (lock.v == "1.2.0");
+assert (lock.v == "1.3.0");
 let
 	local-patches = {
 		"adios" = ./patches/adios.patch;
-		"hyprproxlock_tests_fix" = ./patches/hyprproxlock_fix_tests.patch;
 		"kservice_fix" = ./patches/kservice_fix.patch;
 	};
 
@@ -151,7 +151,11 @@ let
 		else
 			bootstrap-nixpkgs;
 
-	pkgs = import nixpkgs' {inherit system;};
+	pkgs =
+		if builtins.isAttrs bootstrap-pkgs then
+			bootstrap-pkgs
+		else
+			import nixpkgs' {inherit system;};
 
 	inherit (pkgs) lib;
 

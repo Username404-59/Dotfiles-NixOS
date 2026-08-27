@@ -494,7 +494,7 @@ in
   };
 
   # Hyprproxlock configuration
-  home.packages = [ (functions.mkUnstable pkgs.hyprproxlock) ];
+  home.packages = [ pkgs.hyprproxlock ];
   xdg.configFile."hypr/hyprproxlock.conf".text = ''
     # Earbuds
     device {
@@ -514,6 +514,10 @@ in
       unlock_hold_seconds = 3
       poll_interval = 1
       reconnect_interval = 20
+    }
+
+    notifications {
+      enabled = false
     }
   '';
   # Puts hyprproxlock logs in /tmp

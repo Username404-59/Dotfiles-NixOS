@@ -1,4 +1,4 @@
-version "1.2.0"
+version "1.3.0"
 default-hash-algorithm BLAKE3
 
 patches {
@@ -6,7 +6,7 @@ patches {
   kservice_fix "./patches/kservice_fix.patch"
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
-  hyprproxlock_tests_fix "./patches/hyprproxlock_fix_tests.patch" // TODO Make a PR to nixpkgs instead once hyprproxlock 0.1.2 is released
+  hyprproxlock_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/557192.patch" // TODO Remove when merged
   profile-sync-daemon_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/556852.patch" // TODO Remove when merged
 }
 
@@ -17,7 +17,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches hyprglass hyprproxlock_tests_fix profile-sync-daemon_update
+    patches hyprglass hyprproxlock_update profile-sync-daemon_update
     fresh-cmd {
       $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
       | cut -f1
@@ -169,12 +169,6 @@ inputs {
     git {
       repository "https://github.com/PancakeTAS/lsfg-vk.git"
       branch "develop"
-    }
-  }
-  hyprproxlock-git {
-    git {
-      repository "https://github.com/Da4ndo/hyprproxlock.git"
-      branch "main"
     }
   }
   ableton frozen=#true { // I have to update the version number manually
