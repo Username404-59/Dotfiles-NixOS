@@ -18,7 +18,11 @@
         setSocketVariable = true;
       };
 
-      daemon.settings.experimental = true;
+      daemon.settings = {
+        experimental = true;
+        storage-driver = "overlay2";
+      };
+
       autoPrune.enable = true;
     };
   };
