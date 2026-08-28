@@ -37,30 +37,12 @@ in
         newPluginsManager.enable = true;
         questify = {
           enable = true;
-          allowChangingDangerousSettings = true;
-          autoCompleteQuestsSimultaneously = false;
           resumeInterruptedQuests = true;
-          makeMobileVideoQuestsDesktopCompatible = true;
-          completeVideoQuestsQuicker = false;
-
-          autoCompleteQuestTypes = {
-            PLAY_ON_DESKTOP = true;
-            PLAY_ON_XBOX = false;
-            PLAY_ON_PLAYSTATION = false;
-            PLAY_ACTIVITY = true;
-            WATCH_VIDEO = true;
-            WATCH_VIDEO_ON_MOBILE = true;
-            ACHIEVEMENT_IN_ACTIVITY = true;
-          };
-
-          disableMembersListPromo = true;
-          disableFriendsListPromo = true;
-          disableRelocationNotices = true;
-          disableAccountPanelPromo = true;
 
           # https://github.com/Equicord/Equicord/blob/94c0ac8e16b293e1fb715eac3aedabe2bb96fead/src/equicordplugins/questify/settings/notices.tsx#L31
           acknowledgedNotices = {
             "quest-ban-warning-2026-08-07" = true;
+            "quest-ban-warning-2026-08-26" = true;
           };
         };
         dragFavoriteEmotes.enable = true;
