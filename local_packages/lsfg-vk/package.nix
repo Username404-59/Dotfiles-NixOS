@@ -1,6 +1,6 @@
 {
   lib,
-  fetchFromGitHub,
+  fetchgit,
   cmake,
   vulkan-headers,
   llvmPackages,
@@ -8,13 +8,12 @@
 
 llvmPackages.stdenv.mkDerivation (finalAttrs: {
   pname = "lsfg-vk";
-  version = "2.0.0-dev";
+  version = "2.0.0-rc1";
 
-  src = fetchFromGitHub {
-    owner = "PancakeTAS";
-    repo = "lsfg-vk";
-    tag = "v${finalAttrs.version}";
-    hash = "sha256-Qb3vufCzNpM1r+vgo8M9nnA7CENgGTithWG0oXqLKbI=";
+  src = fetchgit {
+    url = "https://git.lsfg-vk.dev/lsfg-vk.git";
+    tag = finalAttrs.version;
+    hash = "sha256-+2Zslbt4A3opMsCgu3/BMA2PJm6vzIFwhsS9Iml9H3Y=";
   };
 
   nativeBuildInputs = [
@@ -29,9 +28,10 @@ llvmPackages.stdenv.mkDerivation (finalAttrs: {
 
   cmakeFlags = [
     "-DLSFGVK_LAYER_LIBRARY_PATH=${placeholder "out"}/lib/liblsfg-vk-layer.so"
-    "-DLSFGVK_BUILD_VK_LAYER=ON"
+    "-DLSFGVK_BUILD_LAYER=ON"
     "-DLSFGVK_BUILD_UI=OFF"
     "-DLSFGVK_BUILD_CLI=OFF"
+    "-DLSFGVK_MANAGED=ON"
   ];
 
   meta = {

@@ -167,8 +167,8 @@ inputs {
   }
   lsfg-vk-git {
     git {
-      repository "https://github.com/PancakeTAS/lsfg-vk.git"
-      branch "develop"
+      repository "https://git.lsfg-vk.dev/lsfg-vk.git"
+      branch "master"
     }
   }
   ableton frozen=#true { // I have to update the version number manually

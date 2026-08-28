@@ -26,10 +26,11 @@ llvmPackages.stdenv.mkDerivation (finalAttrs: {
   ];
 
   cmakeFlags = [
-    "-DLSFGVK_BUILD_VK_LAYER=OFF"
+    "-DLSFGVK_BUILD_LAYER=OFF"
     "-DLSFGVK_BUILD_UI=ON"
     "-DLSFGVK_INSTALL_XDG_FILES=ON"
     "-DLSFGVK_BUILD_CLI=OFF"
+    "-DLSFGVK_MANAGED=ON"
   ];
 
   meta = {
