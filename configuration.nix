@@ -109,7 +109,6 @@ in
       "blake3-hashes"
       "auto-allocate-uids"
       "fetch-tree"
-      "flakes" # TODO Remove when https://github.com/NixOS/nix/issues/5541 is fixed / https://github.com/NixOS/nix/pull/15654 is merged
     ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
     auto-allocate-uids = true;
   };
