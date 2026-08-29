@@ -12,6 +12,9 @@
 
   boot.blacklistedKernelModules = [];
 
+  # TODO: Remove this if my laptop & desktop ever end up having the same microarchitecture
+  boot.kernelPackages = lib.mkForce pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-x86_64-v3;
+
   # CRU screen overclocking
   hardware.firmware = [
     (pkgs.runCommandLocal "PHL-edid-77hz" {} ''

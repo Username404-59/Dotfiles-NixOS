@@ -47,7 +47,7 @@ inputs {
   nix-cachyos-kernel {
     git {
       repository "https://github.com/xddxdd/nix-cachyos-kernel.git"
-      branch "master"
+      branch "release"
     }
   }
 

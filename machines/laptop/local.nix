@@ -1,4 +1,4 @@
-{ config, ...}:
+{ config, lib, pkgs, ...}:
 
 {
   boot.extraModulePackages = with config.boot.kernelPackages; [];
@@ -15,6 +15,9 @@
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
   '';
+
+  # TODO: Remove this if my laptop & desktop ever end up having the same microarchitecture
+  boot.kernelPackages = lib.mkForce pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
 
   # NVIDIA drivers
   # TODO Apply the cachyos nvidia patches for compatibility with -rc kernels

@@ -41,17 +41,7 @@
     xpadneo.enable = true;
   };
 
-  boot.kernelPackages = (
-    pkgs.linuxKernel.packagesFor(
-      pkgs.cachyosKernels.linux-cachyos-latest.override {
-        bbr3 = true;
-        cpusched = "bore";
-        lto = "full";
-        processorOpt = "native";
-        tickrate = if isLaptop then "idle" else "full";
-      }
-    )
-  );
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
 
   boot.kernelPatches = [ ];
 
