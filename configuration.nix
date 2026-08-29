@@ -10,7 +10,7 @@
   nix-env -f '<nixpkgs>' --install package
 
   To rebuild for the first time:
-  sudo NIX_CONFIG="$(cat /srv/nixos/binary-cache.conf)" nixos-rebuild boot --file /srv/nixos/system.nix --option extra-experimental-features "blake3-hashes auto-allocate-uids fetch-tree"
+  sudo NIX_CONFIG="$(cat /srv/nixos/binary-cache.conf)" nixos-rebuild boot --file /srv/nixos/system.nix --option extra-experimental-features "blake3-hashes auto-allocate-uids fetch-tree flakes"
 
   To force nixtamal lock on specific input:
   sudo nixtamal lock --force specific_input
@@ -104,7 +104,13 @@ in
   ];
   nix.settings = {
     auto-optimise-store = true;
-    experimental-features = [ "nix-command" "blake3-hashes" "auto-allocate-uids" "fetch-tree" ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
+    experimental-features = [
+      "nix-command"
+      "blake3-hashes"
+      "auto-allocate-uids"
+      "fetch-tree"
+      "flakes" # TODO Remove when https://github.com/NixOS/nix/issues/5541 is fixed / https://github.com/NixOS/nix/pull/15654 is merged
+    ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
     auto-allocate-uids = true;
   };
   environment.variables.NIX_CONFIG = "$(cat ${toString ./binary-cache.conf})"; # This way binary caches are taken into account immediately
