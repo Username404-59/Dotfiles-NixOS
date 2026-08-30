@@ -4,12 +4,11 @@
     --in-content-page-background: #00000000 !important;
     --in-content-box-background: #00000088 !important;
     --tabs-navbar-separator-color: rgba(0, 0, 0, 0) !important;
+    --toolbar-field-background-color: transparent !important;
     --toolbar-field-focus-background-color: transparent !important;
 }
 
-tab.tabbrowser-tab[selected="true"] stack.tab-stack vbox.tab-background {
-    background: #FFFFFF28 !important;
-}
+.tab-background[selected] { background: transparent !important }
 
 toolbar {
     background: transparent !important;
