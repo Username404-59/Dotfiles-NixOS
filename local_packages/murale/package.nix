@@ -11,16 +11,16 @@
 
 rustPlatform.buildRustPackage {
   pname = "murale";
-  version = "1.0.0";
+  version = "1.1.0";
 
   src = fetchFromGitHub {
     owner = "brenton-keller";
     repo = "murale";
-    rev = "8461aace00fbda96fbf3e988b314e9dbef1e1a4d"; # There are no tags yet as of writing
-    hash = "sha256-UUHIboFU4aES1zQ2RwuG4dIFSiVpyhy3+WVgbbCEteo=";
+    tag = "published/20260830T135919";
+    hash = "sha256-l4PWMWnmA0PM6qrT8bbVtENq1ivz2Qs24W5OSAKh81M=";
   };
 
-  cargoHash = "sha256-+jlkV+umcbHpPYbwdx0qrzuMkxA7RkSQ2BoYy0xEkck=";
+  cargoHash = "sha256-i5DMAUfgDnrQSPNwTwToseNHu0iFHObvaZ6Fn++fTS4=";
 
   strictDeps = true;
   __structuredAttrs = true;
