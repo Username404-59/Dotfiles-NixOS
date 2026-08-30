@@ -20,10 +20,9 @@
   boot.kernelPackages = lib.mkForce pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
 
   # NVIDIA drivers
-  # TODO Apply the cachyos nvidia patches for compatibility with -rc kernels
   #services.xserver.videoDrivers = [ "nvidia" ];
   #hardware.nvidia.open = true;
-  #hardware.nvidia.branch = "bleeding_edge";
+  #hardware.nvidia.branch = "latest";
 
   networking.hostName = "lizard-portable";
 }
