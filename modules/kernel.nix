@@ -36,7 +36,9 @@
       enable = true;
       ppfeaturemask = lib.mkIf isLaptop "0xffffffff"; # Enables GFXOFF & stutter mode power saving features
     };
-    
+
+    enableAllFirmware = true;
+
     new-lg4ff.enable = true;
     xpadneo.enable = true;
   };
