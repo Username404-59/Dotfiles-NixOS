@@ -197,7 +197,7 @@ in
           direct_scanout = 1;
           new_render_scheduling = true;
 
-          non_shader_cm = 2;
+          non_shader_cm = 3;
           non_shader_cm_interop = 1;
         };
 
