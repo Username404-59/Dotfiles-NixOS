@@ -45,6 +45,13 @@
 
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
 
+  specialisation = let
+    variant = pkg: { configuration.boot.kernelPackages = lib.mkOverride 49 pkg; };
+  in {
+    #rc_kernel = variant pkgs.cachyosKernels.linuxPackages-cachyos-rc;
+    stock_kernel = variant pkgs.linuxPackages_latest;
+  };
+
   boot.kernelPatches = [ ];
 
   boot.extraModulePackages = [];
