@@ -1,4 +1,4 @@
-{ isLaptop, config, ... }:
+{ isLaptop, config, pkgs, ... }:
 
 {
   # Enable networking
@@ -6,6 +6,9 @@
     networkmanager = {
       enable = true;
       wifi.backend = "iwd";
+      plugins = with pkgs; [
+        networkmanager-openvpn
+      ];
     };
 
     wireless.iwd.settings = {
