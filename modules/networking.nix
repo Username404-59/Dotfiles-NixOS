@@ -34,11 +34,13 @@
         25565 # Minecraft
         7777 7778 27016
         8080 # Dev test port
+        30309 # Port for torrents
       ];
       allowedUDPPorts = [
         5353 # Spotify discovery port
         7777 7778 27016 # Satisfactory dedicated server (etc) ports
         8080
+        30309 # Port for torrents
       ];
     };
 
