@@ -50,6 +50,7 @@
     libreoffice-qt
     libnotify # For the "notify-send" utility
     gimp-with-plugins
+    qbittorrent-enhanced
 
     # Gaming packages:
     (rsi-launcher-umu.override {
