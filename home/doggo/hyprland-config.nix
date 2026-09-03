@@ -403,6 +403,7 @@ in
             "app.eduroam.geteduroam"
             "io.github.thetumultuousunicornofdarkness.cpu-x"
             "ableton.*.exe"
+            "org.qbittorrent.qBittorrent"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ]})$";
 
