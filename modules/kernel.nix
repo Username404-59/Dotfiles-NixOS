@@ -46,8 +46,6 @@
     xpadneo.enable = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
 
   specialisation = let
