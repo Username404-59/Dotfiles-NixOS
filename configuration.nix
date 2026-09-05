@@ -201,7 +201,7 @@ in
   };
 
   # journalctl configuration
-  services.journald.extraConfig = "MaxRetentionSec=1day";
+  services.journald.settings.Journal.MaxRetentionSec = "1day";
 
   # To disable the firewall altogether.
   # networking.firewall.enable = false;
