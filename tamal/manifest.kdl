@@ -7,6 +7,7 @@ patches {
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   hyprglass "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch" // TODO Remove when merged
   profile-sync-daemon_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/556852.patch" // TODO Switch to 546369 when that one is fixed, and then remove when merged
+  pnpm_hash_update "./patches/pnpm_hash_update.patch" // TODO Remove when fixed in nixcord
 }
 
 inputs {
@@ -116,6 +117,7 @@ inputs {
       repository "https://github.com/FlameFlag/nixcord.git"
       branch "main"
     }
+    patches pnpm_hash_update
   }
   nix-flatpak {
     git {
