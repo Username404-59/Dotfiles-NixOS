@@ -8,12 +8,12 @@
 
 llvmPackages.stdenv.mkDerivation (finalAttrs: {
   pname = "lsfg-vk";
-  version = "2.0.0-rc1";
+  version = "2.0.0";
 
   src = fetchgit {
     url = "https://git.lsfg-vk.dev/lsfg-vk.git";
     tag = finalAttrs.version;
-    hash = "sha256-+2Zslbt4A3opMsCgu3/BMA2PJm6vzIFwhsS9Iml9H3Y=";
+    hash = "sha256-vp0/adJdVV73C2RFjcEE90KjWiZJQhiqqOlYQ89RG+Y=";
   };
 
   nativeBuildInputs = [
