@@ -43,7 +43,7 @@
     #androidStudioPackages.canary.full
     #androidStudioForPlatformPackages.canary # Android studio but better for AOSP dev
     #git-repo # Android dev tool
-    lmms-full
+    #lmms-full // TODO Uncomment when https://github.com/NixOS/nixpkgs/pull/559533 is merged and the package builds
     gnome-feeds
     vulkan-tools mesa-demos # vkcube & glxgears
     #spotifywm # Lets me make a hyprland window rule for spotify. Currently commented out because spicetify pulls it.
