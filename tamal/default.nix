@@ -34,7 +34,6 @@ let
 	local-patches = {
 		"adios" = ./patches/adios.patch;
 		"kservice_fix" = ./patches/kservice_fix.patch;
-		"pnpm_hash_update" = ./patches/pnpm_hash_update.patch;
 	};
 
 	hash-token = {
