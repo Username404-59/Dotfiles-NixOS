@@ -19,10 +19,5 @@
   # TODO: Remove this if my laptop & desktop ever end up having the same microarchitecture
   boot.kernelPackages = lib.mkForce pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
 
-  # NVIDIA drivers
-  #services.xserver.videoDrivers = [ "nvidia" ];
-  #hardware.nvidia.open = true;
-  #hardware.nvidia.branch = "latest";
-
   networking.hostName = "lizard-portable";
 }

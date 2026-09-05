@@ -37,11 +37,16 @@
       ppfeaturemask = lib.mkIf isLaptop "0xffffffff"; # Enables GFXOFF & stutter mode power saving features
     };
 
+    nvidia.open = true;
+    nvidia.branch = "latest";
+
     enableAllFirmware = true;
 
     new-lg4ff.enable = true;
     xpadneo.enable = true;
   };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
 
