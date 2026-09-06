@@ -150,6 +150,12 @@ inputs {
       branch "main"
     }
   }
+  determinate-nix {
+    git {
+      repository "https://github.com/DeterminateSystems/nix-src.git"
+      branch "main"
+    }
+  }
 
   // Packages
   mpv {

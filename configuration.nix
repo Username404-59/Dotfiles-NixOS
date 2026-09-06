@@ -95,10 +95,17 @@ in
 
   home-manager.useUserPackages = true; # Puts user packages in /etc/profiles
   home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
-  nix.package = with pkgs;
+
+  nix.package =
+  # Upstream:
+  /*with pkgs;
     if lib.versionOlder nixVersions.latest.version nixVersions.git.version
     then nixVersions.git
     else nixVersions.latest;
+  */
+  # Determinate Nix:
+  (functions.addFlakeCompat nixtamal.determinate-nix).packages.${builtins.currentSystem}.default;
+
   nix.channel.enable = false; # Channels are not needed / useless with nixtamal
   nix.nixPath = [
     "nixpkgs=${nixtamal.nixpkgs}" # Fixes <nixpkgs> (which nixtamal uses for some reason when fetching patches as of writing)
