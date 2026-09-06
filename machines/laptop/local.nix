@@ -16,6 +16,14 @@
     ACTION=="add", SUBSYSTEM=="thunderbolt", ATTR{authorized}=="0", ATTR{authorized}="1"
   '';
 
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    offload.enableOffloadCmd = true;
+    # To find the bus IDs: lspci -D
+    amdgpuBusId = "PCI:69@0:0:0";
+    nvidiaBusId = "PCI:38@0:0:0";
+  };
+
   # TODO: Remove this if my laptop & desktop ever end up having the same microarchitecture
   boot.kernelPackages = lib.mkForce pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
 
