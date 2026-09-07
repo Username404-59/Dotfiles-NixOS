@@ -19,6 +19,7 @@
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
+    allowExternalGpu = true;
     # To find the bus IDs: lspci -D
     amdgpuBusId = "PCI:69@0:0:0";
     nvidiaBusId = "PCI:38@0:0:0";
