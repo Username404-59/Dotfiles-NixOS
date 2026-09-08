@@ -119,6 +119,7 @@ rec {
     (functions.mkSpecial lsfg-vk-ui "unstable" "lsfg-vk" "-git")
     steamcmd
     geteduroam
+    sshpass
   ];
 
   services = {
