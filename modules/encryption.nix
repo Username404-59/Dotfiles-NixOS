@@ -9,7 +9,7 @@ let
     name = "fscrypt-migrate-homes";
 
     runtimeInputs = [
-      pkgs.fscrypt-experimental
+      pkgs.fscrypt
       pkgs.rsync
       pkgs.coreutils
       pkgs.getent
