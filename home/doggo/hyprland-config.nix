@@ -454,6 +454,10 @@ in
         temperature = 6500;
       }
       {
+        time = "19:45";
+        temperature = 5300;
+      }
+      {
         time = "21:45";
         temperature = if isLaptop then 4150 else 3333;
       }
