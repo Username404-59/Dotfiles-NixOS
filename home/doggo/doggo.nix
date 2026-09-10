@@ -51,6 +51,7 @@
     libnotify # For the "notify-send" utility
     gimp-with-plugins
     qbittorrent-enhanced
+    nixpkgs-review
 
     # Gaming packages:
     (rsi-launcher-umu.override {
