@@ -1,0 +1,17 @@
+diff --git a/scripts/lib/lifecycle.sh b/scripts/lib/lifecycle.sh
+index 06e1db4..4fb048b 100644
+--- a/scripts/lib/lifecycle.sh
++++ b/scripts/lib/lifecycle.sh
+@@ -103,12 +103,6 @@ ableton_stop_runtime_clients()
+     local runtime="${1:-$ABLETON_WINE_ROOT}" pids pid deadline
+     pids="$(ableton_runtime_pids "$runtime")"
+     [ -n "$pids" ] || return 0
+-    if [ ! -t 0 ]; then
+-        echo "!! Wine is running. Run the installer in a terminal so it can ask before stopping Wine." >&2
+-        return 1
+-    fi
+-    ui_question q_stop_wine_title n q_stop_wine_yes q_stop_wine_no
+-    [ "$UI_ANSWER" = y ] || return 1
+ 
+     pids="$(ableton_runtime_pids "$runtime")"
+     for pid in $pids; do

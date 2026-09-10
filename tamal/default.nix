@@ -32,6 +32,7 @@ let lock = builtins.fromJSON (builtins.readFile ./lock.json); in
 assert (lock.v == "1.3.0");
 let
 	local-patches = {
+		"ableton-linux_workaround" = ./patches/ableton-linux_workaround.patch;
 		"adios" = ./patches/adios.patch;
 		"kservice_fix" = ./patches/kservice_fix.patch;
 	};
