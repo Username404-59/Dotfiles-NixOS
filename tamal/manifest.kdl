@@ -180,7 +180,7 @@ inputs {
   }
   ableton frozen=#true { // I have to update the version number manually
     file {
-      url "https://cdn-downloads.ableton.com/channels/12.4.3/ableton_live_lite_12.4.3_64.zip"
+      url "https://cdn-downloads.ableton.com/channels/12.4.5/ableton_live_lite_12.4.5_64.zip"
     }
   }
 
