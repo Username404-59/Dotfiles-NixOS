@@ -52,6 +52,7 @@
     gimp-with-plugins
     qbittorrent-enhanced
     nixpkgs-review
+    scrcpy
 
     # Gaming packages:
     (rsi-launcher-umu.override {
