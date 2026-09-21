@@ -71,11 +71,10 @@ in
           "xdg-run/app/com.discordapp.Discord:create"
           "xdg-run/discord-ipc-0"
         ];
-        features = [ "all-syscalls" ]; # requires the 5224_all_syscalls flatpak patch I modified -> little performance boost (in theory)
         devices = [ "input" ]; # For controller support
       };
 
-      "moe.launcher.an-anime-game-launcher".Context.features = [ "all-syscalls" ];
+      "moe.launcher.an-anime-game-launcher".Context.features = [ "all-syscalls" ]; # requires the 5224_all_syscalls flatpak patch I modified -> little performance boost (in theory)
       "moe.launcher.the-honkers-railway-launcher".Context.features = [ "all-syscalls" ];
     };
   };
