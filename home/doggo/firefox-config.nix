@@ -89,6 +89,8 @@ in
         "browser.newtabpage.activity-stream.widgets.enabled" = lock-false;
         "browser.aboutConfig.showWarning" = lock-false;
 
+        "browser.nova.enabled" = false; # Disables ugly new interface
+
         # Performance etc
         "gfx.webrender.all" = lock-true;
         "gfx.webrender.wait-gpu-finished.disabled" = lock-true;
