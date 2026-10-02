@@ -181,5 +181,5 @@ rec {
   )];
 
   # Optimisations
-  environment.memoryAllocator.provider = "mimalloc";
+  environment.memoryAllocator.provider = "libc";
 }
