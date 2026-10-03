@@ -23,10 +23,6 @@ in
       { name = "flathub-beta"; location = "https://flathub.org/beta-repo/flathub-beta.flatpakrepo"; }
     ];
     packages = [
-      # Drivers
-      { appId = "runtime/org.freedesktop.Platform.GL.mesa-git/${runtime_version}";   origin = "flathub-beta"; }
-      { appId = "runtime/org.freedesktop.Platform.GL32.mesa-git/${runtime_version}"; origin = "flathub-beta"; }
-
       # Gaming stuff
       "org.vinegarhq.Sober"
       "moe.launcher.an-anime-game-launcher"
@@ -92,6 +88,4 @@ in
     Path.PathModified = "${roblox_config_path}";
     Install.WantedBy = [ "default.target" ];
   };
-
-  home.sessionVariables.FLATPAK_GL_DRIVERS = "mesa-git";
 }
