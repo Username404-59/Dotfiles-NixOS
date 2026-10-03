@@ -181,5 +181,5 @@ rec {
   )];
 
   # Optimisations
-  environment.memoryAllocator.provider = "libc";
+  environment.memoryAllocator.provider = "libc"; # TODO Set to mimalloc when bugs are fixed
 }
