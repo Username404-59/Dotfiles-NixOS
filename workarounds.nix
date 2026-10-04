@@ -8,7 +8,7 @@ let
   };
 in
 {
-  documentation.nixos.enable = false; # In case something's documentation is making nixos-rebuild
+  documentation.nixos.enable = false; # In case something's documentation is making nixos-rebuild fail
 
   # TODO Remove when https://github.com/NixOS/nix/issues/5541 is fixed / https://github.com/NixOS/nix/pull/15654 is merged
   nix.settings.experimental-features = [ "flakes" ];
