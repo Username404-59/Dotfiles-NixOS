@@ -71,7 +71,10 @@ in
           myUnits = "metric";
         };
         whosWatching.enable = true;
-        relationshipNotifier.enable = true;
+        relationshipNotifier = {
+          enable = true;
+          notices = true;
+        };
         notificationTitle.enable = true;
         voiceMessages.enable = true;
         messageLogger = { # Needed by enhanced plugin
