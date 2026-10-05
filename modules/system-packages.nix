@@ -187,5 +187,5 @@ rec {
   )];
 
   # Optimisations
-  environment.memoryAllocator.provider = "libc"; # TODO Set to mimalloc when bugs are fixed
+  specialisation.mimalloc.configuration.environment.memoryAllocator.provider = lib.mkForce "mimalloc";
 }
