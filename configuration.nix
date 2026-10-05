@@ -98,12 +98,13 @@ in
 
   nix.package =
   # Upstream:
-  with pkgs;
+  /*with pkgs;
     if lib.versionOlder nixVersions.latest.version nixVersions.git.version
     then nixVersions.git
     else nixVersions.latest;
+  */
   # Determinate Nix:
-  #(functions.addFlakeCompat nixtamal.determinate-nix).packages.${builtins.currentSystem}.default;
+  (functions.addFlakeCompat nixtamal.determinate-nix).packages.${builtins.currentSystem}.default;
 
   nix.channel.enable = false; # Channels are not needed / useless with nixtamal
   nix.settings = {
