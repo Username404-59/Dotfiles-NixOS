@@ -370,7 +370,9 @@ in
       ) (lib.range 1 9);
 
       # WINDOW RULES #
-      window_rule = [
+      window_rule = let
+        match_list = list: "^(${builtins.concatStringsSep "|" list})$";
+      in [
         {
           name = "suppress-maximize-events";
           match.class = ".*";
@@ -387,10 +389,17 @@ in
             pin        = false;
           };
         }
+        {
+          name = "cm_workaround";
+          match.class = match_list [
+            "org.vinegarhq.Sober"
+          ];
+          no_auto_hdr = true;
+        }
         # Chromakey with Catppuccin Mocha Base (the hex values each divided by 255 -> 0.1176, 0.1176, 0.1804)
         {
           name = "transparency";
-          match.class = "^(${builtins.concatStringsSep "|" [ # To check app classes: "hyprctl clients"
+          match.class = match_list [ # To check app classes: "hyprctl clients"
             "spotify" "jetbrains-.*"
             "io.github.ilya_zlobintsev.LACT"
             "org.prismlauncher.PrismLauncher"
@@ -406,7 +415,7 @@ in
             "ableton.*.exe"
             "org.qbittorrent.qBittorrent"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
-          ]})$";
+          ];
 
           "darkwindow:shade" = lib.generators.mkLuaInline ''
             hl.plugin.darkwindow.build_window_rule({
