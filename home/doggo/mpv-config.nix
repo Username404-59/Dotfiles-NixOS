@@ -17,9 +17,6 @@ in
 
       # Stuff needed for ModernZ
       watch-later-options-remove = "sub-pos";
-
-      # For HDR (https://wiki.hypr.land/Configuring/Basics/Variables/#:~:text=cm%5Fauto%5Fhdr%20requires%20%2D%2Dtarget%2Dcolorspace%2Dhint%2Dmode%3Dsource%20mpv%20option%20to%20work%20with%20mpv%20versions%20greater%20than%20v0%2E40%2E0)
-      target-colorspace-hint-mode = "source";
     };
 
     package = (
