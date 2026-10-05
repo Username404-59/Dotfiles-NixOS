@@ -33,6 +33,7 @@ in
       # Apps
       #"com.github.tchx84.Flatseal" # I should put overrides in this .nix instead
       "com.gluonhq.SceneBuilder"
+      "com.github.tchx84.Flatseal"
     ];
 
     overrides.writeMode = "replace";
