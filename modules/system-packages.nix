@@ -138,6 +138,12 @@ rec {
       capSysAdmin = true;
       openFirewall = true;
     };
+
+    nix-serve = {
+      enable = true;
+      package = pkgs.nix-serve-ng;
+      openFirewall = true;
+    };
   };
 
   programs = {
