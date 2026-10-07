@@ -1,4 +1,4 @@
-{ nixtamal, pkgs, config, ... }:
+{ nixtamal, pkgs, config, lib, isLaptop, ... }:
 
 let
   mkBundleFromNixtamal = name: appId: {
@@ -76,7 +76,7 @@ in
     };
   };
 
-  systemd.user.services.unlock-roblox-framerate-cap = {
+  systemd.user.services.unlock-roblox-framerate-cap = lib.mkIf (!isLaptop) {
     Unit.Description = "Force Roblox FramerateCap to 9999";
     Service = {
       Type = "oneshot";
