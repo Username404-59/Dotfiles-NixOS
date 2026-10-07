@@ -107,12 +107,12 @@ in
   (functions.addFlakeCompat nixtamal.determinate-nix).packages.${builtins.currentSystem}.default;
 
   nix.channel.enable = false; # Channels are not needed / useless with nixtamal
+  nix.nixPath = [
+    "nixpkgs=${nixtamal.nixpkgs}" # Fixes <nixpkgs> (which nixtamal uses for some reason when fetching patches as of writing)
+    "nixos-system=${toString ./system.nix}"
+    "nixos-config=${toString ./configuration.nix}"
+  ];
   nix.settings = {
-    nix-path = [
-      "nixpkgs=${nixtamal.nixpkgs}" # Fixes <nixpkgs> (which nixtamal uses for some reason when fetching patches as of writing)
-      "nixos-system=${toString ./system.nix}"
-      "nixos-config=${toString ./configuration.nix}"
-    ];
     auto-optimise-store = true;
     experimental-features = [
       "nix-command"
