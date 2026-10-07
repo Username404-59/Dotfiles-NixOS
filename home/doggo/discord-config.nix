@@ -38,6 +38,7 @@ in
         questify = {
           enable = true;
           resumeInterruptedQuests = true;
+          notifyOnNewQuests = false;
 
           # https://github.com/Equicord/Equicord/blob/94c0ac8e16b293e1fb715eac3aedabe2bb96fead/src/equicordplugins/questify/settings/notices.tsx#L31
           acknowledgedNotices = {
