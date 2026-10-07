@@ -404,7 +404,7 @@ in
             "io.github.ilya_zlobintsev.LACT"
             "org.prismlauncher.PrismLauncher"
             "com.obsproject.Studio"
-            "${config.programs.chromium.package.pname}-browser"
+            "${builtins.baseNameOf (lib.getExe config.programs.chromium.package)}"
             "libreoffice-.*"
             "io.missioncenter.MissionCenter"
             "moe.launcher.*"
