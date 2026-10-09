@@ -32,6 +32,7 @@ in
         fixYoutubeEmbeds.enable = true;
         youtubeAdblock.enable = true;
         gifPaste.enable = true;
+        gifProviderSwitcher.enable = true;
         clipUpload.enable = true;
         clipsEnhancements.enable = true;
         newPluginsManager.enable = true;
