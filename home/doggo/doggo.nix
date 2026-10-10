@@ -53,7 +53,7 @@
     qbittorrent-enhanced
     nixpkgs-review
     scrcpy
-    freac
+    freac kdePackages.k3b
 
     # Gaming packages:
     (rsi-launcher-umu.override {
