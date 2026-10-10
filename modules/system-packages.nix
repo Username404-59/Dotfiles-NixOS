@@ -154,6 +154,7 @@ rec {
     };
 
     partition-manager.enable = true;
+    k3b.enable = true;
 
     nix-ld.enable = true;
 
