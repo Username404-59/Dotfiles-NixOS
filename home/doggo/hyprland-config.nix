@@ -414,6 +414,7 @@ in
             "io.github.thetumultuousunicornofdarkness.cpu-x"
             "ableton.*.exe"
             "org.qbittorrent.qBittorrent"
+            "fre:ac"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ];
 
