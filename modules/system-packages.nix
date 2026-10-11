@@ -154,7 +154,7 @@ rec {
     };
 
     partition-manager.enable = true;
-    k3b.enable = true;
+    k3b.enable = true; # NOTE: See https://wiki.nixos.org/wiki/K3b#:~:text=Post%2DInstallation,-After
 
     nix-ld.enable = true;
 
