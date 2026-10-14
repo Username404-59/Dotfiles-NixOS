@@ -20,7 +20,7 @@ in
       autoEnrollKeys.autoReboot = false; # Better idea to disable this because my fscrypt encryption stuff could be running
       measuredBoot = {
         enable = true;
-        pcrs = [ 0 4 7 ];
+        pcrs = [ 0 1 2 3 4 7 ];
       };
       configurationLimit = 1; # Needed by measured boot as of writing (TODO: Remove when https://github.com/systemd/systemd/issues/41526#issuecomment-5950825301 is fixed)
     };
