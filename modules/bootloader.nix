@@ -22,8 +22,9 @@ in
         enable = true;
         pcrs = [ 0 4 7 ];
       };
-      configurationLimit = 4; # Needed by measured boot as of writing
+      configurationLimit = 4; # Needed by measured boot as of writing (TODO: Remove when https://github.com/systemd/systemd/issues/41526#issuecomment-5950825301 is fixed)
     };
+
     loader = {
       grub.enable = false;
       systemd-boot.enable = lib.mkForce (!config.boot.lanzaboote.enable); # Has to be disabled for lanzaboote (as of writing)
