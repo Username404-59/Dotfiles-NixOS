@@ -10,8 +10,7 @@
     "amd_pstate=active"
     "transparent_hugepage=always"
     "lockdown=integrity" # Needed by EAC v2
-    "iommu=pt"
-    "amd_iommu=pt"
+    "amd_iommu=on" # No passthrough (same reason)
     "amdgpu.exp_hw_support=1"
     "i915.enable_guc=3"
     "pci=assign-busses,hpbussize=0x33,realloc=on"
