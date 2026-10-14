@@ -9,6 +9,7 @@
     "split_lock_detect=off"
     "amd_pstate=active"
     "transparent_hugepage=always"
+    "lockdown=integrity" # Needed by EAC v2
     "iommu=pt"
     "amd_iommu=pt"
     "amdgpu.exp_hw_support=1"
