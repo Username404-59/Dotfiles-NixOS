@@ -32,12 +32,6 @@
   environment.etc."coolercontrol".source = "/var/lib/coolercontrol";
   systemd.services.coolercontrold.serviceConfig.StateDirectory = "coolercontrol";
 
-  boot.loader.limine.extraEntries = ''
-    /Windows
-      protocol: efi
-      path: fslabel(windows_efi):/EFI/Microsoft/Boot/bootmgfw.efi
-  '';
-
   powerManagement.cpuFreqGovernor = "performance";
 
   networking.hostName = "lizard";

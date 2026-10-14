@@ -59,6 +59,13 @@ inputs {
     patches adios
   }
 
+  lanzaboote {
+    git {
+      repository "https://github.com/nix-community/lanzaboote.git"
+      branch "master"
+    }
+  }
+
   dolphin-overlay {
     git {
       repository "https://github.com/rumboon/dolphin-overlay.git"

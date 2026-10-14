@@ -1,22 +1,27 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, nixtamal, ... }:
 
+let
+  lanzaboote = import nixtamal.lanzaboote { inherit pkgs; };
+in
 {
+  imports = [ lanzaboote.nixosModules.lanzaboote ];
+
   catppuccin.plymouth.enable = false;
 
   system.nixos-init.enable = true; # Note: doesn't run system.activationScripts as of writing
 
   # Bootloader.
   boot = {
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/var/lib/sbctl";
+      autoGenerateKeys.enable = true;
+      autoEnrollKeys.enable = true;
+      autoEnrollKeys.autoReboot = false; # Better idea to disable this because my fscrypt encryption stuff could be running
+    };
     loader = {
       grub.enable = false;
-      systemd-boot.enable = false;
-      limine.enable = true;
-
-      limine.secureBoot = {
-        enable = true;
-        autoGenerateKeys = true;
-        autoEnrollKeys.enable = true;
-      };
+      systemd-boot.enable = lib.mkForce (!config.boot.lanzaboote.enable); # Has to be disabled for lanzaboote (as of writing)
 
       efi.canTouchEfiVariables = true;
 

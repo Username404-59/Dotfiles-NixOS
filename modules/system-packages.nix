@@ -114,7 +114,7 @@ rec {
     nload
     clang gcc mold
     cmake
-    sbctl # For secure boot with Limine
+    sbctl # For secure boot
     jq # I use it somewhere in my nixtamal manifest
     (functions.mkSpecial lsfg-vk-ui "unstable" "lsfg-vk" "-git")
     steamcmd
