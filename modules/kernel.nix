@@ -82,4 +82,6 @@
     package = null; enable = true; # Installed & configured via home manager instead
     enableVirtualCamera = true;
   };
+
+  boot.kexec.enable = false; # EAC v2 wants it to be disabled at boot time
 }
