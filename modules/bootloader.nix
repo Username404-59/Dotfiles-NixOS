@@ -22,7 +22,7 @@ in
         enable = true;
         pcrs = [ 0 4 7 ];
       };
-      configurationLimit = 4; # Needed by measured boot as of writing (TODO: Remove when https://github.com/systemd/systemd/issues/41526#issuecomment-5950825301 is fixed)
+      configurationLimit = 1; # Needed by measured boot as of writing (TODO: Remove when https://github.com/systemd/systemd/issues/41526#issuecomment-5950825301 is fixed)
     };
 
     loader = {
