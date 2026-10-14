@@ -18,6 +18,11 @@ in
       autoGenerateKeys.enable = true;
       autoEnrollKeys.enable = true;
       autoEnrollKeys.autoReboot = false; # Better idea to disable this because my fscrypt encryption stuff could be running
+      measuredBoot = {
+        enable = true;
+        pcrs = [ 0 4 7 ];
+      };
+      configurationLimit = 4; # Needed by measured boot as of writing
     };
     loader = {
       grub.enable = false;
