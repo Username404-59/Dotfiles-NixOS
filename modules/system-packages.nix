@@ -120,6 +120,7 @@ rec {
     steamcmd
     geteduroam
     sshpass
+    efibootmgr
   ];
 
   services = {
