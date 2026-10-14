@@ -81,7 +81,6 @@ in
       ./modules/printing.nix
       ./modules/virtualisation.nix
 
-      ./common/ollama-config.nix
       ./common/amd-ai-config.nix
       ./common/neovim-config.nix
 
