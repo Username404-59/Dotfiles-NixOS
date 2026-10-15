@@ -44,13 +44,6 @@ inputs {
     }
   }
 
-  nix-cachyos-kernel {
-    git {
-      repository "https://github.com/xddxdd/nix-cachyos-kernel.git"
-      branch "release"
-    }
-  }
-
   nix-cachyos-settings {
     git {
       repository "https://github.com/Daaboulex/cachyos-settings-nix.git"

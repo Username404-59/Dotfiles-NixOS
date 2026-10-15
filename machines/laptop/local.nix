@@ -25,8 +25,5 @@
     nvidiaBusId = "PCI:38@0:0:0";
   };
 
-  # TODO: Remove this if my laptop & desktop ever end up having the same microarchitecture
-  boot.kernelPackages = lib.mkForce pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto-zen4;
-
   networking.hostName = "lizard-portable";
 }

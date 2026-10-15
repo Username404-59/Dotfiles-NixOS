@@ -48,12 +48,11 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
+  boot.kernelPackages = pkgs.linuxPackages_zen;
 
   specialisation = let
     variant = pkg: { configuration.boot.kernelPackages = lib.mkOverride 49 pkg; };
   in {
-    #rc_kernel = variant pkgs.cachyosKernels.linuxPackages-cachyos-rc;
     stock_kernel = variant pkgs.linuxPackages_latest;
   };
 
@@ -66,7 +65,7 @@
   boot.blacklistedKernelModules = [];
 
   services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
-    enable = false;
+    enable = true;
     scheduler = "scx_lavd";
     extraArgs = [ "--${if isLaptop then "autopower" else "performance"}" ];
   };
