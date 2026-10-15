@@ -113,6 +113,7 @@ in
   ];
   nix.settings = {
     auto-optimise-store = true;
+    fallback = true;
     experimental-features = [
       "nix-command"
       "blake3-hashes"
