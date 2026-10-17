@@ -19,8 +19,7 @@ inputs {
     eval-time fetch
     patches hyprglass profile-sync-daemon_update
     fresh-cmd {
-      $ git ls-remote --branches "https://github.com/NixOS/nixpkgs.git" --refs "refs/heads/nixos-unstable"
-      | cut -f1
+      $ bash -c "curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/job/nixos/unstable/tested/latest' | jq -r '.jobsetevals[-1]' | xargs -I{} curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/eval/{}' | jq -r '.jobsetevalinputs.nixpkgs.revision'"
     }
   }
 
