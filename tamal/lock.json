@@ -1,6 +1,6 @@
 {"v":"1.4.0"
 ,"i":{
-"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/fe13242281a67641c0102cdb1087f0ebe586c7df.tar.gz","ms":[],"ex":null}],"ha":{"al":0,"vl":"sha256-zp8ToDMnqZcu4o4IH9pdwXFXGp7yLm/M0dEnNWnyd7I="},"fv":"fe13242281a67641c0102cdb1087f0ebe586c7df","ps":["hyprglass","profile-sync-daemon_update","ccache_fix"]}
+"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/fe13242281a67641c0102cdb1087f0ebe586c7df.tar.gz","ms":[],"ex":null}],"ha":{"al":0,"vl":"sha256-zp8ToDMnqZcu4o4IH9pdwXFXGp7yLm/M0dEnNWnyd7I="},"fv":"fe13242281a67641c0102cdb1087f0ebe586c7df","ps":["hyprglass","profile-sync-daemon_update","ccache_fix","hypr-dynamic-cursors_update"]}
 ,"ableton":{"sn":"ableton-src","kd":[0,{"ft":0,"ur":"https://cdn-downloads.ableton.com/channels/12.4.6/ableton_live_lite_12.4.6_64.zip","ms":[]}],"ha":{"al":2,"vl":"blake3-hKv0lFsBrDuT4An+Uh2Qjrmk5Bm6pUgINSkM4Q7bXj4="},"fv":"12.4.6","ps":[]}
 ,"ableton-linux":{"sn":"ableton-linux-src","kd":[2,{"ft":0,"rp":"https://github.com/shibco/ableton-linux.git","ms":[],"rf":[1,"main"],"dt":"2026-10-03T21:48:17+02:00","sm":false,"lf":false,"lr":"aceb236a81656c609274afbf27fd54eb5017e5e2"}],"ha":{"al":2,"vl":"blake3-pYlOYU3qQc+5xXPrVqDTwuE6XNPK7vtqAHuwWI9yco4="},"fv":"aceb236a81656c609274afbf27fd54eb5017e5e2","ps":["ableton-linux_workaround"]}
 ,"catppuccin":{"sn":"catppuccin-src","kd":[1,{"ft":0,"ur":"https://github.com/catppuccin/nix/archive/30c87b95a628e81ec82a4fa0ed4db85d7c7d46d6.tar.gz","ms":[],"ex":null}],"ha":{"al":2,"vl":"blake3-IvKnZD+agziSjXNtpTJeoW8JalCLmiJ4IlEPpg8cD6s="},"fv":"30c87b95a628e81ec82a4fa0ed4db85d7c7d46d6","ps":[]}
@@ -29,6 +29,7 @@
 }
 ,"p":{
 "ccache_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/569444.patch","ha":{"al":2,"vl":"blake3-pEKR8hMTRh2tJ63x56D9UVZrDjs1Pmn2rCw6mz8arpg="},"fv":null,"sn":"ccache_fix-patch"}
+,"hypr-dynamic-cursors_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/575456.patch","ha":{"al":2,"vl":"blake3-xGJkegdc5KahHxXBpRIcX+tTTkUCy1p3Q8wA3q+0smI="},"fv":null,"sn":"hypr-dynamic-cursors_update-patch"}
 ,"hyprglass":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch","ha":{"al":2,"vl":"blake3-raWt4FgqGF8DT5uXKu66jB3OasQu23xNHZD16tRqils="},"fv":null,"sn":"hyprglass-patch"}
 ,"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="},"fv":null,"sn":"mpv_buffers_fix-patch"}
 ,"profile-sync-daemon_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/556852.patch","ha":{"al":2,"vl":"blake3-9AT/7lAVDZ+k03HUcQm7R4LMxVad9u6pUyboGO04ON8="},"fv":null,"sn":"profile-sync-daemon_update-patch"}

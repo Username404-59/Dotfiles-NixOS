@@ -102,6 +102,7 @@ in
     plugins = with pkgs.hyprlandPlugins; [
       hypr-darkwindow
       hyprglass
+      hypr-dynamic-cursors
     ];
     settings.config.plugin = {
       darkwindow.load_shaders = "chromakey";
@@ -127,6 +128,11 @@ in
         specular_strength    = 0.8;
         glass_opacity        = 1.0;
         edge_thickness       = 0.06;
+      };
+      dynamic_cursors = {
+        enabled = true;
+        mode = "stretch";
+        shake.enabled = true;
       };
     };
 
