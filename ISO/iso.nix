@@ -7,5 +7,6 @@
       zfs = lib.mkForce false; # Pulled by ISO build for some reason, and it's broken as of writing
     };
     boot.zswap.enable = lib.mkForce false;
+    system.nixos-init.enable = lib.mkForce false;
   };
 }

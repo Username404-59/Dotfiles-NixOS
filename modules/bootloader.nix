@@ -32,7 +32,7 @@ in
       timeout = lib.mkForce 5; # Forced, else it doesn't work when making an ISO
     };
 
-    initrd.systemd.emergencyAccess = config.users.users."doggo".hashedPassword;
+    initrd.systemd.emergencyAccess = lib.mkDefault config.users.users."doggo".hashedPassword;
 
     plymouth = {
       enable = true;
