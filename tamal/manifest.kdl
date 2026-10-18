@@ -3,7 +3,6 @@ default-hash-algorithm BLAKE3
 default-vendor-patch #true
 
 patches {
-  adios "./patches/adios.patch"
   kservice_fix "./patches/kservice_fix.patch"
   mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" vendor=#false // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   ableton-linux_workaround "./patches/ableton-linux_workaround.patch"
@@ -52,7 +51,6 @@ inputs {
       repository "https://github.com/Daaboulex/cachyos-settings-nix.git"
       branch "main"
     }
-    patches adios
   }
 
   lanzaboote {
