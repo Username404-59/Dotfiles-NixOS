@@ -8,5 +8,6 @@
     };
     boot.zswap.enable = lib.mkForce false;
     system.nixos-init.enable = lib.mkForce false;
+    specialisation = lib.mkForce {}; # I don't want to build specialisations for iso-installer
   };
 }
