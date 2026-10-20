@@ -1,0 +1,115 @@
+diff --git a/maintainers/maintainer-list.nix b/maintainers/maintainer-list.nix
+index 95031e1db0e9f..99ccc1b4bf67c 100644
+--- a/maintainers/maintainer-list.nix
++++ b/maintainers/maintainer-list.nix
+@@ -21409,6 +21409,12 @@
+     githubId = 1767648;
+     name = "Nikolas Moya";
+   };
++  no-mood = {
++    email = "mood.dev@pm.me";
++    github = "no-mood";
++    githubId = 74420740;
++    name = "mood";
++  };
+   noaccos = {
+     name = "Francesco Noacco";
+     email = "francesco.noacco2000@gmail.com";
+--- /dev/null
++++ b/pkgs/by-name/ep/epic-games-launcher/package.nix
+@@ -0,0 +1,66 @@
++{
++  lib,
++  appimageTools,
++  fetchurl,
++  steam,
++}:
++
++let
++  pname = "epic-games-launcher";
++  version = "0.96.0";
++  # Build identifier that upstream appends to the version in the download path
++  build = "g2fade97";
++
++  src = fetchurl {
++    url = "https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${version}%2B${build}/Linux/EpicGamesLauncher-x86_64.AppImage";
++    hash = "sha256-bFzEbu+MgLAXWcx2FUtpogZFsBt5UmRCqFUAkNtdJR4=";
++  };
++
++  appimageContents = appimageTools.extract { inherit pname version src; };
++in
++# Windows games run through GE-Proton, which the launcher downloads itself.
++# Its `proton` script is `#!/usr/bin/env python3` and needs the same
++# multiarch FHS as Steam, so use Steam's runtime env like `heroic` does.
++steam.buildRuntimeEnv {
++  inherit pname version;
++
++  # AppImage libraries are only needed as 64-bit, Steam provides the 32-bit ones
++  extraPkgs =
++    pkgs:
++    appimageTools.defaultFhsEnvArgs.targetPkgs pkgs
++    ++ appimageTools.defaultFhsEnvArgs.multiPkgs pkgs
++    ++ [ pkgs.python3 ];
++
++  extraEnv.EGL_DISABLE_SELF_UPDATE = "1";
++
++  runScript = "${appimageContents}/AppRun";
++
++  privateTmp = false;
++
++  extraInstallCommands = ''
++    install -Dm444 ${appimageContents}/usr/share/applications/epic-games-launcher.desktop \
++      -t $out/share/applications
++    substituteInPlace $out/share/applications/epic-games-launcher.desktop \
++      --replace-fail 'Exec=EpicGamesLauncher' 'Exec=epic-games-launcher'
++
++    for size in 32x32 128x128 256x256@2; do
++      install -Dm444 ${appimageContents}/usr/share/icons/hicolor/$size/apps/EpicGamesLauncher.png \
++        -t $out/share/icons/hicolor/$size/apps
++    done
++  '';
++
++  passthru = {
++    inherit src;
++    updateScript = ./update.sh;
++  };
++
++  meta = {
++    description = "Desktop client for the Epic Games Store";
++    homepage = "https://launcher.epicgames.com/";
++    license = lib.licenses.unfree;
++    maintainers = with lib.maintainers; [ no-mood ];
++    mainProgram = "epic-games-launcher";
++    platforms = [ "x86_64-linux" ];
++    sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
++  };
++}
+--- /dev/null
++++ b/pkgs/by-name/ep/epic-games-launcher/update.sh
+@@ -0,0 +1,26 @@
++#!/usr/bin/env nix-shell
++#!nix-shell -i bash -p curl common-updater-scripts
++
++set -euo pipefail
++
++# The public download link always points to the latest build and redirects
++# to a versioned URL like .../Builds/EGLv2/<version>%2B<build>/Linux/...
++location=$(curl -sI https://launcher-public-service-prod06.ol.epicgames.com/launcher/api/installer/download/EpicGamesLauncher-x86_64.AppImage \
++  | grep -i '^location:' | tr -d '\r')
++
++if [[ ! $location =~ /Builds/EGLv2/([^/]+)%2B([^/]+)/Linux/ ]]; then
++  echo "unexpected redirect: $location" >&2
++  exit 1
++fi
++version=${BASH_REMATCH[1]}
++build=${BASH_REMATCH[2]}
++
++current=$(nix-instantiate --eval --raw -A epic-games-launcher.version)
++if [[ $version == "$current" ]]; then
++  echo "epic-games-launcher is already up to date ($version)"
++  exit 0
++fi
++
++file=$(dirname "${BASH_SOURCE[0]}")/package.nix
++sed -i "s/build = \"[^\"]*\";/build = \"$build\";/" "$file"
++update-source-version epic-games-launcher "$version"
