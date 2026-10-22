@@ -12,6 +12,7 @@ patches {
   ccache_fix "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/569444.patch" // TODO Remove when merged
   hypr-dynamic-cursors_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/575456.patch" // TODO Remove when merged
   nixtamal_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/574759.patch" vendor=#false // TODO Remove when merged
+  new-lg4ff_fix "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/577181.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -21,7 +22,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches hyprglass profile-sync-daemon_update ccache_fix hypr-dynamic-cursors_update nixtamal_update epic-games-store
+    patches hyprglass profile-sync-daemon_update ccache_fix hypr-dynamic-cursors_update nixtamal_update epic-games-store new-lg4ff_fix
     fresh-cmd {
       // Latest = latest successful build, latest-finished = latest successful build with successful evaluation
       $ bash -c "curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/job/nixos/unstable/tested/latest' | jq -r '.jobsetevals[-1]' | xargs -I{} curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/eval/{}' | jq -r '.jobsetevalinputs.nixpkgs.revision'"
