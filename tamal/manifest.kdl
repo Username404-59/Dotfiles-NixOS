@@ -23,6 +23,7 @@ inputs {
     eval-time fetch
     patches hyprglass profile-sync-daemon_update ccache_fix hypr-dynamic-cursors_update nixtamal_update epic-games-store
     fresh-cmd {
+      // Latest = latest successful build, latest-finished = latest successful build with successful evaluation
       $ bash -c "curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/job/nixos/unstable/tested/latest' | jq -r '.jobsetevals[-1]' | xargs -I{} curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/eval/{}' | jq -r '.jobsetevalinputs.nixpkgs.revision'"
     }
   }
