@@ -31,13 +31,14 @@
     firewall = {
       allowedTCPPorts = [
         57621 # Spotify discovery port
-        25565 # Minecraft
+        25565 25569 # Minecraft
         7777 7778 27016
         8080 # Dev test port
         30309 # Port for torrents
       ];
       allowedUDPPorts = [
         5353 # Spotify discovery port
+        24454 # Minecraft: Simple Voice
         7777 7778 27016 # Satisfactory dedicated server (etc) ports
         8080
         30309 # Port for torrents
