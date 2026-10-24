@@ -186,7 +186,6 @@ in
   cachyos.settings = {
     enable = true;
     zram.enable = false;
-    debuginfod.enable = false;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
