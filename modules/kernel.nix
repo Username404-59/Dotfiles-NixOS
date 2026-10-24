@@ -32,9 +32,13 @@
   catppuccin.tty.enable = !isLaptop;
 
   hardware = {
-    amdgpu.overdrive = {
-      enable = true;
-      ppfeaturemask = lib.mkIf isLaptop "0xffffffff"; # Enables GFXOFF & stutter mode power saving features
+    amdgpu = {
+      overdrive = {
+        enable = true;
+        ppfeaturemask = lib.mkIf isLaptop "0xffffffff"; # Enables GFXOFF & stutter mode power saving features
+      };
+      opencl.enable = true;
+      zluda.enable = true;
     };
 
     nvidia.open = true;
