@@ -1,5 +1,5 @@
 diff --git a/pkgs/os-specific/linux/new-lg4ff/default.nix b/pkgs/os-specific/linux/new-lg4ff/default.nix
-index 3a25fb8556b3f..a493022329395 100644
+index 3a25fb8556b3f9..a4930223293957 100644
 --- a/pkgs/os-specific/linux/new-lg4ff/default.nix
 +++ b/pkgs/os-specific/linux/new-lg4ff/default.nix
 @@ -6,19 +6,24 @@

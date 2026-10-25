@@ -1,5 +1,5 @@
 diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix
-index a27e27a4d075d..7deb906aeefb8 100644
+index a27e27a4d075d1..7deb906aeefb8a 100644
 --- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix
 +++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix
 @@ -40,6 +40,7 @@
