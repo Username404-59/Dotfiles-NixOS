@@ -63,4 +63,6 @@
   systemd.services.NetworkManager-wait-online.enable = false;
 
   services.blueman.enable = true;
+
+  services.resolved.enable = true;
 }
