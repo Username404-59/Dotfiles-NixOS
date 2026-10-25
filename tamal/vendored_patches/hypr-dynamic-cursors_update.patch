@@ -1,5 +1,5 @@
 diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-index 9b76af87d970f0..9962dddae4f4d6 100644
+index 9b76af87d970f..9962dddae4f4d 100644
 --- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 +++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 @@ -7,13 +7,13 @@
@@ -20,7 +20,7 @@ index 9b76af87d970f0..9962dddae4f4d6 100644
  
    dontUseCmakeConfigure = true;
 diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-index 9962dddae4f4d6..7956a1d04bca8c 100644
+index 9962dddae4f4d..7956a1d04bca8 100644
 --- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 +++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 @@ -27,6 +27,7 @@
