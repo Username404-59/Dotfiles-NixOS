@@ -148,11 +148,14 @@ let
 	fetch-url = { input-name, name, kind, hash }:
 		pkgs.fetchurl (
 			{
-				url = kind.ur;
 				hash = hash.vl;
 			}
+			// (if isNonemptyList kind.ms then
+					{ urls = [ kind.ur ] ++ kind.ms; }
+				else
+					{ url = kind.ur; }
+				)
 			// lib.optionalAttrs (isNonemptyString name) { inherit name; }
-			// lib.optionalAttrs (isNonemptyList kind.ms) { urls = kind.ms; }
 		);
 
 	fetch-zip = { input-name, name, kind, hash }:
@@ -160,11 +163,14 @@ let
 			{
 				# base gnutar doesn’t support Zstandard
 				nativeBuildInputs = [ pkgs.zstd ];
-				url = kind.ur;
 				hash = hash.vl;
 			}
+			// (if isNonemptyList kind.ms then
+					{ urls = [ kind.ur ] ++ kind.ms; }
+				else
+					{ url = kind.ur; }
+			   )
 			// lib.optionalAttrs (isNonemptyString name) { inherit name; }
-			// lib.optionalAttrs (isNonemptyList kind.ms) { urls = kind.ms; }
 			// lib.optionalAttrs (isNonemptyString kind.ex) { extension = kind.ex; }
 		);
 
