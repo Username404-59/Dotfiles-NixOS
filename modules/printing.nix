@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   services.printing = {
@@ -20,7 +20,7 @@
   # Auto-discovery
   services.avahi = {
     enable = true;
-    nssmdns4 = true;
+    nssmdns4 = !config.services.resolved.enable;
     openFirewall = true;
   };
 
