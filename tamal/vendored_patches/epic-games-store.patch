@@ -1,8 +1,8 @@
 diff --git a/maintainers/maintainer-list.nix b/maintainers/maintainer-list.nix
-index 95031e1db0e9f..99ccc1b4bf67c 100644
+index 8e7268e1f1864..74a28c4f6658f 100644
 --- a/maintainers/maintainer-list.nix
 +++ b/maintainers/maintainer-list.nix
-@@ -21409,6 +21409,12 @@
+@@ -21519,6 +21519,12 @@
      githubId = 1767648;
      name = "Nikolas Moya";
    };
@@ -17,26 +17,94 @@ index 95031e1db0e9f..99ccc1b4bf67c 100644
      email = "francesco.noacco2000@gmail.com";
 --- /dev/null
 +++ b/pkgs/by-name/ep/epic-games-launcher/package.nix
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,129 @@
 +{
 +  lib,
++  stdenv,
 +  appimageTools,
 +  fetchurl,
++  autoPatchelfHook,
++  wrapGAppsHook3,
 +  steam,
++  webkitgtk_4_1,
++  libsoup_3,
++  gtk3,
++  glib,
++  glib-networking,
++  cairo,
++  gdk-pixbuf,
++  libx11,
++  libxi,
++  dbus,
++  libGL,
++  libayatana-appindicator,
++  gsettings-desktop-schemas,
++  gst_all_1,
 +}:
 +
 +let
 +  pname = "epic-games-launcher";
-+  version = "0.96.0";
++  version = "0.103.0";
 +  # Build identifier that upstream appends to the version in the download path
-+  build = "g2fade97";
++  build = "g66c2498";
 +
 +  src = fetchurl {
 +    url = "https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${version}%2B${build}/Linux/EpicGamesLauncher-x86_64.AppImage";
-+    hash = "sha256-bFzEbu+MgLAXWcx2FUtpogZFsBt5UmRCqFUAkNtdJR4=";
++    hash = "sha256-bizh9dUNFmeOtZrfCer/ueko+uRKO9rpsQ2BDeJJV1s=";
 +  };
 +
 +  appimageContents = appimageTools.extract { inherit pname version src; };
++
++  # Only Epic's binary and the EOS SDK come from the AppImage, all other libraries from nixpkgs.
++  # The EOS SDK can't be packaged separately, as it's only downloadable behind a login.
++  unwrapped = stdenv.mkDerivation {
++    pname = "${pname}-unwrapped";
++    inherit version;
++
++    src = appimageContents;
++
++    nativeBuildInputs = [
++      autoPatchelfHook
++      wrapGAppsHook3
++    ];
++
++    buildInputs = [
++      webkitgtk_4_1
++      libsoup_3
++      gtk3
++      glib
++      glib-networking
++      cairo
++      gdk-pixbuf
++      libx11
++      dbus
++      gsettings-desktop-schemas
++      stdenv.cc.cc.lib
++    ]
++    ++ (with gst_all_1; [
++      gst-plugins-base
++      gst-plugins-good
++      gst-plugins-bad
++      gst-libav
++    ]);
++
++    # Loaded with dlopen
++    runtimeDependencies = [
++      libayatana-appindicator
++      libGL
++      libxi
++    ];
++
++    installPhase = ''
++      runHook preInstall
++
++      install -Dm755 usr/bin/EpicGamesLauncher -t $out/bin
++      install -Dm755 usr/lib/libEOSSDK-Linux-Shipping.so -t $out/lib
++      cp -r usr/lib/epic-games-launcher $out/lib/
++
++      runHook postInstall
++    '';
++  };
 +in
 +# Windows games run through GE-Proton, which the launcher downloads itself.
 +# Its `proton` script is `#!/usr/bin/env python3` and needs the same
@@ -44,16 +112,11 @@ index 95031e1db0e9f..99ccc1b4bf67c 100644
 +steam.buildRuntimeEnv {
 +  inherit pname version;
 +
-+  # AppImage libraries are only needed as 64-bit, Steam provides the 32-bit ones
-+  extraPkgs =
-+    pkgs:
-+    appimageTools.defaultFhsEnvArgs.targetPkgs pkgs
-+    ++ appimageTools.defaultFhsEnvArgs.multiPkgs pkgs
-+    ++ [ pkgs.python3 ];
++  extraPkgs = pkgs: [ pkgs.python3 ];
 +
 +  extraEnv.EGL_DISABLE_SELF_UPDATE = "1";
 +
-+  runScript = "${appimageContents}/AppRun";
++  runScript = "${unwrapped}/bin/EpicGamesLauncher";
 +
 +  privateTmp = false;
 +
@@ -70,7 +133,7 @@ index 95031e1db0e9f..99ccc1b4bf67c 100644
 +  '';
 +
 +  passthru = {
-+    inherit src;
++    inherit src unwrapped;
 +    updateScript = ./update.sh;
 +  };
 +
