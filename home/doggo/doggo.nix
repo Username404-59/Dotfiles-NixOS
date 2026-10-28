@@ -68,7 +68,7 @@
     })
     moonlight-qt
     (import "${nixtamal.hytale-launcher}/package.nix" { inherit pkgs; }).hytale-launcher
-    epic-games-launcher
+    (epic-games-launcher.override { extraEnv = steam_env; })
 
     # Virtualisation stuff
     #winboat # TODO Uncomment when winboat v1.0.0 is released
