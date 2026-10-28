@@ -69,7 +69,6 @@
     moonlight-qt
     (import "${nixtamal.hytale-launcher}/package.nix" { inherit pkgs; }).hytale-launcher
     epic-games-launcher
-    xrandr # The Proton wayland backend needs xrandr as of writing and the epic-games-launcher package doesn't include it
 
     # Virtualisation stuff
     #winboat # TODO Uncomment when winboat v1.0.0 is released
