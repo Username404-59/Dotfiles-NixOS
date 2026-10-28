@@ -1,8 +1,8 @@
 diff --git a/maintainers/maintainer-list.nix b/maintainers/maintainer-list.nix
-index 8e7268e1f1864..74a28c4f6658f 100644
+index 92caec80f7f61..4e9b5a9abf420 100644
 --- a/maintainers/maintainer-list.nix
 +++ b/maintainers/maintainer-list.nix
-@@ -21519,6 +21519,12 @@
+@@ -21532,6 +21532,12 @@
      githubId = 1767648;
      name = "Nikolas Moya";
    };
@@ -17,7 +17,7 @@ index 8e7268e1f1864..74a28c4f6658f 100644
      email = "francesco.noacco2000@gmail.com";
 --- /dev/null
 +++ b/pkgs/by-name/ep/epic-games-launcher/package.nix
-@@ -0,0 +1,129 @@
+@@ -0,0 +1,167 @@
 +{
 +  lib,
 +  stdenv,
@@ -40,17 +40,20 @@ index 8e7268e1f1864..74a28c4f6658f 100644
 +  libayatana-appindicator,
 +  gsettings-desktop-schemas,
 +  gst_all_1,
++  extraPkgs ? pkgs: [ ],
++  extraLibraries ? pkgs: [ ],
++  extraEnv ? { },
 +}:
 +
 +let
 +  pname = "epic-games-launcher";
-+  version = "0.103.0";
++  version = "0.104.0";
 +  # Build identifier that upstream appends to the version in the download path
-+  build = "g66c2498";
++  build = "g2229d5c";
 +
 +  src = fetchurl {
 +    url = "https://content-download-egs.distro.on.epicgames.com/Builds/EGLv2/${version}%2B${build}/Linux/EpicGamesLauncher-x86_64.AppImage";
-+    hash = "sha256-bizh9dUNFmeOtZrfCer/ueko+uRKO9rpsQ2BDeJJV1s=";
++    hash = "sha256-WIgvoOt831GtPL/8rc4uyDawocAlscDyu654VOFInJU=";
 +  };
 +
 +  appimageContents = appimageTools.extract { inherit pname version src; };
@@ -112,9 +115,28 @@ index 8e7268e1f1864..74a28c4f6658f 100644
 +steam.buildRuntimeEnv {
 +  inherit pname version;
 +
-+  extraPkgs = pkgs: [ pkgs.python3 ];
++  # A subset of the env `heroic` used before switching to `umu-run`.
++  # Only 64-bit, since the launcher sets PROTON_USE_WOW64.
++  extraPkgs =
++    pkgs:
++    with pkgs;
++    [
++      python3
++      xrandr
++      gamemode
++      mangohud
++      SDL2
++      libxcomposite
++      libxxf86vm
++      libgcrypt
++    ]
++    ++ extraPkgs pkgs;
++  inherit extraLibraries;
 +
-+  extraEnv.EGL_DISABLE_SELF_UPDATE = "1";
++  extraEnv = {
++    EGL_DISABLE_SELF_UPDATE = "1";
++  }
++  // extraEnv;
 +
 +  runScript = "${unwrapped}/bin/EpicGamesLauncher";
 +
@@ -139,6 +161,22 @@ index 8e7268e1f1864..74a28c4f6658f 100644
 +
 +  meta = {
 +    description = "Desktop client for the Epic Games Store";
++    longDescription = ''
++      Extra packages can be added to the runtime env games run in, for less common
++      GE-Proton features or native Linux games:
++      ```nix
++      pkgs.epic-games-launcher.override {
++        extraPkgs = pkgs: with pkgs; [
++          samba4 # ntlm_auth, netapi
++          unixODBC
++          cabextract unzip p7zip # winetricks
++          openal alsa-plugins # native Linux games
++        ];
++      }
++      ```
++      For a broader set, see the env `heroic` used before switching to `umu-run`:
++      https://github.com/NixOS/nixpkgs/blob/55432fae0e465683ea71bc18bd43334471ca0e0f/pkgs/by-name/he/heroic/package.nix
++    '';
 +    homepage = "https://launcher.epicgames.com/";
 +    license = lib.licenses.unfree;
 +    maintainers = with lib.maintainers; [ no-mood ];
