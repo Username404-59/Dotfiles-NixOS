@@ -216,6 +216,8 @@ in
             contrast = 0.8916;
             brightness = 1.0;
           };
+
+          motion_blur.enabled = true;
         };
 
         animations = {
