@@ -211,6 +211,7 @@ in
 
           blur = {
             enabled = true;
+            popups = true;
             proportional = config.wayland.windowManager.hyprland.settings.config.render.use_shader_blur_blend; # Needed as of writing: https://wiki.hypr.land/0.57.0/configuring/core/config-options/#:~:text=proportional
             size = 5;
             passes = 4;
