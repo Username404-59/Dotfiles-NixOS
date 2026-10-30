@@ -88,6 +88,7 @@ in
         "devtools.chrome.enabled" = true;
         "browser.newtabpage.activity-stream.widgets.enabled" = lock-false;
         "browser.aboutConfig.showWarning" = lock-false;
+        "middlemouse.paste" = lock-false;
 
         "browser.nova.enabled" = false; # Disables ugly new interface
 
