@@ -53,6 +53,7 @@
     qbittorrent-enhanced
     nixpkgs-review
     scrcpy
+    ascii-draw
 
     # Gaming packages:
     (rsi-launcher-umu.override {

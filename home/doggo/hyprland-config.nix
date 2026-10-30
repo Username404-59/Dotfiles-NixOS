@@ -420,6 +420,7 @@ in
             "io.github.thetumultuousunicornofdarkness.cpu-x"
             "ableton.*.exe"
             "org.qbittorrent.qBittorrent"
+            "io.github.nokse22.asciidraw"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ];
 
