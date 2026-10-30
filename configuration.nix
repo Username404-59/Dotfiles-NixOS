@@ -101,7 +101,7 @@ in
     else nixVersions.latest;
   */
   # Determinate Nix:
-  (functions.addFlakeCompat nixtamal.determinate-nix).packages.${builtins.currentSystem}.default;
+  functions.addFlakeCompatPackage nixtamal.determinate-nix;
 
   nix.channel.enable = false; # Channels are not needed / useless with nixtamal
   nix.nixPath = [

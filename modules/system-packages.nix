@@ -3,6 +3,7 @@
 let
   functions = rec {
     addFlakeCompat = src: (import nixtamal.flake-compat { inherit src; }).outputs;
+    addFlakeCompatPackage = src: (addFlakeCompat src).packages.${builtins.currentSystem}.default;
 
     mkSpecial = pkg: version: src_name: suffix:
       let
