@@ -321,7 +321,7 @@ in
         (mkBind "${mainMod} + mouse_down" "hl.dsp.focus({ workspace = \"m+1\" })" {})
         (mkBind "${mainMod} + mouse_up"   "hl.dsp.focus({ workspace = \"m-1\" })" {})
 
-        (mkBind "${mainMod} + SUPER_L" (exec "pkill ${menu_name} || ${menu}") {})
+        (mkBind "${mainMod} + SUPER_L" (exec "pkill ${menu_name} || ${menu}") { release = true; })
         (mkBind "${mainMod} + W"       (exec "cliphist list | rofi -dmenu | cliphist decode | wl-copy") {})
         (mkBind "CTRL + ALT + A"       (exec "pkill ${menu_name} || ${uwsm} ani-cli --${menu_name}") { long_press = true; })
 
