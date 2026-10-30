@@ -180,6 +180,8 @@ in
           new_render_scheduling = true;
           async_commit = true;
 
+          use_shader_blur_blend = true;
+
           cm_auto_hdr = 2;
           non_shader_cm = 2;
           non_shader_cm_interop = 1;
@@ -209,6 +211,7 @@ in
 
           blur = {
             enabled = true;
+            proportional = config.wayland.windowManager.hyprland.settings.config.render.use_shader_blur_blend; # Needed as of writing: https://wiki.hypr.land/0.57.0/configuring/core/config-options/#:~:text=proportional
             size = 5;
             passes = 4;
             new_optimizations = true;
