@@ -1,11 +1,11 @@
 diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix
-index a27e27a4d075d..7deb906aeefb8 100644
+index 6f69720f6f3ec..0ad373d393cac 100644
 --- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix
 +++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/default.nix
-@@ -40,6 +40,7 @@
+@@ -39,6 +39,7 @@
+     { hy3 = import ./hy3.nix; }
      { hypr-darkwindow = import ./hypr-darkwindow.nix; }
      { hypr-dynamic-cursors = import ./hypr-dynamic-cursors.nix; }
-     { hyprfocus = import ./hyprfocus.nix; }
 +    { hyprglass = import ./hyprglass.nix; }
      { hyprgrass = import ./hyprgrass.nix; }
      { hyprspace = import ./hyprspace.nix; }
@@ -23,13 +23,13 @@ index a27e27a4d075d..7deb906aeefb8 100644
 +
 +mkHyprlandPlugin (finalAttrs: {
 +  pluginName = "hyprglass";
-+  version = "0.10.0";
++  version = "1.0.0";
 +
 +  src = fetchFromGitHub {
 +    owner = "hyprnux";
 +    repo = "hyprglass";
 +    tag = "v${finalAttrs.version}";
-+    hash = "sha256-60nDpYUgPXue7iSWHb05goz95j0cNmBYAyhlpviu7K4=";
++    hash = "sha256-dhpq7H+wdwP8Yrg7FbsHsPPVmc7rVxhdEXBkeEuqk6k=";
 +  };
 +
 +  nativeBuildInputs = [ wayland-scanner ];

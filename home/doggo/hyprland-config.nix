@@ -100,7 +100,7 @@ in
       enable = false; # Conflicts with UWSM
     };
     plugins = with pkgs.hyprlandPlugins; [
-      hypr-darkwindow
+      (functions.mkUnstable hypr-darkwindow) # TODO Stop using git version when 0.57.0 version is made
       hyprglass
       hypr-dynamic-cursors
     ];
@@ -110,8 +110,8 @@ in
         inherit vibrancy vibrancy_darkness brightness;
         blur_iterations = passes;
 
-        manage_window_blur = false;
-        enabled = false;
+        manage_window_blur = true;
+        enabled = !isLaptop;
         layers.enabled = false;
 
         default_theme = "dark";
@@ -452,14 +452,7 @@ in
             })
           '';
         }
-      ] ++ lib.optional (!isLaptop) {
-        name = "hyprglass";
-        tag = "+hyprglass_enabled";
-
-        # TODO When hyprglass finally works in fullscreen, match everything instead and remove the no_blur line
-          match.fullscreen = false;
-          no_blur = true;
-      };
+      ];
     };
   };
 

@@ -187,6 +187,12 @@ inputs {
       $ bash -c "curl -sL https://www.ableton.com/en/release-notes/live-12/ | grep -oE '12\\.[0-9]+\\.[0-9]+' | head -1"
     }
   }
+  hypr-darkwindow-git {
+    git {
+      repository "https://github.com/micha4w/Hypr-DarkWindow.git"
+      branch "main"
+    }
+  }
 
   // Other patches
 

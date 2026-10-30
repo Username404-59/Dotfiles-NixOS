@@ -1,5 +1,5 @@
 diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-index 9b76af87d970f..9962dddae4f4d 100644
+index 9b76af87d970f..8412f33f5f9bc 100644
 --- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 +++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 @@ -7,13 +7,13 @@
@@ -7,20 +7,20 @@ index 9b76af87d970f..9962dddae4f4d 100644
  mkHyprlandPlugin {
    pluginName = "hypr-dynamic-cursors";
 -  version = "0-unstable-2026-07-21";
-+  version = "0-unstable-2026-08-06";
++  version = "0-unstable-2026-10-05";
  
    src = fetchFromGitHub {
      owner = "VirtCode";
      repo = "hypr-dynamic-cursors";
 -    rev = "f5ba36c7622098b53bf62ddb8ddf03b914abbdf8";
 -    hash = "sha256-HKzJtEkafkWjTx35spDp6pm1oClN7vIipJ2wwU4ocNY=";
-+    rev = "5a224284872208b5324759d535d65061043725de";
-+    hash = "sha256-BQjuQplkQFA30/7evDxmEAvr2ArIG09JffEBQhuzo80=";
++    rev = "2a8d0b735328d874a78ca93b2f201649f712a74a";
++    hash = "sha256-PSt/SRtemvsoGYNFJ7YLiXGxT8EJe3AhmGwt5Vt79aA=";
    };
  
    dontUseCmakeConfigure = true;
 diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-index 9962dddae4f4d..7956a1d04bca8 100644
+index 8412f33f5f9bc..30f528920e2fe 100644
 --- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 +++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 @@ -27,6 +27,7 @@
