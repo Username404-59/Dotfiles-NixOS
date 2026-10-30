@@ -101,34 +101,10 @@ in
     };
     plugins = with pkgs.hyprlandPlugins; [
       (functions.mkUnstable hypr-darkwindow) # TODO Stop using git version when 0.57.0 version is made
-      hyprglass
       hypr-dynamic-cursors
     ];
     settings.config.plugin = {
       darkwindow.load_shaders = "chromakey";
-      hyprglass = with config.wayland.windowManager.hyprland.settings.config.decoration.blur; {
-        inherit vibrancy vibrancy_darkness brightness;
-        blur_iterations = passes;
-
-        manage_window_blur = true;
-        enabled = !isLaptop;
-        layers.enabled = false;
-
-        default_theme = "dark";
-        tint_color = 0; # No tint
-        contrast = 1 + contrast;
-        saturation = 1.0;
-        adaptive_dim = 0.0;
-
-        blur_strength        = 45.0;
-        lens_distortion      = 0.3;
-        refraction_strength  = 4.0;
-        chromatic_aberration = 0.5;
-        fresnel_strength     = 0.4;
-        specular_strength    = 0.8;
-        glass_opacity        = 1.0;
-        edge_thickness       = 0.06;
-      };
       dynamic_cursors = {
         enabled = true;
         mode = "stretch";

@@ -1,6 +1,6 @@
 {"v":"1.5.0"
 ,"i":{
-"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/1c89083e451e891152365b799595cf7790a43325.tar.gz","ms":[],"ex":null}],"ha":{"al":0,"vl":"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4="},"fv":"1c89083e451e891152365b799595cf7790a43325","ps":["hyprglass","profile-sync-daemon_update","hypr-dynamic-cursors_update","epic-games-store"]}
+"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/1c89083e451e891152365b799595cf7790a43325.tar.gz","ms":[],"ex":null}],"ha":{"al":0,"vl":"sha256-Y1CiZ4SoBUjLQyQM/pY+rS2dXD3CHLPstF0lmOc73D4="},"fv":"1c89083e451e891152365b799595cf7790a43325","ps":["profile-sync-daemon_update","hypr-dynamic-cursors_update","epic-games-store"]}
 ,"ableton":{"sn":"ableton-src","kd":[0,{"ft":0,"ur":"https://cdn-downloads.ableton.com/channels/12.4.15/ableton_live_lite_12.4.15_64.zip","ms":[]}],"ha":{"al":2,"vl":"blake3-JQkoVHn8C2epwgwF3zwlDIZPkqLiDhHGVHfeGryXFYg="},"fv":"12.4.15","ps":[]}
 ,"ableton-linux":{"sn":"ableton-linux-src","kd":[2,{"ft":0,"rp":"https://github.com/shibco/ableton-linux.git","ms":[],"rf":[1,"main"],"dt":"2026-10-25T10:52:02+01:00","sm":false,"lf":false,"lr":"1b1f596d17bb86675117f2ec315acd21b143e88c"}],"ha":{"al":2,"vl":"blake3-asjNN99W/4X6ATOcvyzxGCm63J5JX4EuI352+3modpI="},"fv":"1b1f596d17bb86675117f2ec315acd21b143e88c","ps":["ableton-linux_workaround"]}
 ,"catppuccin":{"sn":"catppuccin-src","kd":[1,{"ft":0,"ur":"https://github.com/catppuccin/nix/archive/feac189528d08ca7c46bf1605d84b78ea5fe8263.tar.gz","ms":[],"ex":null}],"ha":{"al":2,"vl":"blake3-ZjcI4cdlmEpQrgt2c4u/xKmQwLYXKevt8fD+Tm/xooo="},"fv":"feac189528d08ca7c46bf1605d84b78ea5fe8263","ps":[]}
@@ -31,7 +31,6 @@
 ,"p":{
 "epic-games-store":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/574139.patch","ha":{"al":2,"vl":"blake3-6SVsKsMw5td4MdRSVH3dfQsFt1d95yM1goyQQhA+9CA="},"fv":null,"sn":"epic-games-store-patch"}
 ,"hypr-dynamic-cursors_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/575456.patch","ha":{"al":2,"vl":"blake3-P6Nh0bvoiKhEbt3NvLpLy+phrIRVrIyGLBWZqOmLiZk="},"fv":null,"sn":"hypr-dynamic-cursors_update-patch"}
-,"hyprglass":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/547498.patch","ha":{"al":2,"vl":"blake3-YFSd/BDSHH1EYBlPSNNv0q5gQh3YVhxcejxuMJpiwZo="},"fv":null,"sn":"hyprglass-patch"}
 ,"mpv_buffers_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch","ha":{"al":2,"vl":"blake3-/y4M5tEZmuhh6q5zvg1lbf/jjdnRulPEoycCBcZm/cQ="},"fv":null,"sn":"mpv_buffers_fix-patch"}
 ,"profile-sync-daemon_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/556852.patch","ha":{"al":2,"vl":"blake3-9AT/7lAVDZ+k03HUcQm7R4LMxVad9u6pUyboGO04ON8="},"fv":null,"sn":"profile-sync-daemon_update-patch"}
 }
