@@ -178,6 +178,7 @@ in
         render = {
           direct_scanout = 1;
           new_render_scheduling = true;
+          async_commit = true;
 
           cm_auto_hdr = 2;
           non_shader_cm = 2;
