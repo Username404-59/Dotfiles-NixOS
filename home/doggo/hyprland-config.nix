@@ -172,7 +172,7 @@ in
           col.inactive_border = { colors = [ "rgba(171727b0)" ]; };
           resize_on_border = false;
           allow_tearing = true;
-          layout = "dwindle";
+          layout = "scrolling";
         };
 
         render = {
@@ -229,13 +229,13 @@ in
           workspace_wraparound = true;
         };
 
-        dwindle = {
-          preserve_split = true;
-        };
+        dwindle.preserve_split = true;
+        master.new_status = "master";
 
-        master = {
-          new_status = "master";
+        scrolling = {
+          focus_fit_method = 0;
         };
+        binds.scroll_event_delay = 0;
 
         # INPUT #
         input = {
@@ -323,8 +323,8 @@ in
         (mkBind "${mainMod} + S"         "hl.dsp.workspace.toggle_special(\"magic\")" {})
         (mkBind "${mainMod} + SHIFT + S" "hl.dsp.window.move({ workspace = \"special:magic\" })" {})
 
-        (mkBind "${mainMod} + mouse_down" "hl.dsp.focus({ workspace = \"m+1\" })" {})
-        (mkBind "${mainMod} + mouse_up"   "hl.dsp.focus({ workspace = \"m-1\" })" {})
+        (mkBind "${mainMod} + mouse_down" "hl.dsp.layout(\"move +col\")" {})
+        (mkBind "${mainMod} + mouse_up"   "hl.dsp.layout(\"move -col\")" {})
 
         (mkBind "${mainMod} + SUPER_L" (exec "pkill ${menu_name} || ${menu}") { release = true; })
         (mkBind "${mainMod} + W"       (exec "cliphist list | rofi -dmenu | cliphist decode | wl-copy") {})
