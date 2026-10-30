@@ -7,7 +7,7 @@ let
   terminal = "kitty";
   fileManager = "dolphin";
   mpv_options = "volume=0";
-  mainMod = "SUPER";
+  mainMod = "SUPER_L";
 
   mocha = {
     peach = "rgb(fab387)";
@@ -326,7 +326,7 @@ in
         (mkBind "${mainMod} + mouse_down" "hl.dsp.layout(\"move +col\")" {})
         (mkBind "${mainMod} + mouse_up"   "hl.dsp.layout(\"move -col\")" {})
 
-        (mkBind "${mainMod} + SUPER_L" (exec "pkill ${menu_name} || ${menu}") { release = true; })
+        (mkBind "${mainMod}" (exec "pkill ${menu_name} || ${menu}") { release = true; })
         (mkBind "${mainMod} + W"       (exec "cliphist list | rofi -dmenu | cliphist decode | wl-copy") {})
         (mkBind "CTRL + ALT + A"       (exec "pkill ${menu_name} || ${uwsm} ani-cli --${menu_name}") { long_press = true; })
 
