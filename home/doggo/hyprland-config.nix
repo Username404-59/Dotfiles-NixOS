@@ -324,6 +324,7 @@ in
         (mkBind "${mainMod} + S"         "hl.dsp.workspace.toggle_special(\"magic\")" {})
         (mkBind "${mainMod} + SHIFT + S" "hl.dsp.window.move({ workspace = \"special:magic\" })" {})
 
+        # TODO: Fix the rofi menu keybind activating when one of these two are used
         (mkBind "${mainMod} + mouse_down" "hl.dsp.layout(\"move +col\")" {})
         (mkBind "${mainMod} + mouse_up"   "hl.dsp.layout(\"move -col\")" {})
 
