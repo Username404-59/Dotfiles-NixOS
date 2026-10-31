@@ -1,4 +1,4 @@
-{ config, pkgs, lib, isLaptop, functions, ... }:
+{ config, pkgs, lib, isLaptop, functions, nixtamal, ... }:
 
 let
   menu_name = "rofi";
@@ -83,6 +83,12 @@ let
   '';
 in
 {
+  nixpkgs.overlays = [
+    (final: prev: {
+      hyprland = functions.addFlakeCompatPackage nixtamal.hyprland-fork;
+    })
+  ];
+
   xdg.portal = {
     enable = true;
     config.common.default = "*";
@@ -238,7 +244,7 @@ in
         master.new_status = "master";
 
         scrolling = {
-          focus_fit_method = 0; # TODO Set to 2 if https://github.com/hyprwm/Hyprland/pull/13345 ever gets merged
+          focus_fit_method = 2;
         };
         binds.scroll_event_delay = 0;
 
