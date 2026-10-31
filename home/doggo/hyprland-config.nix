@@ -1,4 +1,4 @@
-{ config, pkgs, lib, isLaptop, functions, ... }:
+{ config, pkgs, lib, isLaptop, functions, nixtamal, ... }:
 
 let
   menu_name = "rofi";
@@ -96,9 +96,11 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = functions.addFlakeCompatPackage nixtamal.hyprland-fork;
     systemd = {
       enable = false; # Conflicts with UWSM
     };
+    /*
     plugins = with pkgs.hyprlandPlugins; [
       (functions.mkUnstable hypr-darkwindow) # TODO Stop using git version when 0.57.0 version is made
       hypr-dynamic-cursors
@@ -111,6 +113,7 @@ in
         shake.enabled = true;
       };
     };
+    */
 
     settings = {
       monitor = [
@@ -234,7 +237,7 @@ in
         master.new_status = "master";
 
         scrolling = {
-          focus_fit_method = 0; # TODO Set to 2 if https://github.com/hyprwm/Hyprland/pull/13345 ever gets merged
+          focus_fit_method = 2;
         };
         binds.scroll_event_delay = 0;
 
@@ -387,6 +390,7 @@ in
           ];
           no_auto_hdr = true;
         }
+        /*
         # Chromakey with Catppuccin Mocha Base (the hex values each divided by 255 -> 0.1176, 0.1176, 0.1804)
         {
           name = "transparency";
@@ -437,6 +441,7 @@ in
             })
           '';
         }
+        */
       ];
     };
   };

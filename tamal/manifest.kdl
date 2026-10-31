@@ -192,6 +192,12 @@ inputs {
       branch "main"
     }
   }
+  hyprland-fork {
+    git {
+      repository "https://github.com/Username404-59/Hyprland.git"
+      branch "feature-clamped-center"
+    }
+  }
 
   // Other patches
 

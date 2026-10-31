@@ -42,6 +42,9 @@ let
       (import nix-amd-ai).overlays.default
       # Local packages
       localPackagesOverlay
+      (final: prev: {
+        hyprland = functions.addFlakeCompatPackage nixtamal.hyprland-fork;
+      })
     ];
   };
 
