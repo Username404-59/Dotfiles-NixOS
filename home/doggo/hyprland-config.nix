@@ -234,7 +234,7 @@ in
         master.new_status = "master";
 
         scrolling = {
-          focus_fit_method = 0;
+          focus_fit_method = 0; # TODO Set to 2 if https://github.com/hyprwm/Hyprland/pull/13345 ever gets merged
         };
         binds.scroll_event_delay = 0;
 
