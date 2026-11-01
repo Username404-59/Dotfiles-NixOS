@@ -112,6 +112,10 @@ in
       };
     };
 
+    extraConfig = ''
+      local windows_scrolled = false
+    ''; # See keybinds
+
     settings = {
       monitor = [
         ({
@@ -324,11 +328,28 @@ in
         (mkBind "${mainMod} + S"         "hl.dsp.workspace.toggle_special(\"magic\")" {})
         (mkBind "${mainMod} + SHIFT + S" "hl.dsp.window.move({ workspace = \"special:magic\" })" {})
 
-        # TODO: Fix the rofi menu keybind activating when one of these two are used
-        (mkBind "${mainMod} + mouse_down" "hl.dsp.layout(\"move +col\")" {})
-        (mkBind "${mainMod} + mouse_up"   "hl.dsp.layout(\"move -col\")" {})
+        (mkBind "${mainMod} + mouse_down" ''
+          function()
+            windows_scrolled = true
+            hl.dispatch(hl.dsp.layout("move +col"))
+          end
+        '' {})
+        (mkBind "${mainMod} + mouse_up" ''
+          function()
+            windows_scrolled = true
+            hl.dispatch(hl.dsp.layout("move -col"))
+          end
+        '' {})
 
-        (mkBind "${mainMod}" (exec "pkill ${menu_name} || ${menu}") { release = true; })
+        (mkBind "${mainMod}" ''
+          function()
+            if not windows_scrolled then
+              hl.dispatch(${exec "pkill ${menu_name} || ${menu}"})
+            end
+            windows_scrolled = false
+          end
+        '' { release = true; })
+
         (mkBind "${mainMod} + W"       (exec "cliphist list | rofi -dmenu | cliphist decode | wl-copy") {})
         (mkBind "CTRL + ALT + A"       (exec "pkill ${menu_name} || ${uwsm} ani-cli --${menu_name}") { long_press = true; })
 
