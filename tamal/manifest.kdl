@@ -8,7 +8,7 @@ patches {
   ableton-linux_workaround "./patches/ableton-linux_workaround.patch"
   epic-games-store "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/574139.patch" // TODO Remove when merged
   profile-sync-daemon_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/556852.patch" // TODO Switch to 546369 when that one is fixed, and then remove when merged
-  hypr-dynamic-cursors_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/575456.patch" // TODO Remove when merged
+  hypr-dynamic-cursors_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/581650.patch" // TODO Remove when merged
 }
 
 inputs {

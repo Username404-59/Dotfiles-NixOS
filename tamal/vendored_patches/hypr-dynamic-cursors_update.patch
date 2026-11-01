@@ -19,15 +19,3 @@ index 9b76af87d970f..8412f33f5f9bc 100644
    };
  
    dontUseCmakeConfigure = true;
-diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-index 8412f33f5f9bc..30f528920e2fe 100644
---- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-+++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-@@ -27,6 +27,7 @@
-     runHook postInstall
-   '';
- 
-+  # nixpkgs-update: no auto update
-   passthru.updateScript = nix-update-script { extraArgs = [ "--version=branch" ]; };
- 
-   meta = {
