@@ -74,6 +74,7 @@ in
         };
         notificationTitle.enable = true;
         voiceMessages.enable = true;
+        voiceMessageTranscriber.enable = true;
         messageLogger = { # Needed by enhanced plugin
           enable = true;
           collapseDeleted = true;
