@@ -44,6 +44,7 @@ in
         };
         dragFavoriteEmotes.enable = true;
         downloadAllAttachments.enable = true;
+        directFileDownload.enable = true;
         fullVcpfp.enable = true;
         gitHubRepos.enable = true;
         homeTyping.enable = true;
