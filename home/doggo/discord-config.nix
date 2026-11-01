@@ -68,6 +68,7 @@ in
           myUnits = "metric";
         };
         whosWatching.enable = true;
+        whoReacted.enable = true;
         relationshipNotifier = {
           enable = true;
           notices = true;
@@ -87,6 +88,7 @@ in
         alwaysAnimate.enable = !isLaptop;
         betterActivities.enable = true;
         normalizeMessageLinks.enable = true;
+        messageLinkEmbeds.enable = true;
         validUser.enable = true;
         validReply.enable = true;
         reactionTimestamps.enable = true;
