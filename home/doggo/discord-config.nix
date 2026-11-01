@@ -31,6 +31,7 @@ in
         fixImagesQuality.enable = true;
         fixYoutubeEmbeds.enable = true;
         youtubeAdblock.enable = true;
+        pictureInPicture.enable = true;
         gifPaste.enable = true;
         gifProviderSwitcher.enable = true;
         clipUpload.enable = true;
@@ -87,6 +88,10 @@ in
         normalizeMessageLinks.enable = true;
         validUser.enable = true;
         validReply.enable = true;
+        reactionTimestamps.enable = true;
+        splitLargeMessages.enable = true;
+        silentMessageToggle.enable = true;
+        timezones.enable = true;
       };
     };
   };
