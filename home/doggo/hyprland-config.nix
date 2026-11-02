@@ -294,12 +294,6 @@ in
         border_animation
       ];
 
-      gesture = {
-        fingers = 2;
-        direction = "right";
-        action = "workspace";
-      };
-
       device = {
         name = "epic-mouse-v1";
         sensitivity = -0.5;
@@ -380,6 +374,13 @@ in
           (mkBind "${mainMod} + SHIFT + code:${code}" "hl.dsp.window.move({ workspace = ${ws} })" {})
         ]
       ) (lib.range 1 9);
+
+      # TOUCHPAD GESTURES #
+      gesture = let
+        mkGesture = args: { _args = [ args ]; };
+      in [
+        (mkGesture { fingers = 3; direction = "horizontal"; action = "scroll_move"; })
+      ];
 
       # WINDOW RULES #
       window_rule = let
