@@ -52,7 +52,7 @@
     gimp-with-plugins
     qbittorrent-enhanced
     nixpkgs-review
-    scrcpy
+    scrcpy qtscrcpy
     ascii-draw
 
     # Gaming packages:
