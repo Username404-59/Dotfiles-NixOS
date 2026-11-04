@@ -192,6 +192,12 @@ inputs {
       branch "main"
     }
   }
+  rosemary {
+    git {
+      repository "https://github.com/microlift/rosemary.git"
+      branch "main"
+    }
+  }
 
   // Other patches
 

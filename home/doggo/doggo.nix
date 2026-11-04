@@ -54,6 +54,7 @@
     nixpkgs-review
     scrcpy qtscrcpy
     ascii-draw
+    (functions.addFlakeCompatPackage nixtamal.rosemary)
 
     # Gaming packages:
     (rsi-launcher-umu.override {
