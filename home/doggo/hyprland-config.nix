@@ -431,6 +431,10 @@ in
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ];
 
+          match.title = "negative:" + match_list [
+            "Phone-.*" # QtScrcpy phone windows
+          ];
+
           "darkwindow:shade" = lib.generators.mkLuaInline ''
             hl.plugin.darkwindow.build_window_rule({
               shader = "chromakey",
