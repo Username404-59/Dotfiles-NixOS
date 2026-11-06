@@ -34,6 +34,7 @@
         25565 25569 # Minecraft
         7777 7778 27016
         8080 # Dev test port
+        8100 # Minecraft Bluemap port
         30309 # Port for torrents
       ];
       allowedUDPPorts = [
