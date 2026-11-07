@@ -21,11 +21,9 @@ in
 
     package = (
       pkgs.mpv.override {
-        mpv-unwrapped = (pkgs.mpv-unwrapped.override {
+        mpv-unwrapped = pkgs.mpv-unwrapped.override {
           ffmpeg = pkgs.ffmpeg-full;
-        }).overrideAttrs (oldAttrs: {
-          src = nixtamal.mpv;
-        });
+        };
 
         scripts = with pkgs.mpvScripts; let
           mkScriptNamed = name: scriptName: buildLua {

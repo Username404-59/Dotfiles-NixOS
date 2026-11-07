@@ -37,7 +37,6 @@
     hyprsunset
     pwvucontrol
     playerctl
-    ironbar
     swaybg
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.qt5ct

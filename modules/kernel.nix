@@ -38,7 +38,6 @@
         ppfeaturemask = lib.mkIf isLaptop "0xffffffff"; # Enables GFXOFF & stutter mode power saving features
       };
       opencl.enable = true;
-      zluda.enable = true;
     };
 
     nvidia.open = true;
@@ -68,10 +67,12 @@
 
   boot.blacklistedKernelModules = [];
 
-  services.scx = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
+  services.scx-loader= { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
     enable = true;
-    scheduler = "scx_lavd";
-    extraArgs = [ "--${if isLaptop then "autopower" else "performance"}" ];
+    config = {
+      default_sched = "scx_lavd";
+      default_mode = if isLaptop then "Auto" else "Gaming";
+    };
   };
 
   boot.kernel.sysctl = {

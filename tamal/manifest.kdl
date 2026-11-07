@@ -4,11 +4,9 @@ default-vendor-patch #true
 
 patches {
   kservice_fix "./patches/kservice_fix.patch"
-  mpv_buffers_fix "https://patch-diff.githubusercontent.com/raw/mpv-player/mpv/pull/17303.patch" vendor=#false // TODO: Remove this and mpv from manifest when mpv 0.42 is released
   ableton-linux_workaround "./patches/ableton-linux_workaround.patch"
-  epic-games-store "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/574139.patch" // TODO Remove when merged
-  profile-sync-daemon_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/556852.patch" // TODO Switch to 546369 when that one is fixed, and then remove when merged
   hypr-dynamic-cursors_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/581650.patch" // TODO Remove when merged
+  wayle_sqlite_fix "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/584719.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -18,7 +16,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches profile-sync-daemon_update hypr-dynamic-cursors_update epic-games-store
+    patches hypr-dynamic-cursors_update wayle_sqlite_fix
     fresh-cmd {
       // Latest = latest successful build, latest-finished = latest successful build with successful evaluation
       $ bash -c "curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/job/nixos/unstable/tested/latest' | jq -r '.jobsetevals[-1]' | xargs -I{} curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/eval/{}' | jq -r '.jobsetevalinputs.nixpkgs.revision'"
@@ -160,12 +158,6 @@ inputs {
   }
 
   // Packages
-  mpv {
-    archive {
-      url "https://github.com/mpv-player/mpv/archive/refs/tags/v0.41.0.tar.gz"
-    }
-    patches mpv_buffers_fix
-  }
   low_latency_layer-git {
     git {
       repository "https://github.com/Korthos-Software/low_latency_layer.git"

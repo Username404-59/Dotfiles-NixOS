@@ -1,0 +1,29 @@
+diff --git a/pkgs/by-name/wa/wayle/package.nix b/pkgs/by-name/wa/wayle/package.nix
+index c2b06bf576969..75d213dfaf421 100644
+--- a/pkgs/by-name/wa/wayle/package.nix
++++ b/pkgs/by-name/wa/wayle/package.nix
+@@ -16,6 +16,7 @@
+   pkg-config,
+   rustPlatform,
+   stdenv,
++  sqlite,
+   udev,
+   wrapGAppsHook4,
+   writableTmpDirAsHomeHook,
+@@ -50,6 +51,7 @@
+     # Not sure why ".dev" is needed here, but CMake doesn't find libxkbcommon otherwise
+     libxkbcommon.dev
+     pixman
++    sqlite
+     udev
+ 
+     # for generating libcava bindings
+@@ -119,6 +121,8 @@
+     })
+   ];
+ 
++  env.LIBSQLITE3_SYS_USE_PKG_CONFIG = true;
++
+   passthru.updateScript = nix-update-script { };
+ 
+   meta = {

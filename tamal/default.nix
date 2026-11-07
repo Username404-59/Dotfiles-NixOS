@@ -40,7 +40,7 @@ let
 	};
 
 	local-patches = {
-		"ableton-linux_workaround" = ./patches/ableton-linux_workaround.patch;"epic-games-store" = ./vendored_patches/epic-games-store.patch;"hypr-dynamic-cursors_update" = ./vendored_patches/hypr-dynamic-cursors_update.patch;"kservice_fix" = ./patches/kservice_fix.patch;"profile-sync-daemon_update" = ./vendored_patches/profile-sync-daemon_update.patch;
+		"ableton-linux_workaround" = ./patches/ableton-linux_workaround.patch;"hypr-dynamic-cursors_update" = ./vendored_patches/hypr-dynamic-cursors_update.patch;"kservice_fix" = ./patches/kservice_fix.patch;"wayle_sqlite_fix" = ./vendored_patches/wayle_sqlite_fix.patch;
 	};
 
 	try-fetch = input-name: fetcher:
