@@ -1,5 +1,5 @@
 diff --git a/pkgs/by-name/wa/wayle/package.nix b/pkgs/by-name/wa/wayle/package.nix
-index c2b06bf576969..75d213dfaf421 100644
+index c2b06bf576969..20318805136e1 100644
 --- a/pkgs/by-name/wa/wayle/package.nix
 +++ b/pkgs/by-name/wa/wayle/package.nix
 @@ -16,6 +16,7 @@
@@ -18,12 +18,3 @@ index c2b06bf576969..75d213dfaf421 100644
      udev
  
      # for generating libcava bindings
-@@ -119,6 +121,8 @@
-     })
-   ];
- 
-+  env.LIBSQLITE3_SYS_USE_PKG_CONFIG = true;
-+
-   passthru.updateScript = nix-update-script { };
- 
-   meta = {
