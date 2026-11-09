@@ -1,6 +1,6 @@
 {"v":"1.5.0"
 ,"i":{
-"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/f4a03c008967841f2a0b3cb7c436fc6fc31671f6.tar.gz","ms":[],"ex":null}],"ha":{"al":0,"vl":"sha256-ziZn2PvCJE5JEEpqTdxXwJpPB+L3YqoCpTAMCzyaP3U="},"fv":"f4a03c008967841f2a0b3cb7c436fc6fc31671f6","ps":["hypr-dynamic-cursors_update","wayle_sqlite_fix","zluda_sqlite_zstd_fix"]}
+"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/nixpkgs/archive/f4a03c008967841f2a0b3cb7c436fc6fc31671f6.tar.gz","ms":[],"ex":null}],"ha":{"al":0,"vl":"sha256-ziZn2PvCJE5JEEpqTdxXwJpPB+L3YqoCpTAMCzyaP3U="},"fv":"f4a03c008967841f2a0b3cb7c436fc6fc31671f6","ps":["hypr-dynamic-cursors_update","wayle_sqlite_fix","zluda_sqlite_zstd_fix","nixtamal_update"]}
 ,"ableton":{"sn":"ableton-src","kd":[0,{"ft":0,"ur":"https://cdn-downloads.ableton.com/channels/12.4.16/ableton_live_lite_12.4.16_64.zip","ms":[]}],"ha":{"al":2,"vl":"blake3-AkH4FZWfFz0hMMZJfJ9OIYqrbjmsMWY+Ake9A0IRP4Y="},"fv":"12.4.16","ps":[]}
 ,"ableton-linux":{"sn":"ableton-linux-src","kd":[2,{"ft":0,"rp":"https://github.com/shibco/ableton-linux.git","ms":[],"rf":[1,"main"],"dt":"2026-10-25T10:52:02+01:00","sm":false,"lf":false,"lr":"1b1f596d17bb86675117f2ec315acd21b143e88c"}],"ha":{"al":2,"vl":"blake3-asjNN99W/4X6ATOcvyzxGCm63J5JX4EuI352+3modpI="},"fv":"1b1f596d17bb86675117f2ec315acd21b143e88c","ps":["ableton-linux_workaround"]}
 ,"catppuccin":{"sn":"catppuccin-src","kd":[1,{"ft":0,"ur":"https://github.com/catppuccin/nix/archive/5a735352cd3535d43109415bcbb512a72304226a.tar.gz","ms":[],"ex":null}],"ha":{"al":2,"vl":"blake3-Zfj+jbY77Sjn26egz72SIar1xWt7n5Gm6F4VEbVfSKg="},"fv":"5a735352cd3535d43109415bcbb512a72304226a","ps":[]}
@@ -29,6 +29,7 @@
 }
 ,"p":{
 "hypr-dynamic-cursors_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/581650.patch","ha":{"al":2,"vl":"blake3-hKJerVd0jKY7Bcky5nedI1rqj/c28sWvyWcx/8s4rrI="},"fv":null,"sn":"hypr-dynamic-cursors_update-patch"}
+,"nixtamal_update":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/584961.patch","ha":{"al":2,"vl":"blake3-DW6smtFpkzr+wwvfOIDfPIjZdYj7KvbAuwbLeM2nct8="},"fv":null,"sn":"nixtamal_update-patch"}
 ,"wayle_sqlite_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/584719.patch","ha":{"al":2,"vl":"blake3-sGDZgj8ZA2qkLEbHSwkUVTPUAzp/1CEOJcVS0NwqoLw="},"fv":null,"sn":"wayle_sqlite_fix-patch"}
 ,"zluda_sqlite_zstd_fix":{"ur":"https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/585234.patch","ha":{"al":2,"vl":"blake3-ZTiSpZ0ltf+t1l5WReCdWFjQCpBFonG7y3oQQmBbDWU="},"fv":null,"sn":"zluda_sqlite_zstd_fix-patch"}
 }
