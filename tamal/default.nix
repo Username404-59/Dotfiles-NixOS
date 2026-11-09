@@ -27,7 +27,7 @@ OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 }:
 
 let lock = builtins.fromJSON (builtins.readFile ./lock.json); in
-assert (lock.v == "1.5.0");
+assert (lock.v == "2.0.0");
 let
 	isNonemptyString = x: builtins.isString x && x != "";
 
@@ -97,7 +97,7 @@ let
 			let
 				args = {
 					inherit url ref;
-					rev = kind.lr;
+					rev = kind.rv;
 					submodules = kind.sm;
 					shallow = true;
 				}
@@ -144,7 +144,6 @@ let
 
 	inherit (pkgs) lib;
 
-
 	fetch-url = { input-name, name, kind, hash }:
 		pkgs.fetchurl (
 			{
@@ -183,7 +182,7 @@ let
 			"Upstream pkgs.fetchgit doesn’t yet support mirrors for 「${input-name}」"
 			pkgs.fetchgit ({
 				url = kind.rp;
-				rev = kind.lr;
+				rev = kind.rv;
 				fetchSubmodules = kind.sm;
 				fetchLFS = kind.lf;
 				deepClone = false;
@@ -192,7 +191,6 @@ let
 			// lib.optionalAttrs (isNonemptyString name) { inherit name; }
 			// lib.optionalAttrs (has-mirrors && has-mirror-support) { mirrors = kind.ms; }
 		);
-
 
 	fetch-patch = patch-name: { ur, ha, sn ? null, ... }:
 		pkgs.fetchpatch2 {
