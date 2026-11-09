@@ -7,7 +7,7 @@ let
     MESA_VK_WSI_PRESENT_MODE = if (!isLaptop) then "immediate" else "mailbox"; # Enables tearing (which is fixed by VRR, which my laptop's screen doesn't have)
 
     # Environment variables for dw-proton-bin (https://dawn.wine/dawn-winery/dwproton)
-    PROTON_DXVK_LLASYNC = "1";
+    PROTON_DXVK_GPLASYNC = "1"; # Enables dxvk low-latency too
     PROTON_VKD3D_LOWLATENCY = "1";
     PROTON_USE_WINEALSA = "1";
   };
