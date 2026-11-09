@@ -10,6 +10,7 @@ let
     PROTON_DXVK_GPLASYNC = "1"; # Enables dxvk low-latency too
     PROTON_VKD3D_LOWLATENCY = "1";
     PROTON_USE_WINEALSA = "1";
+    PROTON_ZLUDA = "1";
   };
 in
 {

@@ -1,0 +1,36 @@
+diff --git a/pkgs/by-name/zl/zluda/package.nix b/pkgs/by-name/zl/zluda/package.nix
+index 1036e687465dc..eba3ea841d5ea 100644
+--- a/pkgs/by-name/zl/zluda/package.nix
++++ b/pkgs/by-name/zl/zluda/package.nix
+@@ -2,12 +2,15 @@
+   lib,
+   fetchFromGitHub,
+   rocmPackages,
++  pkg-config,
+   python3,
+   cargo,
+   rustc,
+   cmake,
+   clang,
++  sqlite,
+   zlib,
++  zstd,
+   libxml2,
+   libedit,
+   rustPlatform,
+@@ -38,12 +41,15 @@
+     rocmPackages.hipblaslt
+     rocmPackages.rocm-cmake
+     rocmPackages.hipfft
++    sqlite
+     zlib
++    zstd
+     libxml2
+     libedit
+   ];
+ 
+   nativeBuildInputs = [
++    pkg-config
+     python3
+     cargo
+     rustc

@@ -7,6 +7,7 @@ patches {
   ableton-linux_workaround "./patches/ableton-linux_workaround.patch"
   hypr-dynamic-cursors_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/581650.patch" // TODO Remove when merged
   wayle_sqlite_fix "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/584719.patch" // TODO Remove when merged
+  zluda_sqlite_zstd_fix "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/585234.patch" // TODO Remove when merged
 }
 
 inputs {
@@ -16,7 +17,7 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches hypr-dynamic-cursors_update wayle_sqlite_fix
+    patches hypr-dynamic-cursors_update wayle_sqlite_fix zluda_sqlite_zstd_fix
     fresh-cmd {
       // Latest = latest successful build, latest-finished = latest successful build with successful evaluation
       $ bash -c "curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/job/nixos/unstable/tested/latest' | jq -r '.jobsetevals[-1]' | xargs -I{} curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/eval/{}' | jq -r '.jobsetevalinputs.nixpkgs.revision'"
