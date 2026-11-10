@@ -1,13 +1,13 @@
-{ functions, pkgs, nixtamal, lib, config, ... }:
+{ importFlake, functions, pkgs, nixtamal, lib, config, ... }:
 
 let
-  ableton = functions.flake nixtamal.ableton-linux;
+  ableton = importFlake nixtamal.ableton-linux;
   major_version = "12";
   wineprefix_ableton = "${config.home.homeDirectory}/.wine-ableton";
 in
 {
   home.packages = [
-    ableton.packages.${pkgs.stdenv.hostPlatform.system}.default
+    (functions.flakePackage nixtamal.ableton-linux)
   ];
 
   # Note: for online auth, if firefox doesn't work, check for a "ableton://authorize?license_id=" in console logs and run "ableton-live ableton://authorize?license_id=stuffhere"

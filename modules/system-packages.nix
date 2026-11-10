@@ -1,9 +1,8 @@
-{ config, pkgs, lib, nixtamal, isLaptop, ... }:
+{ config, pkgs, lib, nixtamal, isLaptop, importFlake, ... }:
 
 let
   functions = rec {
-    flake = src: builtins.getFlake (builtins.unsafeDiscardStringContext src);
-    flakePackage = src: (flake src).packages.${pkgs.stdenv.hostPlatform.system}.default;
+    flakePackage = src: (importFlake src).packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     mkSpecial = pkg: version: src_name: suffix:
       let

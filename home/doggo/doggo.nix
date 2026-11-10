@@ -1,4 +1,4 @@
-{ config, pkgs, nixtamal, functions, localPackagesOverlay, steam_env, lib, ... }:
+{ config, pkgs, nixtamal, functions, localPackagesOverlay, steam_env, lib, importFlake, ... }:
 
 {
   home.username = "doggo";
@@ -20,7 +20,7 @@
   nixpkgs.config.android_sdk.accept_license = true;
   nixpkgs.overlays = [
     (import nixtamal.dolphin-overlay)
-    (import nixtamal.nix-citizen).overlays.default
+    (importFlake nixtamal.nix-citizen).overlays.default
     localPackagesOverlay
   ];
 

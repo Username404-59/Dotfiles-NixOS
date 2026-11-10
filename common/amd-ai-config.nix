@@ -1,7 +1,7 @@
-{ nixtamal, ... }:
+{ nixtamal, importFlake, ... }:
 
 {
-  imports = [ (import nixtamal.nix-amd-ai).outputs.nixosModules.default ];
+  imports = [ (importFlake nixtamal.nix-amd-ai).nixosModules.default ];
 
   hardware.amd-npu = {
     enable = true;

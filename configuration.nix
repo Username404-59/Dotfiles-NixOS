@@ -1,4 +1,4 @@
-{ config, lib, functions, nixtamal, ... }:
+{ config, lib, functions, nixtamal, importFlake, ... }:
 
 /*
   This should be in /srv/nixos/.
@@ -35,11 +35,11 @@ let
     config.allowUnfree = true;
     overlays = with nixtamal; [
       # Nix-gaming overlay (for low_latency_layer)
-      (import nix-gaming).overlays.default
+      (importFlake nix-gaming).overlays.default
       # Nix-Citizen tools overlay (for dw-proton-bin notably)
-      (import nix-citizen).overlays.steamcompattools
+      (importFlake nix-citizen).overlays.steamcompattools
       # AMD AI overlay
-      (import nix-amd-ai).overlays.default
+      (importFlake nix-amd-ai).overlays.default
       # Local packages
       localPackagesOverlay
     ];
@@ -180,7 +180,7 @@ in
   };
 
   home-manager.extraSpecialArgs = {
-    inherit nixtamal localPackagesOverlay isLaptop;
+    inherit nixtamal importFlake localPackagesOverlay isLaptop;
   };
   home-manager.users.doggo = import ./home/doggo/doggo.nix;
 

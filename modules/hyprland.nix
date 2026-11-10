@@ -1,7 +1,7 @@
-{ pkgs, nixtamal, ... }:
+{ pkgs, nixtamal, importFlake, ... }:
 
 {
-  imports = [ (import nixtamal.qylock).outputs.nixosModules.default ];
+  imports = [ (importFlake nixtamal.qylock).nixosModules.default ];
 
   programs.hyprland = {
     enable = true;

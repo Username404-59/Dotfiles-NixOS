@@ -1,7 +1,7 @@
-{ nixtamal, ... }:
+{ nixtamal, importFlake, ... }:
 
 {
-  imports = [ (import nixtamal.nixvim).outputs.nixosModules.nixvim ];
+  imports = [ (importFlake nixtamal.nixvim).nixosModules.nixvim ];
 
   programs.nixvim = {
     enable = true;

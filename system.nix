@@ -3,5 +3,10 @@ let
   nixtamal = import ./tamal {};
 in import "${nixtamal.nixpkgs}/nixos" {
   configuration = ./configuration.nix;
-  specialArgs = { inherit nixtamal; };
+  specialArgs = rec {
+    inherit nixtamal;
+
+    # Function to import flakes (defined here instead of _module.args so it doesn't crash when used inside of imports = [])
+    importFlake = src: builtins.getFlake (builtins.unsafeDiscardStringContext src);
+  };
 }
