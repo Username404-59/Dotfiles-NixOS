@@ -101,7 +101,7 @@ in
     else nixVersions.latest;
   */
   # Determinate Nix:
-  functions.addFlakeCompatPackage nixtamal.determinate-nix;
+  functions.flakePackage nixtamal.determinate-nix;
 
   nix.channel.enable = false; # Channels are not needed / useless with nixtamal
   nix.nixPath = [
@@ -118,6 +118,7 @@ in
       "auto-allocate-uids"
       "fetch-tree"
       "cgroups"
+      "flakes"
     ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
     auto-allocate-uids = true;
     use-cgroups = true;

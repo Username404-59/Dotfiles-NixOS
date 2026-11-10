@@ -2,8 +2,8 @@
 
 let
   functions = rec {
-    addFlakeCompat = src: (import nixtamal.flake-compat { inherit src; }).outputs;
-    addFlakeCompatPackage = src: (addFlakeCompat src).packages.${builtins.currentSystem}.default;
+    flake = src: builtins.getFlake (builtins.unsafeDiscardStringContext src);
+    flakePackage = src: (flake src).packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     mkSpecial = pkg: version: src_name: suffix:
       let

@@ -1,7 +1,7 @@
 { functions, pkgs, nixtamal, lib, config, ... }:
 
 let
-  ableton = functions.addFlakeCompat nixtamal.ableton-linux;
+  ableton = functions.flake nixtamal.ableton-linux;
   major_version = "12";
   wineprefix_ableton = "${config.home.homeDirectory}/.wine-ableton";
 in

@@ -10,9 +10,6 @@ in
 {
   documentation.nixos.enable = false; # In case something's documentation is making nixos-rebuild fail
 
-  # TODO Remove when https://github.com/NixOS/nix/issues/5541 is fixed / https://github.com/NixOS/nix/pull/15654 is merged
-  nix.settings.experimental-features = [ "flakes" ];
-
   # Fixes for things broken by system.etc.overlay.mutable (from modules/filesystems.nix)
   systemd.tmpfiles.rules = [
     "d ${dirs.ssh} 0755 root root -"
