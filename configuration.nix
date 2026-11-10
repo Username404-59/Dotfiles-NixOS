@@ -186,6 +186,15 @@ in
   cachyos.settings = {
     enable = true;
     zram.enable = false;
+    sysctl.enable = true;
+    ioSchedulers.enable = true;
+    audio.enable = true;
+    storage.enable = true;
+    thp.enable = true;
+    ntsync.enable = true;
+    nvidia.enable = true;
+    watchdogBlacklist.enable = true;
+    oomd.enable = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
