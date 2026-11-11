@@ -155,7 +155,11 @@ inputs {
   determinate-nix {
     git {
       repository "https://github.com/DeterminateSystems/nix-src.git"
-      branch "main"
+      tag "{{fresh_value}}"
+    }
+    fresh-cmd {
+      $ curl -s "https://api.github.com/repos/DeterminateSystems/nix-src/tags"
+      | jq -r ".[0].name"
     }
   }
 
