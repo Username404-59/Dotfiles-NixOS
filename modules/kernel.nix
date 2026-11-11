@@ -42,7 +42,7 @@
     };
 
     nvidia.open = true;
-    nvidia.branch = "latest";
+    nvidia.branch = "bleeding_edge";
 
     enableAllFirmware = true;
 
