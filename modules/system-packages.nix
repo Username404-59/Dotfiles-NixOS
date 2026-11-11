@@ -2,7 +2,8 @@
 
 let
   functions = rec {
-    flakePackage = src: (importFlake src).packages.${pkgs.stdenv.hostPlatform.system}.default;
+    flakePackages = src: (importFlake src).packages.${pkgs.stdenv.hostPlatform.system};
+    flakePackage = src: (flakePackages src).default;
 
     mkSpecial = pkg: version: src_name: suffix:
       let
