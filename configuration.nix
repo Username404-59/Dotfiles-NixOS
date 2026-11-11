@@ -34,6 +34,8 @@ let
   pkgs = import nixtamal.nixpkgs {
     config.allowUnfree = true;
     overlays = with nixtamal; [
+      # CachyOS kernels repo
+      (importFlake nix-cachyos-kernel).overlays.pinned
       # Nix-gaming overlay (for low_latency_layer)
       (importFlake nix-gaming).overlays.default
       # Nix-Citizen tools overlay (for dw-proton-bin notably)

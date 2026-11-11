@@ -52,7 +52,7 @@
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
-  boot.kernelPackages = pkgs.linuxPackages_zen;
+  boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-lto;
 
   specialisation = let
     variant = pkg: { configuration.boot.kernelPackages = lib.mkOverride 49 pkg; };
@@ -68,8 +68,8 @@
 
   boot.blacklistedKernelModules = [];
 
-  services.scx-loader= { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
-    enable = true;
+  services.scx-loader = { # https://wiki.cachyos.org/configuration/sched-ext/#general-recommendations
+    enable = false;
     config = {
       default_sched = "scx_lavd";
       default_mode = if isLaptop then "Auto" else "Gaming";
