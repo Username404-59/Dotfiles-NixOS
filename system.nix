@@ -7,6 +7,8 @@ in import "${nixtamal.nixpkgs}/nixos" {
     inherit nixtamal;
 
     # Function to import flakes (defined here instead of _module.args so it doesn't crash when used inside of imports = [])
-    importFlake = src: builtins.getFlake (builtins.unsafeDiscardStringContext src);
+    importFlake = src:
+      assert builtins.pathExists src;
+      builtins.getFlake (builtins.unsafeDiscardStringContext src);
   };
 }
