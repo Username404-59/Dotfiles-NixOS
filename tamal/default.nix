@@ -40,7 +40,7 @@ let
 	};
 
 	local-patches = {
-		"ableton-linux_workaround" = ./patches/ableton-linux_workaround.patch;"hypr-dynamic-cursors_update" = ./vendored_patches/hypr-dynamic-cursors_update.patch;"kservice_fix" = ./patches/kservice_fix.patch;"nixtamal_update" = ./vendored_patches/nixtamal_update.patch;"wayle_sqlite_fix" = ./vendored_patches/wayle_sqlite_fix.patch;"zluda_sqlite_zstd_fix" = ./vendored_patches/zluda_sqlite_zstd_fix.patch;
+		"ableton-linux_workaround" = ./patches/ableton-linux_workaround.patch;"hypr-dynamic-cursors_update" = ./vendored_patches/hypr-dynamic-cursors_update.patch;"kservice_fix" = ./patches/kservice_fix.patch;"nixtamal_update" = ./vendored_patches/nixtamal_update.patch;
 	};
 
 	try-fetch = input-name: fetcher:
