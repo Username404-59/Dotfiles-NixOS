@@ -428,6 +428,7 @@ in
             "ableton.*.exe"
             "org.qbittorrent.qBittorrent"
             "io.github.nokse22.asciidraw"
+            "com.github.tchx84.Flatseal"
             "org.kde.*|qt.*|.*qt.*|.*Qt.*"
           ];
 
