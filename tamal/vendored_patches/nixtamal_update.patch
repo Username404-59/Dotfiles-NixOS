@@ -1,5 +1,5 @@
 diff --git a/pkgs/by-name/ni/nixtamal/package.nix b/pkgs/by-name/ni/nixtamal/package.nix
-index 4ef49a9c016ac..abeb71700ff22 100644
+index 4ef49a9c016ac2..abeb71700ff223 100644
 --- a/pkgs/by-name/ni/nixtamal/package.nix
 +++ b/pkgs/by-name/ni/nixtamal/package.nix
 @@ -18,74 +18,79 @@
@@ -159,7 +159,7 @@ index 4ef49a9c016ac..abeb71700ff22 100644
      done
  
 diff --git a/pkgs/by-name/ni/nixtamal/package.nix b/pkgs/by-name/ni/nixtamal/package.nix
-index abeb71700ff22..6cde08d450447 100644
+index abeb71700ff223..6cde08d4504477 100644
 --- a/pkgs/by-name/ni/nixtamal/package.nix
 +++ b/pkgs/by-name/ni/nixtamal/package.nix
 @@ -34,7 +34,7 @@
