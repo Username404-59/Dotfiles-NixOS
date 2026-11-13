@@ -30,4 +30,6 @@ in
     SUBSYSTEM=="block", KERNEL=="loop*", ENV{UDISKS_IGNORE}="1"
   '';
   boot.kernelParams = [ "systemd.machine_id=firmware" ]; # Needed for persistent journalctl
+
+  environment.sessionVariables.GDK_WAYLAND_DISABLE = "ext_background_effect_manager_v1"; # Fixes hyprland blur in GTK apps (see https://github.com/hyprwm/Hyprland/discussions/16507) # TODO: Remove if a workaround is ever added to hyprland
 }
