@@ -56,8 +56,8 @@
     ascii-draw
 
     # Gaming packages:
-    (rsi-launcher-umu.override {
-      protonPath = "${proton-ge-bin.steamcompattool}/"; # TODO Go back to dw-proton-bin
+    (rsi-launcher.override {
+      #protonPath = "${dw-proton-bin.steamcompattool}/"; # TODO Go back to rsi-launcher-umu and dw-proton-bin
       launchCommand = "${lib.concatStringsSep " " (lib.mapAttrsToList (name: value: "${name}=${lib.escapeShellArg value}") steam_env)} %command% --disable-gpu --in-process-gpu";
     })
     osu-lazer-bin
