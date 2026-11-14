@@ -125,7 +125,7 @@ in
     auto-allocate-uids = true;
     use-cgroups = true;
   };
-  environment.variables.NIX_CONFIG = "$(cat ${toString ./binary-cache.conf})"; # This way binary caches are taken into account immediately
+  environment.variables.NIX_CONFIG = builtins.readFile ./binary-cache.conf; # This way I use a file instead of nix.settings.substituters etc
 
   # Makes nix chill
   nix.daemonCPUSchedPolicy = "idle";
