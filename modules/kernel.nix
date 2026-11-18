@@ -8,7 +8,6 @@
     "preempt=full"
     "split_lock_detect=off"
     "amd_pstate=active"
-    "transparent_hugepage=always"
     #"lockdown=integrity" # Needed by EAC v2
     "amd_iommu=on" # No passthrough (same reason)
     "amdgpu.exp_hw_support=1"
@@ -27,6 +26,12 @@
     enable = true;
     compressor = "zstd";
     shrinkerEnabled = true;
+  };
+
+ boot.kernel.sysfs.boot.kernel.mm.transparent_hugepage = {
+    enabled = "always";
+    defrag = "defer+madvise";
+    shmem_enabled = "within_size";
   };
 
   catppuccin.tty.enable = !isLaptop;
