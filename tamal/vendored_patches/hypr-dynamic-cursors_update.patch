@@ -1,5 +1,5 @@
 diff --git a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
-index 9b76af87d970f..8412f33f5f9bc 100644
+index 9b76af87d970f0..8412f33f5f9bce 100644
 --- a/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 +++ b/pkgs/applications/window-managers/hyprwm/hyprland-plugins/hypr-dynamic-cursors.nix
 @@ -7,13 +7,13 @@
