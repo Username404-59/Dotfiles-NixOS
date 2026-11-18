@@ -88,6 +88,7 @@ in
         petpet.enable = true;
         alwaysAnimate.enable = !isLaptop;
         betterActivities.enable = true;
+        betterPollDetails.enable = true;
         normalizeMessageLinks.enable = true;
         messageLinkEmbeds.enable = true;
         validUser.enable = true;
