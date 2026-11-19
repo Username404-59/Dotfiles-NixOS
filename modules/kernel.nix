@@ -28,7 +28,7 @@
     shrinkerEnabled = true;
   };
 
- boot.kernel.sysfs.boot.kernel.mm.transparent_hugepage = {
+  boot.kernel.sysfs.boot.kernel.mm.transparent_hugepage = {
     enabled = "always";
     defrag = "defer+madvise";
     shmem_enabled = "within_size";
