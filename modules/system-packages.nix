@@ -114,6 +114,7 @@ rec {
     jq # I use it somewhere in my nixtamal manifest
     steamcmd
     efibootmgr
+    kitty.terminfo # To fix ssh output
   ];
 
   services = {
