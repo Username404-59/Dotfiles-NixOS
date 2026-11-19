@@ -5,9 +5,19 @@
     "sysrq_always_enabled=1"
     "mitigations=off"
     "split_lock_detect=off"
+    "intel_pstate=active"
   ];
 
-  powerManagement.cpuFreqGovernor = "performance";
+  powerManagement.cpuFreqGovernor = "powersave"; # powersave scales dynamically with intel_pstate=active
+  systemd.services.set-epp = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "oneshot";
+    script = ''
+      for f in /sys/devices/system/cpu/cpu*/cpufreq/energy_performance_preference; do
+        echo balance_power > "$f"
+      done
+    '';
+  };
 
   boot.zswap = {
     enable = true;
