@@ -33,7 +33,7 @@ in
 
   # Persistent data directories
   systemd.tmpfiles.rules = [
-    "d ${dataDir} 0755 root root - -"
+    "d ${dataDir}         0755 root root - -"
     "Z ${dataDir}/backups 0755 1000 0 - -"
     "Z ${dataDir}/logs    0755 1000 0 - -"
     "Z ${dataDir}/servers 0755 1000 0 - -"
@@ -49,7 +49,7 @@ in
     allowedUDPPortRanges = [ mc_ports ];
     allowedTCPPortRanges = [
       mc_ports
-      { from = 8100; to = 8200; }
+      { from = 8100; to = 8200; } # More ports for mods/plugins etc
     ];
   };
 }
