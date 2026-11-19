@@ -40,11 +40,12 @@ in
     "Z ${dataDir}/import  0755 1000 0 - -"
   ];
 
-  networking.firewall = {
+  networking.firewall = let
+    mc_ports = { from = 25500; to = 25600; };
+  in {
     allowedTCPPorts = [ 8443 8100 ];
     allowedUDPPorts = [ 19132 24454 ];
-    allowedTCPPortRanges = [
-      { from = 25500; to = 25600; }
-    ];
+    allowedUDPPortRanges = [ mc_ports ];
+    allowedTCPPortRanges = [ mc_ports ];
   };
 }
