@@ -2,12 +2,6 @@ version "2.0.0"
 default-hash-algorithm BLAKE3
 default-vendor-patch #true
 
-patches {
-  kservice_fix "./patches/kservice_fix.patch"
-  ableton-linux_workaround "./patches/ableton-linux_workaround.patch"
-  hypr-dynamic-cursors_update "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/581650.patch" // TODO Remove when merged
-}
-
 inputs {
   nixpkgs {
     archive {
@@ -15,30 +9,9 @@ inputs {
     }
     hash algorithm=SHA-256
     eval-time fetch
-    patches hypr-dynamic-cursors_update
     fresh-cmd {
       // Latest = latest successful build, latest-finished = latest successful build with successful evaluation
       $ bash -c "curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/job/nixos/unstable/tested/latest' | jq -r '.jobsetevals[-1]' | xargs -I{} curl -fsSL -H 'Accept: application/json' 'https://hydra.nixos.org/eval/{}' | jq -r '.jobsetevalinputs.nixpkgs.revision'"
-    }
-  }
-
-  home-manager {
-    archive {
-      url "https://github.com/nix-community/home-manager/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/nix-community/home-manager.git" --refs "refs/heads/master"
-      | cut -f1
-    }
-  }
-
-  catppuccin {
-    archive {
-      url "https://github.com/catppuccin/nix/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/catppuccin/nix.git" --refs "refs/heads/main"
-      | cut -f1
     }
   }
 
@@ -63,92 +36,6 @@ inputs {
     }
   }
 
-  dolphin-overlay {
-    git {
-      repository "https://github.com/rumboon/dolphin-overlay.git"
-      branch "main"
-    }
-    patches kservice_fix
-  }
-
-  nix-citizen {
-    git {
-      repository "https://github.com/LovingMelody/nix-citizen.git"
-      branch "update"
-    }
-  }
-
-  nix-gaming {
-    git {
-      repository "https://github.com/fufexan/nix-gaming.git"
-      branch "master"
-    }
-  }
-
-  nix-spicetify {
-    git {
-      repository "https://github.com/Gerg-L/spicetify-nix.git"
-      branch "master"
-    }
-  }
-  spotneotify {
-    git {
-      repository "https://github.com/0lswitcher/spotneotify.git"
-      branch "main"
-    }
-  }
-  nix-amd-ai {
-    git {
-      repository "https://github.com/noamsto/nix-amd-ai.git"
-      branch "main"
-    }
-  }
-  nix-index-database {
-    git {
-      repository "https://github.com/nix-community/nix-index-database.git"
-      branch "main"
-    }
-  }
-  nixcord {
-    git {
-      repository "https://github.com/FlameFlag/nixcord.git"
-      branch "main"
-    }
-  }
-  nix-flatpak {
-    git {
-      repository "https://github.com/gmodena/nix-flatpak.git"
-      branch "main"
-    }
-  }
-  hytale-launcher {
-    git {
-      repository "https://github.com/JPyke3/hytale-launcher-nix.git"
-      branch "main"
-    }
-  }
-  qylock {
-    archive {
-      url "https://github.com/Darkkal44/qylock/archive/{{fresh_value}}.tar.gz"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/Darkkal44/qylock.git" --refs "refs/heads/main"
-      | cut -f1
-    }
-  }
-  nixvim {
-    git {
-      repository "https://github.com/nix-community/nixvim.git"
-      branch "main"
-    }
-  }
-  ableton-linux {
-    git {
-      repository "https://github.com/shibco/ableton-linux.git"
-      branch "main"
-    }
-    patches ableton-linux_workaround
-  }
   determinate-nix {
     git {
       repository "https://github.com/DeterminateSystems/nix-src.git"
@@ -157,56 +44,6 @@ inputs {
     fresh-cmd {
       $ curl -s "https://api.github.com/repos/DeterminateSystems/nix-src/tags"
       | jq -r ".[0].name"
-    }
-  }
-
-  // Packages
-  low_latency_layer-git {
-    git {
-      repository "https://github.com/Korthos-Software/low_latency_layer.git"
-      branch "main"
-    }
-  }
-  lsfg-vk-git {
-    git {
-      repository "https://git.lsfg-vk.dev/lsfg-vk.git"
-      branch "master"
-    }
-  }
-  ableton {
-    file {
-      url "https://cdn-downloads.ableton.com/channels/{{fresh_value}}/ableton_live_lite_{{fresh_value}}_64.zip"
-    }
-    fresh-cmd {
-      $ bash -c "curl -sL https://www.ableton.com/en/release-notes/live-12/ | grep -oE '12\\.[0-9]+\\.[0-9]+' | head -1"
-    }
-  }
-  hypr-darkwindow-git {
-    git {
-      repository "https://github.com/micha4w/Hypr-DarkWindow.git"
-      branch "main"
-    }
-  }
-
-  // Other patches
-
-  // Others
-  catppuccin-godot {
-    file {
-      url "https://raw.githubusercontent.com/catppuccin/godot/{{fresh_value}}/themes/Catppuccin%20Mocha.tet"
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/catppuccin/godot.git" --refs "refs/heads/main"
-      | cut -f1
-    }
-  }
-  catppuccin-ableton {
-    file {
-      url "https://raw.githubusercontent.com/sliipkat/ableton-live/{{fresh_value}}/themes/Catppuccin%20Mocha.ask";
-    }
-    fresh-cmd {
-      $ git ls-remote --branches "https://github.com/sliipkat/ableton-live.git" --refs "refs/heads/main"
-      | cut -f1
     }
   }
 }

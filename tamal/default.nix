@@ -39,10 +39,6 @@ let
 		"2" = "blake3";
 	};
 
-	local-patches = {
-		"ableton-linux_workaround" = ./patches/ableton-linux_workaround.patch;"hypr-dynamic-cursors_update" = ./vendored_patches/hypr-dynamic-cursors_update.patch;"kservice_fix" = ./patches/kservice_fix.patch;
-	};
-
 	try-fetch = input-name: fetcher:
 		let
 			try-fetch' = failed-urls: url: urls:
@@ -58,15 +54,6 @@ let
 						try-fetch' failed-urls' (builtins.head urls) (builtins.tail urls);
 		in
 		try-fetch' [ ];
-
-	builtin-fetch-url = { input-name, name, kind, hash }:
-		try-fetch input-name (url:
-			builtins.fetchurl ({
-				inherit url;
-				${hash-token.${builtins.toString hash.al}} = hash.vl;
-			}
-			// (if isNonemptyString name then { inherit name; } else { }))
-		) kind.ur kind.ms;
 
 	builtin-fetch-tarball = { input-name, name, kind, hash }:
 		try-fetch input-name (url:
@@ -114,9 +101,7 @@ let
 			kind = builtins.elemAt input.kd 1;
 			k = builtins.head input.kd;
 		in
-		if k == 0 then
-			builtin-fetch-url { inherit input-name name hash kind; }
-		else if k == 1 then
+		if k == 1 then
 			builtin-fetch-tarball { inherit input-name name hash kind; }
 		else if k == 2 then
 			builtin-fetch-git { inherit input-name name kind; }
@@ -162,19 +147,6 @@ let
 
 	inherit (pkgs) lib;
 
-	fetch-url = { input-name, name, kind, hash }:
-		pkgs.fetchurl (
-			{
-				hash = hash.vl;
-			}
-			// (if isNonemptyList kind.ms then
-					{ urls = [ kind.ur ] ++ kind.ms; }
-				else
-					{ url = kind.ur; }
-				)
-			// lib.optionalAttrs (isNonemptyString name) { inherit name; }
-		);
-
 	fetch-zip = { input-name, name, kind, hash }:
 		pkgs.fetchzip (
 			{
@@ -210,13 +182,6 @@ let
 			// lib.optionalAttrs (has-mirrors && has-mirror-support) { mirrors = kind.ms; }
 		);
 
-	fetch-patch = patch-name: { ur, ha, sn ? null, ... }:
-		pkgs.fetchpatch2 {
-			url = ur;
-			hash = ha.vl;
-			name = if isNonemptyString sn then sn else "${patch-name}-patch";
-		};
-
 	to-input = input-name: input:
 		let
 			name = input.sn;
@@ -224,15 +189,7 @@ let
 			kind = builtins.elemAt input.kd 1;
 			k = builtins.head input.kd;
 			raw-input =
-				if k == 0 then
-					let fetch-time = kind.ft; in
-					if fetch-time == 0 then
-						fetch-url { inherit input-name name kind hash; }
-					else if fetch-time == 1 then
-						builtin-fetch-url { inherit input-name name kind hash; }
-					else
-						throw "Unsupported fetch time ${fetch-time}."
-				else if k == 1 then
+				if k == 1 then
 					let fetch-time = kind.ft; in
 					if fetch-time == 0 then
 						fetch-zip { inherit input-name name kind hash; }
@@ -251,18 +208,6 @@ let
 				else
 					throw "Unsupported input kind “${builtins.toString k}”";
 		in
-		if input.ps == [ ] then
-			raw-input
-		else
-			pkgs.applyPatches {
-				src = raw-input;
-				name = "${if isNonemptyString name then name else "src"}-patched";
-				patches = map (p:
-					if local-patches ? "${p}" then
-						local-patches."${p}"
-					else
-						fetch-patch p lock.p."${p}"
-				) input.ps;
-			};
+		raw-input;
 in
 builtins.mapAttrs to-input lock.i

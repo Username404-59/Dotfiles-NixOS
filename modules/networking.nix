@@ -1,36 +1,12 @@
-{ isLaptop, config, pkgs, ... }:
+{ ... }:
 
 {
   # Enable networking
   networking = {
-    networkmanager = {
-      enable = true;
-      wifi.backend = "iwd";
-      plugins = with pkgs; [
-        networkmanager-openvpn
-      ];
-    };
-
-    wireless.iwd.settings = {
-      General = {
-        AddressRandomization = "once";
-      };
-      Network = {
-        EnableIPv6 = true;
-      };
-      Settings = {
-        AutoConnect = true;
-      };
-      Rank = {
-        BandModifier2_4GHZ = 1.0;
-        BandModifier5GHZ = 1.1;
-        BandModifier6GHZ = 2.0;
-      };
-    };
-
+    useNetworkd = true;
+    hostName = "stronk-lizard";
     firewall = {
       allowedTCPPorts = [
-        57621 # Spotify discovery port
         25565 25569 # Minecraft
         7777 7778 27016
         8080 # Dev test port
@@ -38,7 +14,6 @@
         30309 # Port for torrents
       ];
       allowedUDPPorts = [
-        5353 # Spotify discovery port
         24454 # Minecraft: Simple Voice
         7777 7778 27016 # Satisfactory dedicated server (etc) ports
         8080
@@ -53,17 +28,8 @@
     # proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = false;
-  };
-
-  services.joycond.enable = config.hardware.bluetooth.enable;
-
   # This makes booting faster:
-  systemd.services.NetworkManager-wait-online.enable = false;
-
-  services.blueman.enable = true;
+  systemd.network.wait-online.enable = false;
 
   services.resolved.enable = true;
 }

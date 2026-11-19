@@ -23,77 +23,33 @@
   nix-collect-garbage && nix-collect-garbage -d && nixos-rebuild switch
 */
 let
-  # self = final package set, super = pre-overlay nixpkgs
-  # super.lib: avoids circular dependencies
-  # self.callPackage: local packages can see each other and other overlays
-  localPackagesOverlay = self: super: super.lib.packagesFromDirectoryRecursive {
-    callPackage = self.callPackage;
-    directory   = ./local_packages;
-  };
-
   pkgs = import nixtamal.nixpkgs {
     config.allowUnfree = true;
     overlays = with nixtamal; [
       # CachyOS kernels repo
       (importFlake nix-cachyos-kernel).overlays.pinned
-      # Nix-gaming overlay (for low_latency_layer)
-      (importFlake nix-gaming).overlays.default
-      # Nix-Citizen tools overlay (for dw-proton-bin notably)
-      (importFlake nix-citizen).overlays.steamcompattools
-      # AMD AI overlay
-      (importFlake nix-amd-ai).overlays.default
-      # Local packages
-      localPackagesOverlay
     ];
   };
-
-  isLaptop =
-    let
-      powerSupplyDir = /sys/class/power_supply;
-    in
-      builtins.pathExists powerSupplyDir && lib.any (name: lib.hasPrefix "BAT" name) (builtins.attrNames (builtins.readDir powerSupplyDir));
 in
 {
   nixpkgs.pkgs = pkgs; # Uses the nixtamal nixpkgs
-  _module.args.isLaptop = isLaptop;
 
   imports =
     [
       ./workarounds.nix
-      ./hardware-configuration.nix # Results of the hardware scan ("nixos-generate-config" command; Note: I have to remove swapDevices from there and put "swap" partlabel on the partition)
+      ./hardware-configuration.nix # Results of the hardware scan ("nixos-generate-config" command
       ./modules/filesystems.nix
-      "${nixtamal.home-manager}/nixos"
-      "${nixtamal.catppuccin}/modules/nixos"
       "${nixtamal.nix-cachyos-settings}/module.nix"
       ./modules/bootloader.nix
-      ./modules/encryption.nix
       ./modules/system-packages.nix
-      ./modules/steam.nix
       ./modules/security.nix
-      ./modules/fonts.nix
-      ./modules/hyprland.nix
       ./modules/kernel.nix
-      ./modules/ccache.nix
       ./modules/networking.nix
       ./modules/mesa.nix
-      ./modules/audio.nix
-      ./modules/ananicy.nix
-      ./modules/printing.nix
-      ./modules/virtualisation.nix
-
-      ./common/amd-ai-config.nix
-      ./common/neovim-config.nix
-
-      ./machines/${
-        if isLaptop then "laptop" else "desktop"
-      }/local.nix
 
       # ISO installer building stuff:
       ./ISO/iso.nix
     ];
-
-  home-manager.useUserPackages = true; # Puts user packages in /etc/profiles
-  home-manager.useGlobalPkgs = false; # Home-manager inherits the pkgs path since NixOS 20.09 (unlike what the docs seem to say), meaning it uses my pinned nixpkgs source already
 
   nix.package =
   # Upstream:
@@ -130,13 +86,6 @@ in
   # Makes nix chill
   nix.daemonCPUSchedPolicy = "idle";
   nix.daemonIOSchedClass = "idle";
-
-  catppuccin = {
-    autoEnable = true;
-    enable = true;
-    accent = "red";
-    flavor = "mocha";
-  };
 
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -180,11 +129,6 @@ in
       hashedPassword = "$y$jFT$K3p0rTNfwdG/AoPZ3ztMT.$nrjgumjA5CNQKp/ZZNGk0Swj.D/ThEKswBIuwiKs9C2"; # mkpasswd -m yescrypt --rounds 11
     };
   };
-
-  home-manager.extraSpecialArgs = {
-    inherit nixtamal importFlake localPackagesOverlay isLaptop;
-  };
-  home-manager.users.doggo = import ./home/doggo/doggo.nix;
 
   cachyos.settings = {
     enable = true;

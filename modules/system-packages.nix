@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nixtamal, isLaptop, importFlake, ... }:
+{ config, pkgs, lib, nixtamal, importFlake, ... }:
 
 let
   functions = rec {
@@ -94,12 +94,12 @@ let
 in
 rec {
   _module.args.functions = functions;
-  home-manager.extraSpecialArgs = { inherit functions; };
 
   environment.systemPackages = with pkgs; [
     git git-lfs
     curl
     wget
+    neovim
     fastfetch
     htop
     killall
@@ -109,37 +109,14 @@ rec {
     steam-run
     exfatprogs
     pkgs.nixtamal # Important
-    android-tools
-    kdePackages.kleopatra # Needed to add keys easily
     nload
-    clang gcc mold
-    cmake
     sbctl # For secure boot
     jq # I use it somewhere in my nixtamal manifest
-    (functions.mkSpecial lsfg-vk-ui "unstable" "lsfg-vk" "-git")
     steamcmd
-    geteduroam
-    sshpass
     efibootmgr
   ];
 
   services = {
-    flatpak = {
-      enable = true;
-      package = pkgs.flatpak.overrideAttrs {
-        patches = [ ../tamal/patches/5224_all_syscalls.patch ];
-      };
-    };
-
-    lact.enable = true;
-
-    sunshine = { # Default port: 47990
-      enable = !isLaptop;
-      autoStart = true;
-      capSysAdmin = true;
-      openFirewall = true;
-    };
-
     nix-serve = {
       enable = true;
       package = pkgs.nix-serve-ng;
@@ -151,11 +128,7 @@ rec {
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryPackage = pkgs.pinentry-qt;
     };
-
-    partition-manager.enable = true;
-    k3b.enable = true; # NOTE: See https://wiki.nixos.org/wiki/K3b#:~:text=Post%2DInstallation,-After
 
     nix-ld.enable = true;
 
@@ -167,7 +140,7 @@ rec {
     java = {
       enable = true;
       binfmt = true;
-      package = pkgs.jdk.override { enableJavaFX = true; };
+      package = pkgs.graalvmPackages.graalvm-ce;
     };
   };
 
@@ -178,15 +151,6 @@ rec {
   environment.shellAliases = {
     nixtamal = "bash -c 'cd ${toString (builtins.dirOf ../nixos/.)} && nixtamal \"$@\"' --";
   };
-
-  home-manager.sharedModules = [(
-    { ... }: {
-      home.shellAliases = {
-        nixtamal = environment.shellAliases.nixtamal;
-      };
-      programs.nix-index.package = (import nixtamal.nix-index-database { inherit pkgs; }).nix-index-with-small-db;
-    }
-  )];
 
   # Optimisations
   specialisation.mimalloc.configuration.environment.memoryAllocator.provider = lib.mkForce "mimalloc";

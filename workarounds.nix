@@ -3,8 +3,6 @@
 let
   dirs = {
     ssh = "/var/lib/ssh";
-    lact = "/var/lib/lact";
-    nw_manager = "/var/lib/NetworkManager/system-connections";
   };
 in
 {
@@ -13,23 +11,12 @@ in
   # Fixes for things broken by system.etc.overlay.mutable (from modules/filesystems.nix)
   systemd.tmpfiles.rules = [
     "d ${dirs.ssh} 0755 root root -"
-    "d ${dirs.lact} 0755 root root -"
-    "d ${dirs.nw_manager} 0700 root root -"
   ];
-  environment.etc."lact".source = dirs.lact;
   services.openssh.hostKeys = [
     {
       path = "${dirs.ssh}/ssh_host_ed25519_key";
       type = "ed25519";
     }
   ];
-  environment.etc."avahi/services/.keep".text = ""; # https://github.com/nixos/nixpkgs/issues/539763
-  networking.networkmanager.settings.keyfile.path = dirs.nw_manager;
-  services.printing.stateless = true;
-  services.udev.extraRules = /* Stops udisks2 from mounting loop0 */ ''
-    SUBSYSTEM=="block", KERNEL=="loop*", ENV{UDISKS_IGNORE}="1"
-  '';
   boot.kernelParams = [ "systemd.machine_id=firmware" ]; # Needed for persistent journalctl
-
-  environment.sessionVariables.GDK_WAYLAND_DISABLE = "ext_background_effect_manager_v1"; # Fixes hyprland blur in GTK apps (see https://github.com/hyprwm/Hyprland/discussions/16507) # TODO: Remove if a workaround is ever added to hyprland
 }

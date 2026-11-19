@@ -6,8 +6,6 @@ in
 {
   imports = [ lanzaboote.nixosModules.lanzaboote ];
 
-  catppuccin.plymouth.enable = false;
-
   system.nixos-init.enable = true; # Note: doesn't run system.activationScripts as of writing
 
   # Bootloader.
@@ -17,7 +15,7 @@ in
       pkiBundle = "/var/lib/sbctl";
       autoGenerateKeys.enable = true;
       autoEnrollKeys.enable = true;
-      autoEnrollKeys.autoReboot = false; # Better idea to disable this because my fscrypt encryption stuff could be running
+      autoEnrollKeys.autoReboot = false;
     };
 
     loader = {
@@ -29,20 +27,10 @@ in
       # 0 = Hide the OS choice for bootloaders.
       # It would still be possible to open the bootloader list by pressing any key
       # It just would not appear on screen unless a key is pressed
-      timeout = lib.mkForce 5; # Forced, else it doesn't work when making an ISO
+      timeout = lib.mkForce 3; # Forced, else it doesn't work when making an ISO
     };
 
     initrd.systemd.emergencyAccess = lib.mkDefault config.users.users."doggo".hashedPassword;
-
-    plymouth = {
-      enable = true;
-      theme = "owl";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "owl" ];
-        })
-      ];
-    };
 
     # Enables "Silent boot"
     consoleLogLevel = 3;

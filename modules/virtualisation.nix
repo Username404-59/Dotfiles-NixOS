@@ -2,14 +2,6 @@
 
 {
   virtualisation = {
-    virtualbox.host = rec {
-      enable = true;
-      enableExtensionPack = false;
-      enableKvm = true;
-      addNetworkInterface = !enableKvm;
-      enableHardening = !enableKvm;
-    };
-
     podman = {
       enable = true;
       dockerCompat = true;

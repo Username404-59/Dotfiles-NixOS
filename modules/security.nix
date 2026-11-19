@@ -39,9 +39,9 @@
     enable = true;
     sudo-shim.enable = true;
   };
-  home-manager.sharedModules = [({
-    home.shellAliases.sudo = "sudo --run0-extra-arg '--background='";
-  })];
+  environment.shellAliases = {
+    sudo = "sudo --run0-extra-arg '--background='";
+  };
 
   security.wrappers = lib.mkMerge [
     # Make sure the sudo wrapper is enabled, to use it with the shim
@@ -52,8 +52,8 @@
       sudo.group = "wheel";
     }
     {
-      passwd.enable = false; # Also better since I use fscrypt and therefore don't want to accidentally change my password
-      chsh.enable = false; # This gets handled by home-manager anyway so it's fine
+      passwd.enable = false; # Also better
+      chsh.enable = false;
     }
     # Disable setuid for most wrappers, for extra security MUEHEHE 😈
     (lib.mkMerge (map (name: {

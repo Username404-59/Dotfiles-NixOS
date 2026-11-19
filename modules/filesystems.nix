@@ -34,12 +34,6 @@
   };
   boot.kernelParams = [ "overlay.index=off" ]; # TODO Remove when not needed anymore for system.etc.overlay
 
-  # To manage USB drives
-  services.udisks2.enable = true;
-  home-manager.sharedModules = [({
-    services.udiskie.enable = true;
-  })];
-
   # Filesystem checking tools in initrd emergency shell
   boot.initrd.systemd.initrdBin = with pkgs; [
     f2fs-tools
