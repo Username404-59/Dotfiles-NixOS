@@ -1,0 +1,49 @@
+{ config, lib, pkgs, ... }:
+
+let
+  dataDir = "/var/lib/crafty";
+in
+{
+  virtualisation.oci-containers.containers.crafty = {
+    image = "registry.gitlab.com/crafty-controller/crafty-4:4.11.1";
+    autoStart = true;
+
+    environment = {
+      TZ = config.time.timeZone;
+    };
+
+    ports = [
+       "8443:8443"                      # Web UI (HTTPS)
+       "8100:8100"                      # BlueMap
+       "19132:19132/udp"                # Bedrock
+       "24454:24454/udp"                # Simple Voice Chat
+       "25500-25600:25500-25600"        # Minecraft server port range
+    ];
+
+    volumes = [
+      "${dataDir}/backups:/crafty/backups"
+      "${dataDir}/logs:/crafty/logs"
+      "${dataDir}/servers:/crafty/servers"
+      "${dataDir}/config:/crafty/app/config"
+      "${dataDir}/import:/crafty/import"
+    ];
+  };
+
+  # Persistent data directories
+  systemd.tmpfiles.rules = [
+    "d ${dataDir}          0755 root root - -"
+    "d ${dataDir}/backups  0755 root root - -"
+    "d ${dataDir}/logs     0755 root root - -"
+    "d ${dataDir}/servers  0755 root root - -"
+    "d ${dataDir}/config   0755 root root - -"
+    "d ${dataDir}/import   0755 root root - -"
+  ];
+
+  networking.firewall = {
+    allowedTCPPorts = [ 8443 8100 ];
+    allowedUDPPorts = [ 19132 24454 ];
+    allowedTCPPortRanges = [
+      { from = 25500; to = 25600; }
+    ];
+  };
+}
