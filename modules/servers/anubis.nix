@@ -33,6 +33,12 @@ let
         transport http {
           tls_insecure_skip_verify
         }
+
+        header_up Upgrade websocket
+        header_up Connection Upgrade
+        header_up X-Forwarded-Proto https
+        header_up X-Forwarded-For {remote}
+        header_up Host {host}
       }
     '' else ''
       reverse_proxy ${target}
