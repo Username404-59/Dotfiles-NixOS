@@ -32,12 +32,12 @@ in
 
   # Persistent data directories
   systemd.tmpfiles.rules = [
-    "d ${dataDir}          0755 root root - -"
-    "d ${dataDir}/backups  0755 root root - -"
-    "d ${dataDir}/logs     0755 root root - -"
-    "d ${dataDir}/servers  0755 root root - -"
-    "d ${dataDir}/config   0755 root root - -"
-    "d ${dataDir}/import   0755 root root - -"
+    "d ${dataDir} 0755 root root - -"
+    "Z ${dataDir}/backups 0755 1000 0 - -"
+    "Z ${dataDir}/logs    0755 1000 0 - -"
+    "Z ${dataDir}/servers 0755 1000 0 - -"
+    "Z ${dataDir}/config  0755 1000 0 - -"
+    "Z ${dataDir}/import  0755 1000 0 - -"
   ];
 
   networking.firewall = {
