@@ -4,6 +4,7 @@ let
   dataDir = "/var/lib/crafty";
 in
 {
+  # For default credentials: sudo cat /var/lib/crafty/config/default-creds.txt
   virtualisation.oci-containers.containers.crafty = {
     image = "registry.gitlab.com/crafty-controller/crafty-4:4.11.1";
     autoStart = true;
