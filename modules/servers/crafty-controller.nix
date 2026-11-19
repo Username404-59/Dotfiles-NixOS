@@ -15,7 +15,8 @@ in
 
     ports = [
        "8443:8443"                      # Web UI (HTTPS)
-       "8100:8100"                      # BlueMap
+       "8100-8200:8100-8200"            # BlueMap
+       "8723:8723"                      # Colonyweb
        "19132:19132/udp"                # Bedrock
        "24454:24454/udp"                # Simple Voice Chat
        "25500-25600:25500-25600"        # Minecraft server port range
@@ -43,9 +44,12 @@ in
   networking.firewall = let
     mc_ports = { from = 25500; to = 25600; };
   in {
-    allowedTCPPorts = [ 8443 8100 ];
+    allowedTCPPorts = [ 8443 8723 ];
     allowedUDPPorts = [ 19132 24454 ];
     allowedUDPPortRanges = [ mc_ports ];
-    allowedTCPPortRanges = [ mc_ports ];
+    allowedTCPPortRanges = [
+      mc_ports
+      { from = 8100; to = 8200; }
+    ];
   };
 }

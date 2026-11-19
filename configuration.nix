@@ -47,7 +47,8 @@ in
       ./modules/networking.nix
       ./modules/mesa.nix
 
-      ./modules/crafty-controller.nix
+      ./modules/servers/crafty-controller.nix
+      ./modules/servers/anubis.nix
 
       # ISO installer building stuff:
       ./ISO/iso.nix
