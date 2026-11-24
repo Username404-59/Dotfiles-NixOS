@@ -14,6 +14,7 @@ in
       gpu-api = "vulkan";
       hwdec = "vulkan";
       deband = "yes";
+      target-colorspace-hint-mode = "source";
 
       # Stuff needed for ModernZ
       watch-later-options-remove = "sub-pos";
