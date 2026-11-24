@@ -29,8 +29,7 @@ in
         fakeNitro.enable = true; noNitroUpsell.enable = true;
         disableCallIdle.enable = true;
         fixImagesQuality.enable = true;
-        fixYoutubeEmbeds.enable = true;
-        youtubeAdblock.enable = true;
+        betterYouTubeEmbeds.enable = true;
         pictureInPicture.enable = true;
         gifPaste.enable = true;
         gifProviderSwitcher.enable = true;
