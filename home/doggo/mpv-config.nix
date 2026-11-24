@@ -1,4 +1,4 @@
-{ config, pkgs, nixtamal, functions, ... }:
+{ config, pkgs, nixtamal, functions, lib, ... }:
 
 let
   shaders = "${pkgs.anime4k}";
@@ -7,7 +7,10 @@ in
   programs.mpv = {
     enable = true;
 
-    config = {
+    config = let
+      primary_monitor = builtins.head config.wayland.windowManager.hyprland.settings.monitor;
+      isHDR = lib.hasPrefix "hdr" primary_monitor.cm;
+    in {
       glsl-shaders = "${shaders}/Anime4K_Clamp_Highlights.glsl:${shaders}/Anime4K_Restore_CNN_VL.glsl:${shaders}/Anime4K_Upscale_CNN_x2_VL.glsl:${shaders}/Anime4K_AutoDownscalePre_x2.glsl:${shaders}/Anime4K_AutoDownscalePre_x4.glsl:${shaders}/Anime4K_Upscale_CNN_x2_M.glsl";
       vo = "gpu-next";
       gpu-context = "waylandvk";
@@ -15,6 +18,14 @@ in
       hwdec = "vulkan";
       deband = "yes";
       target-colorspace-hint-mode = "source";
+
+      # Tone-mapping stuff
+      tone-mapping = "st2094-40";
+      tone-mapping-knee-adaptation = 0.4;
+      tone-mapping-knee-minimum = 0.1;
+      tone-mapping-knee-maximum = 0.8;
+      inverse-tone-mapping = lib.mkIf isHDR "yes";
+      target-trc = "scrgb";
 
       # Stuff needed for ModernZ
       watch-later-options-remove = "sub-pos";
