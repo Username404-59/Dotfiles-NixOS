@@ -84,6 +84,8 @@ in
     ]; # blake3 is for nixtamal. https://nix.dev/manual/nix/stable/development/experimental-features
     auto-allocate-uids = true;
     use-cgroups = true;
+
+    trusted-users = [ "@wheel" ];
   };
   environment.variables.NIX_CONFIG = builtins.readFile ./binary-cache.conf; # This way I use a file instead of nix.settings.substituters etc
 
