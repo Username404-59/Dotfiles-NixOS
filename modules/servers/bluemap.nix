@@ -2,7 +2,8 @@
 
 let
   targeted_crafty_server_id = "aeacaf83-7dc5-4e16-8448-f659748b835c";
-  used_compress_format = "zstd"; # has to be the one configured in config/bluemap/storages/file.conf
+  used_compress_format = "zstd"; # has to match config/bluemap/storages/file.conf
+  used_compress_suffix = ".zst";
 in
 {
   services.caddy.virtualHosts."http://:8201".extraConfig = ''
@@ -19,7 +20,7 @@ in
 
     @${used_compress_format} path /maps/*/textures.json *.prbm
     handle @${used_compress_format} {
-      try_files {path}.${used_compress_format} =204
+      try_files {path}${used_compress_suffix} =204
         header Content-Encoding ${used_compress_format}
       }
 
