@@ -5,7 +5,8 @@ let
   used_compress_format = "zstd"; # has to be the one configured in config/bluemap/storages/file.conf
 in
 {
-  services.caddy.virtualHosts."http://localhost:8201".extraConfig = ''
+  services.caddy.virtualHosts."http://:8201".extraConfig = ''
+    bind localhost
     root * /var/lib/crafty/servers/${targeted_crafty_server_id}/bluemap/web/
 
     # Catch the error and serve "live" data from the disk when the integrated webserver can't be reached
