@@ -6,7 +6,7 @@ let
 in
 {
   services.caddy.virtualHosts."http://localhost:8201".extraConfig = ''
-    root * /var/lib/crafty/servers/${targeted_crafty_server_id}/bluemap/
+    root * /var/lib/crafty/servers/${targeted_crafty_server_id}/bluemap/web/
 
     # Catch the error and serve "live" data from the disk when the integrated webserver can't be reached
     handle_errors {
