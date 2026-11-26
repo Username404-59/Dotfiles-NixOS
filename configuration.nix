@@ -48,7 +48,7 @@ in
       ./modules/mesa.nix
 
       ./modules/servers/crafty-controller.nix
-      ./modules/servers/anubis.nix
+      ./modules/servers/anubis_caddy.nix
 
       # ISO installer building stuff:
       ./ISO/iso.nix
