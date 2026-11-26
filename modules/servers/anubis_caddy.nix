@@ -5,7 +5,7 @@ let
     "mc.username404.fr" = {
       root = "https://localhost:8443";
       paths = {
-        "/bluemap" = "http://localhost:8100";
+        "/bluemap" = "http://localhost:8199";
         "/colonyweb" = "http://localhost:8723";
       };
     };

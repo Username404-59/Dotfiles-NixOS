@@ -49,6 +49,7 @@ in
 
       ./modules/servers/crafty-controller.nix
       ./modules/servers/anubis_caddy.nix
+      ./modules/servers/bluemap.nix
 
       # ISO installer building stuff:
       ./ISO/iso.nix
