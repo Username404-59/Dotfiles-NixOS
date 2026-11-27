@@ -90,7 +90,7 @@ in
         "browser.aboutConfig.showWarning" = lock-false;
         "middlemouse.paste" = lock-false;
 
-        "browser.nova.enabled" = false; # Disables ugly new interface
+        "browser.nova.enabled" = true; # Enables ugly new interface # TODO remove once it is default
 
         # Performance etc
         "gfx.webrender.all" = lock-true;
