@@ -19,16 +19,17 @@ in
       deband = "yes";
       target-colorspace-hint-mode = "source";
 
-      # Tone-mapping stuff
+      # Stuff needed for ModernZ
+      watch-later-options-remove = "sub-pos";
+    }
+    // # Tone-mapping stuff
+    lib.optionalAttrs isHDR {
+      target-trc = "scrgb";
       tone-mapping = "st2094-40";
       tone-mapping-knee-adaptation = 0.4;
       tone-mapping-knee-minimum = 0.1;
       tone-mapping-knee-maximum = 0.8;
       inverse-tone-mapping = lib.mkIf isHDR "yes";
-      target-trc = "scrgb";
-
-      # Stuff needed for ModernZ
-      watch-later-options-remove = "sub-pos";
     };
 
     package = (
