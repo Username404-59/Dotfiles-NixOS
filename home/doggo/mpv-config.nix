@@ -17,13 +17,13 @@ in
       gpu-api = "vulkan";
       hwdec = "vulkan";
       deband = "yes";
-      target-colorspace-hint-mode = "source";
 
       # Stuff needed for ModernZ
       watch-later-options-remove = "sub-pos";
     }
     // # Tone-mapping stuff
     lib.optionalAttrs isHDR {
+      target-colorspace-hint-mode = "source";
       target-trc = "scrgb";
       tone-mapping = "st2094-40";
       tone-mapping-knee-adaptation = 0.4;
