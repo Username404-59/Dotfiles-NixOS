@@ -17,19 +17,19 @@ in
       gpu-api = "vulkan";
       hwdec = "vulkan";
       deband = "yes";
+      target-colorspace-hint-mode = lib.mkIf isHDR "source";
 
-      # Stuff needed for ModernZ
-      watch-later-options-remove = "sub-pos";
-    }
-    // # Tone-mapping stuff
-    lib.optionalAttrs isHDR {
-      target-colorspace-hint-mode = "source";
-      target-trc = "scrgb";
+      # HDR -> SDR
       tone-mapping = "st2094-40";
       tone-mapping-knee-adaptation = 0.4;
       tone-mapping-knee-minimum = 0.1;
       tone-mapping-knee-maximum = 0.8;
+      # SDR -> HDR
+      target-trc = lib.mkIf isHDR "scrgb";
       inverse-tone-mapping = lib.mkIf isHDR "yes";
+
+      # Stuff needed for ModernZ
+      watch-later-options-remove = "sub-pos";
     };
 
     package = (
